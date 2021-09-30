@@ -1,0 +1,5 @@
+.page {
+  min-width: var(--desktop-min-width);
+  max-width: var(--desktop-width);
+  width: 100%;
+}
