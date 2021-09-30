@@ -1,4 +1,10 @@
 .header {
+  --text-color-light: #ffffff;
+  --design-color-main: #228B22;
+  --desktop-width: 1200px;
+  --desktop-padding: 15px;
+  --desktop-min-width: 520px;
+
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -10,3 +16,4 @@
   padding-right: var(--desktop-padding);
   background-color: var(--design-color-main);
 }
+
