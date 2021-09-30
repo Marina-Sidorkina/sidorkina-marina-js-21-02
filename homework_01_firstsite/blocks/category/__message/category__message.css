@@ -1,0 +1,5 @@
+.category__message {
+  margin: 0;
+  font-size: 18px;
+  color: var(--category-color-main);
+}

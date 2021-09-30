@@ -1,0 +1,7 @@
+.good__title-link {
+  color: var(--link-color-main);
+}
+
+.good__title-link:hover {
+  color: var(--link-color-hover);
+}

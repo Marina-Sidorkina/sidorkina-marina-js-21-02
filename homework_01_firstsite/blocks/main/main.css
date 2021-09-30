@@ -1,3 +1,7 @@
 .main {
-  display: flex;
+  --desktop-spacing: 15px;
+  --desktop-sidebar-width: 240px;
+
+  display: grid;
+  grid-template-columns: 240px 1fr;
 }

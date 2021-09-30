@@ -1,0 +1,12 @@
+.sidebar {
+  --background-color-main: #F5F5F5;
+  --desktop-fixed-width: 240px;
+  --desktop-min-height: 700px;
+  --desktop-spacing: 12px;
+
+  box-sizing: border-box;
+  width: var(--desktop-fixed-width);
+  min-height: var(--desktop-min-height);
+  padding: var(--desktop-spacing);
+  background-color: var(--background-color-main);
+}
