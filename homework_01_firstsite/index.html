@@ -7,72 +7,72 @@
   </head>
   <body class="page">
     <!--HEADER-->
-    <header>
-      <h1>Интернет-магазин "Не только красивое"</h1>
+    <header class="header page__header">
+      <h1 class="header__title">Интернет-магазин "Не только красивое"</h1>
     </header>
     <!--MAIN-->
-    <main>
-      <!--FORM-->
-      <form>
-        <!--CHOICE-->
-        <fieldset>
-          <legend>
+    <main class="main page__main">
+      <!--SIDEBAR-->
+      <form class="sidebar main__sidebar">
+        <!--CHOICE OPTION-->
+        <fieldset class="choice-option sidebar__choice-option">
+          <legend class="choice-option__legend">
             Морская рыба
           </legend>
-          <ul>
-            <li>
-              <input type="checkbox" id="sea-check-1">
-              <label for="sea-check-1">
+          <ul class="choice-list choice-option__list">
+            <li class="choice-item choice-list__item">
+              <input class="choice-item__input" type="checkbox" id="sea-check-1">
+              <label class="choice-item__label" for="sea-check-1">
                 Акула
               </label>
             </li>
-            <li>
-              <input type="checkbox" id="sea-check-2">
-              <label for="sea-check-2">
+            <li class="choice-item choice-list__item">
+              <input class="choice-item__input" type="checkbox" id="sea-check-2">
+              <label class="choice-item__label" for="sea-check-2">
                 Окунь
               </label>
             </li>
-            <li>
-              <input type="checkbox" id="sea-check-3">
-              <label for="sea-check-3">
+            <li class="choice-item choice-list__item">
+              <input class="choice-item__input" type="checkbox" id="sea-check-3">
+              <label class="choice-item__label" for="sea-check-3">
                 Палтус
               </label>
             </li>
-            <li>
-              <input type="checkbox" id="sea-check-4">
-              <label for="sea-check-4">
+            <li class="choice-item choice-list__item">
+              <input class="choice-item__input" type="checkbox" id="sea-check-4">
+              <label class="choice-item__label" for="sea-check-4">
                 Треска
               </label>
             </li>
           </ul>
         </fieldset>
         <!--CHOICE-->
-        <fieldset>
-          <legend>
+        <fieldset class="choice-option sidebar__choice-option">
+          <legend class="choice-option__legend">
             Пресноводная рыба
           </legend>
-          <ul>
-            <li>
-              <input type="checkbox" id="fresh-check-1">
-              <label for="fresh-check-1">
+          <ul class="choice-list choice-option__list">
+            <li class="choice-item choice-list__item">
+              <input class="choice-item__input" type="checkbox" id="fresh-check-1">
+              <label class="choice-item__label" for="fresh-check-1">
                 Белоглазка
               </label>
             </li>
-            <li>
-              <input type="checkbox" id="fresh-check-2">
-              <label for="fresh-check-2">
+            <li class="choice-item choice-list__item">
+              <input class="choice-item__input" type="checkbox" id="fresh-check-2">
+              <label class="choice-item__label" for="fresh-check-2">
                 Осетр
               </label>
             </li>
-            <li>
-              <input type="checkbox" id="fresh-check-3">
-              <label for="fresh-check-3">
+            <li class="choice-item choice-list__item">
+              <input class="choice-item__input" type="checkbox" id="fresh-check-3">
+              <label class="choice-item__label" for="fresh-check-3">
                 Речной угорь
               </label>
             </li>
-            <li>
-              <input type="checkbox" id="fresh-check-4">
-              <label for="fresh-check-4">
+            <li class="choice-item choice-list__item">
+              <input class="choice-item__input" type="checkbox" id="fresh-check-4">
+              <label class="choice-item__label" for="fresh-check-4">
                 Налим
               </label>
             </li>
@@ -80,65 +80,65 @@
         </fieldset>
       </form>
       <!--CATALOG-->
-      <section>
+      <section class="catalog main__catalog">
         <!--PROMO-->
-        <div>
-          <h2>Рыбы на любой вкус</h2>
-          <p>Мы продаем рыбов, а не только показываем!</p>
+        <div class="catalog__promo promo">
+          <h2 class="promo__title">Рыбы на любой вкус</h2>
+          <p class="promo__message">Мы продаем рыбов, а не только показываем!</p>
         </div>
         <!--CATEGORIES-->
-        <div>
-          <div>
-            <a href="#"><h3>Замороженные рыбы</h3></a>
-            <p>Мы заморозили рыбов для вас</p>
+        <div class="catalog__categories categories">
+          <div class="category categories__item">
+            <a class="category__link" href="#"><h3>Замороженные рыбы</h3></a>
+            <p class="category__message">Мы заморозили рыбов для вас</p>
           </div>
-          <div>
-            <a href="#"><h3>Живые рыбы</h3></a>
-            <p>На кухню или на разведение</p>
+          <div class="category categories__item">
+            <a class="category__link" href="#"><h3>Живые рыбы</h3></a>
+            <p class="category__message">На кухню или на разведение</p>
           </div>
         </div>
         <!--POPULAR GOODS-->
-        <div>
-          <h3>Популярные</h3>
-          <ul>
-            <li>
-              <img src="http://placehold.it/100x100" alt="Фото рыбы">
-              <a href="#">Палтус</a>
-              <a href="#">Купить</a>
+        <div class="popular-goods catalog__popular-goods">
+          <h3 class="popular-goods__title">Популярные</h3>
+          <ul class="goods popular-goods__list">
+            <li class="good goods__item">
+              <img class="good__img" src="http://placehold.it/100x100" alt="Фото рыбы">
+              <a class="good__title" href="#"><h4>Палтус</h4></a>
+              <a class="good__link" href="#">Купить</a>
             </li>
-            <li>
-              <img src="http://placehold.it/100x100" alt="Фото рыбы">
-              <a href="#">Семга</a>
-              <a href="#">Купить</a>
+            <li class="good goods__item">
+              <img class="good__img" src="http://placehold.it/100x100" alt="Фото рыбы">
+              <a class="good__title" href="#"><h4>Семга</h4></a>
+              <a class="good__link" href="#">Купить</a>
             </li>
-            <li>
-              <img src="http://placehold.it/100x100" alt="Фото рыбы">
-              <a href="#">Сом</a>
-              <a href="#">Купить</a>
+            <li class="good goods__item">
+              <img class="good__img" src="http://placehold.it/100x100" alt="Фото рыбы">
+              <a class="good__title" href="#"><h4>Сом</h4></a>
+              <a class="good__link" href="#">Купить</a>
             </li>
-            <li>
-              <img src="http://placehold.it/100x100" alt="Фото рыбы">
-              <a href="#">Мойва</a>
-              <a href="#">Купить</a>
+            <li class="good goods__item">
+              <img class="good__img" src="http://placehold.it/100x100" alt="Фото рыбы">
+              <a class="good__title" href="#"><h4>Мойва</h4></a>
+              <a class="good__link" href="#">Купить</a>
             </li>
-            <li>
-              <img src="http://placehold.it/100x100" alt="Фото рыбы">
-              <a href="#">Сельдь</a>
-              <a href="#">Купить</a>
+            <li class="good goods__item">
+              <img class="good__img" src="http://placehold.it/100x100" alt="Фото рыбы">
+              <a class="good__title" href="#"><h4>Сельдь</h4></a>
+              <a class="good__link" href="#">Купить</a>
             </li>
-            <li>
-              <img src="http://placehold.it/100x100" alt="Фото рыбы">
-              <a href="#">Тунец</a>
-              <a href="#">Купить</a>
+            <li class="good goods__item">
+              <img class="good__img" src="http://placehold.it/100x100" alt="Фото рыбы">
+              <a class="good__title" href="#"><h4>Тунец</h4></a>
+              <a class="good__link" href="#">Купить</a>
             </li>
           </ul>
         </div>
       </section>
     </main>
     <!--FOOTER-->
-    <footer class="page__footer footer">
-      <span>Контакты</span>
-      <span>&copy; 2021 ИП Рыбов О.А.</span>
+    <footer class="footer page__footer">
+      <span class="footer__contacts">Контакты</span>
+      <span class="footer__copyright">&copy; 2021 ИП Рыбов О.А.</span>
     </footer >
   </body>
 </html>
