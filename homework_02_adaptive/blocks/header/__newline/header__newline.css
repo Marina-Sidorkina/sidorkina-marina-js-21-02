@@ -1,0 +1,9 @@
+.header__newline {
+  display: none;
+}
+
+@media (max-width: 550px) {
+  .header__newline {
+    display: inline;
+  }
+}
