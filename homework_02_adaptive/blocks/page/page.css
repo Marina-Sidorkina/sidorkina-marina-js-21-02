@@ -1,0 +1,10 @@
+.page {
+  --desktop-width: 1200px;
+  --desktop-min-width: 900px;
+
+  width: 100%;
+  min-width: var(--desktop-min-width);
+  max-width: var(--desktop-width);
+  margin: 0 auto;
+}
+
