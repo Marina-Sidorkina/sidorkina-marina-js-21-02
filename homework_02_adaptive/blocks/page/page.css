@@ -1,9 +1,14 @@
 .page {
   --desktop-width: 1200px;
   --min-width: 320px;
+  --background-color-dark-theme: #0d1117;
 
   width: 100%;
   min-width: var(--min-width);
   max-width: var(--desktop-width);
   margin: 0 auto;
+}
+
+.page_theme-dark {
+  background-color: var(--background-color-dark-theme);
 }

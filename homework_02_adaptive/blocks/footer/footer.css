@@ -3,6 +3,8 @@
   --desktop-padding: 15px;
   --min-width: 320px;
   --background-color-main: #F5F5F5;
+  --background-color-theme-dark: #30363d;
+  --color-theme-dark: #c9d1d9;
   --color-main: #696969;
 
   box-sizing: border-box;
@@ -17,4 +19,9 @@
   font-size: 18px;
   color: var(--color-main);
   background-color: var(--background-color-main);
+}
+
+.footer_theme_dark {
+  background-color: var(--background-color-theme-dark);
+  color: var(--color-theme-dark);
 }

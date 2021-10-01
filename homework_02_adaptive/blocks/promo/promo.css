@@ -1,4 +1,7 @@
 .promo {
+  --color-theme-dark: #c9d1d9;
+  --color-title-theme-dark: #ffffff;
+
   padding-left: 15px;
 }
 

@@ -1,5 +1,6 @@
 .button {
   --background-color-main: #bfbfbf;
+  --background-color-theme-dark: #ffffff;
   --text-color-main: #000000;
 
   box-sizing: border-box;
@@ -10,6 +11,10 @@
   color: var(--text-color-main);
   line-height: 25px;
   text-align: center;
+}
+
+.button_theme_dark {
+  background-color: var(--background-color-theme-dark);
 }
 
 .button:hover {

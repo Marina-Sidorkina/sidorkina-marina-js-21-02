@@ -3,10 +3,17 @@
   --desktop-fixed-width: 240px;
   --desktop-min-height: 700px;
   --desktop-spacing: 12px;
+  --background-color-theme-dark: #30363d;
+  --color-theme-dark: #c9d1d9;
 
   box-sizing: border-box;
   width: var(--desktop-fixed-width);
   min-height: var(--desktop-min-height);
   padding: var(--desktop-spacing);
   background-color: var(--background-color-main);
+}
+
+.sidebar_theme_dark {
+  color: var(--color-theme-dark);
+  background-color: var(--background-color-theme-dark);
 }

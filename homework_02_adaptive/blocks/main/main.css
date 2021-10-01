@@ -1,6 +1,7 @@
 .main {
   --desktop-spacing: 15px;
   --desktop-sidebar-width: 240px;
+  --background-color-dark: #000000;
 
   display: grid;
   grid-template-columns: var(--desktop-sidebar-width) 1fr;
