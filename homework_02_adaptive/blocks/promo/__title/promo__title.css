@@ -3,3 +3,9 @@
   margin-bottom: 0;
   font-size: 35px;
 }
+
+@media (max-width: 520px) {
+  .promo__title {
+    text-align: center;
+  }
+}

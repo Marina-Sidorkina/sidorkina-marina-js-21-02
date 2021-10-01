@@ -1,7 +1,7 @@
 .footer {
   --desktop-width: 1200px;
   --desktop-padding: 15px;
-  --desktop-min-width: 900px;
+  --min-width: 320px;
   --background-color-main: #F5F5F5;
   --color-main: #696969;
 
@@ -10,7 +10,7 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  min-width: var(--desktop-min-width);
+  min-width: var(--min-width);
   max-width: var(--desktop-width);
   height: 60px;
   padding: var(--desktop-padding);

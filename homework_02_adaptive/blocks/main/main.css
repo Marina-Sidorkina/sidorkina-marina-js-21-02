@@ -3,5 +3,11 @@
   --desktop-sidebar-width: 240px;
 
   display: grid;
-  grid-template-columns: 240px 1fr;
+  grid-template-columns: var(--desktop-sidebar-width) 1fr;
+}
+
+@media (max-width: 520px) {
+  .main {
+    display: block;
+  }
 }

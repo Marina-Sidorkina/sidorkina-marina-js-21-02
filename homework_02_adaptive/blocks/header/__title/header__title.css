@@ -3,3 +3,9 @@
   font-size: 28px;
   color: var(--text-color-light);
 }
+
+@media (max-width: 550px) {
+  .header__title {
+    text-align: center;
+  }
+}

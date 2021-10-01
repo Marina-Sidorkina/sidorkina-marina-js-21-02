@@ -1,3 +1,9 @@
 .main__sidebar {
   margin-bottom: var(--desktop-spacing);
 }
+
+@media (max-width: 520px) {
+  .main__sidebar {
+    display: none;
+  }
+}

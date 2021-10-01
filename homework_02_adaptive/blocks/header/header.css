@@ -3,14 +3,14 @@
   --design-color-main: #228B22;
   --desktop-width: 1200px;
   --desktop-padding: 15px;
-  --desktop-min-width: 900px;
+  --min-width: 320px;
 
   box-sizing: border-box;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  min-width: var(--desktop-min-width);
+  min-width: var(--min-width);
   max-width: var(--desktop-width);
   height: 65px;
   padding-left: var(--desktop-padding);
@@ -18,4 +18,8 @@
   background-color: var(--design-color-main);
 }
 
-
+@media (max-width: 550px) {
+  .header {
+    justify-content: center;
+  }
+}
