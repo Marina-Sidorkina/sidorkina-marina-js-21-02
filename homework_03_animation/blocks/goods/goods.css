@@ -1,0 +1,21 @@
+.goods {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 15px;
+  grid-row-gap: 15px;
+  list-style: none;
+  padding: 0;
+}
+
+@media (max-width: 1024px) {
+  .goods {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .goods {
+    grid-template-columns: 1fr;
+  }
+}

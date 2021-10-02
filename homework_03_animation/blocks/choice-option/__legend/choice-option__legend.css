@@ -1,0 +1,8 @@
+.choice-option__legend {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.choice-option__legend_theme_dark {
+  color: #ffffff;
+}
