@@ -10,6 +10,17 @@
     <!--HEADER-->
     <header class="header header_theme_dark page__header">
         <h1 class="header__title">Интернет-магазин<br class="header__newline" /> "Не только красивое"</h1>
+        <div class="loader loader_theme_dark header__loader">
+          <div class="loader__part"></div>
+          <div class="loader__part"></div>
+          <div class="loader__part"></div>
+          <div class="loader__part"></div>
+          <div class="loader__part"></div>
+          <div class="loader__part"></div>
+          <div class="loader__part"></div>
+          <div class="loader__part"></div>
+          <div class="loader__part"></div>
+        </div>
     </header>
     <!--MAIN-->
     <main class="main page__main">
@@ -102,32 +113,32 @@
         <div class="popular-goods catalog__popular-goods">
           <h3 class="popular-goods__title popular-goods__title_theme_dark">Популярные</h3>
           <ul class="goods popular-goods__list">
-            <li class="good good_theme_dark goods__item">
+            <li class="good good_preload good_theme_dark goods__item">
               <img class="good__img" src="http://placehold.it/70x70" alt="Фото рыбы">
               <a class="good__title-link good__title-link_theme_dark" href="#"><h4 class="good__title">Палтус</h4></a>
               <a class="button button_theme_dark good__link" href="#">Купить</a>
             </li>
-            <li class="good good_theme_dark goods__item">
+            <li class="good good_preload good_theme_dark goods__item">
               <img class="good__img" src="http://placehold.it/70x70" alt="Фото рыбы">
               <a class="good__title-link good__title-link_theme_dark" href="#"><h4 class="good__title">Семга</h4></a>
               <a class="button button_theme_dark good__link" href="#">Купить</a>
             </li>
-            <li class="good good_theme_dark goods__item">
+            <li class="good good_preload good_theme_dark goods__item">
               <img class="good__img" src="http://placehold.it/70x70" alt="Фото рыбы">
               <a class="good__title-link good__title-link_theme_dark" href="#"><h4 class="good__title">Сом</h4></a>
               <a class="button button_theme_dark good__link" href="#">Купить</a>
             </li>
-            <li class="good good_theme_dark goods__item">
+            <li class="good good_preload good_theme_dark goods__item">
               <img class="good__img" src="http://placehold.it/70x70" alt="Фото рыбы">
               <a class="good__title-link good__title-link_theme_dark" href="#"><h4 class="good__title">Мойва</h4></a>
               <a class="button button_theme_dark good__link" href="#">Купить</a>
             </li>
-            <li class="good good_theme_dark goods__item">
+            <li class="good good_preload good_theme_dark goods__item">
               <img class="good__img" src="http://placehold.it/70x70" alt="Фото рыбы">
               <a class="good__title-link good__title-link_theme_dark" href="#"><h4 class="good__title">Сельдь</h4></a>
               <a class="button button_theme_dark good__link" href="#">Купить</a>
             </li>
-            <li class="good good_theme_dark goods__item">
+            <li class="good good_preload good_theme_dark goods__item">
               <img class="good__img" src="http://placehold.it/70x70" alt="Фото рыбы">
               <a class="good__title-link good__title-link_theme_dark" href="#"><h4 class="good__title">Тунец</h4></a>
               <a class="button button_theme_dark good__link" href="#">Купить</a>
@@ -141,5 +152,11 @@
       <span class="footer__contacts">Контакты</span>
       <span class="footer__copyright">&copy; 2021 ИП Рыбов О.А.</span>
     </footer >
+    <script>
+      window.addEventListener("load", function() {
+        const goods = document.querySelectorAll(".good");
+        goods.forEach((element) => element.classList.remove("good_preload"))
+      });
+    </script>
   </body>
 </html>
