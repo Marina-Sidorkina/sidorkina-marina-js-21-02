@@ -1,0 +1,23 @@
+.good {
+  --background-color-main: #F5F5F5;
+  --desktop-padding: 15px;
+  --link-color-main: #1E90FF;
+  --link-color-hover: #3371FF;
+  --background-color-theme-dark: #30363d;
+  --color-theme-dark: #c9d1d9;
+  --color-title-theme-dark: #ffffff;
+
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  height: 100px;
+  padding: var(--desktop-padding);
+  background-color: var(--background-color-main);
+}
+
+.good_theme_dark {
+  background-color: var(--background-color-theme-dark);
+}

@@ -1,0 +1,12 @@
+.popular-goods__title {
+  --color-theme-dark: #c9d1d9;
+
+  margin: 0;
+  margin-bottom: 30px;
+  padding-left: 15px;
+  font-size: 25px;
+}
+
+.popular-goods__title_theme_dark {
+  color: var(--color-theme-dark);
+}
