@@ -1,5 +1,6 @@
 const button_1 = document.getElementById("1");
 const button_2 = document.getElementById("2");
+const button_3 = document.getElementById("3");
 
 const task_1 = () => {
   const input = prompt("Введите две строки через запятую");
@@ -35,5 +36,19 @@ const task_2 = () => {
   }
 }
 
+const task_3 = () => {
+  const input = prompt("Введите строку с датой и временем в формате \"12/02/2021 12-00\"");
+  const testDate = /^\d{2}\/\d{2}\/\d{4} \d{2}-\d{2}$/;
+
+  if(input && input.match(testDate) !== null) {
+    const firstChange = /\//g;
+    const secondChange = /-/g;
+    alert(input.replace(/\//g, ".").replace(/-/g, ":"));
+  } else if(input !== null) {
+    alert("Необходимо выполнить условие задачи!");
+  }
+}
+
 button_1.addEventListener("click", task_1);
 button_2.addEventListener("click", task_2);
+button_3.addEventListener("click", task_3);
