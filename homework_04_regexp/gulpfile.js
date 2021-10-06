@@ -16,6 +16,7 @@ function server() {
 
 function scripts() {
   return src([
+    "source/js/tasks.js",
     "source/js/index.js"
 	])
 	.pipe(concat("index.min.js"))
