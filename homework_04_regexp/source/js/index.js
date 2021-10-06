@@ -5,6 +5,7 @@ const button_4 = document.getElementById("4");
 const button_5 = document.getElementById("5");
 const button_6 = document.getElementById("6");
 const button_7 = document.getElementById("7");
+const button_8 = document.getElementById("8");
 
 const task_1 = () => {
   const input = prompt("Введите две строки через запятую");
@@ -104,6 +105,19 @@ const task_7 = () => {
   }
 }
 
+const task_8 = () => {
+  const input = prompt("Введите идентификатор (4 группы по 4 символа с тире и/или без)");
+  const regexp = /^([a-zA-Z0-9]{4}-?){3}[a-zA-Z0-9]{4}$/;
+
+  if(input && regexp.test(input)) {
+    alert("Ведется поиск...");
+  } else if(input && !regexp.test(input)) {
+    alert("Неверный идентификатор!");
+  } else if(input !== null) {
+    alert("Необходимо выполнить условие задачи!");
+  }
+}
+
 button_1.addEventListener("click", task_1);
 button_2.addEventListener("click", task_2);
 button_3.addEventListener("click", task_3);
@@ -111,3 +125,4 @@ button_4.addEventListener("click", task_4);
 button_5.addEventListener("click", task_5);
 button_6.addEventListener("click", task_6);
 button_7.addEventListener("click", task_7);
+button_8.addEventListener("click", task_8);
