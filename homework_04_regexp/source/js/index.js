@@ -3,6 +3,7 @@ const button_2 = document.getElementById("2");
 const button_3 = document.getElementById("3");
 const button_4 = document.getElementById("4");
 const button_5 = document.getElementById("5");
+const button_6 = document.getElementById("6");
 
 const task_1 = () => {
   const input = prompt("Введите две строки через запятую");
@@ -76,8 +77,22 @@ const task_5 = () => {
   }
 }
 
+const task_6 = () => {
+  const input = prompt("Введите многострочную строку");
+  const regexp = /<!--.+?-->/gs;
+
+  if(input && input.match(regexp)) {
+    alert(input.match(regexp));
+  } else if(input && !input.match(regexp)) {
+    alert("Комментарии не найдены...");
+  } else if(input !== null) {
+    alert("Необходимо выполнить условие задачи!");
+  }
+}
+
 button_1.addEventListener("click", task_1);
 button_2.addEventListener("click", task_2);
 button_3.addEventListener("click", task_3);
 button_4.addEventListener("click", task_4);
 button_5.addEventListener("click", task_5);
+button_6.addEventListener("click", task_6);
