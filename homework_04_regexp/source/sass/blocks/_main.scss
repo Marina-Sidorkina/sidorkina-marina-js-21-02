@@ -1,0 +1,11 @@
+.main {
+  padding: 15px;
+  background-color: $background-design-color;
+  border-left: 1px solid $border-design-color;
+  border-right: 1px solid $border-design-color;
+
+  &__title {
+    margin-top: 0;
+    margin-bottom: 15px;
+  }
+}

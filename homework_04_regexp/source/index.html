@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <title>RegExp в JavaScript</title>
+    <link rel="stylesheet" href="css/index.min.css">
+  </head>
+  <body class="page site__page">
+    <header class="header page__header">
+      <h1 class="header__title">Методы строк и RegExp в JavaScript</h1>
+    </header>
+    <main class="main page__main">
+      <h2 class="main__title">Задачи:</h2>
+      <ul class="tasks main__tasks">
+        <li class="task tasks__item">
+          <h3 class="task__title">№ 1</h3>
+          <p class="task__input"><span class="task__emphasis">Ввод:</span> две строки через запятую.</p>
+          <p class="task__output"><span class="task__emphasis">Вывод:</span> если вторая строка содержится в первой - вывести "true", иначе - "false". Регистр не учитывать.</p>
+          <button class="task__button" id="1">Проверить</button>
+        </li>
+        <li class="task tasks__item">
+          <h3 class="task__title">№ 2</h3>
+          <p class="task__input"><span class="task__emphasis">Ввод:</span> строка и число через запятую.</p>
+          <p class="task__output"><span class="task__emphasis">Вывод:</span> строка, сокращенная до указанного количества символов с многоточием в конце.</p>
+          <button class="task__button" id="2">Проверить</button>
+        </li>
+        <li class="task tasks__item">
+          <h3 class="task__title">№ 3</h3>
+          <p class="task__input"><span class="task__emphasis">Ввод:</span> строка с датой и временем в формате "12/02/2021 12-00".</p>
+          <p class="task__output"><span class="task__emphasis">Вывод:</span> строка с датой и временем в формате "12.02.2021 12:00". Использовать регулярные выражения.</p>
+          <button class="task__button" id="3">Проверить</button>
+        </li>
+        <li class="task tasks__item">
+          <h3 class="task__title">№ 4</h3>
+          <p class="task__input"><span class="task__emphasis">Ввод:</span>  строка кириллических символов.</p>
+          <p class="task__output"><span class="task__emphasis">Вывод:</span> это ФИО, отчество может заканчиваться на "вна" и "вич" или может отсутствовать. Вернуть "true" или "false".</p>
+          <button class="task__button" id="4">Проверить</button>
+        </li>
+        <li class="task tasks__item">
+          <h3 class="task__title">№ 5</h3>
+          <p class="task__input"><span class="task__emphasis">Ввод:</span> строка в CamelCase.</p>
+          <p class="task__output"><span class="task__emphasis">Вывод:</span> строка в snake_case.</p>
+          <button class="task__button" id="5">Проверить</button>
+        </li>
+        <li class="task tasks__item">
+          <h3 class="task__title">№ 6</h3>
+          <p class="task__input"><span class="task__emphasis">Ввод:</span> многострочная строка.</p>
+          <p class="task__output"><span class="task__emphasis">Вывод:</span> все html-комментарии.</p>
+          <button class="task__button" id="6">Проверить</button>
+        </li>
+        <li class="task tasks__item">
+          <h3 class="task__title">№ 7</h3>
+          <p class="task__input"><span class="task__emphasis">Ввод:</span> строка.</p>
+          <p class="task__output"><span class="task__emphasis">Вывод:</span> все числа (десятичные разделены знаком ".").</p>
+          <button class="task__button" id="7">Проверить</button>
+        </li>
+        <li class="task tasks__item">
+          <h3 class="task__title">№ 8.1</h3>
+          <p class="task__input"><span class="task__emphasis">Ввод:</span> идентификатор из четырёх частей по четыре символа, разделённых <b>и/или</b> не разделённых знаком "-". Допускаются только символы латинского алфавита и числа.</p>
+          <p class="task__output"><span class="task__emphasis">Вывод:</span> "ведётся поиск" при соответствии введённого значения или "неверный идентификатор" при несоответствии.</p>
+          <button class="task__button" id="8.1">Проверить</button>
+        </li>
+        <li class="task tasks__item">
+          <h3 class="task__title">№ 8.2</h3>
+          <p class="task__input"><span class="task__emphasis">Ввод:</span> идентификатор из четырёх частей по четыре символа, разделённых <b>или</b> не разделённых знаком "-". Допускаются только символы латинского алфавита и числа.</p>
+          <p class="task__output"><span class="task__emphasis">Вывод:</span> "ведётся поиск" при соответствии введённого значения или "неверный идентификатор" при несоответствии.</p>
+          <button class="task__button" id="8.2">Проверить</button>
+        </li>
+      </ul>
+    </main>
+    <footer class="footer page__footer">
+      <div>Marina Sidorkina 2021</div>
+    </footer>
+    <script src="js/index.min.js" type="module"></script>
+  </body>
+</html>
