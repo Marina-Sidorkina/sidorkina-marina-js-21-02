@@ -67,7 +67,7 @@
     const camelCaseTest = /^([A-ZА-Я]{1}[a-zа-я]+){2,}$/;
 
     if(input && camelCaseTest.test(input)) {
-      alert(input.replace(/[A-Z]/g, replace).slice(1))
+      alert(input.replace(/[A-ZА-Я]/g, replace).slice(1))
     } else if(input !== null) {
       alert("Необходимо выполнить условие задачи!");
     }
@@ -99,9 +99,24 @@
     }
   }
 
-  const task_8 = () => {
+  // Возможна комбинация групп с тире и без
+  const task_8_1 = () => {
     const input = prompt("Введите идентификатор (4 группы по 4 символа с тире и/или без)");
     const regexp = /^([a-zA-Z0-9]{4}-?){3}[a-zA-Z0-9]{4}$/;
+
+    if(input && regexp.test(input)) {
+      alert("Ведется поиск...");
+    } else if(input && !regexp.test(input)) {
+      alert("Неверный идентификатор!");
+    } else if(input !== null) {
+      alert("Необходимо выполнить условие задачи!");
+    }
+  }
+
+  // Все группы или разделены или нет
+  const task_8_2 = () => {
+    const input = prompt("Введите идентификатор (4 группы по 4 символа с тире или без)");
+    const regexp = /^((([a-zA-Z0-9]{4}-){3})|(([a-zA-Z0-9]{4}){3}))[a-zA-Z0-9]{4}$/;
 
     if(input && regexp.test(input)) {
       alert("Ведется поиск...");
@@ -120,6 +135,7 @@
     5: task_5,
     6: task_6,
     7: task_7,
-    8: task_8
+    8.1: task_8_1,
+    8.2: task_8_2
   };
 })();
