@@ -108,6 +108,7 @@
       alert("Ведется поиск...");
     } else if(input && !regexp.test(input)) {
       alert("Неверный идентификатор!");
+      task_8_1();
     } else if(input !== null) {
       alert("Необходимо выполнить условие задачи!");
     }
@@ -122,6 +123,7 @@
       alert("Ведется поиск...");
     } else if(input && !regexp.test(input)) {
       alert("Неверный идентификатор!");
+      task_8_2();
     } else if(input !== null) {
       alert("Необходимо выполнить условие задачи!");
     }
