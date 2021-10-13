@@ -1,6 +1,7 @@
 class Animal {
   constructor() {
     this._name = "Неизвестное животное";
+    this._type = false;
   }
 
   eat() {
@@ -14,7 +15,7 @@ class Animal {
   set name(name) {
     const regex = /^[А-Яа-я- ]+$/;
 
-    if(regex.test(name) && name.trim().length) {
+    if(regex.test(name) && name.trim().length && this._type) {
       this._name = name;
     }
   };
@@ -25,6 +26,11 @@ class Animal {
 }
 
 class Cat extends Animal {
+  constructor() {
+    super();
+    this._type = true;
+  };
+
   say() {
     console.log("Кот говорит мяу...");
   };
@@ -35,12 +41,22 @@ class Cat extends Animal {
 }
 
 class Dog extends Animal {
+  constructor() {
+    super();
+    this._type = true;
+  };
+
   say() {
     console.log("Собака говорит гав...");
   };
 }
 
 class Parrot extends Animal {
+  constructor() {
+    super();
+    this._type = true;
+  };
+
   say() {
     console.log("Попугай говорит: 'Кто тут мяукает и гавкает?'...");
   };
