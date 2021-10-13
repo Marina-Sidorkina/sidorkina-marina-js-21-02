@@ -11,7 +11,7 @@ function configureProperty(object) {
 
 function Animal() {
   const animal = { say, eat, rename, getName };
-  const name = "Неизвестное животное";
+  const name = "Животное без клички";
 
   function say() {
     console.log("Неизвестное животное молчит...");
@@ -46,14 +46,14 @@ function Animal() {
 // Cat
 
 function Cat() {
-  const cat = Object.assign({}, new Animal, { say, hunt });
+  const cat = Object.assign({}, new Animal(), { say, hunt });
 
   function say() {
       console.log("Кот говорит мяу...");
   };
 
   function hunt() {
-    console.log(`${this.name || name} охотится...`);
+    console.log(`${this.name || "Кот без клички"} охотится...`);
   };
 
   configureProperty(cat);
@@ -64,7 +64,7 @@ function Cat() {
 // Dog
 
 function Dog() {
-  const dog = Object.assign({}, new Animal, { say });
+  const dog = Object.assign({}, new Animal(), { say });
 
   function say() {
       console.log("Собака говорит гав...");
@@ -78,7 +78,7 @@ function Dog() {
 // Parrot
 
 function Parrot() {
-  const parrot = Object.assign({}, new Animal, { say });
+  const parrot = Object.assign({}, new Animal(), { say });
 
   function say() {
       console.log("Попугай говорит: 'Кто тут мяукает и гавкает?'...");
