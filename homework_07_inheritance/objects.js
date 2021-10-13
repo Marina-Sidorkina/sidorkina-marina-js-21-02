@@ -8,6 +8,8 @@ function configureProperty(object) {
   });
 };
 
+// Animal
+
 const animal = {
   name: "Неизвестное животное",
   eat() {
@@ -29,6 +31,8 @@ const animal = {
 
 configureProperty(animal);
 
+// Cat
+
 const cat = {
   __proto__: animal,
   say() {
@@ -41,6 +45,8 @@ const cat = {
 
 configureProperty(cat);
 
+// Dog
+
 const dog = {
   __proto__: animal,
   say() {
@@ -49,6 +55,8 @@ const dog = {
 };
 
 configureProperty(dog);
+
+// Parrot
 
 const parrot = {
   __proto__: animal,

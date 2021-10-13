@@ -1,5 +1,7 @@
+// Animal
+
 function Animal() {
-  const name = "Неизвестное животное";
+  const name = "Животное без клички";
 
   return function() {
 
@@ -24,7 +26,7 @@ function Animal() {
         value: function(name) {
           const regex = /^[А-Яа-я- ]+$/;
 
-          if(regex.test(name) && name.trim().length) {
+          if(regex.test(name) && name.trim().length && this.type) {
             Object.defineProperty(this, "name", {
               value: name
             });
@@ -37,6 +39,8 @@ function Animal() {
     });
   }
 };
+
+// Cat
 
 function Cat() {
   const parent = new Animal();
@@ -58,9 +62,17 @@ function Cat() {
       writable: false,
       enumerable: false,
       configurable: false
+    },
+    type: {
+      value: true,
+      writable: false,
+      enumerable: false,
+      configurable: false
     }
   });
 }
+
+// Dog
 
 function Dog() {
   const parent = new Animal();
@@ -74,9 +86,17 @@ function Dog() {
       writable: false,
       enumerable: false,
       configurable: false
+    },
+    type: {
+      value: true,
+      writable: false,
+      enumerable: false,
+      configurable: false
     }
   });
 }
+
+// Parrot
 
 function Parrot() {
   const parent = new Animal();
@@ -87,6 +107,12 @@ function Parrot() {
       value: function() {
         console.log("Попугай говорит: 'Кто тут мяукает и гавкает?'...");
       },
+      writable: false,
+      enumerable: false,
+      configurable: false
+    },
+    type: {
+      value: true,
       writable: false,
       enumerable: false,
       configurable: false
