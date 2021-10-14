@@ -69,7 +69,7 @@ function cleanimg() {
 function watcher() {
   watch(["source/**/*.js", "!source/**/*.min.js"], scripts);
   watch("source/**/sass/**/*", styles);
-  watch("source/**/*.html").on("change", browsersync.reload);
+  watch("source/**/*.html").on("change", browserSync.reload);
   watch("source/images/src/**/*", images);
 }
 
