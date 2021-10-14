@@ -92,5 +92,5 @@ exports.styles = styles;
 exports.images = images;
 exports.cleanimg = cleanimg;
 
-exports.default = parallel(styles, scripts, browsersync, watcher);
+exports.default = parallel(styles, scripts, images, browsersync, watcher);
 exports.build = series(cleanbuild, styles, scripts, images, buildcopy);
