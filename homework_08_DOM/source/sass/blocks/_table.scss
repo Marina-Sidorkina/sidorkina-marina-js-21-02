@@ -4,6 +4,7 @@
   margin: 0 auto;
   border: 1px solid var(--additional-color);
   background-color: var(--table-background-color);
+  color: var(--table-color);
   font-size: 20px;
 
   &__cell {
@@ -23,7 +24,8 @@
     height: 24px;
     background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iMjQiIGhlaWdodD0iMjQiCnZpZXdCb3g9IjAgMCAyNCAyNCIKc3R5bGU9IiBmaWxsOiMwMDAwMDA7Ij48cGF0aCBkPSJNIDEwIDIgTCA5IDMgTCA1IDMgQyA0LjQgMyA0IDMuNCA0IDQgQyA0IDQuNiA0LjQgNSA1IDUgTCA3IDUgTCAxNyA1IEwgMTkgNSBDIDE5LjYgNSAyMCA0LjYgMjAgNCBDIDIwIDMuNCAxOS42IDMgMTkgMyBMIDE1IDMgTCAxNCAyIEwgMTAgMiB6IE0gNSA3IEwgNSAyMCBDIDUgMjEuMSA1LjkgMjIgNyAyMiBMIDE3IDIyIEMgMTguMSAyMiAxOSAyMS4xIDE5IDIwIEwgMTkgNyBMIDUgNyB6IE0gOSA5IEMgOS42IDkgMTAgOS40IDEwIDEwIEwgMTAgMTkgQyAxMCAxOS42IDkuNiAyMCA5IDIwIEMgOC40IDIwIDggMTkuNiA4IDE5IEwgOCAxMCBDIDggOS40IDguNCA5IDkgOSB6IE0gMTUgOSBDIDE1LjYgOSAxNiA5LjQgMTYgMTAgTCAxNiAxOSBDIDE2IDE5LjYgMTUuNiAyMCAxNSAyMCBDIDE0LjQgMjAgMTQgMTkuNiAxNCAxOSBMIDE0IDEwIEMgMTQgOS40IDE0LjQgOSAxNSA5IHoiPjwvcGF0aD48L3N2Zz4=') 50% 50% no-repeat;
     background-size: 100%;
-    border: 1px solid var(--additional-color);
+    background-color: var(--trash-color);
+    border: 1px solid var(--trash-border-color);
     border-radius: 5px;
     cursor: pointer;
 
