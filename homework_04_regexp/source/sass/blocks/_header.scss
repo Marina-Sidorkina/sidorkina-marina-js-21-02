@@ -1,0 +1,15 @@
+.header {
+  display: flex;
+  align-items: center;
+  height: 75px;
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: $background-design-color-dark;
+  border: 1px solid $border-design-color;
+
+  &__title {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 32px;
+  }
+}
