@@ -7,15 +7,27 @@ const endElement = document.querySelector("#end");
 let id;
 
 let timeoutCount = (start, end) => {
-  id = setTimeout(function changeValue(start, end) {
-    if(start <= end) {
-      result.innerText = start;
-      start++
-      id = setTimeout(changeValue, 1000, start, end);
-    } else {
-      clearTimeout(id)
-    }
-  }, 1000, start, end);
+  if(start < end) {
+    id = setTimeout(function changeValue(start, end) {
+      if(start <= end) {
+        result.innerText = start;
+        start++
+        id = setTimeout(changeValue, 1000, start, end);
+      } else {
+        clearTimeout(id)
+      }
+    }, 1000, start, end);
+  } else {
+    id = setTimeout(function changeValue(start, end) {
+      if(start >= end) {
+        result.innerText = start;
+        start--
+        id = setTimeout(changeValue, 1000, start, end);
+      } else {
+        clearTimeout(id)
+      }
+    }, 1000, start, end);
+  }
 }
 
 form.addEventListener("submit", (evt) => {

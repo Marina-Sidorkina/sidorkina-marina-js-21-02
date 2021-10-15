@@ -7,14 +7,25 @@ const endElement = document.querySelector("#end");
 let id;
 
 let intervalCount = (start, end) => {
-  id = setInterval(function() {
-    if(start <= end) {
-      result.innerText = start;
-      start++;
-    } else {
-      clearInterval(id)
-    }
-  }, 1000);
+  if(start < end) {
+    id = setInterval(function() {
+      if(start <= end) {
+        result.innerText = start;
+        start++;
+      } else {
+        clearInterval(id)
+      }
+    }, 1000);
+  } else {
+    id = setInterval(function() {
+      if(start >= end) {
+        result.innerText = start;
+        start--;
+      } else {
+        clearInterval(id)
+      }
+    }, 1000);
+  }
 }
 
 form.addEventListener("submit", (evt) => {
