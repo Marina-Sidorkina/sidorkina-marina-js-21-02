@@ -12,8 +12,12 @@
     </header>
     <main class="main page__main">
       <form class="form main__form">
-        <input class="form__input form__input_name" type="text" value="Фамилия Имя Отчество">
-        <input class="form__input form__input_tel" type="tel" value="+7 XXX XXX-XX-XX">
+        <div class="form__error form__error_name" data-title="Формат: Фамилия Имя Отчество">
+          <input class="form__input form__input_name" type="text" value="Фамилия Имя Отчество">
+        </div>
+        <div class="form__error form__error_tel" data-title="Формат: +7 XXX XXX-XX-XX">
+          <input class="form__input form__input_tel" type="tel" value="+7 XXX XXX-XX-XX">
+        </div>
         <button class="form__submit" type="submit">Добавить новую запись</button>
       </form>
       <form class="theme main__theme">

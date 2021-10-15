@@ -18,7 +18,10 @@ function browsersync() {
 
 function scripts() {
   return src([
-    "source/js/index.js",
+    "source/js/createNewDomElement.js",
+    "source/js/records.js",
+    "source/js/theme.js",
+    "source/js/form.js"
   ])
     .pipe(concat("index.min.js"))
     .pipe(uglify())

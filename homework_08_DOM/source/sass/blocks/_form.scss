@@ -13,12 +13,50 @@
   &__input {
     box-sizing: border-box;
     height: 35px;
+    width: 100%;
     padding-left: 10px;
     color: var(--main-color);
     font-size: 16px;
     background-color: var(--input-background-color);
     border: 1px solid var(--main-color);
     border-radius: 10px;
+  }
+
+  &__error {
+    box-sizing: border-box;
+    position: relative;
+    height: 50px;
+
+    &:after {
+      content: attr(data-title);
+      position: absolute;
+      top: -25px;
+      left: 45px;
+      width: 300px;
+      height: 16px;
+      padding: 2px;
+      border-radius: 30px;
+      background-color: #ff5c33;
+      box-shadow:0 1px 12px #ff5c33;
+      pointer-events: none;
+      opacity: 0;
+      font-size: 16px;
+      line-height: 16px;
+      text-align: center;
+      color: #ffffff;
+      transform: translateY(-20px);
+      transition:0.34s linear;
+    }
+
+    &:hover:after {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    &_active:after {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   &__submit {
