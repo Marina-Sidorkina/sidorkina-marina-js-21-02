@@ -1,5 +1,8 @@
 const listBodyElement = document.querySelector(".list__body");
-
+const controlElement = document.querySelector(".controls");
+const URL_MAIN = "https://swapi.dev/api/people/";
+let next;
+let prev;
 
 const createNewListItem = (name, gender, mass, height) => {
   const documentFragment = document.createDocumentFragment();
@@ -27,11 +30,31 @@ const createNewListItem = (name, gender, mass, height) => {
   listBodyElement.appendChild(documentFragment);
 }
 
+const changePage = (evt) => {
+  if(evt.target.classList.contains("controls__button_prev") && prev) {
+    listBodyElement.innerHTML = "";
+    swapi(prev);
+  }
+  if(evt.target.classList.contains("controls__button_next") && next) {
+    listBodyElement.innerHTML = "";
+    swapi(next);
+  }
+}
 
-fetch("https://swapi.dev/api/people/")
-  .then(response => response.json())
-  .then(response => {
-    response.results.forEach((item) => {
-      createNewListItem(item["name"], item["gender"], item["mass"], item["height"])
-    });
-  })
+const serveResponse = (response) => {
+  response.results.forEach((item) => {
+    createNewListItem(item["name"], item["gender"], item["mass"], item["height"])
+  });
+  next = response["next"];
+  prev = response["previous"];
+}
+
+const swapi = (url) => {
+  fetch(url)
+    .then(response => response.json())
+    .then(serveResponse)
+}
+
+swapi(URL_MAIN);
+
+controlElement.addEventListener("click", changePage)
