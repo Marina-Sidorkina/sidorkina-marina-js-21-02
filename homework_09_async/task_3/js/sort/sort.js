@@ -1,7 +1,6 @@
 import {isNumeric, sortByAlphabet} from "../utils/utils.js";
 import {GENDER_INDEX, HEIGHT_INDEX, MASS_INDEX, NAME_INDEX} from "../constants/constants.js";
-import { updateList } from "../list/list.js";
-import { getList } from "../list/list.js";
+import { updateList, getList } from "../components/list/list.js";
 
 let heightSorting = "up";
 let massSorting = "up";

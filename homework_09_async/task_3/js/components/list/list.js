@@ -1,9 +1,10 @@
-import {createNewListItem} from "../utils/utils.js";
+import {createNewListItem} from "../../utils/utils.js";
 import {
   GENDER_FIELD, GENDER_INDEX, HEIGHT_FIELD, HEIGHT_INDEX, MASS_FIELD,
   MASS_INDEX, NAME_FIELD, NAME_INDEX, NEXT_PAGE_FIELD, PREV_PAGE_FIELD
-} from "../constants/constants.js";
-import {swapi} from "../api/swapi.js";
+} from "../../constants/constants.js";
+import {swapi} from "../../api/swapi.js";
+import { hideErrorElement } from "../error/error.js";
 
 const listBodyElement = document.querySelector(".list__body");
 let currentList = [];
@@ -31,6 +32,7 @@ export const resetList = (response) => {
     currentList.push([item[NAME_FIELD], item[GENDER_FIELD], item[MASS_FIELD], item[HEIGHT_FIELD]]);
   });
   updateNextAndPrev(response);
+  hideErrorElement();
 }
 
 export const changeListOnPage = (evt) => {

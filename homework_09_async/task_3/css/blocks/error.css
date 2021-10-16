@@ -1,0 +1,23 @@
+.error {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  height: 75px;
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-bottom: 10px;
+  background-color: #ecf9ec;
+  border: 1px solid #000000;
+  border-radius: 15px;
+}
+
+.error_disabled {
+  display: none;
+}
+
+.error__title {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 28px;
+}

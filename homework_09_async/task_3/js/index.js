@@ -1,8 +1,9 @@
 import { swapi } from "./api/swapi.js";
 import { URL_MAIN } from "./constants/constants.js";
-import {resetList} from "./list/list.js";
-import { changeListOnPage } from "./list/list.js";
+import {resetList} from "./components/list/list.js";
+import { changeListOnPage } from "./components/list/list.js";
 import { sortByGender,  sortByName, sortByMass, sortByHeight } from "./sort/sort.js";
+import { showErrorElement } from "./components/error/error.js";
 
 const controlElement = document.querySelector(".controls");
 const sortButtonHeightElement = document.querySelector(".sort__button_height");
@@ -16,4 +17,4 @@ sortButtonMassElement.addEventListener("click", sortByMass);
 sortButtonNameElement.addEventListener("click", sortByName);
 sortButtonGenderElement.addEventListener("click", sortByGender);
 
-swapi(URL_MAIN, resetList);
+swapi(URL_MAIN, resetList, showErrorElement);
