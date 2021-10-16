@@ -1,20 +1,37 @@
+import { URL_MAIN, HEIGHT_INDEX,
+          MASS_INDEX, NAME_INDEX, GENDER_INDEX, NAME_FIELD,
+          GENDER_FIELD, MASS_FIELD, HEIGHT_FIELD,
+          NEXT_PAGE_FIELD, PREV_PAGE_FIELD } from "./constants/constants.js";
+import { isNumeric, sortByAlphabet, createNewListItem } from "./utils/utils.js";
+
 const listBodyElement = document.querySelector(".list__body");
 const controlElement = document.querySelector(".controls");
 const sortButtonHeightElement = document.querySelector(".sort__button_height");
 const sortButtonMassElement = document.querySelector(".sort__button_mass");
 const sortButtonNameElement = document.querySelector(".sort__button_name");
 const sortButtonGenderElement = document.querySelector(".sort__button_gender");
-const URL_MAIN = "https://swapi.dev/api/people/";
-const HEIGHT_INDEX = 3;
-const MASS_INDEX = 2;
+
 let next;
 let prev;
 let currentList = [];
 let heightSorting = "up";
 let massSorting = "up";
 
-const isNumeric = (value) => {
-  return /^\d+$/.test(value);
+
+const clearListBodyElement = () => {
+  listBodyElement.innerHTML = "";
+}
+const updateList = (list) => {
+  clearListBodyElement();
+  list.forEach((item) => createNewListItem(item[NAME_INDEX], item[GENDER_INDEX], item[MASS_INDEX], item[HEIGHT_INDEX], listBodyElement));
+}
+
+const resetList = (response) => {
+  currentList = [];
+  response.results.forEach((item) => {
+    createNewListItem(item[NAME_FIELD], item[GENDER_FIELD], item[MASS_FIELD], item[HEIGHT_FIELD], listBodyElement);
+    currentList.push([item[NAME_FIELD], item[GENDER_FIELD], item[MASS_FIELD], item[HEIGHT_FIELD]]);
+  });
 }
 
 const sortByNumberValues = (index, sortingCategory) => {
@@ -27,8 +44,7 @@ const sortByNumberValues = (index, sortingCategory) => {
   }
 
   currentList = [...numbers, ...unknown]
-  listBodyElement.innerHTML = "";
-  currentList.forEach((item) => createNewListItem(item[0], item[1], item[2], item[3]));
+  updateList(currentList);
 }
 
 const sortByHeight = () => {
@@ -41,71 +57,37 @@ const sortByMass = () => {
   massSorting = massSorting === "up" ? "down" : "up";
 }
 
-const sortByAlphabet = (first, second) => first[0].localeCompare(second[0]);
-
 const sortByName = () => {
-  currentList.sort(sortByAlphabet);
-  listBodyElement.innerHTML = "";
-  currentList.forEach((item) => createNewListItem(item[0], item[1], item[2], item[3]));
+  currentList.sort((a, b) => sortByAlphabet(a[NAME_INDEX], b[NAME_INDEX]));
+  updateList(currentList);
 }
 
 const sortByGender = () => {
-  const male = currentList.filter((item) => item[1] === "male");
-  const female = currentList.filter((item) => item[1] === "female");
-  const unknown  = currentList.filter((item) => item[1] === "n/a");
-  const hermaphrodite = currentList.filter((item) => item[1] === "hermaphrodite");
-  const none = currentList.filter((item) => item[1] === "none");
+  const male = currentList.filter((item) => item[GENDER_INDEX] === "male");
+  const female = currentList.filter((item) => item[GENDER_INDEX] === "female");
+  const unknown  = currentList.filter((item) => item[GENDER_INDEX] === "n/a");
+  const hermaphrodite = currentList.filter((item) => item[GENDER_INDEX] === "hermaphrodite");
+  const none = currentList.filter((item) => item[GENDER_INDEX] === "none");
 
   currentList = [...male, ...female, ...unknown, ...hermaphrodite, ...none];
-  listBodyElement.innerHTML = "";
-  currentList.forEach((item) => createNewListItem(item[0], item[1], item[2], item[3]));
-}
-
-const createNewListItem = (name, gender, mass, height) => {
-  const documentFragment = document.createDocumentFragment();
-  const rowElement = document.createElement("tr");
-  const nameCellElement = document.createElement("td");
-  const genderCellElement = document.createElement("td");
-  const massCellElement = document.createElement("td");
-  const heightCellElement = document.createElement("td");
-
-  nameCellElement.innerText = name;
-  nameCellElement.classList.add("list__cell");
-  genderCellElement.innerText = gender;
-  genderCellElement.classList.add("list__cell");
-  massCellElement.innerText = mass;
-  massCellElement.classList.add("list__cell");
-  heightCellElement.innerText = height;
-  heightCellElement.classList.add("list__cell");
-  rowElement.classList.add("list__row");
-  rowElement.appendChild(nameCellElement);
-  rowElement.appendChild(genderCellElement);
-  rowElement.appendChild(massCellElement);
-  rowElement.appendChild(heightCellElement);
-  documentFragment.appendChild(rowElement);
-
-  listBodyElement.appendChild(documentFragment);
+  updateList(currentList);
 }
 
 const changePage = (evt) => {
   if(evt.target.classList.contains("controls__button_prev") && prev) {
-    listBodyElement.innerHTML = "";
+    clearListBodyElement();
     swapi(prev);
   }
   if(evt.target.classList.contains("controls__button_next") && next) {
-    listBodyElement.innerHTML = "";
+    clearListBodyElement();
     swapi(next);
   }
 }
 
 const serveResponse = (response) => {
-  currentList = [];
-  response.results.forEach((item) => {
-    createNewListItem(item["name"], item["gender"], item["mass"], item["height"]);
-    currentList.push([item["name"], item["gender"], item["mass"], item["height"]]);
-  });
-  next = response["next"];
-  prev = response["previous"];
+  resetList(response)
+  next = response[NEXT_PAGE_FIELD];
+  prev = response[PREV_PAGE_FIELD];
 }
 
 const swapi = (url) => {
@@ -117,6 +99,7 @@ const swapi = (url) => {
 swapi(URL_MAIN);
 
 controlElement.addEventListener("click", changePage);
+
 sortButtonHeightElement.addEventListener("click", sortByHeight);
 sortButtonMassElement.addEventListener("click", sortByMass);
 sortButtonNameElement.addEventListener("click", sortByName);

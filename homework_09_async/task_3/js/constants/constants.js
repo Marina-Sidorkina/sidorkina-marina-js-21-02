@@ -1,0 +1,11 @@
+export const URL_MAIN = "https://swapi.dev/api/people/";
+export const HEIGHT_INDEX = 3;
+export const MASS_INDEX = 2;
+export const NAME_INDEX = 0;
+export const GENDER_INDEX = 1;
+export const NAME_FIELD = "name";
+export const GENDER_FIELD = "gender";
+export const MASS_FIELD = "mass";
+export const HEIGHT_FIELD = "height";
+export const NEXT_PAGE_FIELD = "next";
+export const PREV_PAGE_FIELD = "previous";
