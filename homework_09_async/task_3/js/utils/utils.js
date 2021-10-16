@@ -1,5 +1,5 @@
 export const isNumeric = (value) => {
-  return /^\d+$/.test(value);
+  return /^[\d.]+$/.test(value);
 }
 
 export const sortByAlphabet = (first, second) => first.localeCompare(second);
