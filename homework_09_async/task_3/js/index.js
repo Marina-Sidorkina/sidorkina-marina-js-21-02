@@ -1,7 +1,6 @@
 import { swapi } from "./api/swapi.js";
 import { URL_MAIN } from "./constants/constants.js";
-import {resetList} from "./components/list/list.js";
-import { changeListOnPage } from "./components/list/list.js";
+import { resetList, changeListOnPage } from "./components/list/list.js";
 import { sortByGender,  sortByName, sortByMass, sortByHeight } from "./sort/sort.js";
 import { showErrorElement } from "./components/error/error.js";
 
