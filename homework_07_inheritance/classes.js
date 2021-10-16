@@ -1,63 +1,63 @@
 class Animal {
   constructor() {
     this._name = "Неизвестное животное";
-    this._type = false;
   }
 
-  eat() {
+  _eat() {
     console.log(`${this._name} ест...`);
   };
 
-  say() {
+  _say() {
     console.log("Неизвестное животное молчит...");
   };
 
-  set name(name) {
+  _rename(name) {
     const regex = /^[А-Яа-я- ]+$/;
 
-    if(regex.test(name) && name.trim().length && this._type) {
+    if(regex.test(name) && name.trim().length) {
       this._name = name;
     }
-  };
+  }
 
   get name() {
-    return this._name;
+    console.log(this._name);
+  }
+
+  get eat() {
+    return this._eat;
+  }
+
+  get say() {
+    return this._say;
+  }
+
+  get rename() {
+    return this._rename;
   }
 }
 
 class Cat extends Animal {
-  constructor() {
-    super();
-    this._type = true;
-  };
-
-  say() {
+  _say() {
     console.log("Кот говорит мяу...");
   };
 
-  hunt() {
+  _hunt() {
     console.log(`${this._name} охотится...`);
   };
+
+  get hunt() {
+    return this._hunt;
+  }
 }
 
 class Dog extends Animal {
-  constructor() {
-    super();
-    this._type = true;
-  };
-
-  say() {
+  _say() {
     console.log("Собака говорит гав...");
   };
 }
 
 class Parrot extends Animal {
-  constructor() {
-    super();
-    this._type = true;
-  };
-
-  say() {
+  _say() {
     console.log("Попугай говорит: 'Кто тут мяукает и гавкает?'...");
   };
 }

@@ -1,3 +1,5 @@
+// Реализация через простые объекты
+
 function configureProperty(object) {
   Object.keys(object).forEach((key) => {
     Object.defineProperty(object, key, {
@@ -6,7 +8,7 @@ function configureProperty(object) {
       configurable: false
     });
   });
-};
+}
 
 // Animal
 

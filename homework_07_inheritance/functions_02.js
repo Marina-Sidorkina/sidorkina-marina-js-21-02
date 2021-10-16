@@ -1,3 +1,7 @@
+// Реализация через фабричные функции.
+// Невозможно выполнить условие про неперечисляемость свойств,
+// так как для неперечисляемых свойств не сработает Object.assign
+
 function configureProperty(object) {
   Object.keys(object).forEach((key) => {
     Object.defineProperty(object, key, {
@@ -5,7 +9,7 @@ function configureProperty(object) {
       configurable: false
     });
   });
-};
+}
 
 // Animal
 
@@ -15,11 +19,11 @@ function Animal() {
 
   function say() {
     console.log("Неизвестное животное молчит...");
-  };
+  }
 
   function eat() {
     console.log(`${this.name || name} ест...`);
-  };
+  }
 
   function rename(name) {
     const regex = /^[А-Яа-я- ]+$/;
@@ -32,7 +36,7 @@ function Animal() {
         configurable: false
       });
     }
-  };
+  }
 
   function getName() {
     console.log(this.name || name);
@@ -50,11 +54,11 @@ function Cat() {
 
   function say() {
       console.log("Кот говорит мяу...");
-  };
+  }
 
   function hunt() {
     console.log(`${this.name || "Кот без клички"} охотится...`);
-  };
+  }
 
   configureProperty(cat);
 
@@ -68,7 +72,7 @@ function Dog() {
 
   function say() {
       console.log("Собака говорит гав...");
-  };
+  }
 
   configureProperty(dog);
 
@@ -82,7 +86,7 @@ function Parrot() {
 
   function say() {
       console.log("Попугай говорит: 'Кто тут мяукает и гавкает?'...");
-  };
+  }
 
   configureProperty(parrot);
 
