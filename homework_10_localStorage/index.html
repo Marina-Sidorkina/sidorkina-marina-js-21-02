@@ -1,13 +1,32 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
   <head>
     <meta charset="UTF-8">
     <title>JS animation and localStorage</title>
+    <link rel="stylesheet" href="css/index.css">
   </head>
-  <body>
-      <input type="file" id="fileInput">
-      <button id="uploadButton">Отправить</button>
-    <div class="gallery"></div>
+  <body class="page">
+    <header class="header page__header">
+      <h1 class="header__title">JS Animation and localStorage</h1>
+    </header>
+    <main class="main page__main">
+      <form class="form main__form">
+        <input type="file" class="form__input" id="fileInput">
+        <label class="form__label" for="fileInput">Выбрать изображение</label>
+        <div class="form__info">
+          <div class="form__counter">0 images selected</div>
+          <div class="form__loader"></div>
+        </div>
+        <button class="form__submit">Отправить</button>
+      </form>
+      <section class="gallery main__gallery">
+        <h2 class="gallery__header">Gallery</h2>
+        <ul class="list gallery__list"></ul>
+      </section>
+    </main>
+    <footer class="footer page__footer">
+      <p class="footer__text">Marina Sidorkina 2021</p>
+    </footer>
     <script src="js/index.js" type="module" defer></script>
   </body>
 </html>

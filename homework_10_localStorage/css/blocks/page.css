@@ -1,0 +1,9 @@
+.page {
+  width: 1024px;
+  margin: 0 auto;
+}
+
+.page__header,
+.page__main {
+  margin-bottom: 20px;
+}

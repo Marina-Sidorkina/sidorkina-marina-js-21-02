@@ -1,19 +1,35 @@
-const inputElement = document.getElementById("fileInput");
-const uploadButtonElement = document.getElementById("uploadButton");
-const galleryElement = document.querySelector(".gallery");
+const formElement = document.querySelector("form");
+const inputElement = document.querySelector(".form__input");
+const listElement = document.querySelector(".list");
+const counterElement = document.querySelector(".form__counter");
+
+const clearCounter = () => {
+  counterElement.innerText = "0 images selected";
+}
+
+const updateCounter = () => {
+  counterElement.innerText = "1 image selected";
+}
 
 function addImgToGallery(url) {
+  const listItem = document.createElement("li");
   const img = document.createElement("img");
+  listItem.classList.add("list__item");
+  img.classList.add("list__img");
   img.src = url;
-  galleryElement.append(img);
+  listItem.append(img)
+  listElement.append(listItem);
 }
 
 const imgArr = localStorage.getItem("imgArr") ? JSON.parse(localStorage.getItem("imgArr")) : [];
 
 imgArr.forEach(addImgToGallery);
 
-uploadButtonElement.addEventListener("click", () => {
-  uploadBase64UrlToImgBB(inputElement.files[0]);
+formElement.addEventListener("submit", (evt) => {
+  evt.preventDefault();
+  if(inputElement.files[0]) {
+    uploadBase64UrlToImgBB(inputElement.files[0]);
+  }
 })
 
 function uploadBase64UrlToImgBB(file) {
@@ -30,9 +46,12 @@ function uploadBase64UrlToImgBB(file) {
       .then((response) => {
         console.log(response);
         imgArr.push(response.data.display_url);
-        localStorage.setItem("imgArr", JSON.stringify(imgArr))
-        addImgToGallery(response.data.display_url)
+        localStorage.setItem("imgArr", JSON.stringify(imgArr));
+        addImgToGallery(response.data.display_url);
+        clearCounter();
       })
       .catch(console.error)
   }
 }
+
+inputElement.addEventListener("change", updateCounter);
