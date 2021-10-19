@@ -10,6 +10,7 @@ processImgArr(addImg);
 
 formElement.addEventListener("submit", (evt) => {
   onFormSubmit(evt, inputElement.files[0]);
+  inputElement.value = '';
 });
 
 inputElement.addEventListener("change", updateFormInfo);
