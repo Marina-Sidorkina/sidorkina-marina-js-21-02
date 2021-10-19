@@ -41,17 +41,11 @@
   opacity: 0.4;
 }
 .form__info {
+  box-sizing: border-box;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   width: 550px;
-}
-.form__counter {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  width: 120px;
-  height: 40px;
   padding-left: 5px;
 }
 
