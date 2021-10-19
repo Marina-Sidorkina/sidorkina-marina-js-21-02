@@ -2,6 +2,7 @@ import { processFile } from "../services/file-reader.js";
 import { setFormData } from "../services/form-data.js";
 import { imgbb } from "../api/imgbb.js";
 import { API_METHOD } from "../constants/imgbb.js";
+import { startLoader } from "./loader.js";
 
 const upload = (file) => {
   const formData = setFormData(file);
@@ -15,6 +16,7 @@ const processForm = (file) => {
 export const onFormSubmit = (evt, file) => {
   evt.preventDefault();
   if(file) {
+    startLoader();
     processForm(file);
   }
 }

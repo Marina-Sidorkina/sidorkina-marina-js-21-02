@@ -20,6 +20,6 @@ export const startLoader = () => {
 }
 
 export const stopLoader = () => {
-  loaderElement.style.width = "0";
   cancelAnimationFrame(loaderId);
+  loaderElement.style.width = "0";
 }
