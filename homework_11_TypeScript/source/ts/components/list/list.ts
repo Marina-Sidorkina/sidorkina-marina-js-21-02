@@ -1,10 +1,10 @@
-import {createNewListItem} from "../../utils/utils.js";
+import {createNewListItem} from "../../utils/utils";
 import {
   GENDER_FIELD, GENDER_INDEX, HEIGHT_FIELD, HEIGHT_INDEX, MASS_FIELD,
   MASS_INDEX, NAME_FIELD, NAME_INDEX, NEXT_PAGE_FIELD, PREV_PAGE_FIELD
-} from "../../constants/constants.js";
-import {swapi} from "../../api/swapi.js";
-import { hideErrorElement } from "../error/error.js";
+} from "../../constants/constants";
+import {swapi} from "../../api/swapi";
+import { hideErrorElement } from "../error/error";
 
 const listBodyElement = document.querySelector(".list__body");
 let currentList = [];
@@ -38,11 +38,11 @@ export const resetList = (response) => {
 export const changeListOnPage = (evt) => {
   if(evt.target.classList.contains("controls__button_prev") && prev) {
     clearListBodyElement();
-    swapi(prev, resetList);
+    swapi(prev, resetList, console.error);
   }
   if(evt.target.classList.contains("controls__button_next") && next) {
     clearListBodyElement();
-    swapi(next, resetList);
+    swapi(next, resetList, console.error);
   }
 }
 

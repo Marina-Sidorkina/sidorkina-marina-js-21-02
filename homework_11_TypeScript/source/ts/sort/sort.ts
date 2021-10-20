@@ -1,6 +1,6 @@
-import {isNumeric, sortByAlphabet} from "../utils/utils.js";
-import {GENDER_INDEX, HEIGHT_INDEX, MASS_INDEX, NAME_INDEX} from "../constants/constants.js";
-import { updateList, getList } from "../components/list/list.js";
+import {isNumeric, sortByAlphabet} from "../utils/utils";
+import {GENDER_INDEX, HEIGHT_INDEX, MASS_INDEX, NAME_INDEX} from "../constants/constants";
+import { updateList, getList } from "../components/list/list";
 
 let heightSorting = "up";
 let massSorting = "up";
@@ -20,14 +20,12 @@ const sortByNumberValues = (index, sortingCategory) => {
 }
 
 export const sortByHeight = () => {
-  let currentList = getList().slice();
-  sortByNumberValues(HEIGHT_INDEX, heightSorting, currentList);
+  sortByNumberValues(HEIGHT_INDEX, heightSorting);
   heightSorting = heightSorting === "up" ? "down" : "up";
 }
 
 export const sortByMass = () => {
-  let currentList = getList().slice();
-  sortByNumberValues(MASS_INDEX, massSorting, currentList);
+  sortByNumberValues(MASS_INDEX, massSorting);
   massSorting = massSorting === "up" ? "down" : "up";
 }
 
