@@ -5,13 +5,15 @@ import {
 } from "../../constants/constants";
 import {swapi} from "../../api/swapi";
 import { hideErrorElement } from "../error/error";
+import { IPages, IPerson, IResponse } from "../../interfaces/interfaces";
 
-const listBodyElement = document.querySelector(".list__body");
-let currentList = [];
-let next;
-let prev;
+const listBodyElement: HTMLElement = document.querySelector(".list__body");
 
-const updateNextAndPrev = (response) => {
+let currentList: object[] = [];
+let next: string | null;
+let prev: string | null;
+
+const updateNextAndPrev = (response: IPages) => {
   next = response[NEXT_PAGE_FIELD];
   prev = response[PREV_PAGE_FIELD];
 }
@@ -20,27 +22,31 @@ const clearListBodyElement = () => {
   listBodyElement.innerHTML = "";
 }
 
-export const updateList = (list) => {
+export const updateList = (list: object[]) => {
   clearListBodyElement();
-  list.forEach((item) => createNewListItem(item[NAME_INDEX], item[GENDER_INDEX], item[MASS_INDEX], item[HEIGHT_INDEX], listBodyElement));
+  list.forEach((item: string[]) => createNewListItem(item[NAME_INDEX], item[GENDER_INDEX], item[MASS_INDEX], item[HEIGHT_INDEX], listBodyElement));
 }
 
-export const resetList = (response) => {
+export const resetList = (response: IResponse) => {
   currentList = [];
-  response.results.forEach((item) => {
+  const pages = {
+    previous: response.previous,
+    next: response.next
+  }
+  response.results.forEach((item: IPerson) => {
     createNewListItem(item[NAME_FIELD], item[GENDER_FIELD], item[MASS_FIELD], item[HEIGHT_FIELD], listBodyElement);
     currentList.push([item[NAME_FIELD], item[GENDER_FIELD], item[MASS_FIELD], item[HEIGHT_FIELD]]);
   });
-  updateNextAndPrev(response);
+  updateNextAndPrev(pages);
   hideErrorElement();
 }
 
-export const changeListOnPage = (evt) => {
-  if(evt.target.classList.contains("controls__button_prev") && prev) {
+export const changeListOnPage = (evt: Event) => {
+  if((evt.target as HTMLElement).classList.contains("controls__button_prev") && prev) {
     clearListBodyElement();
     swapi(prev, resetList, console.error);
   }
-  if(evt.target.classList.contains("controls__button_next") && next) {
+  if((evt.target as HTMLElement).classList.contains("controls__button_next") && next) {
     clearListBodyElement();
     swapi(next, resetList, console.error);
   }

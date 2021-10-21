@@ -2,17 +2,17 @@ import {isNumeric, sortByAlphabet} from "../utils/utils";
 import {GENDER_INDEX, HEIGHT_INDEX, MASS_INDEX, NAME_INDEX} from "../constants/constants";
 import { updateList, getList } from "../components/list/list";
 
-let heightSorting = "up";
-let massSorting = "up";
+let heightSorting: string = "up";
+let massSorting: string = "up";
 
-const sortByNumberValues = (index, sortingCategory) => {
+const sortByNumberValues = (index: number, sortingCategory: string) => {
   let currentList = getList().slice();
-  const numbers = currentList.filter((value) => isNumeric(value[index].replace(",","")));
-  const unknown = currentList.filter((value) => !isNumeric(value[index].replace(",","")));
+  const numbers: object[] = currentList.filter((value: string[]) => isNumeric(value[index].replace(",","")));
+  const unknown: object[] = currentList.filter((value: string[]) => !isNumeric(value[index].replace(",","")));
   if(sortingCategory === "up") {
-    numbers.sort((a, b) => parseInt(a[index].replace(",",""), 10) - parseInt(b[index].replace(",",""), 10));
+    numbers.sort((a: string[], b: string[]) => parseInt(a[index].replace(",",""), 10) - parseInt(b[index].replace(",",""), 10));
   } else {
-    numbers.sort((a, b) => parseInt(b[index].replace(",",""), 10) - parseInt(a[index].replace(",",""), 10));
+    numbers.sort((a: string[], b: string[]) => parseInt(b[index].replace(",",""), 10) - parseInt(a[index].replace(",",""), 10));
   }
 
   currentList = [...numbers, ...unknown]
@@ -31,17 +31,17 @@ export const sortByMass = () => {
 
 export const sortByName = () => {
   let currentList = getList().slice();
-  currentList.sort((a, b) => sortByAlphabet(a[NAME_INDEX], b[NAME_INDEX]));
+  currentList.sort((a: string[], b: string[]) => sortByAlphabet(a[NAME_INDEX], b[NAME_INDEX]));
   updateList(currentList);
 }
 
 export const sortByGender = () => {
   let currentList = getList().slice();
-  const male = currentList.filter((item) => item[GENDER_INDEX] === "male");
-  const female = currentList.filter((item) => item[GENDER_INDEX] === "female");
-  const unknown  = currentList.filter((item) => item[GENDER_INDEX] === "n/a");
-  const hermaphrodite = currentList.filter((item) => item[GENDER_INDEX] === "hermaphrodite");
-  const none = currentList.filter((item) => item[GENDER_INDEX] === "none");
+  const male = currentList.filter((item: string[]) => item[GENDER_INDEX] === "male");
+  const female = currentList.filter((item: string[]) => item[GENDER_INDEX] === "female");
+  const unknown  = currentList.filter((item: string[]) => item[GENDER_INDEX] === "n/a");
+  const hermaphrodite = currentList.filter((item: string[]) => item[GENDER_INDEX] === "hermaphrodite");
+  const none = currentList.filter((item: string[]) => item[GENDER_INDEX] === "none");
 
   currentList = [...male, ...female, ...unknown, ...hermaphrodite, ...none];
   updateList(currentList);
