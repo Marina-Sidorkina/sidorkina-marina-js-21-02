@@ -5,12 +5,12 @@ export const isNumeric = (value: string) => {
 export const sortByAlphabet = (first: string, second: string) => first.localeCompare(second);
 
 export const createNewListItem = (name: string, gender: string, mass: string, height: string, element: HTMLElement) => {
-  const documentFragment = document.createDocumentFragment();
-  const rowElement = document.createElement("tr");
-  const nameCellElement = document.createElement("td");
-  const genderCellElement = document.createElement("td");
-  const massCellElement = document.createElement("td");
-  const heightCellElement = document.createElement("td");
+  const documentFragment: DocumentFragment = document.createDocumentFragment();
+  const rowElement: HTMLTableRowElement = document.createElement("tr");
+  const nameCellElement: HTMLTableCellElement = document.createElement("td");
+  const genderCellElement: HTMLTableCellElement = document.createElement("td");
+  const massCellElement: HTMLTableCellElement = document.createElement("td");
+  const heightCellElement: HTMLTableCellElement = document.createElement("td");
 
   nameCellElement.innerText = name;
   nameCellElement.classList.add("list__cell");

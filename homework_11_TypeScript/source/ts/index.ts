@@ -4,11 +4,11 @@ import { resetList, changeListOnPage } from "./components/list/list";
 import { sortByGender,  sortByName, sortByMass, sortByHeight } from "./sort/sort";
 import { showErrorElement } from "./components/error/error";
 
-const controlElement = document.querySelector(".controls");
-const sortButtonHeightElement = document.querySelector(".sort__button_height");
-const sortButtonMassElement = document.querySelector(".sort__button_mass");
-const sortButtonNameElement = document.querySelector(".sort__button_name");
-const sortButtonGenderElement = document.querySelector(".sort__button_gender");
+const controlElement: HTMLElement = document.querySelector(".controls");
+const sortButtonHeightElement: HTMLElement = document.querySelector(".sort__button_height");
+const sortButtonMassElement: HTMLElement = document.querySelector(".sort__button_mass");
+const sortButtonNameElement: HTMLElement = document.querySelector(".sort__button_name");
+const sortButtonGenderElement: HTMLElement = document.querySelector(".sort__button_gender");
 
 controlElement.addEventListener("click", changeListOnPage);
 sortButtonHeightElement.addEventListener("click", sortByHeight);

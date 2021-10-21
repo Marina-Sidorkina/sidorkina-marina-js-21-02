@@ -1,4 +1,4 @@
-const errorElement = document.querySelector(".error");
+const errorElement: HTMLElement = document.querySelector(".error");
 
 export const showErrorElement = () => {
   errorElement.classList.remove("error_disabled");
