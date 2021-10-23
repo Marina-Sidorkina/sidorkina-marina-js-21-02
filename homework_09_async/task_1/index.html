@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title>Асинхронный код</title>
+    <link rel="stylesheet" href="index.css">
+  </head>
+  <body class="page">
+    <header class="header page__header">
+      <h1 class="header__title">Функции setTimeout и setInterval</h1>
+    </header>
+    <main class="main page__main">
+      <h2 class="main__title">Задайте диапазон чисел:</h2>
+      <form class="form main__form">
+        <label class="form__label" for="start">ОТ</label>
+        <input class="form__input" type="number" min="1" id="start" required>
+        <label class="form__label" for="end">ДО</label>
+        <input class="form__input" type="number" min="1" id="end" required>
+        <button class="form__submit" type="submit">Начать отсчет</button>
+      </form>
+      <div class="result main__result">
+        <div class="result__window"></div>
+      </div>
+    </main>
+    <footer class="footer page__footer">Marina Sidorkina 2021</footer>
+    <script src="setInterval.js"></script>
+  </body>
+</html>

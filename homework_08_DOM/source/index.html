@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="blue">
+  <head>
+    <meta charset="UTF-8">
+    <title>Работа с DOM</title>
+    <link rel="stylesheet" href="css/index.min.css">
+  </head>
+  <body class="page design_blue">
+    <header class="header page__header">
+      <img class="header__img" src="images/dest/logo.png" alt="Логотип" width="30">
+      <h1 class="header__title">Телефонная книжка</h1>
+    </header>
+    <main class="main page__main">
+      <form class="form main__form">
+        <div class="form__error form__error_name" data-title="Формат: Фамилия Имя Отчество">
+          <input class="form__input form__input_name" type="text" value="Фамилия Имя Отчество">
+        </div>
+        <div class="form__error form__error_tel" data-title="Формат: +7 XXX XXX-XX-XX">
+          <input class="form__input form__input_tel" type="tel" value="+7 XXX XXX-XX-XX">
+        </div>
+        <button class="form__submit" type="submit">Добавить новую запись</button>
+      </form>
+      <form class="theme main__theme">
+        <ul class="theme__list">
+          <li class="theme__item">
+            <input class="theme__input" type="radio" id="blue" checked name="theme">
+            <label class="theme__label" for="blue">Синяя тема</label>
+          </li>
+          <li class="theme__item">
+            <input class="theme__input" type="radio" id="green" name="theme">
+            <label class="theme__label" for="green">Зеленая тема</label>
+          </li>
+          <li class="theme__item">
+            <input class="theme__input" type="radio" id="grey" name="theme">
+            <label class="theme__label" for="grey">Серая тема</label>
+          </li>
+        </ul>
+      </form>
+      <table class="table main__table">
+        <thead class="table__head">
+          <tr class="table__row">
+            <th class="table__cell">#</th>
+            <th class="table__cell">ФИО</th>
+            <th class="table__cell">Номер телефона</th>
+          </tr>
+        </thead>
+        <tbody class="table__body">
+          <tr class="table__row">
+            <th class="table__cell">1</th>
+            <td class="table__cell">Иванов Иван Иванович</td>
+            <td class="table__cell table__cell_tel">
+              <span>+7 777 777-77-77</span>
+              <span class="table__trash" data-row="1"></span>
+          </tr>
+          <tr class="table__row">
+            <th class="table__cell">2</th>
+            <td class="table__cell">Петров Петр Петрович</td>
+            <td class="table__cell table__cell_tel">
+              <span>+7 777 777-77-77</span>
+              <span class="table__trash" data-row="2"></span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+    <footer class="footer page__footer">
+      <div>Marina Sidorkina 2021</div>
+    </footer>
+    <script src="js/index.min.js"></script>
+  </body>
+</html>

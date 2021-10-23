@@ -1,0 +1,31 @@
+.sort {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1025px;
+  padding: 10px;
+}
+
+.sort {
+  justify-content: space-around;
+  margin-bottom: 10px;
+}
+
+.sort__button {
+  box-sizing: border-box;
+  display: block;
+  width: 150px;
+  height: 35px;
+  margin-right: 10px;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  background-color: #ecf9ec;
+  cursor: pointer;
+  text-align: center;
+  font-size: 20px;
+}
+
+.sort__button:hover {
+  opacity: 0.7;
+}
