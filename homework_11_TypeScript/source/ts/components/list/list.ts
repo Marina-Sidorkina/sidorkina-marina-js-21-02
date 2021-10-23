@@ -13,23 +13,23 @@ let currentList: object[] = [];
 let next: string | null;
 let prev: string | null;
 
-const updateNextAndPrev = (response: IPages) => {
+const updateNextAndPrev = (response: IPages): void => {
   next = response[NEXT_PAGE_FIELD];
   prev = response[PREV_PAGE_FIELD];
 }
 
-const clearListBodyElement = () => {
+const clearListBodyElement = (): void => {
   listBodyElement.innerHTML = "";
 }
 
-export const updateList = (list: object[]) => {
+export const updateList = (list: object[]): void => {
   clearListBodyElement();
   list.forEach((item: string[]) => createNewListItem(item[NAME_INDEX], item[GENDER_INDEX], item[MASS_INDEX], item[HEIGHT_INDEX], listBodyElement));
 }
 
-export const resetList = (response: IResponse) => {
+export const resetList = (response: IResponse): void => {
   currentList = [];
-  const pages = {
+  const pages: IPages = {
     previous: response.previous,
     next: response.next
   }
@@ -41,7 +41,7 @@ export const resetList = (response: IResponse) => {
   hideErrorElement();
 }
 
-export const changeListOnPage = (evt: Event) => {
+export const changeListOnPage = (evt: Event): void => {
   if((evt.target as HTMLElement).classList.contains("controls__button_prev") && prev) {
     clearListBodyElement();
     swapi(prev, resetList, console.error);
@@ -52,6 +52,6 @@ export const changeListOnPage = (evt: Event) => {
   }
 }
 
-export const getList = () => {
+export const getList = (): object[] => {
   return currentList;
 }

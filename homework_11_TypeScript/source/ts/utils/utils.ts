@@ -2,9 +2,9 @@ export const isNumeric = (value: string) => {
   return /^[\d.]+$/.test(value);
 }
 
-export const sortByAlphabet = (first: string, second: string) => first.localeCompare(second);
+export const sortByAlphabet = (first: string, second: string): number => first.localeCompare(second);
 
-export const createNewListItem = (name: string, gender: string, mass: string, height: string, element: HTMLElement) => {
+export const createNewListItem = (name: string, gender: string, mass: string, height: string, element: HTMLElement): void => {
   const documentFragment: DocumentFragment = document.createDocumentFragment();
   const rowElement: HTMLTableRowElement = document.createElement("tr");
   const nameCellElement: HTMLTableCellElement = document.createElement("td");
