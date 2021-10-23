@@ -1,0 +1,11 @@
+.loader {
+  width: 1024px;
+  height: 7px;
+  padding-left: 30px;
+}
+
+.loader__box {
+  width: 0;
+  height: 7px;
+  background-color: darkblue;
+}
