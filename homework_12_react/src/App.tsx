@@ -31,6 +31,10 @@ function App() {
                 <input className="filter__input" type="checkbox" id="grand-piano-3"/>
                 <label className="filter__label" htmlFor="grand-piano-3">Kawai</label>
               </li>
+              <li className="filter__value">
+                <input className="filter__input" type="checkbox" id="grand-piano-4"/>
+                <label className="filter__label" htmlFor="grand-piano-4">Fazioli</label>
+              </li>
             </ul>
           </fieldset>
           <fieldset className="sidebar__filter filter">
