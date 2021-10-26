@@ -5,7 +5,7 @@ import kawNd21 from './img/kawai-nd-21.jpg';
 import schK256 from './img/schimmel-k-256.jpg';
 import fazF183 from './img/fazioli-f-183.png';
 
-export const pianos = [
+export const favourites = [
   {
     key: "schK280",
     name: "РОЯЛЬ SCHIMMEL K 280",

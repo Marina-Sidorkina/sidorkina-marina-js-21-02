@@ -1,18 +1,21 @@
 import React from "react";
 import Promo from "../../components/promo/Promo";
-import {promo} from "../../mocks/promo";
 import Categories from "../../components/categories/Categories";
-import {categories} from "../../mocks/categories";
 import Favourite from "../../components/favourite/Favourite";
-import { pianos } from "../../mocks/pianos";
+import { IMainProps } from "../../@types/interfaces/interfaces";
 
-class Main extends React.Component {
+class Main extends React.Component<IMainProps> {
   render() {
+    const { promoTitle,
+            promoMessage,
+            categoriesData: { categories },
+            favouritesData: { favourites } } = this.props;
+
     return (
       <React.Fragment>
-        <Promo title={ promo.title } message={ promo.message }/>
+        <Promo title={ promoTitle } message={ promoMessage }/>
         <Categories categories={ categories }/>
-        <Favourite favourites={ pianos }/>
+        <Favourite favourites={ favourites }/>
       </React.Fragment>
     )
   }

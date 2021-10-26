@@ -44,3 +44,10 @@ export interface IPianoProps {
 export interface IFavouriteProps {
   favourites: IPianoProps[]
 }
+
+export interface IMainProps {
+  promoTitle: string;
+  promoMessage: string;
+  categoriesData: ICategoriesProps;
+  favouritesData: IFavouriteProps;
+}
