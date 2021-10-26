@@ -2,6 +2,8 @@ import React from "react";
 import "./App.css";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
+import Filter from "./components/filter/Filter";
+import { filter } from "./mocks/filter";
 
 import schK280 from './img/schimmel-k-280.jpg';
 import fazF156 from './img/fazioli-f-156.png';
@@ -17,44 +19,8 @@ function App() {
 
       <main className="main">
         <form className="sidebar">
-          <fieldset className="sidebar__filter filter">
-            <legend className="filter__category">Рояли</legend>
-            <ul className="filter__values">
-              <li className="filter__value">
-                <input className="filter__input" type="checkbox" id="grand-piano-1"/>
-                <label className="filter__label" htmlFor="grand-piano-1">Yamaha</label>
-              </li>
-              <li className="filter__value">
-                <input className="filter__input" type="checkbox" id="grand-piano-2"/>
-                <label className="filter__label" htmlFor="grand-piano-2">Schimmel</label>
-              </li>
-              <li className="filter__value">
-                <input className="filter__input" type="checkbox" id="grand-piano-3"/>
-                <label className="filter__label" htmlFor="grand-piano-3">Kawai</label>
-              </li>
-              <li className="filter__value">
-                <input className="filter__input" type="checkbox" id="grand-piano-4"/>
-                <label className="filter__label" htmlFor="grand-piano-4">Fazioli</label>
-              </li>
-            </ul>
-          </fieldset>
-          <fieldset className="sidebar__filter filter">
-            <legend className="filter__category">Пианино</legend>
-            <ul className="filter__values">
-              <li className="filter__value">
-                <input className="filter__input" type="checkbox" id="piano-1"/>
-                <label className="filter__label" htmlFor="piano-1">Yamaha</label>
-              </li>
-              <li className="filter__value">
-                <input className="filter__input" type="checkbox" id="piano-2"/>
-                <label className="filter__label" htmlFor="piano-2">Schimmel</label>
-              </li>
-              <li className="filter__value">
-                <input className="filter__input" type="checkbox" id="piano-3"/>
-                <label className="filter__label" htmlFor="piano-3">Kawai</label>
-              </li>
-            </ul>
-          </fieldset>
+          <Filter legend="Рояли" items={ filter.grandPianos } />
+          <Filter legend="Пианино" items={ filter.pianos } />
         </form>
         <section className="page">
           <div className="promo">

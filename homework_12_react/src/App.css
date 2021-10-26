@@ -23,34 +23,6 @@
   border-radius: 10px;
 }
 
-.filter {
-  border: none;
-}
-
-.filter__category {
-  margin-bottom: 10px;
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.filter__values {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.filter__value {
-  margin-bottom: 10px;
-}
-
-.filter__input {
-  margin-right: 15px;
-}
-
-.filter__label {
-  font-size: 18px;
-}
-
 .promo {
   margin-bottom: 20px;
   padding-left: 10px;
