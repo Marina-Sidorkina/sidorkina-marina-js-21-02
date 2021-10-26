@@ -1,5 +1,7 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Header from "./components/header/Header";
+
 import schK280 from './img/schimmel-k-280.jpg';
 import fazF156 from './img/fazioli-f-156.png';
 import yamYus1 from './img/yamaha-yus-1.png';
@@ -9,11 +11,8 @@ import fazF183 from './img/fazioli-f-183.png';
 
 function App() {
   return (
-    <div className="app">
-      <header className="header">
-        <div className="header__logo">PIANOS</div>
-        <h1 className="header__title">Пианино и рояли</h1>
-      </header>
+    <div className="App">
+      <Header />
       <main className="main">
         <form className="sidebar">
           <fieldset className="sidebar__filter filter">
