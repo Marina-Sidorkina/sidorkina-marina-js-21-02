@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import schK280 from './schimmel-k-280.jpg';
-import fazF156 from './fazioli-f-156.png';
-import yamYus1 from './yamaha-yus-1.png';
-import kawNd21 from './kawai-nd-21.jpg';
-import schK256 from './schimmel-k-256.jpg';
-import fazF183 from './fazioli-f-183.png';
+import schK280 from './img/schimmel-k-280.jpg';
+import fazF156 from './img/fazioli-f-156.png';
+import yamYus1 from './img/yamaha-yus-1.png';
+import kawNd21 from './img/kawai-nd-21.jpg';
+import schK256 from './img/schimmel-k-256.jpg';
+import fazF183 from './img/fazioli-f-183.png';
 
 function App() {
   return (
