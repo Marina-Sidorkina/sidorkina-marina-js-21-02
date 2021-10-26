@@ -17,3 +17,8 @@ export interface IFormItems {
 export interface IFormProps {
   filters: IFormItems[]
 }
+
+export interface IPromoProps {
+  title: string;
+  message: string;
+}

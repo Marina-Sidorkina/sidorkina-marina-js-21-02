@@ -3,6 +3,8 @@ import "./App.css";
 import Header from "./components/header/Header";
 import Form from "./components/form/Form";
 import { filters } from "./mocks/filters";
+import Promo from "./components/promo/Promo";
+import { promo } from "./mocks/promo";
 import Footer from "./components/footer/Footer";
 
 import schK280 from './img/schimmel-k-280.jpg';
@@ -21,10 +23,8 @@ function App() {
         <Form filters={ filters }/>
 
         <section className="page">
-          <div className="promo">
-            <h2 className="promo__title">Пианино и рояли с многолетней историей</h2>
-            <p className="promo__message">Приобретите идеальное фортепиано для своих целей</p>
-          </div>
+          <Promo title={ promo.title } message={ promo.message }/>
+
           <div className="categories">
             <div className="category categories__item">
               <a className="category__link" href="#"><h4 className="category__title">Пианино</h4></a>

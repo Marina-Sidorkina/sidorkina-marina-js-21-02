@@ -15,24 +15,6 @@
   padding: 15px;
 }
 
-.promo {
-  margin-bottom: 20px;
-  padding-left: 10px;
-  padding-top: 20px;
-}
-
-.promo__title {
-  margin-top: 0;
-  margin-bottom: 0;
-  font-size: 32px;
-}
-
-.promo__message {
-  margin-top: 5px;
-  margin-bottom: 0;
-  font-size: 18px;
-}
-
 .categories {
   box-sizing: border-box;
   display: grid;
