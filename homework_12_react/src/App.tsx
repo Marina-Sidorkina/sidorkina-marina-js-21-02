@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import Header from "./components/header/Header";
+import Footer from "./components/footer/Footer";
 
 import schK280 from './img/schimmel-k-280.jpg';
 import fazF156 from './img/fazioli-f-156.png';
@@ -13,6 +14,7 @@ function App() {
   return (
     <div className="App">
       <Header />
+
       <main className="main">
         <form className="sidebar">
           <fieldset className="sidebar__filter filter">
@@ -106,9 +108,8 @@ function App() {
           </div>
         </section>
       </main>
-      <footer className="footer">
-        <p className="footer__text">Marina Sidorkina 2021</p>
-      </footer>
+
+      <Footer />
     </div>
   );
 }
