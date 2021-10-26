@@ -1,10 +1,10 @@
 import React from "react";
 import "./App.css";
-import Header from "./components/header/Header";
-import Form from "./components/form/Form";
-import { filters } from "./mocks/filters";
-import Footer from "./components/footer/Footer";
-import Main from "./pages/main/Main";
+import Header from "../header/Header";
+import Form from "../form/Form";
+import { filters } from "../../mocks/filters";
+import Footer from "../footer/Footer";
+import Main from "../../pages/main/Main";
 
 class App extends React.Component {
   render() {
