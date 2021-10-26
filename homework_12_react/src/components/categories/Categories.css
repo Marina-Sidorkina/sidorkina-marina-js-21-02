@@ -1,0 +1,7 @@
+.categories {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 15px;
+  margin-bottom: 35px;
+}

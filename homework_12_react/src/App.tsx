@@ -5,6 +5,7 @@ import Form from "./components/form/Form";
 import { filters } from "./mocks/filters";
 import Promo from "./components/promo/Promo";
 import { promo } from "./mocks/promo";
+import Categories from "./components/categories/Categories";
 import Footer from "./components/footer/Footer";
 
 import schK280 from './img/schimmel-k-280.jpg';
@@ -24,17 +25,7 @@ function App() {
 
         <section className="page">
           <Promo title={ promo.title } message={ promo.message }/>
-
-          <div className="categories">
-            <div className="category categories__item">
-              <a className="category__link" href="#"><h4 className="category__title">Пианино</h4></a>
-              <p className="category__message">Выбор для учебы</p>
-            </div>
-            <div className="category categories__item">
-              <a className="category__link" href="#"><h4 className="category__title">Рояли</h4></a>
-              <p className="category__message">Выбор профессионала</p>
-            </div>
-          </div>
+          <Categories />
           <div className="favourite">
             <h3 className="favourite__title">Популярные</h3>
             <ul className="favourite__pianos pianos">

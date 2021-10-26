@@ -22,3 +22,14 @@ export interface IPromoProps {
   title: string;
   message: string;
 }
+
+export interface ICategoryProps {
+  id: string;
+  title: string;
+  message: string;
+  href: string;
+}
+
+export interface ICategoriesProps {
+  categories: ICategoryProps[];
+}

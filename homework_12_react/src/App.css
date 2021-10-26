@@ -15,14 +15,6 @@
   padding: 15px;
 }
 
-.categories {
-  box-sizing: border-box;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-column-gap: 15px;
-  margin-bottom: 35px;
-}
-
 .category {
   padding: 15px;
   background-color: #f9ecf9;
