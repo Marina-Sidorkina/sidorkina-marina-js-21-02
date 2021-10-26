@@ -7,33 +7,39 @@ import fazF183 from './img/fazioli-f-183.png';
 
 export const pianos = [
   {
-    id: "schK280",
+    key: "schK280",
     name: "РОЯЛЬ SCHIMMEL K 280",
-    src: schK280
+    src: schK280,
+    href: "#"
   },
   {
-    id: "fazF156",
+    key: "fazF156",
     name: "РОЯЛЬ FAZIOLI F156",
-    src: fazF156
+    src: fazF156,
+    href: "#"
   },
   {
-    id: "yamYus1",
+    key: "yamYus1",
     name: "ПИАНИНО YAMAHA YUS1",
-    src: yamYus1
+    src: yamYus1,
+    href: "#"
   },
   {
-    id: "kawNd21",
+    key: "kawNd21",
     name: "ПИАНИНО KAWAI ND-21",
-    src: kawNd21
+    src: kawNd21,
+    href: "#"
   },
   {
-    id: "schK256",
+    key: "schK256",
     name: "РОЯЛЬ SCHIMMEL K 256",
-    src: schK256
+    src: schK256,
+    href: "#"
   },
   {
-    id: "fazF183",
+    key: "fazF183",
     name: "РОЯЛЬ FAZIOLI F183",
-    src: fazF183
+    src: fazF183,
+    href: "#"
   }
 ];

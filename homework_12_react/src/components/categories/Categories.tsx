@@ -8,7 +8,7 @@ class Categories extends React.Component<ICategoriesProps> {
     const { categories } = this.props;
 
     const elements = categories.map((item) =>
-      <Category id={ item.id }
+      <Category key={ item.key }
                 title={ item.title }
                 message={ item.message }
                 href={ item.href }/>);

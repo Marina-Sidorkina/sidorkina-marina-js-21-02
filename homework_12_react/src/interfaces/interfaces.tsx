@@ -24,7 +24,7 @@ export interface IPromoProps {
 }
 
 export interface ICategoryProps {
-  id: string;
+  key: string;
   title: string;
   message: string;
   href: string;
@@ -32,4 +32,15 @@ export interface ICategoryProps {
 
 export interface ICategoriesProps {
   categories: ICategoryProps[];
+}
+
+export interface IPianoProps {
+  key: string;
+  name: string;
+  src: string;
+  href: string;
+}
+
+export interface IFavouriteProps {
+  favourites: IPianoProps[]
 }

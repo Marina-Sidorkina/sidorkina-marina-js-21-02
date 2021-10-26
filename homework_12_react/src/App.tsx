@@ -9,6 +9,7 @@ import Categories from "./components/categories/Categories";
 import { categories } from "./mocks/categories";
 import Favourite from "./components/favourite/Favourite";
 import Footer from "./components/footer/Footer";
+import { pianos } from "./mocks/pianos";
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
         <section className="page">
           <Promo title={ promo.title } message={ promo.message }/>
           <Categories categories={ categories }/>
-          <Favourite />
+          <Favourite favourites={ pianos }/>
         </section>
 
       </main>
