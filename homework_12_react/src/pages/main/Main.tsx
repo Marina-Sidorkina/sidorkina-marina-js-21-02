@@ -4,7 +4,7 @@ import {promo} from "../../mocks/promo";
 import Categories from "../../components/categories/Categories";
 import {categories} from "../../mocks/categories";
 import Favourite from "../../components/favourite/Favourite";
-import {pianos} from "../../mocks/pianos";
+import { pianos } from "../../mocks/pianos";
 
 class Main extends React.Component {
   render() {

@@ -6,21 +6,23 @@ import { filters } from "./mocks/filters";
 import Footer from "./components/footer/Footer";
 import Main from "./pages/main/Main";
 
-function App() {
-  return (
-    <div className="App">
-      <Header />
-      <main className="App__main">
-        <Form filters={ filters }/>
+class App extends React.Component {
+  render() {
+    return (
+      <div className="App">
+        <Header />
+        <main className="App__main">
+          <Form filters={ filters }/>
 
-        <section className="page">
-          <Main />
-        </section>
+          <section className="page">
+            <Main />
+          </section>
 
-      </main>
-      <Footer />
-    </div>
-  );
+        </main>
+        <Footer />
+      </div>
+    );
+  }
 }
 
 export default App;
