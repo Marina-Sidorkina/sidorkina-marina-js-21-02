@@ -6,6 +6,7 @@ import { filters } from "./mocks/filters";
 import Promo from "./components/promo/Promo";
 import { promo } from "./mocks/promo";
 import Categories from "./components/categories/Categories";
+import { categories } from "./mocks/categories";
 import Footer from "./components/footer/Footer";
 
 import schK280 from './img/schimmel-k-280.jpg';
@@ -25,7 +26,8 @@ function App() {
 
         <section className="page">
           <Promo title={ promo.title } message={ promo.message }/>
-          <Categories />
+          <Categories categories={ categories }/>
+
           <div className="favourite">
             <h3 className="favourite__title">Популярные</h3>
             <ul className="favourite__pianos pianos">
