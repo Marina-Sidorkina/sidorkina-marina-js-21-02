@@ -1,6 +1,6 @@
 import React from "react";
 import "./Promo.css";
-import { IPromoProps } from "../../interfaces/interfaces";
+import { IPromoProps } from "../../@types/interfaces/interfaces";
 
 class Promo extends React.Component<IPromoProps> {
   render() {

@@ -1,6 +1,6 @@
 import React from "react";
 import "./Piano.css";
-import { IPianoProps } from "../../interfaces/interfaces";
+import { IPianoProps } from "../../@types/interfaces/interfaces";
 
 class Piano extends React.Component<IPianoProps> {
   render() {

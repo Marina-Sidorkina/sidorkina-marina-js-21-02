@@ -1,7 +1,7 @@
 import React from "react";
 import "./Form.css";
 import Filter from "../filter/Filter";
-import { IFormItems, IFormProps } from "../../interfaces/interfaces";
+import { IFormItems, IFormProps } from "../../@types/interfaces/interfaces";
 
 class Form extends React.Component<IFormProps> {
   render() {

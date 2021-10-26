@@ -1,6 +1,6 @@
 import React from "react";
 import "./Category.css";
-import { ICategoryProps } from "../../interfaces/interfaces";
+import { ICategoryProps } from "../../@types/interfaces/interfaces";
 
 class Category extends React.Component<ICategoryProps> {
   render() {

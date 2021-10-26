@@ -1,6 +1,6 @@
 import React from "react";
 import "./Filter.css";
-import { IFilterProps } from "../../interfaces/interfaces";
+import { IFilterProps } from "../../@types/interfaces/interfaces";
 
 class Filter extends React.Component<IFilterProps> {
   render() {

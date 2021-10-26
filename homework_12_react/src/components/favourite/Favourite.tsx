@@ -1,6 +1,6 @@
 import React from "react";
 import "./Favourite.css";
-import { IFavouriteProps } from "../../interfaces/interfaces";
+import { IFavouriteProps } from "../../@types/interfaces/interfaces";
 import Piano from "../piano/Piano";
 
 class Favourite extends React.Component<IFavouriteProps> {
