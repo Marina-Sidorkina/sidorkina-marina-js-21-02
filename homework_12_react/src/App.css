@@ -5,7 +5,7 @@
   margin: 0 auto;
 }
 
-.main {
+.App__main {
   box-sizing: border-box;
   display: grid;
   grid-template-columns: 240px 1fr;
@@ -13,14 +13,6 @@
   width: 1024px;
   min-height: calc(100vh - 150px);
   padding: 15px;
-}
-
-.sidebar {
-  box-sizing: border-box;
-  width: 240px;
-  padding-top: 35px;
-  background-color: #f9ecf9;
-  border-radius: 10px;
 }
 
 .promo {

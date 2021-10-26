@@ -1,9 +1,9 @@
 import React from "react";
 import "./App.css";
 import Header from "./components/header/Header";
+import Form from "./components/form/Form";
+import { filters } from "./mocks/filters";
 import Footer from "./components/footer/Footer";
-import Filter from "./components/filter/Filter";
-import { filter } from "./mocks/filter";
 
 import schK280 from './img/schimmel-k-280.jpg';
 import fazF156 from './img/fazioli-f-156.png';
@@ -12,16 +12,14 @@ import kawNd21 from './img/kawai-nd-21.jpg';
 import schK256 from './img/schimmel-k-256.jpg';
 import fazF183 from './img/fazioli-f-183.png';
 
+
 function App() {
   return (
     <div className="App">
       <Header />
+      <main className="App__main">
+        <Form filters={ filters }/>
 
-      <main className="main">
-        <form className="sidebar">
-          <Filter legend="Рояли" items={ filter.grandPianos } />
-          <Filter legend="Пианино" items={ filter.pianos } />
-        </form>
         <section className="page">
           <div className="promo">
             <h2 className="promo__title">Пианино и рояли с многолетней историей</h2>

@@ -1,0 +1,7 @@
+.sidebar {
+  box-sizing: border-box;
+  width: 240px;
+  padding-top: 35px;
+  background-color: #f9ecf9;
+  border-radius: 10px;
+}
