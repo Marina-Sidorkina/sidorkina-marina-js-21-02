@@ -28,6 +28,7 @@ class App extends React.Component<{}, IAppState> {
 
     this.indexStart = 100;
     this.addItem = this.addItem.bind(this);
+    this.deleteItem = this.deleteItem.bind(this);
   }
 
   createTodoItem(text: string) {
