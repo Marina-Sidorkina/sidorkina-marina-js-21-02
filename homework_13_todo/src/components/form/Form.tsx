@@ -21,11 +21,12 @@ class Form extends React.Component<IFormProps, IFormState> {
     this.onTextChange = this.onTextChange.bind(this);
   }
 
-  onSubmit(evt: { preventDefault: () => void; }) {
+  onSubmit(evt: { target: any; preventDefault: () => void; }) {
     evt.preventDefault();
+    evt.target.reset();
 
     this.props.onItemSubmit(this.state.text);
-
+    
     this.setState({
       text: ""
     });
@@ -42,7 +43,7 @@ class Form extends React.Component<IFormProps, IFormState> {
       <form className="form app__form" onSubmit={ this.onSubmit }>
         <input className="form__input" type="text"
                placeholder="New item"
-               onChange={ this.onTextChange }></input>
+               onChange={this.onTextChange}/>
         <button className="form__button" type="submit">Add</button>
       </form>
     );

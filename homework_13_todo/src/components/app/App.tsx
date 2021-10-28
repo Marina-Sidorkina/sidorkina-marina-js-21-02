@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Header from "../header/Header";
 import Form from "../form/Form";
+import List from "../list/List";
 
 interface ITodoItem {
   text: string
@@ -40,18 +41,20 @@ class App extends React.Component<{}, IAppState> {
   };
 
   addItem(text: string) {
-    const newItem = this.createTodoItem(text);
+    if(text) {
+      const newItem = this.createTodoItem(text);
 
-    this.setState(({ todoItems }) => {
-      const newArray = [
-        ...todoItems,
-        newItem
-      ];
+      this.setState(({ todoItems }) => {
+        const newArray = [
+          ...todoItems,
+          newItem
+        ];
 
-      return {
-        todoItems: newArray
-      }
-    });
+        return {
+          todoItems: newArray
+        }
+      });
+    }
   }
 
   deleteItem(index: string) {
@@ -74,29 +77,7 @@ class App extends React.Component<{}, IAppState> {
       <div className="app">
         <Header />
         <Form onItemSubmit={ this.addItem }/>
-
-        <ul className="list app__list">
-          <li className="item list__item">
-          <span className="list__text">
-            <i className="list__icon far fa-calendar-alt"></i>
-            <span className="list__span">Drink Coffee</span>
-          </span>
-            <button className="list__button" type="button">Done</button>
-            <button className="list__button list__button_trash" type="button">
-              <i className="far fa-trash-alt"></i>
-            </button>
-          </li>
-          <li className="item list__item">
-          <span className="list__text">
-            <i className="list__icon far fa-calendar-alt"></i>
-            <span className="list__span">Create TodoList</span>
-          </span>
-            <button className="list__button" type="button">Done</button>
-            <button className="list__button list__button_trash" type="button">
-              <i className="far fa-trash-alt"></i>
-            </button>
-          </li>
-        </ul>
+        <List items={ this.state.todoItems }/>
       </div>
     );
   }
