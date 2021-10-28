@@ -16,12 +16,12 @@ class List extends React.Component<IListProps> {
     const elements = this.props.items.map((item: ITodoItem) =>
       <li key={ item.id } className="item list__item">
           <span className="list__text">
-            <i className="list__icon far fa-calendar-alt"></i>
+            <i className="list__icon far fa-calendar-alt"/>
             <span className="list__span">{ item.text }</span>
           </span>
         <button className="list__button" type="button">Done</button>
         <button className="list__button list__button_trash" type="button">
-          <i className="far fa-trash-alt"></i>
+          <i className="far fa-trash-alt"/>
         </button>
       </li>
     );
