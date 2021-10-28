@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Header from "../header/Header";
+import Form from "../form/Form";
 
 interface ITodoItem {
   text: string
@@ -26,6 +27,7 @@ class App extends React.Component<{}, IAppState> {
     }
 
     this.indexStart = 100;
+    this.addItem = this.addItem.bind(this);
   }
 
   createTodoItem(text: string) {
@@ -70,10 +72,8 @@ class App extends React.Component<{}, IAppState> {
     return (
       <div className="app">
         <Header />
-        <form className="form app__form">
-          <input className="form__input" type="text" placeholder="New item"></input>
-          <button className="form__button" type="submit">Add</button>
-        </form>
+        <Form onItemSubmit={ this.addItem }/>
+
         <ul className="list app__list">
           <li className="item list__item">
           <span className="list__text">
