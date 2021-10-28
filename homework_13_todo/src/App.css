@@ -4,6 +4,7 @@
 }
 
 .header {
+  box-sizing: border-box;
   width: 720px;
   height: 75px;
   padding-left: 15px;
@@ -15,4 +16,109 @@
   margin-bottom: 0;
   font-size: 32px;
   line-height: 75px;
+}
+
+.form {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 720px;
+  height: 75px;
+  padding: 0 10px;
+}
+
+.form__input {
+  width: 600px;
+  height: 40px;
+  padding-left: 15px;
+  font-size: 20px;
+  border: 1px solid indigo;
+  border-radius: 10px;
+}
+
+.form__button {
+  width: 70px;
+  height: 44px;
+  font-size: 20px;
+  color: white;
+  background-color: #000066;
+  border: 1px solid indigo;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.form__button:hover {
+  opacity: 0.8;
+}
+
+.form__button:active {
+  opacity: 0.7;
+}
+
+.list {
+  box-sizing: border-box;
+  width: 720px;
+  margin: 0;
+  padding: 0 10px;
+  list-style: none;
+}
+
+.list__item {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 700px;
+  min-height: 44px;
+  margin-bottom: 15px;
+}
+
+.list__text {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 500px;
+  min-height: 44px;
+  padding: 10px;
+  font-size: 20px;
+  border: 1px solid indigo;
+  border-radius: 10px;
+}
+
+.list__icon {
+  margin-right: 10px;
+  color: indigo;
+}
+
+.list__button {
+  width: 100px;
+  height: 44px;
+  font-size: 20px;
+  color: green;
+  border: 1px solid green;
+  background-color: transparent;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.list__button:hover {
+  color: white;
+  background-color: green;
+}
+
+.list__button:active {
+  opacity: 0.7;
+}
+
+.list__button_trash {
+  width: 50px;
+  color: red;
+  border: 1px solid red;
+}
+
+.list__button_trash:hover {
+  color: white;
+  background-color: red;
 }
