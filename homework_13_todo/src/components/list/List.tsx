@@ -1,30 +1,45 @@
 import React from "react";
 import "./List.css";
+import Item from "../item/Item";
 
 interface ITodoItem {
-  text: string
-  done: boolean,
-  id: number
+  text: string;
+  done: boolean;
+  id: number;
 }
 
 interface IListProps {
   items: ITodoItem[];
+  onItemDelete: (id: number) => void;
+  onToggleDone: (id: number) => void;
 }
 
 class List extends React.Component<IListProps> {
+  constructor(props: IListProps) {
+    super(props);
+
+    this.onItemDelete = this.onItemDelete.bind(this);
+    this.onToggleDone = this.onToggleDone.bind(this);
+  }
+
+  onItemDelete(id: number) {
+    this.props.onItemDelete(id)
+  }
+
+  onToggleDone(id: number) {
+    this.props.onToggleDone(id);
+  }
+
   render() {
     const elements = this.props.items.map((item: ITodoItem) =>
-      <li key={ item.id } className="item list__item">
-          <span className="list__text">
-            <i className="list__icon far fa-calendar-alt"/>
-            <span className="list__span">{ item.text }</span>
-          </span>
-        <button className="list__button" type="button">Done</button>
-        <button className="list__button list__button_trash" type="button">
-          <i className="far fa-trash-alt"/>
-        </button>
-      </li>
+      <Item key={ item.id }
+            id={ item.id }
+            itemText={ item.text }
+            onItemDelete={ this.onItemDelete }
+            onToggleDone={ this.onToggleDone }
+            done={ item.done }/>
     );
+
     return (
       <ul className="list app__list">
         { elements }

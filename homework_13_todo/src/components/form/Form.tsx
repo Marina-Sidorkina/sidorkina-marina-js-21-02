@@ -43,7 +43,7 @@ class Form extends React.Component<IFormProps, IFormState> {
       <form className="form app__form" onSubmit={ this.onSubmit }>
         <input className="form__input" type="text"
                placeholder="New item"
-               onChange={this.onTextChange}/>
+               onChange={ this.onTextChange }/>
         <button className="form__button" type="submit">Add</button>
       </form>
     );
