@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import Header from "../header/Header";
 
 interface ITodoItem {
   text: string
@@ -68,9 +69,7 @@ class App extends React.Component<{}, IAppState> {
   render() {
     return (
       <div className="app">
-        <header className="header app__header">
-          <h1 className="header__title">TodoList</h1>
-        </header>
+        <Header />
         <form className="form app__form">
           <input className="form__input" type="text" placeholder="New item"></input>
           <button className="form__button" type="submit">Add</button>

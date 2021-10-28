@@ -1,0 +1,14 @@
+.header {
+  box-sizing: border-box;
+  width: 720px;
+  height: 75px;
+  padding-left: 15px;
+  border-bottom: 3px solid indigo;
+}
+
+.header__title {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 32px;
+  line-height: 75px;
+}
