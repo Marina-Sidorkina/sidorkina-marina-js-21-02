@@ -1,13 +1,6 @@
 import React from "react";
 import "./Item.css";
-
-interface IItemProps {
-  itemText: string;
-  onItemDelete: (id: number) => void;
-  onToggleDone: (id: number) => void;
-  id: number;
-  done: boolean;
-}
+import { IItemProps } from "../../@types/interfaces/interfaces";
 
 class Item extends React.Component<IItemProps> {
   readonly id: number;

@@ -1,18 +1,7 @@
 import React from "react";
 import "./List.css";
 import Item from "../item/Item";
-
-interface ITodoItem {
-  text: string;
-  done: boolean;
-  id: number;
-}
-
-interface IListProps {
-  items: ITodoItem[];
-  onItemDelete: (id: number) => void;
-  onToggleDone: (id: number) => void;
-}
+import { ITodoItem, IListProps } from "../../@types/interfaces/interfaces";
 
 class List extends React.Component<IListProps> {
   constructor(props: IListProps) {

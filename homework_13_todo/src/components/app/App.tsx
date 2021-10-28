@@ -3,16 +3,7 @@ import './App.css';
 import Header from "../header/Header";
 import Form from "../form/Form";
 import List from "../list/List";
-
-interface ITodoItem {
-  text: string
-  done: boolean,
-  id: number
-}
-
-interface IAppState {
-  todoItems: ITodoItem[];
-}
+import { ITodoItem, IAppState } from "../../@types/interfaces/interfaces";
 
 class App extends React.Component<{}, IAppState> {
   private indexStart: number;
@@ -50,10 +41,10 @@ class App extends React.Component<{}, IAppState> {
     return array.length ? array[array.length - 1].id : 100;
   }
 
-  createTodoItem(text: string, done: boolean = false) {
+  createTodoItem(text: string) {
     return {
       text,
-      done: done,
+      done: false,
       id: this.indexStart++
     }
   };

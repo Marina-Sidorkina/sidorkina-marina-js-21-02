@@ -1,13 +1,6 @@
 import React from "react";
 import "./Form.css";
-
-interface IFormProps {
-  onItemSubmit: (text: string) => void;
-}
-
-interface IFormState {
-  text: string;
-}
+import { IFormState, IFormProps } from "../../@types/interfaces/interfaces";
 
 class Form extends React.Component<IFormProps, IFormState> {
   constructor(props: IFormProps) {
