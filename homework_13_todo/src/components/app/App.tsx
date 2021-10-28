@@ -20,7 +20,8 @@ class App extends React.Component<{}, IAppState> {
   constructor(props: {}) {
     super(props);
 
-    this.indexStart = 100;
+    this.indexStart = localStorage.getItem("todoListData") ?
+      this.getLastIndex() : 100;
 
     this.state = {
       todoItems: [
@@ -32,6 +33,21 @@ class App extends React.Component<{}, IAppState> {
     this.addItem = this.addItem.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
     this.onToggleDone = this.onToggleDone.bind(this);
+  }
+
+  componentDidMount() {
+    if(!localStorage.getItem("todoListData")) {
+      localStorage.setItem("todoListData", JSON.stringify(this.state.todoItems));
+    } else {
+      this.setState({
+        todoItems: JSON.parse(localStorage.getItem("todoListData") as string)
+      });
+    }
+  }
+
+  getLastIndex() {
+    const array = JSON.parse(localStorage.getItem("todoListData") as string);
+    return array.length ? array[array.length - 1].id : 100;
   }
 
   createTodoItem(text: string, done: boolean = false) {
@@ -52,6 +68,8 @@ class App extends React.Component<{}, IAppState> {
           newItem
         ];
 
+        localStorage.setItem("todoListData", JSON.stringify(newArray));
+
         return {
           todoItems: newArray
         }
@@ -68,6 +86,8 @@ class App extends React.Component<{}, IAppState> {
         ...todoItems.slice(targetIndex + 1)
       ];
 
+      localStorage.setItem("todoListData", JSON.stringify(newArray));
+
       return {
         todoItems: newArray
       }
@@ -77,13 +97,15 @@ class App extends React.Component<{}, IAppState> {
   onToggleDone(index: number) {
     this.setState(({ todoItems }) => {
       const targetIndex = todoItems.findIndex((el: ITodoItem) => el.id === index);
-      const newItem = this.createTodoItem(todoItems[targetIndex].text, !todoItems[targetIndex].done);
+      const newItem = {...todoItems[targetIndex], done: !todoItems[targetIndex].done};
 
       const newArray = [
         ...todoItems.slice(0, targetIndex),
         newItem,
         ...todoItems.slice(targetIndex + 1)
       ];
+
+      localStorage.setItem("todoListData", JSON.stringify(newArray));
 
       return {
         todoItems: newArray
