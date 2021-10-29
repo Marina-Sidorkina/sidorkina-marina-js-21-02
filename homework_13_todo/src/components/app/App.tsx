@@ -15,10 +15,12 @@ class App extends React.Component<{}, IAppState> {
       this.getLastIndex() : 100;
 
     this.state = {
-      todoItems: [
-        this.createTodoItem("Drink Coffee"),
-        this.createTodoItem("Create Todo List")
-      ]
+      todoItems: localStorage.getItem("todoListData") ?
+        JSON.parse(localStorage.getItem("todoListData") as string) :
+        [
+          this.createTodoItem("Drink Coffee"),
+          this.createTodoItem("Create Todo List")
+        ]
     }
 
     this.addItem = this.addItem.bind(this);
@@ -29,10 +31,6 @@ class App extends React.Component<{}, IAppState> {
   componentDidMount() {
     if(!localStorage.getItem("todoListData")) {
       localStorage.setItem("todoListData", JSON.stringify(this.state.todoItems));
-    } else {
-      this.setState({
-        todoItems: JSON.parse(localStorage.getItem("todoListData") as string)
-      });
     }
   }
 
@@ -45,7 +43,7 @@ class App extends React.Component<{}, IAppState> {
     return {
       text,
       done: false,
-      id: this.indexStart++
+      id: ++this.indexStart
     }
   };
 
