@@ -45,14 +45,17 @@ class App extends React.Component<{}, IAppState> {
   onPageChange(id: number) {
     this.setState({
       currentPage: id
-    })
+    });
 
     this.loadUsersList(id - 1, this.state.perPageLimit);
   }
 
   onLimitPerPageChange(value: number) {
-    this.setState({ perPageLimit: value });
-    this.loadUsersList(this.state.currentPage, value);
+    this.setState({
+      perPageLimit: value
+    });
+
+    this.loadUsersList(this.state.currentPage - 1, value);
   }
 
   render() {

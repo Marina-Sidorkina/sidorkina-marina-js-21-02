@@ -23,7 +23,6 @@ class Limit extends React.Component<ILimitProps> {
                 onChange={ (evt) => this.onValueChange(evt) }>
           <option className="limit__option" value="10">10 items</option>
           <option className="limit__option" value="20">20 items</option>
-          <option className="limit__option" value="30">30 items</option>
         </select>
       </form>
     );
