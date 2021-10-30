@@ -4,47 +4,39 @@ import Header from "../header/Header";
 import UsersList from "../usersList/UsersList";
 import Footer from "../footer/Footer";
 import { IAppState } from "../../@types/interfaces/components";
-
-const list = [
-  {
-    id: "ghajHAGSJHgajshg1",
-    title: "Mr",
-    firstName: "John",
-    lastName: "Doe",
-    picture: "http://placehold.it/80x80"
-  },
-  {
-    id: "ghajHAGSJHgajshg2",
-    title: "Mr",
-    firstName: "John",
-    lastName: "Doe",
-    picture: "http://placehold.it/80x80"
-  },
-  {
-    id: "ghajHAGSJHgajshg3",
-    title: "Mr",
-    firstName: "John",
-    lastName: "Doe",
-    picture: "http://placehold.it/80x80"
-  },
-  {
-    id: "ghajHAGSJHgajshg4",
-    title: "Mr",
-    firstName: "John",
-    lastName: "Doe",
-    picture: "http://placehold.it/80x80"
-  }
-]
+import { getUsersList } from "../../api/dummyApi";
+import { IDummyApiResponse } from "../../@types/interfaces/dummyApi";
 
 class App extends React.Component<{}, IAppState> {
   constructor(props: {}) {
     super(props);
 
     this.state = {
-      currentPage: 1
+      currentPage: 1,
+      perPageLimit: 10,
+      users: []
     }
 
     this.onPageChange = this.onPageChange.bind(this);
+    this.updateUsersList = this.updateUsersList.bind(this);
+  }
+
+  componentDidMount() {
+    this.loadUsersList(this.state.currentPage - 1, this.state.perPageLimit);
+  }
+
+  updateUsersList(data: IDummyApiResponse) {
+    this.setState({
+      users: data.data
+    })
+  }
+
+  loadUsersList(page: number, limit: number) {
+    getUsersList(
+      page,
+      limit,
+      this.updateUsersList,
+      console.error);
   }
 
   onPageChange(id: number) {
@@ -58,9 +50,11 @@ class App extends React.Component<{}, IAppState> {
       <div className="app">
         <div className="app__container">
           <Header/>
+
           <main className="main app__main">
-            <UsersList list={ list }/>
+            <UsersList list={ this.state.users }/>
           </main>
+
           <Footer currentPage={ this.state.currentPage }
                   onPageChange={ this.onPageChange }/>
         </div>

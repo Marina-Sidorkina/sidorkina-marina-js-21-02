@@ -1,13 +1,15 @@
-export interface IAppState {
-  currentPage: number;
-}
-
 export interface IUserProps {
   id: string;
   title: string;
   firstName: string;
   lastName: string;
   picture: string;
+}
+
+export interface IAppState {
+  currentPage: number;
+  perPageLimit: number;
+  users: IUserProps[];
 }
 
 export interface IUsersListProps {
