@@ -3,7 +3,7 @@ import "./Loader.css";
 import { ILoaderState } from "../../@types/interfaces/components";
 
 class Loader extends React.Component<{}, ILoaderState> {
-  private id: any;
+  private id: number;
 
   constructor(props: {}) {
     super(props);
@@ -12,7 +12,7 @@ class Loader extends React.Component<{}, ILoaderState> {
       width: 0
     }
 
-    this.id = null;
+    this.id = 0;
     this.showLoadingProcess = this.showLoadingProcess.bind(this)
   }
 
