@@ -8,7 +8,7 @@ class Header extends React.Component<IHeaderProps> {
     return (
       <header className={`header app__header ${ this.props.className }`}>
         <h1 className="header__title">Пользователи</h1>
-        <Limit className={'some'} onValueChange={ this.props.onLimitChange }/>
+        <Limit onValueChange={ this.props.onLimitChange }/>
       </header>
     );
   }

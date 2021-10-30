@@ -44,6 +44,5 @@ export interface IThemeProps {
 }
 
 export interface ILimitProps {
-  className: string;
   onValueChange: (value: number) => void;
 }
