@@ -21,6 +21,7 @@ class App extends React.Component<{}, IAppState> {
 
     this.onPageChange = this.onPageChange.bind(this);
     this.updateUsersList = this.updateUsersList.bind(this);
+    this.onLimitPerPageChange = this.onLimitPerPageChange.bind(this);
   }
 
   componentDidMount() {
@@ -49,6 +50,11 @@ class App extends React.Component<{}, IAppState> {
     this.loadUsersList(id - 1, this.state.perPageLimit);
   }
 
+  onLimitPerPageChange(value: number) {
+    this.setState({ perPageLimit: value });
+    this.loadUsersList(this.state.currentPage, value);
+  }
+
   render() {
     return (
       <ThemeContextProvider>
@@ -58,7 +64,8 @@ class App extends React.Component<{}, IAppState> {
               return (
                 <div className={ `app ${ context.darkTheme ? "app_dark" : "" }` }>
                   <div className="app__container">
-                    <Header className={ context.darkTheme ? "header_dark" : "" } />
+                    <Header className={ context.darkTheme ? "header_dark" : "" }
+                            onLimitChange={ this.onLimitPerPageChange }/>
 
                     <main className="main app__main">
                       <UsersList list={ this.state.users }

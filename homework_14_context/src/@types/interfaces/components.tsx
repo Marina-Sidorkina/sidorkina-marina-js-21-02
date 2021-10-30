@@ -18,6 +18,7 @@ export interface IAppState {
 
 export interface IHeaderProps {
   className: string;
+  onLimitChange: (value: number) => void;
 }
 
 export interface IUsersListProps {
@@ -40,4 +41,9 @@ export interface IPaginatorProps {
 
 export interface IThemeProps {
   className: string;
+}
+
+export interface ILimitProps {
+  className: string;
+  onValueChange: (value: number) => void;
 }
