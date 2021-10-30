@@ -1,0 +1,24 @@
+.category {
+  padding: 15px;
+  background-color: #f9ecf9;
+  border-radius: 10px;
+}
+
+.category__link {
+  color: darkmagenta;
+}
+
+.category__title {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: darkmagenta;
+}
+
+.category__title:hover {
+  opacity: 0.7;
+}
+
+.category__message {
+  margin-top: 0;
+  margin-bottom: 0;
+}

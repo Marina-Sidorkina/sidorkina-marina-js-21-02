@@ -1,0 +1,7 @@
+.limit {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 65px;
+  padding-top: 10px;
+}
