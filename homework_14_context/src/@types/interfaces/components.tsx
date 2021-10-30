@@ -14,11 +14,13 @@ export interface IAppState {
   currentPage: number;
   perPageLimit: number;
   users: IDummyUser[];
+  isLoading: boolean;
 }
 
 export interface IHeaderProps {
   className: string;
   onLimitChange: (value: number) => void;
+  isLoading: boolean;
 }
 
 export interface IUsersListProps {
@@ -45,4 +47,8 @@ export interface IThemeProps {
 
 export interface ILimitProps {
   onValueChange: (value: number) => void;
+}
+
+export interface ILoaderState {
+  width: number;
 }

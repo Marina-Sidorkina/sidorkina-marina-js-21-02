@@ -18,7 +18,7 @@ class Limit extends React.Component<ILimitProps> {
   render() {
     return (
       <form className="limit">
-        <label htmlFor="limit-select">Choose items per page</label>
+        <label htmlFor="limit-select">Set items per page</label>
         <select name="limit__select" id="limit-select"
                 onChange={ (evt) => this.onValueChange(evt) }>
           <option className="limit__option" value="10">10 items</option>

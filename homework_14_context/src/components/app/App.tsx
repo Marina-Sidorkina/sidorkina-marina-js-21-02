@@ -16,7 +16,8 @@ class App extends React.Component<{}, IAppState> {
     this.state = {
       currentPage: 1,
       perPageLimit: 10,
-      users: []
+      users: [],
+      isLoading: false
     }
 
     this.onPageChange = this.onPageChange.bind(this);
@@ -30,11 +31,13 @@ class App extends React.Component<{}, IAppState> {
 
   updateUsersList(data: IDummyApiResponse) {
     this.setState({
-      users: data.data
+      users: data.data,
+      isLoading: false
     })
   }
 
   loadUsersList(page: number, limit: number) {
+    this.setState({ isLoading: true });
     getUsersList(
       page,
       limit,
@@ -68,7 +71,8 @@ class App extends React.Component<{}, IAppState> {
                 <div className={ `app ${ context.darkTheme ? "app_dark" : "" }` }>
                   <div className="app__container">
                     <Header className={ context.darkTheme ? "header_dark" : "" }
-                            onLimitChange={ this.onLimitPerPageChange }/>
+                            onLimitChange={ this.onLimitPerPageChange }
+                            isLoading={ this.state.isLoading }/>
 
                     <main className="main app__main">
                       <UsersList list={ this.state.users }
