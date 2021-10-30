@@ -25,6 +25,10 @@ class App extends React.Component<{}, IAppState> {
     this.loadUsersList(this.state.currentPage - 1, this.state.perPageLimit);
   }
 
+  componentDidUpdate() {
+    this.loadUsersList(this.state.currentPage - 1, this.state.perPageLimit);
+  }
+
   updateUsersList(data: IDummyApiResponse) {
     this.setState({
       users: data.data
