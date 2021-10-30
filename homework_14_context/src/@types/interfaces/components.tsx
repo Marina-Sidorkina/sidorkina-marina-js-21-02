@@ -1,19 +1,22 @@
+import {IDummyUser} from "./dummyApi";
+
 export interface IUserProps {
   id: string;
   title: string;
   firstName: string;
   lastName: string;
   picture: string;
+  index: number;
 }
 
 export interface IAppState {
   currentPage: number;
   perPageLimit: number;
-  users: IUserProps[];
+  users: IDummyUser[];
 }
 
 export interface IUsersListProps {
-  list: IUserProps[];
+  list: IDummyUser[];
 }
 
 export interface IFooterProps {

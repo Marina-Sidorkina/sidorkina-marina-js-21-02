@@ -3,6 +3,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
+  height: 100%;
   padding: 15px;
   background-color: white;
   border-radius: 5px;
@@ -14,6 +15,11 @@
   height: 80px;
   object-fit: cover;
   margin-right: 15px;
+}
+
+.user__img_first {
+  width: 150px;
+  height: 150px;
 }
 
 .user__info {

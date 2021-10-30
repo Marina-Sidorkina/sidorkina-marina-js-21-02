@@ -7,13 +7,14 @@ class UsersList extends React.Component<IUsersListProps> {
   render() {
     const { list } = this.props;
 
-    const elements = list.map((item) => (
+    const elements = list.map((item, index) => (
       <li className="users-list__item" key={ item.id }>
         <User id={ item.id }
               title={ item.title }
               firstName={ item.firstName }
               lastName={ item.lastName }
-              picture={ item.picture }/>
+              picture={ item.picture }
+              index={ index }/>
       </li>
     ));
 
