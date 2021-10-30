@@ -3,10 +3,24 @@
   height: 100%;
 }
 
+@keyframes shake {
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 .helper__text {
   position: absolute;
   top: -25px;
   background-color: white;
   border: 1px solid black;
   border-radius: 5px;
+  animation-name: shake;
+  animation-duration: 1s;
 }
