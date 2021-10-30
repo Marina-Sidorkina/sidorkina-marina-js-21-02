@@ -1,0 +1,12 @@
+.helper {
+  position: relative;
+  height: 100%;
+}
+
+.helper__text {
+  position: absolute;
+  top: -25px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+}
