@@ -22,7 +22,6 @@ class Loader extends React.Component<{}, ILoaderState> {
 
   componentWillUnmount() {
     cancelAnimationFrame(this.id);
-    this.setState({ width: 0 });
   }
 
   showLoadingProcess() {
