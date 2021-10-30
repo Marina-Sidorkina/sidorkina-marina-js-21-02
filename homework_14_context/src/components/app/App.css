@@ -4,6 +4,10 @@
   background-color: #f2f2f2;
 }
 
+.app_dark {
+  background-color: #0d1117;
+}
+
 .app__container {
   width: 1024px;
   min-height: 100vh;

@@ -24,7 +24,7 @@ class Paginator extends React.Component<IPaginatorProps> {
     ));
 
     return (
-      <ul className="paginator">
+      <ul className={ `paginator ${ this.props.className }` }>
         { elements }
       </ul>
     );

@@ -10,6 +10,13 @@
   box-shadow: -1px 4px 30px -16px rgba(34, 60, 80, 0.43);
 }
 
+.user_dark {
+  background-color: #21262d;
+}
+.user_dark .user__info {
+  color: white;
+}
+
 .user__img {
   width: 80px;
   height: 80px;

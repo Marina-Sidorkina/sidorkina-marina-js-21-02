@@ -6,7 +6,7 @@ import helper from "../../hocs/helper/helper";
 
 class UsersList extends React.Component<IUsersListProps> {
   render() {
-    const { list } = this.props;
+    const { list, userClassName } = this.props;
 
     const elements = list.map((item, index) => {
       const UserWithHelper = helper(User, item.id);
@@ -17,7 +17,8 @@ class UsersList extends React.Component<IUsersListProps> {
                 firstName={item.firstName}
                 lastName={item.lastName}
                 picture={item.picture}
-                index={index}/>
+                index={index}
+                className={ userClassName }/>
         </li>
       )
     });

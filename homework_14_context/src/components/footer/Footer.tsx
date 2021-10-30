@@ -9,8 +9,9 @@ class Footer extends  React.Component<IFooterProps> {
     return (
       <footer className="footer">
         <Paginator onCurrentChange={ this.props.onPageChange }
-                   current={ this.props.currentPage }/>
-        <Theme />
+                   current={ this.props.currentPage }
+                   className={ this.props.paginatorClassName }/>
+        <Theme className={ this.props.themeClassName }/>
       </footer>
     );
   }

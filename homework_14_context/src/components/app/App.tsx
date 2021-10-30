@@ -6,6 +6,8 @@ import Footer from "../footer/Footer";
 import { IAppState } from "../../@types/interfaces/components";
 import { getUsersList } from "../../api/dummyApi";
 import { IDummyApiResponse } from "../../@types/interfaces/dummyApi";
+import { ThemeContextProvider, ThemeContextConsumer } from "../../contexts/ThemeContext";
+import { IThemeContextState } from "../../@types/interfaces/themeContext";
 
 class App extends React.Component<{}, IAppState> {
   constructor(props: {}) {
@@ -49,18 +51,31 @@ class App extends React.Component<{}, IAppState> {
 
   render() {
     return (
-      <div className="app">
-        <div className="app__container">
-          <Header/>
+      <ThemeContextProvider>
+        <ThemeContextConsumer>
+          {
+            (context: Partial<IThemeContextState>) => {
+              return (
+                <div className={ `app ${ context.darkTheme ? "app_dark" : "" }` }>
+                  <div className="app__container">
+                    <Header className={ context.darkTheme ? "header_dark" : "" } />
 
-          <main className="main app__main">
-            <UsersList list={ this.state.users }/>
-          </main>
+                    <main className="main app__main">
+                      <UsersList list={ this.state.users }
+                                  userClassName={ context.darkTheme ? "user_dark" : "" }/>
+                    </main>
 
-          <Footer currentPage={ this.state.currentPage }
-                  onPageChange={ this.onPageChange }/>
-        </div>
-      </div>
+                    <Footer currentPage={ this.state.currentPage }
+                            onPageChange={ this.onPageChange }
+                            themeClassName={ context.darkTheme ? "theme_dark" : "" }
+                            paginatorClassName={ context.darkTheme ? "paginator_dark" : "" }/>
+                  </div>
+                </div>
+              );
+            }
+          }
+        </ThemeContextConsumer>
+      </ThemeContextProvider>
     );
   }
 }
