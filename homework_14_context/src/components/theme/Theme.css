@@ -1,0 +1,14 @@
+.theme {
+  display: flex;
+  align-items: center;
+}
+
+.theme__label {
+  margin-right: 8px;
+  font-size: 24px;
+}
+
+.theme__input {
+  transform: scale(1.7);
+  margin-right: 7px;
+}
