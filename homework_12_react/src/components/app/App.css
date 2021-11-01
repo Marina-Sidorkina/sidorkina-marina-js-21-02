@@ -1,0 +1,16 @@
+.App {
+  position: relative;
+  width: 1024px;
+  min-height: 100vh;
+  margin: 0 auto;
+}
+
+.App__main {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  grid-column-gap: 15px;
+  width: 1024px;
+  min-height: calc(100vh - 150px);
+  padding: 15px;
+}
