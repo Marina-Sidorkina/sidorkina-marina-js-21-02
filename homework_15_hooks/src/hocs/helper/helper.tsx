@@ -1,40 +1,33 @@
-import React, { SyntheticEvent } from 'react';
-import { IHelperState } from "../../@types/interfaces/hocs";
+import React, {SyntheticEvent, useState} from 'react';
 import "./helper.scss";
 
 function helper(Component: React.ElementType, comment: string) {
-  return class ComponentWithHelper extends React.Component<any, IHelperState> {
-    constructor(props: any) {
-      super(props);
-      this.state = { hovered: false };
-      this.mouseOut = this.mouseOut.bind(this);
-      this.mouseOver = this.mouseOver.bind(this);
-    }
+  return (props: any) => {
+    const [ hovered, setHovered ] = useState(false);
 
-    mouseOver(evt: SyntheticEvent) {
-      this.setState({ hovered: true });
+    const mouseOver = (evt: SyntheticEvent) => {
+      setHovered(true)
       evt.stopPropagation();
     }
 
-    mouseOut(evt: SyntheticEvent) {
-      this.setState({ hovered: false });
+    const mouseOut = (evt: SyntheticEvent) => {
+      setHovered(false)
       evt.stopPropagation();
     }
 
-    render() {
-      return (
-        <div
-          className="helper"
-          onMouseOut={ this.mouseOut }
-          onMouseOver={ this.mouseOver }>
+    return (
+      <div
+        className="helper"
+        onMouseOut={ mouseOut }
+        onMouseOver={ mouseOver }>
 
-            { this.state.hovered && <div className="helper__text">{ comment }</div>}
-            <Component { ...this.props } />
+        { hovered && <div className="helper__text">{ comment }</div>}
+        <Component { ...props } />
 
-        </div>
-      );
-    }
+      </div>
+    );
   }
+
 }
 
 export default helper;
