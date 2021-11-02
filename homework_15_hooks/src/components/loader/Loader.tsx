@@ -8,6 +8,7 @@ const Loader = () =>  {
 
   useEffect(() => {
     let id = 0;
+    isUnmounted.current = false;
 
     if (!isUnmounted.current) {
       const showLoadingProcess = () => {
