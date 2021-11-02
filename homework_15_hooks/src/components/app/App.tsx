@@ -1,97 +1,76 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./App.scss";
 import Header from "../header/Header";
 import UsersList from "../usersList/UsersList";
 import Footer from "../footer/Footer";
-import { IAppState } from "../../@types/interfaces/components";
 import { getUsersList } from "../../api/dummyApi";
-import { IDummyApiResponse } from "../../@types/interfaces/dummyApi";
+import { IDummyApiResponse, IDummyUser } from "../../@types/interfaces/dummyApi";
 import { ThemeContextProvider, ThemeContextConsumer } from "../../contexts/ThemeContext";
 import { IThemeContextState } from "../../@types/interfaces/themeContext";
 
-class App extends React.Component<{}, IAppState> {
-  constructor(props: {}) {
-    super(props);
+const App = () => {
+  const [ currentPage, setCurrentPage ] = useState(1);
+  const [ perPageLimit, setPerPageLimit ] = useState(10);
+  const [ users, setUsers ] = useState([] as IDummyUser[]);
+  const [ isLoading, setIsLoading ] = useState(false);
 
-    this.state = {
-      currentPage: 1,
-      perPageLimit: 10,
-      users: [],
-      isLoading: false
-    }
-
-    this.onPageChange = this.onPageChange.bind(this);
-    this.updateUsersList = this.updateUsersList.bind(this);
-    this.onLimitPerPageChange = this.onLimitPerPageChange.bind(this);
+  const updateUsersList = (data: IDummyApiResponse) => {
+    setUsers(data.data);
+    setIsLoading(false);
   }
 
-  componentDidMount() {
-    this.loadUsersList(this.state.currentPage - 1, this.state.perPageLimit);
-  }
-
-  updateUsersList(data: IDummyApiResponse) {
-    this.setState({
-      users: data.data,
-      isLoading: false
-    })
-  }
-
-  loadUsersList(page: number, limit: number) {
-    this.setState({ isLoading: true });
+  const loadUsersList = (page: number, limit: number) => {
+    setIsLoading(true);
     getUsersList(
       page,
       limit,
-      this.updateUsersList,
+      updateUsersList,
       console.error);
   }
 
-  onPageChange(id: number) {
-    this.setState({
-      currentPage: id
-    });
-
-    this.loadUsersList(id - 1, this.state.perPageLimit);
+  const  onPageChange = (id: number) => {
+    setCurrentPage(id);
+    loadUsersList(id - 1, perPageLimit);
   }
 
-  onLimitPerPageChange(value: number) {
-    this.setState({
-      perPageLimit: value
-    });
-
-    this.loadUsersList(this.state.currentPage - 1, value);
+  const onLimitPerPageChange = (value: number) => {
+    setPerPageLimit(value);
+    loadUsersList(currentPage - 1, value);
   }
 
-  render() {
-    return (
-      <ThemeContextProvider>
-        <ThemeContextConsumer>
-          {
-            (context: Partial<IThemeContextState>) => {
-              return (
-                <div className={ `app ${ context.darkTheme ? "app_dark" : "" }` }>
-                  <div className="app__container">
-                    <Header className={ context.darkTheme ? "header_dark" : "" }
-                            onLimitChange={ this.onLimitPerPageChange }
-                            isLoading={ this.state.isLoading }/>
+  useEffect(() => {
+    loadUsersList(currentPage - 1, perPageLimit);
+  }, [])
 
-                    <main className="main app__main">
-                      <UsersList list={ this.state.users }
-                                  userClassName={ context.darkTheme ? "user_dark" : "" }/>
-                    </main>
+  return (
+    <ThemeContextProvider>
+      <ThemeContextConsumer>
+        {
+          (context: Partial<IThemeContextState>) => {
+            return (
+              <div className={ `app ${ context.darkTheme ? "app_dark" : "" }` }>
+                <div className="app__container">
+                  <Header className={ context.darkTheme ? "header_dark" : "" }
+                          onLimitChange={ onLimitPerPageChange }
+                          isLoading={ isLoading }/>
 
-                    <Footer currentPage={ this.state.currentPage }
-                            onPageChange={ this.onPageChange }
-                            themeClassName={ context.darkTheme ? "theme_dark" : "" }
-                            paginatorClassName={ context.darkTheme ? "paginator_dark" : "" }/>
-                  </div>
+                  <main className="main app__main">
+                    <UsersList list={ users }
+                                userClassName={ context.darkTheme ? "user_dark" : "" }/>
+                  </main>
+
+                  <Footer currentPage={ currentPage }
+                          onPageChange={ onPageChange }
+                          themeClassName={ context.darkTheme ? "theme_dark" : "" }
+                          paginatorClassName={ context.darkTheme ? "paginator_dark" : "" }/>
                 </div>
-              );
-            }
+              </div>
+            );
           }
-        </ThemeContextConsumer>
-      </ThemeContextProvider>
-    );
-  }
+        }
+      </ThemeContextConsumer>
+    </ThemeContextProvider>
+  );
 }
 
 export default App;
