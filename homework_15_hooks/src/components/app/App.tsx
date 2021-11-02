@@ -19,28 +19,22 @@ const App = () => {
     setIsLoading(false);
   }
 
-  const loadUsersList = (page: number, limit: number) => {
-    setIsLoading(true);
-    getUsersList(
-      page,
-      limit,
-      updateUsersList,
-      console.error);
-  }
-
-  const  onPageChange = (id: number) => {
+  const onPageChange = (id: number) => {
     setCurrentPage(id);
-    loadUsersList(id - 1, perPageLimit);
   }
 
   const onLimitPerPageChange = (value: number) => {
     setPerPageLimit(value);
-    loadUsersList(currentPage - 1, value);
   }
 
   useEffect(() => {
-    loadUsersList(1 - currentPage, perPageLimit);
-  }, [])
+    setIsLoading(true);
+    getUsersList(
+      currentPage - 1,
+      perPageLimit,
+      updateUsersList,
+      console.error);
+  }, [ currentPage, perPageLimit ])
 
   return (
     <ThemeContextProvider>

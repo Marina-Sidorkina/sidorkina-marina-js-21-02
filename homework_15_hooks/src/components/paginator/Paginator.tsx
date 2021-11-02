@@ -15,7 +15,7 @@ const Paginator = (props: IPaginatorProps) => {
     <li className="paginator__item" key={ index } onClick={ onCurrentChange }>
       <a className={`paginator__link ${ props.current === index + 1 ?
         "paginator__link_current" : ""}`}
-         href="#">{ index + 1 }</a>
+         href={ `#${ index + 1 }` }>{ index + 1 }</a>
     </li>
   ));
 
