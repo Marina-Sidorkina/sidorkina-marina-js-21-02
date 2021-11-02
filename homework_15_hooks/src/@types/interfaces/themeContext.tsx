@@ -6,5 +6,5 @@ export interface IThemeContextProps {
 
 export interface IThemeContextState {
   darkTheme: boolean;
-  toggleTheme: () => void;
+  toggleTheme: (value: boolean) => void;
 }

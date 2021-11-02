@@ -1,8 +1,11 @@
-import React, {SyntheticEvent} from "react";
+import React, {SyntheticEvent, useContext} from "react";
 import "./Paginator.scss";
 import { IPaginatorProps } from "../../@types/interfaces/components";
+import { ThemeContext } from "../../contexts/ThemeContext";
 
 const Paginator = (props: IPaginatorProps) => {
+  const themeContext = useContext(ThemeContext);
+
   const onCurrentChange = (evt: SyntheticEvent) => {
     const value = parseInt((evt.target as HTMLElement).innerText, 10);
     props.onCurrentChange(value);
@@ -17,7 +20,7 @@ const Paginator = (props: IPaginatorProps) => {
   ));
 
   return (
-    <ul className={ `paginator ${ props.className }` }>
+    <ul className={ `paginator ${ themeContext.darkTheme ? "paginator_dark" : "" }` }>
       { elements }
     </ul>
   );

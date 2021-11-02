@@ -1,27 +1,20 @@
-import React from "react";
+import React, {useContext} from "react";
 import "./Theme.scss";
-import { ThemeContextConsumer } from "../../contexts/ThemeContext";
-import { IThemeContextState } from "../../@types/interfaces/themeContext";
-import { IThemeProps } from "../../@types/interfaces/components";
+import { ThemeContext } from "../../contexts/ThemeContext";
 
-const Theme = (props: IThemeProps) => {
+const Theme = () => {
+  const themeContext = useContext(ThemeContext);
+
   return (
-    <ThemeContextConsumer>
-      {
-        (context: Partial<IThemeContextState>) => {
-          return (
-            <form className={ `theme ${ props.className }`}>
-              <label className="theme__label" htmlFor="theme">Тёмная тема</label>
-              <input className="theme__input"
-                     type="checkbox"
-                     id="theme"
-                     checked={ context.darkTheme }
-                     onChange={ context.toggleTheme }/>
-            </form>
-          );
-        }
-      }
-    </ThemeContextConsumer>
+    <form className={ `theme ${ themeContext.darkTheme ? "theme_dark" : "" }`}>
+      <label className="theme__label" htmlFor="theme">Тёмная тема</label>
+      <input className="theme__input"
+             type="checkbox"
+             id="theme"
+             checked={ themeContext.darkTheme }
+             onChange={ (evt) =>
+               themeContext.toggleTheme && themeContext.toggleTheme(evt.target.checked) }/>
+    </form>
   );
 }
 

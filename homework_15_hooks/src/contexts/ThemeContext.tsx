@@ -1,38 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { IThemeContextProps, IThemeContextState } from "../@types/interfaces/themeContext";
 
-const { Provider, Consumer } = React.createContext<Partial<IThemeContextState>>({});
+const ThemeContext = React.createContext<Partial<IThemeContextState>>({});
 
-class ThemeContextProvider extends React.Component<IThemeContextProps, IThemeContextState> {
-  constructor(props: IThemeContextProps) {
-    super(props);
+const ThemeContextProvider = (props: IThemeContextProps) => {
+  const [ darkTheme, setDarkTheme ] = useState(false);
+  const toggleTheme = (value: boolean) => setDarkTheme(value);
 
-    this.state = {
-      darkTheme: false,
-      toggleTheme: this.toggleTheme.bind(this)
-    }
-  }
-
-  toggleTheme() {
-    this.setState(({ darkTheme}) => {
-      return {
-        darkTheme: !darkTheme
-      }
-    })
-  }
-
-  render() {
-    return (
-      <Provider value={{
-        darkTheme: this.state.darkTheme,
-        toggleTheme: this.state.toggleTheme}}>
-        { this.props.children }
-      </Provider>
-    );
-  }
+  return (
+    <ThemeContext.Provider value={ { darkTheme, toggleTheme } }>
+      { props.children }
+    </ThemeContext.Provider>
+  );
 }
 
 export {
   ThemeContextProvider,
-  Consumer as ThemeContextConsumer
+  ThemeContext
 };

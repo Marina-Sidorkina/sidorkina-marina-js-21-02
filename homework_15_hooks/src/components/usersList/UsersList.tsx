@@ -5,7 +5,7 @@ import User from "../user/User";
 import helper from "../../hocs/helper/helper";
 
 const UsersList = (props: IUsersListProps) => {
-  const { list, userClassName } = props;
+  const { list } = props;
 
   const elements = list.map((item, index) => {
     const UserWithHelper = helper(User, item.id);
@@ -17,8 +17,7 @@ const UsersList = (props: IUsersListProps) => {
                         firstName={item.firstName}
                         lastName={item.lastName}
                         picture={item.picture}
-                        index={index}
-                        className={ userClassName }/>
+                        index={index} />
       </li>
     )
   });

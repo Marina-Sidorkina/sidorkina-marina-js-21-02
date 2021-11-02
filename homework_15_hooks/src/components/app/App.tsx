@@ -5,7 +5,7 @@ import UsersList from "../usersList/UsersList";
 import Footer from "../footer/Footer";
 import { getUsersList } from "../../api/dummyApi";
 import { IDummyApiResponse, IDummyUser } from "../../@types/interfaces/dummyApi";
-import { ThemeContextProvider, ThemeContextConsumer } from "../../contexts/ThemeContext";
+import { ThemeContextProvider, ThemeContext } from "../../contexts/ThemeContext";
 import { IThemeContextState } from "../../@types/interfaces/themeContext";
 
 const App = () => {
@@ -44,31 +44,27 @@ const App = () => {
 
   return (
     <ThemeContextProvider>
-      <ThemeContextConsumer>
+      <ThemeContext.Consumer>
         {
           (context: Partial<IThemeContextState>) => {
             return (
               <div className={ `app ${ context.darkTheme ? "app_dark" : "" }` }>
                 <div className="app__container">
-                  <Header className={ context.darkTheme ? "header_dark" : "" }
-                          onLimitChange={ onLimitPerPageChange }
+                  <Header onLimitChange={ onLimitPerPageChange }
                           isLoading={ isLoading }/>
 
                   <main className="main app__main">
-                    <UsersList list={ users }
-                                userClassName={ context.darkTheme ? "user_dark" : "" }/>
+                    <UsersList list={ users }/>
                   </main>
 
                   <Footer currentPage={ currentPage }
-                          onPageChange={ onPageChange }
-                          themeClassName={ context.darkTheme ? "theme_dark" : "" }
-                          paginatorClassName={ context.darkTheme ? "paginator_dark" : "" }/>
+                          onPageChange={ onPageChange }/>
                 </div>
               </div>
             );
           }
         }
-      </ThemeContextConsumer>
+      </ThemeContext.Consumer>
     </ThemeContextProvider>
   );
 }
