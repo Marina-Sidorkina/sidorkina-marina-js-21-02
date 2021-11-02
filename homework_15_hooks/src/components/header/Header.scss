@@ -5,15 +5,15 @@
   align-items: center;
   height: 65px;
   padding-left: 10px;
-}
 
-.header_dark {
-  color: white;
-}
+  &_dark {
+    color: white;
+  }
 
-.header__title {
-  margin-top: 0;
-  margin-bottom: 0;
-  padding-top: 10px;
-  font-size: 52px;
+  &__title {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 10px;
+    font-size: 52px;
+  }
 }

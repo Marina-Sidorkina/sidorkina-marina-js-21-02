@@ -1,5 +1,5 @@
 import React from "react";
-import "./Header.css";
+import "./Header.scss";
 import { IHeaderProps } from "../../@types/interfaces/components";
 import Limit from "../limit/Limit";
 import Loader from "../loader/Loader";

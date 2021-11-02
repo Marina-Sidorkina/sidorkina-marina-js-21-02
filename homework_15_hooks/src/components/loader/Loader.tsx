@@ -1,5 +1,5 @@
 import React from "react";
-import "./Loader.css";
+import "./Loader.scss";
 import { ILoaderState } from "../../@types/interfaces/components";
 
 class Loader extends React.Component<{}, ILoaderState> {

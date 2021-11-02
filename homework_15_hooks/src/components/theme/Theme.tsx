@@ -1,5 +1,5 @@
 import React from "react";
-import "./Theme.css";
+import "./Theme.scss";
 import { ThemeContextConsumer } from "../../contexts/ThemeContext";
 import { IThemeContextState } from "../../@types/interfaces/themeContext";
 import { IThemeProps } from "../../@types/interfaces/components";

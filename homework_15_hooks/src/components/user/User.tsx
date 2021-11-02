@@ -1,5 +1,5 @@
 import React from "react";
-import "./User.css";
+import "./User.scss";
 import { IUserProps } from "../../@types/interfaces/components";
 
 class User extends React.Component<IUserProps> {

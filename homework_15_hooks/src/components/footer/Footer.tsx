@@ -1,5 +1,5 @@
 import React from "react";
-import "./Footer.css";
+import "./Footer.scss";
 import Theme from "../theme/Theme";
 import Paginator from "../paginator/Paginator";
 import {IFooterProps} from "../../@types/interfaces/components";

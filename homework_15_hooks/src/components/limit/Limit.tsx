@@ -1,5 +1,5 @@
 import React from "react";
-import "./Limit.css";
+import "./Limit.scss";
 import { ILimitProps } from "../../@types/interfaces/components";
 
 class Limit extends React.Component<ILimitProps> {

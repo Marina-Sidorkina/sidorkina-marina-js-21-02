@@ -1,6 +1,6 @@
 import React, { SyntheticEvent } from 'react';
 import { IHelperState } from "../../@types/interfaces/hocs";
-import "./helper.css";
+import "./helper.scss";
 
 function helper(Component: React.ElementType, comment: string) {
   return class ComponentWithHelper extends React.Component<any, IHelperState> {

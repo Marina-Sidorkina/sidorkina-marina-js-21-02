@@ -1,5 +1,5 @@
 import React from "react";
-import "./UsersList.css";
+import "./UsersList.scss";
 import { IUsersListProps } from "../../@types/interfaces/components";
 import User from "../user/User";
 import helper from "../../hocs/helper/helper";

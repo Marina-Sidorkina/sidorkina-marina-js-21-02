@@ -1,5 +1,5 @@
 import React, {SyntheticEvent} from "react";
-import "./Paginator.css";
+import "./Paginator.scss";
 import { IPaginatorProps } from "../../@types/interfaces/components";
 
 class Paginator extends React.Component<IPaginatorProps> {
