@@ -3,9 +3,7 @@ import "./Loader.scss";
 
 const Loader = () =>  {
   const [ width, setWidth ] = useState(0);
-  const style = {
-    width: width
-  };
+  const style = { width: width };
   let id = 0;
 
   const showLoadingProcess = () => {
