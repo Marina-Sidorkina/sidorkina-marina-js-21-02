@@ -39,7 +39,7 @@ const App = () => {
   }
 
   useEffect(() => {
-    loadUsersList(currentPage - 1, perPageLimit);
+    loadUsersList(1 - currentPage, perPageLimit);
   }, [])
 
   return (

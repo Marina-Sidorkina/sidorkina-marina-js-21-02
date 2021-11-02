@@ -1,49 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Loader.scss";
-import { ILoaderState } from "../../@types/interfaces/components";
 
-class Loader extends React.Component<{}, ILoaderState> {
-  private id: number;
+const Loader = () =>  {
+  const [ width, setWidth ] = useState(0);
+  const style = {
+    width: width
+  };
+  let id = 0;
 
-  constructor(props: {}) {
-    super(props);
-
-    this.state = {
-      width: 0
-    }
-
-    this.id = 0;
-    this.showLoadingProcess = this.showLoadingProcess.bind(this)
+  const showLoadingProcess = () => {
+    setWidth(width < 300 ? width + 1 : 0);
+    id = requestAnimationFrame(showLoadingProcess);
   }
 
-  componentDidMount() {
-    this.id = requestAnimationFrame(this.showLoadingProcess);
-  }
+  useEffect(() => {
+    id = requestAnimationFrame(showLoadingProcess);
+    return () => cancelAnimationFrame(id);
+  }, [width])
 
-  componentWillUnmount() {
-    cancelAnimationFrame(this.id);
-  }
-
-  showLoadingProcess() {
-    if (this.state.width < 300) {
-      this.setState(({ width }) => ({ width: width + 1 }));
-      this.id = requestAnimationFrame(this.showLoadingProcess);
-    } else {
-      this.setState({ width: 0 });
-      this.id = requestAnimationFrame(this.showLoadingProcess);
-    }
-  }
-
-  render() {
-    const style = {
-      width: this.state.width
-    }
-    return (
-      <div className="loader">
-        <div className="loader__box" style={ style }/>
-      </div>
-    );
-  }
+  return (
+    <div className="loader">
+      <div className="loader__box" style={ style }/>
+    </div>
+  );
 }
 
 export default Loader;
