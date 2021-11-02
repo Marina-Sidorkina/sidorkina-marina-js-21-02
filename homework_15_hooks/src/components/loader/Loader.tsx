@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./Loader.scss";
 
 const Loader = () =>  {
   const [ width, setWidth ] = useState(0);
   const style = { width: width };
-  const isUnmounted = React.useRef(false);
+  const isUnmounted = useRef(false);
 
   useEffect(() => {
     let id = 0;
