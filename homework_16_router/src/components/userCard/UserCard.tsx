@@ -3,20 +3,22 @@ import "./UserCard.scss";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { getUserCard } from "../../api/dummyApi";
 import { IDummyUserCard } from "../../@types/interfaces/dummyApi";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
+import {processDate} from "../../utils/components";
+import { IUserCardProps, IUserCardParams } from "../../@types/interfaces/components";
 
-interface IParams {
-  id: string;
-}
-
-const UserCard = () => {
+const UserCard = (props: IUserCardProps) => {
   const [user, setUser] = useState({} as IDummyUserCard);
   const themeContext = useContext(ThemeContext)
   const [isLoading, setIsLoading] = useState(true);
-  const params = useParams() as IParams;
+  const params = useParams() as IUserCardParams;
+  const history = useHistory();
 
   useEffect(() => {
-    getUserCard(params.id, setUser, console.error, () => setIsLoading(false));
+    getUserCard(params.id, setUser, console.error, () => {
+      setIsLoading(false)
+    });
+    props.setShowNavItems(false);
   }, [])
 
   return (
@@ -32,11 +34,16 @@ const UserCard = () => {
               <span className="user-card__surname">{user.lastName}</span>
             </div>
             <p className="user-card__info">{`Gender: ${user.gender}`}</p>
-            <p className="user-card__info">{`Birth Date: ${user.dateOfBirth}`}</p>
-            <p className="user-card__info">{`Location: ${user.location}`}</p>
+            <p className="user-card__info">{`Birth Date: ${processDate(user.dateOfBirth)}`}</p>
+            <p className="user-card__info">
+              {`Location: ${user.location.city} (${user.location.country})`}
+            </p>
             <p className="user-card__info">{`Email: ${user.email}`}</p>
             <p className="user-card__info">{`Phone: ${user.phone}`}</p>
-            <p className="user-card__info">{`Registered: ${user.registerDate}`}</p>
+            <p className="user-card__info">{`Registered: ${processDate(user.registerDate)}`}</p>
+            <button className="user-card__button"
+                    type="button"
+                    onClick={ history.goBack }>На главную</button>
           </div>
         </React.Fragment>
       }

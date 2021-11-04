@@ -7,8 +7,10 @@ import { IFooterProps } from "../../@types/interfaces/components";
 const Footer = (props: IFooterProps) => {
   return (
     <footer className="footer">
-      <Paginator onCurrentChange={ props.onPageChange }
-                 current={ props.currentPage }/>
+      {!props.showPaginator ? null :
+        <Paginator onCurrentChange={ props.onPageChange }
+                   current={ props.currentPage }/>
+      }
       <Theme />
     </footer>
   );

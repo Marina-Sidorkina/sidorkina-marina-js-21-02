@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "./UsersList.scss";
 import { IUsersListProps } from "../../@types/interfaces/components";
 import User from "../user/User";
@@ -21,6 +21,10 @@ const UsersList = (props: IUsersListProps) => {
       </li>
     )
   });
+
+  useEffect(() => {
+    props.setShowNavItems(true);
+  }, [])
 
   return (
     <ul className="users-list main__users-list">

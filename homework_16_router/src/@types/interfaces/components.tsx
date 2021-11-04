@@ -17,15 +17,18 @@ export interface IAppState {
 export interface IHeaderProps {
   onLimitChange: (value: number) => void;
   isLoading: boolean;
+  showLimit: boolean;
 }
 
 export interface IUsersListProps {
   list: IUserProps[];
+  setShowNavItems: (value: boolean) => void;
 }
 
 export interface IFooterProps {
   currentPage: number;
   onPageChange: (id: number) => void;
+  showPaginator: boolean;
 }
 
 export interface IPaginatorProps {
@@ -35,4 +38,13 @@ export interface IPaginatorProps {
 
 export interface ILimitProps {
   onValueChange: (value: number) => void;
+}
+
+export interface IUserCardProps {
+  setShowNavItems: (value: boolean) => void;
+}
+
+
+export interface IUserCardParams {
+  id: string;
 }

@@ -15,6 +15,7 @@ const App = () => {
   const [ perPageLimit, setPerPageLimit ] = useState(10);
   const [ users, setUsers ] = useState([] as IDummyUser[]);
   const [ isLoading, setIsLoading ] = useState(false);
+  const [ showNavItems, setShowNavItems ] = useState(true)
 
   const updateUsersList = (data: IDummyApiResponse) => {
     setUsers(data.data);
@@ -48,22 +49,25 @@ const App = () => {
                 <div className={ `app ${ context.darkTheme ? "app_dark" : "" }` }>
                   <div className="app__container">
                     <Header onLimitChange={ onLimitPerPageChange }
-                            isLoading={ isLoading }/>
+                            isLoading={ isLoading }
+                            showLimit={ showNavItems }/>
 
                     <main className="main app__main">
                       <Switch>
                         <Route path="/user/:id">
-                          <UserCard />
+                          <UserCard setShowNavItems={ setShowNavItems }/>
                         </Route>
                         <Route path="/list">
-                          <UsersList list={ users }/>
+                          <UsersList list={ users }
+                                     setShowNavItems={ setShowNavItems }/>
                         </Route>
                         <Redirect from="/" to="/list" />
                       </Switch>
                     </main>
 
                     <Footer currentPage={ currentPage }
-                            onPageChange={ onPageChange }/>
+                            onPageChange={ onPageChange }
+                            showPaginator={ showNavItems }/>
                   </div>
                 </div>
               </HashRouter>

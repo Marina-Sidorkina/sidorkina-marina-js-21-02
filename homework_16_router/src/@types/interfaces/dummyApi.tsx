@@ -25,5 +25,11 @@ export interface IDummyUserCard {
   registerDate: string;
   phone: string;
   picture: string;
-  location: object;
+  location: {
+    street: string;
+    city: string;
+    state: string;
+    country: string;
+    timezone: string;
+  };
 }
