@@ -9,7 +9,9 @@ const Footer = (props: IFooterProps) => {
     <footer className="footer">
       {!props.showPaginator ? null :
         <Paginator onCurrentChange={ props.onPageChange }
-                   current={ props.currentPage }/>
+                   current={ props.currentPage }
+                   itemsAmount={ props.itemsAmount }
+                   perPageLimit={ props.perPageLimit }/>
       }
       <Theme />
     </footer>

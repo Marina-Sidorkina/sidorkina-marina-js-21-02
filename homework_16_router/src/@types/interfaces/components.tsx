@@ -26,17 +26,22 @@ export interface IUsersListProps {
   setIsLoading: (value: boolean) => void;
   perPageLimit: number;
   currentPage: number;
+  setItemsAmount: (value: number) => void;
 }
 
 export interface IFooterProps {
   currentPage: number;
   onPageChange: (id: number) => void;
   showPaginator: boolean;
+  itemsAmount: number;
+  perPageLimit: number;
 }
 
 export interface IPaginatorProps {
   onCurrentChange: (current: number) => void;
   current: number;
+  itemsAmount: number;
+  perPageLimit: number;
 }
 
 export interface ILimitProps {

@@ -8,7 +8,7 @@ import { IDummyApiResponse, IDummyUser } from "../../@types/interfaces/dummyApi"
 
 const UsersList = (props: IUsersListProps) => {
   const [list, setList] = useState([] as IDummyUser[]);
-  const { currentPage, perPageLimit, setIsLoading } = props;
+  const { currentPage, perPageLimit, setIsLoading, setItemsAmount } = props;
   const isUnmounted = useRef(false);
 
   useEffect(() => {
@@ -19,6 +19,7 @@ const UsersList = (props: IUsersListProps) => {
     const updateList = (data: IDummyApiResponse) => {
       if(!isUnmounted.current) {
         setList(data.data);
+        setItemsAmount(data.total)
         setIsLoading(false);
       }
     }
@@ -32,7 +33,7 @@ const UsersList = (props: IUsersListProps) => {
     return () => {
       isUnmounted.current = true;
     };
-  }, [ currentPage, perPageLimit, setIsLoading ]);
+  }, [ currentPage, perPageLimit, setIsLoading, setItemsAmount ]);
 
   const elements = list.map((item, index) => {
     const UserWithHelper = helper(User, item.id);

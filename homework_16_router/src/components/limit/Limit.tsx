@@ -6,7 +6,8 @@ const Limit = (props: ILimitProps) => {
   const { onValueChange, perPageLimit } = props;
   const limits = [
     [10, "элементов"],
-    [20, "элементов"]
+    [20, "элементов"],
+    [5, "элементов"]
   ];
   let startIndex: number;
 

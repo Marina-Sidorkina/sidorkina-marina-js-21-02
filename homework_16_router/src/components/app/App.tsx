@@ -12,13 +12,17 @@ const App = () => {
   const [ currentPage, setCurrentPage ] = useState(1);
   const [ perPageLimit, setPerPageLimit ] = useState(10);
   const [ isLoading, setIsLoading ] = useState(false);
-  const [ showNavItems, setShowNavItems ] = useState(true)
+  const [ showNavItems, setShowNavItems ] = useState(true);
+  const [ itemsAmount, setItemsAmount ] = useState(0);
 
   const onPageChange = (id: number) => {
     setCurrentPage(id);
   }
 
   const onLimitPerPageChange = (value: number) => {
+    if(currentPage > Math.ceil(itemsAmount / value)) {
+      setCurrentPage(Math.ceil(itemsAmount / value));
+    }
     setPerPageLimit(value);
   }
 
@@ -46,7 +50,8 @@ const App = () => {
                           <UsersList setShowNavItems={ setShowNavItems }
                                      setIsLoading={ setIsLoading }
                                      currentPage={ currentPage }
-                                     perPageLimit={ perPageLimit }/>
+                                     perPageLimit={ perPageLimit }
+                                     setItemsAmount={ setItemsAmount }/>
                         </Route>
                         <Redirect from="/" to="/list" />
                       </Switch>
@@ -54,7 +59,9 @@ const App = () => {
 
                     <Footer currentPage={ currentPage }
                             onPageChange={ onPageChange }
-                            showPaginator={ showNavItems }/>
+                            showPaginator={ showNavItems }
+                            itemsAmount={ itemsAmount }
+                            perPageLimit={ perPageLimit }/>
                   </div>
                 </div>
               </HashRouter>
