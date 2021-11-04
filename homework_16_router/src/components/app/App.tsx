@@ -33,7 +33,8 @@ const App = () => {
                   <div className="app__container">
                     <Header onLimitChange={ onLimitPerPageChange }
                             isLoading={ isLoading }
-                            showLimit={ showNavItems }/>
+                            showLimit={ showNavItems }
+                            perPageLimit={ perPageLimit }/>
 
                     <main className="main app__main">
                       <Switch>

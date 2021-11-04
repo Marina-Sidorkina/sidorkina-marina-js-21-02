@@ -10,14 +10,14 @@ const Loader = () =>  {
     let id = 0;
     isUnmounted.current = false;
 
-    if (!isUnmounted.current) {
-      const showLoadingProcess = () => {
+    const showLoadingProcess = () => {
+      if (!isUnmounted.current) {
         setWidth(width < 300 ? width + 1 : 0);
         id = requestAnimationFrame(showLoadingProcess);
       }
-
-      id = requestAnimationFrame(showLoadingProcess);
     }
+
+    id = requestAnimationFrame(showLoadingProcess);
 
     return () => {
       cancelAnimationFrame(id);

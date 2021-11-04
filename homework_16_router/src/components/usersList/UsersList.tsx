@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import "./UsersList.scss";
 import { IUsersListProps } from "../../@types/interfaces/components";
 import User from "../user/User";
@@ -9,10 +9,13 @@ import { IDummyApiResponse, IDummyUser } from "../../@types/interfaces/dummyApi"
 const UsersList = (props: IUsersListProps) => {
   const [list, setList] = useState([] as IDummyUser[]);
   const { currentPage, perPageLimit, setIsLoading } = props;
+  const isUnmounted = useRef(false);
 
   const updateList = (data: IDummyApiResponse) => {
-    setList(data.data);
-    setIsLoading(false);
+    if(!isUnmounted.current) {
+      setList(data.data);
+      setIsLoading(false);
+    }
   }
 
   useEffect(() => {
@@ -20,12 +23,13 @@ const UsersList = (props: IUsersListProps) => {
   }, [])
 
   useEffect(() => {
+    isUnmounted.current = false;
     setIsLoading(true);
-    getUsersList(
-      currentPage - 1,
-      perPageLimit,
-      updateList,
-      console.error);
+    getUsersList(currentPage - 1, perPageLimit, updateList, console.error);
+
+    return () => {
+      isUnmounted.current = true;
+    };
   }, [ currentPage, perPageLimit ]);
 
   const elements = list.map((item, index) => {

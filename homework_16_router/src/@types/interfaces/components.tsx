@@ -18,6 +18,7 @@ export interface IHeaderProps {
   onLimitChange: (value: number) => void;
   isLoading: boolean;
   showLimit: boolean;
+  perPageLimit: number;
 }
 
 export interface IUsersListProps {
@@ -40,13 +41,13 @@ export interface IPaginatorProps {
 
 export interface ILimitProps {
   onValueChange: (value: number) => void;
+  perPageLimit: number;
 }
 
 export interface IUserCardProps {
   setShowNavItems: (value: boolean) => void;
   setIsLoading: (value: boolean) => void;
 }
-
 
 export interface IUserCardParams {
   id: string;
