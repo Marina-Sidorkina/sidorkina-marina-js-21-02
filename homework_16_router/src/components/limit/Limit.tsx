@@ -11,7 +11,7 @@ const Limit = (props: ILimitProps) => {
   let startIndex: number;
 
   const getOptionsOrder = () => {
-    limits.find((item,index) => {
+    limits.forEach((item,index) => {
       if(item[0] === perPageLimit) {
         startIndex = index
       }
