@@ -1,6 +1,6 @@
-import { IDummyApiResponse } from "../@types/interfaces/dummyApi";
+import {IDummyApiResponse, IDummyUserCard} from "../@types/interfaces/dummyApi";
 import {METHOD_GET, API_ID, API_ID_FIELD} from "../constants/dummyApi";
-import { getUsersListUrl } from "../utils/dummuApi";
+import { getUsersListUrl, getUserCardUrl } from "../utils/dummuApi";
 
 export const getUsersList = (
   page: number,
@@ -15,3 +15,19 @@ export const getUsersList = (
 }).then((response) => response.json())
   .then(onSuccess)
   .catch(onError);
+
+export const getUserCard = (
+  id: string,
+  onSuccess: (response: IDummyUserCard) => void,
+  onError: (response: any) => void,
+  finalCallback?: () => void,
+) => fetch(getUserCardUrl(id), {
+  method: METHOD_GET,
+  headers: new Headers({
+    [API_ID_FIELD]: API_ID
+  }),
+}).then((response) => response.json())
+  .then(onSuccess)
+  .catch(onError)
+  .finally(finalCallback);
+

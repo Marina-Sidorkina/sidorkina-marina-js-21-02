@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Route, Switch, HashRouter, Redirect} from 'react-router-dom';
 import "./App.scss";
 import Header from "../header/Header";
 import UsersList from "../usersList/UsersList";
@@ -7,6 +8,7 @@ import { getUsersList } from "../../api/dummyApi";
 import { IDummyApiResponse, IDummyUser } from "../../@types/interfaces/dummyApi";
 import { ThemeContextProvider, ThemeContext } from "../../contexts/ThemeContext";
 import { IThemeContextState } from "../../@types/interfaces/themeContext";
+import UserCard from "../userCard/UserCard";
 
 const App = () => {
   const [ currentPage, setCurrentPage ] = useState(1);
@@ -42,19 +44,29 @@ const App = () => {
         {
           (context: Partial<IThemeContextState>) => {
             return (
-              <div className={ `app ${ context.darkTheme ? "app_dark" : "" }` }>
-                <div className="app__container">
-                  <Header onLimitChange={ onLimitPerPageChange }
-                          isLoading={ isLoading }/>
+              <HashRouter>
+                <div className={ `app ${ context.darkTheme ? "app_dark" : "" }` }>
+                  <div className="app__container">
+                    <Header onLimitChange={ onLimitPerPageChange }
+                            isLoading={ isLoading }/>
 
-                  <main className="main app__main">
-                    <UsersList list={ users }/>
-                  </main>
+                    <main className="main app__main">
+                      <Switch>
+                        <Route path="/user/:id">
+                          <UserCard />
+                        </Route>
+                        <Route path="/list">
+                          <UsersList list={ users }/>
+                        </Route>
+                        <Redirect from="/" to="/list" />
+                      </Switch>
+                    </main>
 
-                  <Footer currentPage={ currentPage }
-                          onPageChange={ onPageChange }/>
+                    <Footer currentPage={ currentPage }
+                            onPageChange={ onPageChange }/>
+                  </div>
                 </div>
-              </div>
+              </HashRouter>
             );
           }
         }
