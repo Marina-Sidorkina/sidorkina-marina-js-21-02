@@ -10,25 +10,26 @@ import { IUserCardProps, IUserCardParams } from "../../@types/interfaces/compone
 const UserCard = (props: IUserCardProps) => {
   const [user, setUser] = useState({} as IDummyUserCard);
   const themeContext = useContext(ThemeContext)
-  const [isLoading, setIsLoading] = useState(true);
+  const [userIsLoading, setUserIsLoading] = useState(true);
   const params = useParams() as IUserCardParams;
   const history = useHistory();
+  const { setIsLoading, setShowNavItems } = props;
 
   const updateUser = (data: IDummyUserCard) => {
     setUser(data);
-    props.setIsLoading(false);
-    setIsLoading(false)
+    setIsLoading(false);
+    setUserIsLoading(false)
   }
 
   useEffect(() => {
-    props.setIsLoading(true);
+    setIsLoading(true);
     getUserCard(params.id, updateUser, console.error);
-    props.setShowNavItems(false);
+    setShowNavItems(false);
   }, [])
 
   return (
     <div className={ `user-card ${ themeContext.darkTheme ? "user-card_dark" : "" }` }>
-      { isLoading ? "Идёт загрузка..." :
+      { userIsLoading ? "Идёт загрузка..." :
         <React.Fragment>
           <img className="user-card__img" src={user.picture} alt="User"/>
           <div className="user-card__info">
