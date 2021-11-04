@@ -1,15 +1,35 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import "./UsersList.scss";
 import { IUsersListProps } from "../../@types/interfaces/components";
 import User from "../user/User";
 import helper from "../../hocs/helper/helper";
+import {getUsersList} from "../../api/dummyApi";
+import { IDummyApiResponse, IDummyUser } from "../../@types/interfaces/dummyApi";
 
 const UsersList = (props: IUsersListProps) => {
-  const { list } = props;
+  const [list, setList] = useState([] as IDummyUser[]);
+  const { currentPage, perPageLimit, setIsLoading } = props;
+
+  const updateList = (data: IDummyApiResponse) => {
+    setList(data.data);
+    setIsLoading(false);
+  }
+
+  useEffect(() => {
+    props.setShowNavItems(true);
+  }, [])
+
+  useEffect(() => {
+    setIsLoading(true);
+    getUsersList(
+      currentPage - 1,
+      perPageLimit,
+      updateList,
+      console.error);
+  }, [ currentPage, perPageLimit ]);
 
   const elements = list.map((item, index) => {
     const UserWithHelper = helper(User, item.id);
-
     return (
       <li className="users-list__item" key={item.id}>
         <UserWithHelper id={item.id}
@@ -21,10 +41,6 @@ const UsersList = (props: IUsersListProps) => {
       </li>
     )
   });
-
-  useEffect(() => {
-    props.setShowNavItems(true);
-  }, [])
 
   return (
     <ul className="users-list main__users-list">

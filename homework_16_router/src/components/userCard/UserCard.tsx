@@ -14,16 +14,21 @@ const UserCard = (props: IUserCardProps) => {
   const params = useParams() as IUserCardParams;
   const history = useHistory();
 
+  const updateUser = (data: IDummyUserCard) => {
+    setUser(data);
+    props.setIsLoading(false);
+    setIsLoading(false)
+  }
+
   useEffect(() => {
-    getUserCard(params.id, setUser, console.error, () => {
-      setIsLoading(false)
-    });
+    props.setIsLoading(true);
+    getUserCard(params.id, updateUser, console.error);
     props.setShowNavItems(false);
   }, [])
 
   return (
     <div className={ `user-card ${ themeContext.darkTheme ? "user-card_dark" : "" }` }>
-      { isLoading ? "Идёт загрузка" :
+      { isLoading ? "Идёт загрузка..." :
         <React.Fragment>
           <img className="user-card__img" src={user.picture} alt="User"/>
           <div className="user-card__info">

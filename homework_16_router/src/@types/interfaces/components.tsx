@@ -21,8 +21,10 @@ export interface IHeaderProps {
 }
 
 export interface IUsersListProps {
-  list: IUserProps[];
   setShowNavItems: (value: boolean) => void;
+  setIsLoading: (value: boolean) => void;
+  perPageLimit: number;
+  currentPage: number;
 }
 
 export interface IFooterProps {
@@ -42,6 +44,7 @@ export interface ILimitProps {
 
 export interface IUserCardProps {
   setShowNavItems: (value: boolean) => void;
+  setIsLoading: (value: boolean) => void;
 }
 
 

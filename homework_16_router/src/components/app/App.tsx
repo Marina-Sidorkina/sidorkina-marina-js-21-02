@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Route, Switch, HashRouter, Redirect} from 'react-router-dom';
 import "./App.scss";
 import Header from "../header/Header";
 import UsersList from "../usersList/UsersList";
 import Footer from "../footer/Footer";
-import { getUsersList } from "../../api/dummyApi";
-import { IDummyApiResponse, IDummyUser } from "../../@types/interfaces/dummyApi";
 import { ThemeContextProvider, ThemeContext } from "../../contexts/ThemeContext";
 import { IThemeContextState } from "../../@types/interfaces/themeContext";
 import UserCard from "../userCard/UserCard";
@@ -13,14 +11,8 @@ import UserCard from "../userCard/UserCard";
 const App = () => {
   const [ currentPage, setCurrentPage ] = useState(1);
   const [ perPageLimit, setPerPageLimit ] = useState(10);
-  const [ users, setUsers ] = useState([] as IDummyUser[]);
   const [ isLoading, setIsLoading ] = useState(false);
   const [ showNavItems, setShowNavItems ] = useState(true)
-
-  const updateUsersList = (data: IDummyApiResponse) => {
-    setUsers(data.data);
-    setIsLoading(false);
-  }
 
   const onPageChange = (id: number) => {
     setCurrentPage(id);
@@ -29,15 +21,6 @@ const App = () => {
   const onLimitPerPageChange = (value: number) => {
     setPerPageLimit(value);
   }
-
-  useEffect(() => {
-    setIsLoading(true);
-    getUsersList(
-      currentPage - 1,
-      perPageLimit,
-      updateUsersList,
-      console.error);
-  }, [ currentPage, perPageLimit ])
 
   return (
     <ThemeContextProvider>
@@ -55,11 +38,14 @@ const App = () => {
                     <main className="main app__main">
                       <Switch>
                         <Route path="/user/:id">
-                          <UserCard setShowNavItems={ setShowNavItems }/>
+                          <UserCard setShowNavItems={ setShowNavItems }
+                                    setIsLoading={ setIsLoading }/>
                         </Route>
                         <Route path="/list">
-                          <UsersList list={ users }
-                                     setShowNavItems={ setShowNavItems }/>
+                          <UsersList setShowNavItems={ setShowNavItems }
+                                     setIsLoading={ setIsLoading }
+                                     currentPage={ currentPage }
+                                     perPageLimit={ perPageLimit }/>
                         </Route>
                         <Redirect from="/" to="/list" />
                       </Switch>
