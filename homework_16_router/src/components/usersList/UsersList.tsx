@@ -11,26 +11,28 @@ const UsersList = (props: IUsersListProps) => {
   const { currentPage, perPageLimit, setIsLoading } = props;
   const isUnmounted = useRef(false);
 
-  const updateList = (data: IDummyApiResponse) => {
-    if(!isUnmounted.current) {
-      setList(data.data);
-      setIsLoading(false);
-    }
-  }
-
   useEffect(() => {
     props.setShowNavItems(true);
-  }, [])
+  }, [props])
 
   useEffect(() => {
+    const updateList = (data: IDummyApiResponse) => {
+      if(!isUnmounted.current) {
+        setList(data.data);
+        setIsLoading(false);
+      }
+    }
+
     isUnmounted.current = false;
+
     setIsLoading(true);
+
     getUsersList(currentPage - 1, perPageLimit, updateList, console.error);
 
     return () => {
       isUnmounted.current = true;
     };
-  }, [ currentPage, perPageLimit ]);
+  }, [ currentPage, perPageLimit, setIsLoading ]);
 
   const elements = list.map((item, index) => {
     const UserWithHelper = helper(User, item.id);

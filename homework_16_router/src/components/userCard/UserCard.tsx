@@ -15,17 +15,20 @@ const UserCard = (props: IUserCardProps) => {
   const history = useHistory();
   const { setIsLoading, setShowNavItems } = props;
 
-  const updateUser = (data: IDummyUserCard) => {
-    setUser(data);
-    setIsLoading(false);
-    setUserIsLoading(false)
-  }
-
   useEffect(() => {
+    const updateUser = (data: IDummyUserCard) => {
+      setUser(data);
+      setIsLoading(false);
+      setUserIsLoading(false)
+    }
+
     setIsLoading(true);
+
     getUserCard(params.id, updateUser, console.error);
+
     setShowNavItems(false);
-  }, [])
+
+  }, [setIsLoading, params.id, setShowNavItems])
 
   return (
     <div className={ `user-card ${ themeContext.darkTheme ? "user-card_dark" : "" }` }>
