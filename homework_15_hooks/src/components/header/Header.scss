@@ -1,0 +1,19 @@
+.header {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 65px;
+  padding-left: 10px;
+
+  &_dark {
+    color: white;
+  }
+
+  &__title {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 10px;
+    font-size: 52px;
+  }
+}

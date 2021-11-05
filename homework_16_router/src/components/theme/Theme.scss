@@ -1,0 +1,18 @@
+.theme {
+  display: flex;
+  align-items: center;
+
+  &_dark {
+    color: white;
+  }
+
+  &__label {
+    margin-right: 8px;
+    font-size: 24px;
+  }
+
+  &__input {
+    transform: scale(1.7);
+    margin-right: 7px;
+  }
+}
