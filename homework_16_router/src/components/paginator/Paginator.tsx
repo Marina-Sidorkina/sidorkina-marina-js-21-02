@@ -1,17 +1,13 @@
 import React, {SyntheticEvent, useContext, useEffect, useRef} from "react";
 import "./Paginator.scss";
-import { IPaginatorProps } from "../../@types/interfaces/components";
+import { IPaginatorProps, IPaginatorUseRef } from "../../@types/interfaces/components";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { getPagesArray } from "../../utils/components";
-
-interface IUseRef {
-  current: JSX.Element[];
-}
 
 const Paginator = (props: IPaginatorProps) => {
   const themeContext = useContext(ThemeContext);
   const { onCurrentChange, current, itemsAmount, perPageLimit } = props;
-  let elements = useRef([]) as IUseRef;
+  let elements = useRef([]) as IPaginatorUseRef;
 
   const onChange = React.useCallback((evt: SyntheticEvent) => {
     const value = parseInt((evt.target as HTMLElement).innerText, 10);

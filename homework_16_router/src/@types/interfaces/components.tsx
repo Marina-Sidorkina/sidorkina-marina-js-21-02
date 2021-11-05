@@ -57,3 +57,7 @@ export interface IUserCardProps {
 export interface IUserCardParams {
   id: string;
 }
+
+export interface IPaginatorUseRef {
+  current: JSX.Element[];
+}
