@@ -23,7 +23,7 @@ const Paginator = (props: IPaginatorProps) => {
     return array.map((item, index) => {
       if(item === 0) {
         return (
-          <div key={ index } className="paginator__dots">...</div>
+          <li key={ index } className="paginator__dots">...</li>
         );
       } else {
         return (
