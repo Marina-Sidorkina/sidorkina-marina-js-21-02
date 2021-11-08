@@ -17,8 +17,8 @@ class Paginator extends React.Component<IPaginatorProps> {
   render() {
     const elements = [...Array(5)].map((_, index) => (
       <li className="paginator__item" key={ index } onClick={ this.onCurrentChange }>
-        <a className={`paginator__link ${ this.props.current === index + 1 ? 
-                        "paginator__link_current" : ""}`}
+        <a className={`paginator__link ${ this.props.current === index + 1 ?
+          "paginator__link_current" : ""}`}
            href="#">{ index + 1 }</a>
       </li>
     ));
