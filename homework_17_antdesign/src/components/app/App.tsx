@@ -14,6 +14,7 @@ const App = () => {
   const [ isLoading, setIsLoading ] = useState(false);
   const [ showNavItems, setShowNavItems ] = useState(true);
   const [ itemsAmount, setItemsAmount ] = useState(0);
+  const [ currentMenuItem, setCurrentMenuItem ] = useState("main")
 
   const onPageChange = (id: number) => {
     setCurrentPage(id);
@@ -24,6 +25,10 @@ const App = () => {
       setCurrentPage(Math.ceil(itemsAmount / value));
     }
     setPerPageLimit(value);
+  }
+
+  const onMenuItemChange = (value: string) => {
+    setCurrentMenuItem(value);
   }
 
   return (
@@ -38,7 +43,9 @@ const App = () => {
                     <Header onLimitChange={ onLimitPerPageChange }
                             isLoading={ isLoading }
                             showLimit={ showNavItems }
-                            perPageLimit={ perPageLimit }/>
+                            perPageLimit={ perPageLimit }
+                            currentMenuItem={ currentMenuItem }
+                            omMenuItemChange={ onMenuItemChange }/>
 
                     <main className="main app__main">
                       <Switch>

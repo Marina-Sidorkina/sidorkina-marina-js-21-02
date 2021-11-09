@@ -19,6 +19,8 @@ export interface IHeaderProps {
   isLoading: boolean;
   showLimit: boolean;
   perPageLimit: number;
+  currentMenuItem: string;
+  omMenuItemChange: (value: string) => void;
 }
 
 export interface IUsersListProps {
