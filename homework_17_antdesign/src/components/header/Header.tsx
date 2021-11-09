@@ -23,10 +23,10 @@ const Header = (props: IHeaderProps) => {
             mode="horizontal"
             selectedKeys={[currentMenuItem]}
             onClick={ onMenuChange }>
-        <Menu.Item key="main" className="header__menu-item">
+        <Menu.Item key="main">
           <Link to="/list">Главная</Link>
         </Menu.Item>
-        <Menu.Item key="registration" className="header__menu-item">
+        <Menu.Item key="registration">
           <Link to="/registration">Регистрация</Link>
         </Menu.Item>
       </Menu>
