@@ -12,7 +12,27 @@
 
   &__menu {
     background-color: transparent;
-    color: inherit;
     font-size: 19px;
+  }
+
+  & .ant-menu-horizontal > .ant-menu-item a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  &_dark .ant-menu-horizontal > .ant-menu-item a {
+    color: white;
+  }
+
+  & .ant-menu-horizontal > .ant-menu-item-selected a {
+    color: #1890ff;
+  }
+
+  & .ant-menu-horizontal > .ant-menu-item a:hover {
+    color:  #1890ff;
+  }
+
+  & .ant-menu-horizontal {
+    border-bottom: none;
   }
 }
