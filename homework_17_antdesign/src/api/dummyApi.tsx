@@ -59,6 +59,5 @@ export const addAndShowNewUser = (newUserData: INewUserData, callback: Function)
   }).then((resp) => resp.json())
     .then((resp) => {
       callback(resp.id);
-      console.log(resp)
     });
 }
