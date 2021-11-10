@@ -8,7 +8,7 @@ import { addAndShowNewUser } from "../../api/dummyApi";
 import { withRouter } from "react-router-dom";
 
 const Registration = (props: IRegistrationProps) => {
-  const { setShowNavItems, history } = props;
+  const { setShowNavItems, history, setCurrentMenuItem } = props;
   const themeContext = useContext(ThemeContext);
   const [ firstName, setFirstName ] = useState("");
   const [ lastName, setLastName ] = useState("");
@@ -22,7 +22,8 @@ const Registration = (props: IRegistrationProps) => {
 
   useEffect(() => {
     setShowNavItems(false);
-  }, [setShowNavItems])
+    setCurrentMenuItem("registration");
+  }, [setShowNavItems, setCurrentMenuItem])
 
   const onFinish = (values: any) => {
     addAndShowNewUser(createNewUser(values), (id: string) => {

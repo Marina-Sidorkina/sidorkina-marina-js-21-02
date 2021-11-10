@@ -52,7 +52,8 @@ const App = () => {
                       <Switch>
                         <Route path="/registration">
                           <Registration
-                            setShowNavItems={ setShowNavItems }/>
+                            setShowNavItems={ setShowNavItems }
+                            setCurrentMenuItem={ setCurrentMenuItem }/>
                         </Route>
                         <Route path="/user/:id">
                           <UserCard setShowNavItems={ setShowNavItems }
@@ -63,7 +64,8 @@ const App = () => {
                                      setIsLoading={ setIsLoading }
                                      currentPage={ currentPage }
                                      perPageLimit={ perPageLimit }
-                                     setItemsAmount={ setItemsAmount }/>
+                                     setItemsAmount={ setItemsAmount }
+                                     setCurrentMenuItem={ setCurrentMenuItem }/>
                         </Route>
                         <Redirect from="/" to="/list" />
                       </Switch>

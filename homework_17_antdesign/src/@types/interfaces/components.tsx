@@ -32,6 +32,7 @@ export interface IUsersListProps {
   perPageLimit: number;
   currentPage: number;
   setItemsAmount: (value: number) => void;
+  setCurrentMenuItem: (value: string) => void;
 }
 
 export interface IFooterProps {
@@ -72,6 +73,7 @@ export interface IRegistrationProps {
   match: Match;
   location: Location;
   history: History;
+  setCurrentMenuItem: (value: string) => void;
 }
 
 export interface IUserFormData {

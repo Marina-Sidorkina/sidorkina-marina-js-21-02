@@ -8,12 +8,13 @@ import { IDummyApiResponse, IDummyUser } from "../../@types/interfaces/dummyApi"
 
 const UsersList = (props: IUsersListProps) => {
   const [list, setList] = useState([] as IDummyUser[]);
-  const { currentPage, perPageLimit, setIsLoading, setItemsAmount } = props;
+  const { currentPage, perPageLimit, setIsLoading, setItemsAmount, setShowNavItems, setCurrentMenuItem } = props;
   const isUnmounted = useRef(false);
 
   useEffect(() => {
-    props.setShowNavItems(true);
-  }, [props])
+    setShowNavItems(true);
+    setCurrentMenuItem("main");
+  }, [setShowNavItems, setCurrentMenuItem])
 
   useEffect(() => {
     const updateList = (data: IDummyApiResponse) => {
