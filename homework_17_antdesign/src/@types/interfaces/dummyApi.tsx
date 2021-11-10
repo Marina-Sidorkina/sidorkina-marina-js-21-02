@@ -33,3 +33,18 @@ export interface IDummyUserCard {
     timezone: string;
   };
 }
+
+export interface INewUserData {
+  dateOfBirth?: string;
+  email: string;
+  firstName: string;
+  gender?: string;
+  lastName: string;
+  location?: {
+    city?: string;
+    country?: string;
+  };
+  phone?: string;
+  picture?: string;
+  title?: string;
+}

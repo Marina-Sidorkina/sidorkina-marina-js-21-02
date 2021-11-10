@@ -34,25 +34,31 @@ const UserCard = (props: IUserCardProps) => {
     <div className={ `user-card ${ themeContext.darkTheme ? "user-card_dark" : "" }` }>
       { userIsLoading ? "Идёт загрузка..." :
         <React.Fragment>
-          <img className="user-card__img" src={user.picture} alt="User"/>
+          {user.picture ?
+            <img className="user-card__img" src={user.picture} alt="User"/> : null }
           <div className="user-card__info">
             <div className="user-card__id">{user.id}</div>
             <div className="user-card__info user-card__info_main">
-              <span className="user-card__title">{`${user.title}.`} </span>
+              {user.title ?
+                <span className="user-card__title">{`${user.title}.`} </span> : null }
               <span className="user-card__name">{user.firstName} </span>
               <span className="user-card__surname">{user.lastName}</span>
             </div>
-            <p className="user-card__info">{`Gender: ${user.gender}`}</p>
-            <p className="user-card__info">{`Birth Date: ${processDate(user.dateOfBirth)}`}</p>
+            {user.gender ?
+              <p className="user-card__info">{`Gender: ${user.gender}`}</p> : null }
+            {user.dateOfBirth ?
+              <p className="user-card__info">{`Birth Date: ${processDate(user.dateOfBirth)}`}</p> : null }
             <p className="user-card__info">
-              {`Location: ${user.location.city} (${user.location.country})`}
+              {user.location ?
+                `Location: ${user.location.city || null} (${user.location.country || null })` : null }
             </p>
             <p className="user-card__info">{`Email: ${user.email}`}</p>
-            <p className="user-card__info">{`Phone: ${user.phone}`}</p>
+            {user.phone ?
+              <p className="user-card__info">{`Phone: ${user.phone}`}</p> : null }
             <p className="user-card__info">{`Registered: ${processDate(user.registerDate)}`}</p>
             <button className="user-card__button"
                     type="button"
-                    onClick={ history.goBack }>На главную</button>
+                    onClick={ history.goBack }>BACK</button>
           </div>
         </React.Fragment>
       }

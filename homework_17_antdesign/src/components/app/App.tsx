@@ -7,6 +7,7 @@ import Footer from "../footer/Footer";
 import { ThemeContextProvider, ThemeContext } from "../../contexts/ThemeContext";
 import { IThemeContextState } from "../../@types/interfaces/themeContext";
 import UserCard from "../userCard/UserCard";
+import Registration from "../registration/Registration";
 
 const App = () => {
   const [ currentPage, setCurrentPage ] = useState(1);
@@ -49,6 +50,10 @@ const App = () => {
 
                     <main className="main app__main">
                       <Switch>
+                        <Route path="/registration">
+                          <Registration
+                            setShowNavItems={ setShowNavItems }/>
+                        </Route>
                         <Route path="/user/:id">
                           <UserCard setShowNavItems={ setShowNavItems }
                                     setIsLoading={ setIsLoading }/>

@@ -1,3 +1,6 @@
+import { Match } from "@testing-library/react";
+import {History} from "history";
+
 export interface IUserProps {
   id: string;
   title: string;
@@ -62,4 +65,24 @@ export interface IUserCardParams {
 
 export interface IPaginatorUseRef {
   current: JSX.Element[];
+}
+
+export interface IRegistrationProps {
+  setShowNavItems: (value: boolean) => void;
+  match: Match;
+  location: Location;
+  history: History;
+}
+
+export interface IUserFormData {
+  title?: string;
+  firstName: string;
+  lastName: string;
+  gender?: string;
+  email: string;
+  dateOfBirth?: string;
+  phone?: string;
+  picture?: string;
+  city?: string;
+  country?: string;
 }

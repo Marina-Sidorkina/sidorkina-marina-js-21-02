@@ -23,18 +23,11 @@ const Header = (props: IHeaderProps) => {
             mode="horizontal"
             selectedKeys={[currentMenuItem]}
             onClick={ onMenuChange }>
-        <Menu.Item key="main">
-          <Link to="/list">Главная</Link>
-        </Menu.Item>
-        <Menu.Item key="registration">
-          <Link to="/registration">Регистрация</Link>
-        </Menu.Item>
+        <Menu.Item key="main"><Link to="/list">Main</Link></Menu.Item>
+        <Menu.Item key="registration"><Link to="/registration">Registration</Link></Menu.Item>
       </Menu>
       { isLoading ? <Loader/> : null }
-      { !showLimit ? null :
-        <Limit onValueChange={ onLimitChange }
-               perPageLimit={ perPageLimit }/>
-      }
+      { !showLimit ? null : <Limit onValueChange={ onLimitChange } perPageLimit={ perPageLimit }/> }
     </header>
   );
 }

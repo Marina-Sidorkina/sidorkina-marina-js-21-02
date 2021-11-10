@@ -5,9 +5,9 @@ import { ILimitProps } from "../../@types/interfaces/components";
 const Limit = (props: ILimitProps) => {
   const { onValueChange, perPageLimit } = props;
   const limits = [
-    [10, "элементов"],
-    [20, "элементов"],
-    [5, "элементов"]
+    [10, "elements"],
+    [20, "elements"],
+    [5, "elements"]
   ];
   let startIndex: number;
 
@@ -36,7 +36,7 @@ const Limit = (props: ILimitProps) => {
 
   return (
     <form className="limit">
-      <label htmlFor="limit-select">Показывать по</label>
+      <label htmlFor="limit-select">Elements Per Page</label>
       <select name="limit__select" id="limit-select"
               onChange={ (evt) => onChange(evt) }>
         { options }

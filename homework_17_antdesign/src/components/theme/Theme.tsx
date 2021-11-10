@@ -7,7 +7,7 @@ const Theme = () => {
 
   return (
     <form className={ `theme ${ themeContext.darkTheme ? "theme_dark" : "" }`}>
-      <label className="theme__label" htmlFor="theme">Тёмная тема</label>
+      <label className="theme__label" htmlFor="theme">Dark Theme</label>
       <input className="theme__input"
              type="checkbox"
              id="theme"
