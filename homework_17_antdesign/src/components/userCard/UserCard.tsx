@@ -49,8 +49,8 @@ const UserCard = (props: IUserCardProps) => {
             {user.dateOfBirth ?
               <p className="user-card__info">{`Birth Date: ${processDate(user.dateOfBirth)}`}</p> : null }
             <p className="user-card__info">
-              {user.location ?
-                `Location: ${user.location.city || null} (${user.location.country || null })` : null }
+              {user.location.city || user.location.country ?
+                `Location: ${user.location.city ? user.location.city : null} (${user.location.country ? user.location.country : null })` : null }
             </p>
             <p className="user-card__info">{`Email: ${user.email}`}</p>
             {user.phone ?

@@ -27,7 +27,9 @@ const Registration = (props: IRegistrationProps) => {
 
   const onFinish = (values: any) => {
     addAndShowNewUser(createNewUser(values), (id: string) => {
-      history.push(`/user/${ id }`);
+      if(id) {
+        history.push(`/user/${ id }`);
+      }
     });
   };
 
@@ -86,7 +88,7 @@ const Registration = (props: IRegistrationProps) => {
       <Form.Item label="Birth Date" name="dateOfBirth"
                  rules={[
                    {
-                     pattern: /^(0[1-9]|1[012])[.](0[1-9]|[12][0-9]|3[01])[.]((19)\d\d)|((20)(0[1-9]|[1][0-9]|2[01]))$/,
+                     pattern: /^(0[1-9]|1[012])[.](0[1-9]|[12][0-9]|3[01])[.](19|20)\d\d$/,
                      message: "Format required: mm.dd.yyyy"
                    },
                    {
