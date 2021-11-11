@@ -16,6 +16,7 @@ const Paginator = (props: IPaginatorProps) => {
 
   const getElements = React.useCallback(() => {
     const array = getPagesArray(itemsAmount, current, perPageLimit);
+    console.log(itemsAmount);
     return array.map((item, index) => {
       if(item === 0) {
         return (

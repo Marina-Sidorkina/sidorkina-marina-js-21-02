@@ -1,13 +1,11 @@
-import { IDummyApiResponse, IDummyUserCard, INewUserData } from "../@types/interfaces/dummyApi";
+import { IDummyUserCard, INewUserData } from "../@types/interfaces/dummyApi";
 import {
   METHOD_GET, API_ID, API_ID_FIELD, NEW_USER_POST_URL, METHOD_POST,
   BASE_URL, USER_URL, PAGE_FIELD, LIMIT_FIELD, CONTENT_TYPE_FIELD, CONTENT_TYPE
-} from "../constants/dummyApi";
+} from "../constants/api/dummyApi";
 
-const doGetRequest = <T extends any>(
+const doGetRequest = (
   path: string,
-  callback: (resp: T) => void,
-  errorCallback?: (response: any) => void,
   searchParams?: Record<string, any>,
 ) => {
 
@@ -17,23 +15,20 @@ const doGetRequest = <T extends any>(
     url.searchParams.append(params[0], params[1].toString());
   });
 
-  fetch(url.toString(), {
+  return fetch(url.toString(), {
     method: METHOD_GET,
     headers: new Headers({
       [API_ID_FIELD]: API_ID
     }),
   }).then((resp) => resp.json())
-    .then(callback)
-    .catch(errorCallback)
+
 };
 
 export const getUsersList = (
     page: number,
     limit: number,
-    onSuccess: (response: IDummyApiResponse) => void,
-    onError: (response: any) => void
   ) => {
-  doGetRequest(USER_URL, onSuccess, onError, {
+  return doGetRequest(USER_URL, {
     [PAGE_FIELD]: page,
     [LIMIT_FIELD]: limit,
   })
@@ -44,7 +39,7 @@ export const getUserCard = (
     onSuccess: (response: IDummyUserCard) => void,
     onError: (response: any) => void
   ) => {
-  doGetRequest(`${USER_URL}/${id}`, onSuccess, onError);
+  doGetRequest(`${USER_URL}/${id}`, onSuccess);
 }
 
 export const addAndShowNewUser = (newUserData: INewUserData, callback: Function) => {

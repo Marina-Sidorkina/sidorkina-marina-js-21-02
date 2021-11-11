@@ -3,40 +3,33 @@ import "./UsersList.scss";
 import { IUsersListProps } from "../../@types/interfaces/components";
 import User from "../user/User";
 import helper from "../../hocs/helper/helper";
-import {getUsersList} from "../../api/dummyApi";
-import { IDummyApiResponse, IDummyUser } from "../../@types/interfaces/dummyApi";
+import { IDummyUser } from "../../@types/interfaces/dummyApi";
+import usersListStore from "../../stores/usersList";
+import { loadUsersListAction } from "../../actions/usersList";
 
 const UsersList = (props: IUsersListProps) => {
   const [list, setList] = useState([] as IDummyUser[]);
-  const { currentPage, perPageLimit, setIsLoading, setItemsAmount, setShowNavItems, setCurrentMenuItem } = props;
+  const { currentPage, perPageLimit, setIsLoading, setShowNavItems, setCurrentMenuItem, setItemsAmount } = props;
   const isUnmounted = useRef(false);
 
   useEffect(() => {
+    isUnmounted.current = false;
     setShowNavItems(true);
     setCurrentMenuItem("main");
-  }, [setShowNavItems, setCurrentMenuItem])
 
-  useEffect(() => {
-    const updateList = (data: IDummyApiResponse) => {
-      if(!isUnmounted.current) {
-        setList(data.data);
-        setItemsAmount(data.total)
-        setIsLoading(false);
-      }
-    }
+    usersListStore.on("change", () => {
+      setList(usersListStore.getUsers());
+      setIsLoading(usersListStore.getIsLoading());
+    })
 
-    isUnmounted.current = false;
-
-    setIsLoading(true);
-
-    getUsersList(currentPage - 1, perPageLimit, updateList, console.error);
+    loadUsersListAction(currentPage, perPageLimit);
 
     return () => {
       isUnmounted.current = true;
     };
-  }, [ currentPage, perPageLimit, setIsLoading, setItemsAmount ]);
+  }, [currentPage, perPageLimit, setCurrentMenuItem, setIsLoading, setShowNavItems]);
 
-  const elements = list.map((item, index) => {
+  const elements = usersListStore.getIsLoading() ? null : list.map((item, index) => {
     const UserWithHelper = helper(User, item.id);
     return (
       <li className="users-list__item" key={item.id}>
