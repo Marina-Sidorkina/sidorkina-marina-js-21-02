@@ -4,18 +4,24 @@ import { IUsersListStoreState } from "../@types/interfaces/stores";
 import { IDummyUser } from "../@types/interfaces/dummyApi";
 import { loadUsersListActionType } from "../@types/interfaces/actions";
 import { LOAD_USERS_LIST, LOAD_USERS_LIST_SUCCESS } from "../constants/stores/usersList";
+import {IDummyApiResponse} from "../../../homework_17_antdesign/src/@types/interfaces/dummyApi";
 
 class UsersListStore extends EventEmitter {
   private state;
 
   constructor() {
     super();
-    this.state = {} as IUsersListStoreState;
+    this.state = {
+      users: [] as IDummyUser[],
+      total: 0,
+      isLoading: false
+    };
     this.getState = this.getState.bind(this);
     this.onUsersListLoadSuccess = this.onUsersListLoadSuccess.bind(this);
     this.handleAction = this.handleAction.bind(this);
     this.getUsers = this.getUsers.bind(this);
     this.getIsLoading = this.getIsLoading.bind(this);
+    this.getTotal = this.getTotal.bind(this);
   }
 
   getState() {
@@ -26,14 +32,19 @@ class UsersListStore extends EventEmitter {
     return this.state.users;
   };
 
+  getTotal() {
+    return this.state.total;
+  }
+
   getIsLoading() {
     return this.state.isLoading;
   };
 
-  onUsersListLoadSuccess(list: IDummyUser[]) {
+  onUsersListLoadSuccess(data: IDummyApiResponse) {
     this.state = {
-      users: list,
-      isLoading: false
+      users: data.data,
+      isLoading: false,
+      total: data.total
     }
 
     this.emit("change");
@@ -42,7 +53,7 @@ class UsersListStore extends EventEmitter {
   handleAction(action: loadUsersListActionType) {
     switch (action.type) {
       case LOAD_USERS_LIST:
-        this.state = { ...this.state, isLoading: true };
+        this.state = { ...this.state, isLoading: true};
         this.emit("change");
         break;
       case LOAD_USERS_LIST_SUCCESS:

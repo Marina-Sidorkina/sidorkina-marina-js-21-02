@@ -18,8 +18,11 @@ const UsersList = (props: IUsersListProps) => {
     setCurrentMenuItem("main");
 
     usersListStore.on("change", () => {
-      setList(usersListStore.getUsers());
-      setIsLoading(usersListStore.getIsLoading());
+      if(!isUnmounted.current) {
+        setList(usersListStore.getUsers());
+        setIsLoading(usersListStore.getIsLoading());
+        setItemsAmount(usersListStore.getTotal());
+      }
     })
 
     loadUsersListAction(currentPage, perPageLimit);
