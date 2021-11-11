@@ -1,38 +1,35 @@
 import React, {useContext, useEffect, useState} from "react";
 import "./UserCard.scss";
 import { ThemeContext } from "../../contexts/ThemeContext";
-import { getUserCard } from "../../api/dummyApi";
 import { IDummyUserCard } from "../../@types/interfaces/dummyApi";
 import { useHistory, useParams } from "react-router-dom";
 import {processDate} from "../../utils/components";
 import { IUserCardProps, IUserCardParams } from "../../@types/interfaces/components";
+import userCardStore from "../../stores/userCard";
+import {loadUserCardAction} from "../../actions/userCard";
 
 const UserCard = (props: IUserCardProps) => {
   const [user, setUser] = useState({} as IDummyUserCard);
-  const themeContext = useContext(ThemeContext)
-  const [userIsLoading, setUserIsLoading] = useState(true);
+  const themeContext = useContext(ThemeContext);
   const params = useParams() as IUserCardParams;
   const history = useHistory();
   const { setIsLoading, setShowNavItems } = props;
 
   useEffect(() => {
-    const updateUser = (data: IDummyUserCard) => {
-      setUser(data);
-      setIsLoading(false);
-      setUserIsLoading(false)
-    }
-
-    setIsLoading(true);
-
-    getUserCard(params.id, updateUser, console.error);
-
     setShowNavItems(false);
+
+    userCardStore.on("change", () => {
+      setUser(userCardStore.getUser());
+      setIsLoading(userCardStore.getIsLoading());
+    })
+
+    loadUserCardAction(params.id);
 
   }, [setIsLoading, params.id, setShowNavItems])
 
   return (
     <div className={ `user-card ${ themeContext.darkTheme ? "user-card_dark" : "" }` }>
-      { userIsLoading ? "Идёт загрузка..." :
+      { userCardStore.getIsLoading() ? "Идёт загрузка..." :
         <React.Fragment>
           {user.picture ?
             <img className="user-card__img" src={user.picture} alt="User"/> : null }
@@ -49,8 +46,8 @@ const UserCard = (props: IUserCardProps) => {
             {user.dateOfBirth ?
               <p className="user-card__info">{`Birth Date: ${processDate(user.dateOfBirth)}`}</p> : null }
             <p className="user-card__info">
-              {user.location.city || user.location.country ?
-                `Location: ${user.location.city ? user.location.city : null} (${user.location.country ? user.location.country : null })` : null }
+              {user.location ?
+                `Location: ${user.location.city ? user.location.city : null} (${user.location.country ? user.location.country : null })` : null}
             </p>
             <p className="user-card__info">{`Email: ${user.email}`}</p>
             {user.phone ?

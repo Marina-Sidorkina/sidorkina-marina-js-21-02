@@ -35,11 +35,9 @@ export const getUsersList = (
 }
 
 export const getUserCard = (
-    id: string,
-    onSuccess: (response: IDummyUserCard) => void,
-    onError: (response: any) => void
+    id: string
   ) => {
-  doGetRequest(`${USER_URL}/${id}`, onSuccess);
+  return doGetRequest(`${USER_URL}/${id}`);
 }
 
 export const addAndShowNewUser = (newUserData: INewUserData, callback: Function) => {

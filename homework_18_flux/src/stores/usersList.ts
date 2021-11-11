@@ -1,10 +1,9 @@
 import { EventEmitter } from "events";
 import dispatcher from "../dispatcher";
-import { IUsersListStoreState } from "../@types/interfaces/stores";
 import { IDummyUser } from "../@types/interfaces/dummyApi";
 import { loadUsersListActionType } from "../@types/interfaces/actions";
-import { LOAD_USERS_LIST, LOAD_USERS_LIST_SUCCESS } from "../constants/stores/usersList";
-import {IDummyApiResponse} from "../../../homework_17_antdesign/src/@types/interfaces/dummyApi";
+import { LOAD_USERS_LIST, LOAD_USERS_LIST_SUCCESS } from "../constants/actions/usersList";
+import { IDummyApiResponse } from "../../../homework_17_antdesign/src/@types/interfaces/dummyApi";
 
 class UsersListStore extends EventEmitter {
   private state;

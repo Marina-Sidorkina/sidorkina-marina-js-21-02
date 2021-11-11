@@ -1,5 +1,5 @@
 import dispatcher from "../dispatcher";
-import {LOAD_USERS_LIST, LOAD_USERS_LIST_SUCCESS} from "../constants/stores/usersList";
+import { LOAD_USERS_LIST, LOAD_USERS_LIST_SUCCESS } from "../constants/actions/usersList";
 import { getUsersList } from "../api/dummyApi";
 
 export const loadUsersListAction = (page: number, pageSize: number) => {

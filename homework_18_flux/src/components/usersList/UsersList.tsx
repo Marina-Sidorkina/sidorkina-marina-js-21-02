@@ -30,7 +30,7 @@ const UsersList = (props: IUsersListProps) => {
     return () => {
       isUnmounted.current = true;
     };
-  }, [currentPage, perPageLimit, setCurrentMenuItem, setIsLoading, setShowNavItems]);
+  }, [currentPage, perPageLimit, setCurrentMenuItem, setIsLoading, setShowNavItems, setItemsAmount]);
 
   const elements = usersListStore.getIsLoading() ? null : list.map((item, index) => {
     const UserWithHelper = helper(User, item.id);

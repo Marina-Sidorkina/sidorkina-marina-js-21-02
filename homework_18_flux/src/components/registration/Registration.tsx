@@ -3,7 +3,7 @@ import "./Registration.scss";
 import { Form, Input, Button } from "antd";
 import { IRegistrationProps } from "../../@types/interfaces/components";
 import { ThemeContext } from "../../contexts/ThemeContext";
-import {createNewUser} from "../../utils/dummyApi";
+import { createNewUser } from "../../utils/dummyApi";
 import { addAndShowNewUser } from "../../api/dummyApi";
 import { withRouter } from "react-router-dom";
 
