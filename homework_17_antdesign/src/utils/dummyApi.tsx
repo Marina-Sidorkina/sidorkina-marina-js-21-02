@@ -7,7 +7,7 @@ export const createNewUser = (data: IUserFormData) => {
     email: data.email,
     dateOfBirth: data.dateOfBirth ? data.dateOfBirth : undefined,
     gender: data.gender ? data.gender : undefined,
-    location: (data.gender || data.country) ? {
+    location: (data.city || data.country) ? {
       city: data.city ? data.city : undefined,
       country: data.country ? data.country : undefined,
     } : undefined,
