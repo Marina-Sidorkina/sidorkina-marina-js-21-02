@@ -6,25 +6,24 @@ import { ThemeContext } from "../../contexts/ThemeContext";
 import { createNewUser } from "../../utils/dummyApi";
 import { addAndShowNewUser } from "../../api/dummyApi";
 import { withRouter } from "react-router-dom";
-import { RULES, REGISTRATION_FORM_SETTINGS } from "../../constants/stores/registration";
+import registrationStore from "../../stores/registration";
+import registration from "../../stores/registration";
 
 const Registration = (props: IRegistrationProps) => {
   const { setShowNavItems, history, setCurrentMenuItem } = props;
   const themeContext = useContext(ThemeContext);
-  const [ firstName, setFirstName ] = useState("");
-  const [ lastName, setLastName ] = useState("");
-  const [ email, setEmail ] = useState("");
-  const [ gender, setGender ] = useState("");
-  const [ title, setTitle ] = useState("");
-  const [ dateOfBirth, setDateOfBirth ] = useState("");
-  const [ country, setCountry ] = useState("");
-  const [ city, setCity ] = useState("");
-  const [ phone, setPhone ] = useState("");
-  const [ picture, setPicture ] = useState("");
+  const [values, setValues] = useState(registrationStore.getValues());
+  const [settings, setSettings] = useState(registration.getSettings())
 
   useEffect(() => {
     setShowNavItems(false);
     setCurrentMenuItem("registration");
+
+    registrationStore.on("change", () => {
+      setValues({...registrationStore.getValues()});
+      setSettings({...registrationStore.getSettings()})
+    });
+
   }, [setShowNavItems, setCurrentMenuItem])
 
   const onFinish = (values: any) => {
@@ -38,16 +37,16 @@ const Registration = (props: IRegistrationProps) => {
   return (
     <Form className={`registration ${ themeContext.darkTheme ? "registration_dark" : "" }`}
           onFinish={ onFinish }>
-      { Object.keys(REGISTRATION_FORM_SETTINGS).map((key) => {
+      { Object.keys(registrationStore.getSettings()).map((key) => {
         return (
-          <Form.Item key={ REGISTRATION_FORM_SETTINGS[key].name }
-                     label={ REGISTRATION_FORM_SETTINGS[key].label }
-                     name={ REGISTRATION_FORM_SETTINGS[key].name }
-                     required={ REGISTRATION_FORM_SETTINGS[key].required }
-                     rules={ REGISTRATION_FORM_SETTINGS[key].rules }>
-            <Input value={ eval(REGISTRATION_FORM_SETTINGS[key].name) }
+          <Form.Item key={ settings[key].name }
+                     label={ settings[key].label }
+                     name={ settings[key].name }
+                     required={ settings[key].required }
+                     rules={ settings[key].rules }>
+            <Input value={ values[key] }
                    onChange={ (value) => {
-                     eval(REGISTRATION_FORM_SETTINGS[key].setter)(value.target.value);
+                     settings[key].action(value.target.value);
                    } }/>
           </Form.Item>
         )

@@ -1,4 +1,4 @@
-import { IDummyUserCard, INewUserData } from "../@types/interfaces/dummyApi";
+import { INewUserData } from "../@types/interfaces/dummyApi";
 import {
   METHOD_GET, API_ID, API_ID_FIELD, NEW_USER_POST_URL, METHOD_POST,
   BASE_URL, USER_URL, PAGE_FIELD, LIMIT_FIELD, CONTENT_TYPE_FIELD, CONTENT_TYPE

@@ -12,3 +12,7 @@ export interface loadUsersListActionType extends ActionType {
 export interface loadUserCardActionType extends ActionType {
   payload: IDummyUserCard;
 }
+
+export interface updateInputValue extends ActionType {
+  payload: string
+}
