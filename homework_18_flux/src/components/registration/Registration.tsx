@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {useContext, useEffect, useRef, useState} from "react";
 import "./Registration.scss";
 import { Form, Input, Button } from "antd";
 import { IRegistrationProps } from "../../@types/interfaces/components";
@@ -13,9 +13,11 @@ const Registration = (props: IRegistrationProps) => {
   const { history } = props;
   const themeContext = useContext(ThemeContext);
   const [values, setValues] = useState(registrationStore.getValues());
-  const [settings, setSettings] = useState(registration.getSettings())
+  const [settings, setSettings] = useState(registration.getSettings());
+  const isUnmounted = useRef(false);
 
   useEffect(() => {
+    isUnmounted.current = false;
     updateShowNavItemsAction(false);
     updateCurrentMenuItemAction("registration");
 
@@ -24,7 +26,12 @@ const Registration = (props: IRegistrationProps) => {
       setSettings({...registrationStore.getSettings()})
     });
 
-  }, [updateShowNavItemsAction, updateCurrentMenuItemAction])
+    return () => {
+      isUnmounted.current = true;
+      registrationStore.removeAllListeners("change");
+    };
+
+  }, [])
 
   const onFinish = (values: any) => {
     sendFormAndShowUserAction(values, history);

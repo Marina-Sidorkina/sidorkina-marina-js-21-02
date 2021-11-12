@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext, useEffect, useRef, useState} from "react";
 import "./UserCard.scss";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { IDummyUserCard } from "../../@types/interfaces/dummyApi";
@@ -6,24 +6,32 @@ import { useHistory, useParams } from "react-router-dom";
 import {processDate} from "../../utils/components";
 import {IUserCardParams} from "../../@types/interfaces/components";
 import userCardStore from "../../stores/userCard";
-import {loadUserCardAction} from "../../actions/userCard";
-import {updateIsLoadingAction, updateShowNavItemsAction} from "../../actions/app";
+import { loadUserCardAction } from "../../actions/userCard";
+import { updateShowNavItemsAction } from "../../actions/app";
 
 const UserCard = () => {
   const [user, setUser] = useState({} as IDummyUserCard);
   const themeContext = useContext(ThemeContext);
   const params = useParams() as IUserCardParams;
   const history = useHistory();
+  const isUnmounted = useRef(false);
 
   useEffect(() => {
-    updateShowNavItemsAction(false);
-
     userCardStore.on("change", () => {
       setUser(userCardStore.getUser());
     })
+  }, [])
 
+  useEffect(() => {
+    isUnmounted.current = false;
+    updateShowNavItemsAction(false);
     loadUserCardAction(params.id);
-  }, [updateIsLoadingAction, params.id, updateShowNavItemsAction])
+
+    return () => {
+      isUnmounted.current = true;
+      userCardStore.removeAllListeners("change");
+    };
+  }, [params.id])
 
   return (
     <div className={ `user-card ${ themeContext.darkTheme ? "user-card_dark" : "" }` }>

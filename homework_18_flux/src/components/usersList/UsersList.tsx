@@ -8,8 +8,6 @@ import usersListStore from "../../stores/usersList";
 import { loadUsersListAction } from "../../actions/usersList";
 import {
   updateCurrentMenuItemAction,
-  updateIsLoadingAction,
-  updateItemsAmountAction,
   updateShowNavItemsAction
 } from "../../actions/app";
 
@@ -19,22 +17,24 @@ const UsersList = (props: IUsersListProps) => {
   const isUnmounted = useRef(false);
 
   useEffect(() => {
-    isUnmounted.current = false;
-    updateShowNavItemsAction(true);
-    updateCurrentMenuItemAction("main");
-
     usersListStore.on("change", () => {
       if(!isUnmounted.current) {
         setList(usersListStore.getUsers());
       }
     })
+  }, [])
 
+  useEffect(() => {
+    isUnmounted.current = false;
+    updateShowNavItemsAction(true);
+    updateCurrentMenuItemAction("main");
     loadUsersListAction(currentPage - 1, perPageLimit);
 
     return () => {
       isUnmounted.current = true;
+      usersListStore.removeAllListeners("change");
     };
-  }, [currentPage, perPageLimit, updateItemsAmountAction, updateIsLoadingAction, updateCurrentMenuItemAction, updateShowNavItemsAction]);
+  }, [currentPage, perPageLimit]);
 
   const elements = usersListStore.getIsLoading() ? null : list.map((item, index) => {
     const UserWithHelper = helper(User, item.id);

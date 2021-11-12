@@ -12,7 +12,7 @@ const Paginator = (props: IPaginatorProps) => {
   const onChange = React.useCallback((evt: SyntheticEvent) => {
     const value = parseInt((evt.target as HTMLElement).innerText, 10);
     updateCurrentPageAction(value);
-  }, [updateCurrentPageAction]);
+  }, []);
 
   return (
     <ul className={ `paginator ${ themeContext.darkTheme ? "paginator_dark" : "" }` }>

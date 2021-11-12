@@ -27,7 +27,7 @@ const App = () => {
     appStore.on("change", () => {
       setSettings({...appStore.getSettings()})
     });
-  })
+  }, [])
 
   return (
     <ThemeContextProvider>
