@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import { Route, Switch, HashRouter, Redirect} from 'react-router-dom';
 import "./App.scss";
 import Header from "../header/Header";
@@ -8,29 +8,26 @@ import { ThemeContextProvider, ThemeContext } from "../../contexts/ThemeContext"
 import { IThemeContextState } from "../../@types/interfaces/themeContext";
 import UserCard from "../userCard/UserCard";
 import Registration from "../registration/Registration";
+import appStore from "../../stores/app";
+import {
+  updateCurrentPageAction,
+  updatePerPageLimitAction } from "../../actions/app";
 
 const App = () => {
-  const [ currentPage, setCurrentPage ] = useState(1);
-  const [ perPageLimit, setPerPageLimit ] = useState(10);
-  const [ isLoading, setIsLoading ] = useState(false);
-  const [ showNavItems, setShowNavItems ] = useState(true);
-  const [ itemsAmount, setItemsAmount ] = useState(0);
-  const [ currentMenuItem, setCurrentMenuItem ] = useState("main")
-
-  const onPageChange = (id: number) => {
-    setCurrentPage(id);
-  }
+  const [settings, setSettings] = useState(appStore.getSettings());
 
   const onLimitPerPageChange = (value: number) => {
-    if(currentPage > Math.ceil(itemsAmount / value)) {
-      setCurrentPage(Math.ceil(itemsAmount / value));
+    if(settings.currentPage > Math.ceil(settings.itemsAmount / value)) {
+      updateCurrentPageAction(Math.ceil(settings.itemsAmount / value));
     }
-    setPerPageLimit(value);
+    updatePerPageLimitAction(value);
   }
 
-  const onMenuItemChange = (value: string) => {
-    setCurrentMenuItem(value);
-  }
+  useEffect(() => {
+    appStore.on("change", () => {
+      setSettings({...appStore.getSettings()})
+    });
+  })
 
   return (
     <ThemeContextProvider>
@@ -42,40 +39,31 @@ const App = () => {
                 <div className={ `app ${ context.darkTheme ? "app_dark" : "" }` }>
                   <div className="app__container">
                     <Header onLimitChange={ onLimitPerPageChange }
-                            isLoading={ isLoading }
-                            showLimit={ showNavItems }
-                            perPageLimit={ perPageLimit }
-                            currentMenuItem={ currentMenuItem }
-                            omMenuItemChange={ onMenuItemChange }/>
+                            showLimit={ settings.showNavItems }
+                            perPageLimit={ settings.perPageLimit }
+                            currentMenuItem={ settings.currentMenuItem }
+                            isLoading={ settings.isLoading }/>
 
                     <main className="main app__main">
                       <Switch>
                         <Route path="/registration">
-                          <Registration
-                            setShowNavItems={ setShowNavItems }
-                            setCurrentMenuItem={ setCurrentMenuItem }/>
+                          <Registration />
                         </Route>
                         <Route path="/user/:id">
-                          <UserCard setShowNavItems={ setShowNavItems }
-                                    setIsLoading={ setIsLoading }/>
+                          <UserCard />
                         </Route>
                         <Route path="/list">
-                          <UsersList setShowNavItems={ setShowNavItems }
-                                     setIsLoading={ setIsLoading }
-                                     currentPage={ currentPage }
-                                     perPageLimit={ perPageLimit }
-                                     setItemsAmount={ setItemsAmount }
-                                     setCurrentMenuItem={ setCurrentMenuItem }/>
+                          <UsersList currentPage={ settings.currentPage }
+                                     perPageLimit={ settings.perPageLimit }/>
                         </Route>
                         <Redirect from="/" to="/list" />
                       </Switch>
                     </main>
 
-                    <Footer currentPage={ currentPage }
-                            onPageChange={ onPageChange }
-                            showPaginator={ showNavItems }
-                            itemsAmount={ itemsAmount }
-                            perPageLimit={ perPageLimit }/>
+                    <Footer currentPage={ settings.currentPage }
+                            showPaginator={ settings.showNavItems }
+                            itemsAmount={ settings.itemsAmount }
+                            perPageLimit={ settings.perPageLimit }/>
                   </div>
                 </div>
               </HashRouter>

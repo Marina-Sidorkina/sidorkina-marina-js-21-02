@@ -5,12 +5,11 @@ import Paginator from "../paginator/Paginator";
 import { IFooterProps } from "../../@types/interfaces/components";
 
 const Footer = (props: IFooterProps) => {
-  const { onPageChange, currentPage, perPageLimit, showPaginator, itemsAmount} = props;
+  const { currentPage, perPageLimit, showPaginator, itemsAmount} = props;
   return (
     <footer className="footer">
       {!showPaginator ? null :
-        <Paginator onCurrentChange={ onPageChange }
-                   current={ currentPage }
+        <Paginator current={ currentPage }
                    itemsAmount={ itemsAmount }
                    perPageLimit={ perPageLimit }/>
       }

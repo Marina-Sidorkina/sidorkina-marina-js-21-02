@@ -13,6 +13,3 @@ export interface loadUserCardActionType extends ActionType {
   payload: IDummyUserCard;
 }
 
-export interface updateInputValue extends ActionType {
-  payload: string
-}

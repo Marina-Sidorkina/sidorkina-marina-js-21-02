@@ -9,8 +9,10 @@ import {
   UPDATE_CITY,
   UPDATE_COUNTRY,
   UPDATE_PHONE,
-  UPDATE_PICTURE
+  UPDATE_PICTURE, SEND_FORM_AND_SHOW_USER
 } from "../constants/actions/registration";
+import { addAndShowNewUser } from "../api/dummyApi";
+import { createNewUser } from "../utils/dummyApi";
 
 export const updateFirstNameAction = (value: string) => {
   dispatcher.dispatch({
@@ -80,4 +82,17 @@ export const updatePictureAction = (value: string) => {
     type: UPDATE_PICTURE,
     payload: value
   });
+}
+
+export const sendFormAndShowUserAction = (values: any, history: any) => {
+  addAndShowNewUser(createNewUser(values))
+    .then((response) => {
+      dispatcher.dispatch({
+        type: SEND_FORM_AND_SHOW_USER,
+        payload: {
+          id: response.id,
+          history: history
+        }
+      })
+    })
 }

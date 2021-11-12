@@ -58,7 +58,7 @@ const Registration = (props: IRegistrationProps) => {
                  rules={[
                    { required: true, message: "Please enter your email" },
                    {
-                     pattern: /^[a-z0-9]+[a-z-_0-9]+[a-z0-9]+@[a-z]+\.[a-z]{3}$/,
+                     pattern: /^[a-z0-9]+[a-z-_0-9]+[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/,
                      message: "Format required: (letters and numbers separated by - or _)@(letters).(letters)"
                    }
                  ]}>

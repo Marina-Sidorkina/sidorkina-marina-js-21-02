@@ -1,37 +1,33 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./Registration.scss";
 import { Form, Input, Button } from "antd";
 import { IRegistrationProps } from "../../@types/interfaces/components";
 import { ThemeContext } from "../../contexts/ThemeContext";
-import { createNewUser } from "../../utils/dummyApi";
-import { addAndShowNewUser } from "../../api/dummyApi";
 import { withRouter } from "react-router-dom";
 import registrationStore from "../../stores/registration";
 import registration from "../../stores/registration";
+import { sendFormAndShowUserAction } from "../../actions/registration";
+import { updateCurrentMenuItemAction, updateShowNavItemsAction } from "../../actions/app";
 
 const Registration = (props: IRegistrationProps) => {
-  const { setShowNavItems, history, setCurrentMenuItem } = props;
+  const { history } = props;
   const themeContext = useContext(ThemeContext);
   const [values, setValues] = useState(registrationStore.getValues());
   const [settings, setSettings] = useState(registration.getSettings())
 
   useEffect(() => {
-    setShowNavItems(false);
-    setCurrentMenuItem("registration");
+    updateShowNavItemsAction(false);
+    updateCurrentMenuItemAction("registration");
 
     registrationStore.on("change", () => {
       setValues({...registrationStore.getValues()});
       setSettings({...registrationStore.getSettings()})
     });
 
-  }, [setShowNavItems, setCurrentMenuItem])
+  }, [updateShowNavItemsAction, updateCurrentMenuItemAction])
 
   const onFinish = (values: any) => {
-    addAndShowNewUser(createNewUser(values), (id: string) => {
-      if(id) {
-        history.push(`/user/${ id }`);
-      }
-    });
+    sendFormAndShowUserAction(values, history);
   };
 
   return (

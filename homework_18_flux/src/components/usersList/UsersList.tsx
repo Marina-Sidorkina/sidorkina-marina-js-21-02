@@ -6,31 +6,35 @@ import helper from "../../hocs/helper/helper";
 import { IDummyUser } from "../../@types/interfaces/dummyApi";
 import usersListStore from "../../stores/usersList";
 import { loadUsersListAction } from "../../actions/usersList";
+import {
+  updateCurrentMenuItemAction,
+  updateIsLoadingAction,
+  updateItemsAmountAction,
+  updateShowNavItemsAction
+} from "../../actions/app";
 
 const UsersList = (props: IUsersListProps) => {
   const [list, setList] = useState([] as IDummyUser[]);
-  const { currentPage, perPageLimit, setIsLoading, setShowNavItems, setCurrentMenuItem, setItemsAmount } = props;
+  const { currentPage, perPageLimit } = props;
   const isUnmounted = useRef(false);
 
   useEffect(() => {
     isUnmounted.current = false;
-    setShowNavItems(true);
-    setCurrentMenuItem("main");
+    updateShowNavItemsAction(true);
+    updateCurrentMenuItemAction("main");
 
     usersListStore.on("change", () => {
       if(!isUnmounted.current) {
         setList(usersListStore.getUsers());
-        setIsLoading(usersListStore.getIsLoading());
-        setItemsAmount(usersListStore.getTotal());
       }
     })
 
-    loadUsersListAction(currentPage, perPageLimit);
+    loadUsersListAction(currentPage - 1, perPageLimit);
 
     return () => {
       isUnmounted.current = true;
     };
-  }, [currentPage, perPageLimit, setCurrentMenuItem, setIsLoading, setShowNavItems, setItemsAmount]);
+  }, [currentPage, perPageLimit, updateItemsAmountAction, updateIsLoadingAction, updateCurrentMenuItemAction, updateShowNavItemsAction]);
 
   const elements = usersListStore.getIsLoading() ? null : list.map((item, index) => {
     const UserWithHelper = helper(User, item.id);

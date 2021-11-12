@@ -40,9 +40,9 @@ export const getUserCard = (
   return doGetRequest(`${USER_URL}/${id}`);
 }
 
-export const addAndShowNewUser = (newUserData: INewUserData, callback: Function) => {
+export const addAndShowNewUser = (newUserData: INewUserData) => {
   const url = new URL(NEW_USER_POST_URL, BASE_URL);
-  fetch(url.toString(), {
+  return fetch(url.toString(), {
     method: METHOD_POST,
     body: JSON.stringify(newUserData),
     headers: new Headers({
@@ -50,7 +50,4 @@ export const addAndShowNewUser = (newUserData: INewUserData, callback: Function)
       [CONTENT_TYPE_FIELD]: CONTENT_TYPE
     })
   }).then((resp) => resp.json())
-    .then((resp) => {
-      callback(resp.id);
-    }).catch(console.error);
 }

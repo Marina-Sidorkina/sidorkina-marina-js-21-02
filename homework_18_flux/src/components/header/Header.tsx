@@ -6,15 +6,16 @@ import Loader from "../loader/Loader";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { Menu } from "antd";
 import { Link } from "react-router-dom";
+import {updateCurrentMenuItemAction} from "../../actions/app";
 
 const Header = (props: IHeaderProps) => {
   const themeContext = useContext(ThemeContext);
   const { isLoading, showLimit,
           perPageLimit, currentMenuItem,
-          omMenuItemChange, onLimitChange } = props;
+          onLimitChange } = props;
 
   const onMenuChange = (evt: { key: string; }) => {
-    omMenuItemChange(evt.key);
+    updateCurrentMenuItemAction(evt.key);
   };
 
   return (

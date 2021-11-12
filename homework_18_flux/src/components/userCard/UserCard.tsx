@@ -4,28 +4,26 @@ import { ThemeContext } from "../../contexts/ThemeContext";
 import { IDummyUserCard } from "../../@types/interfaces/dummyApi";
 import { useHistory, useParams } from "react-router-dom";
 import {processDate} from "../../utils/components";
-import { IUserCardProps, IUserCardParams } from "../../@types/interfaces/components";
+import {IUserCardParams} from "../../@types/interfaces/components";
 import userCardStore from "../../stores/userCard";
 import {loadUserCardAction} from "../../actions/userCard";
+import {updateIsLoadingAction, updateShowNavItemsAction} from "../../actions/app";
 
-const UserCard = (props: IUserCardProps) => {
+const UserCard = () => {
   const [user, setUser] = useState({} as IDummyUserCard);
   const themeContext = useContext(ThemeContext);
   const params = useParams() as IUserCardParams;
   const history = useHistory();
-  const { setIsLoading, setShowNavItems } = props;
 
   useEffect(() => {
-    setShowNavItems(false);
+    updateShowNavItemsAction(false);
 
     userCardStore.on("change", () => {
       setUser(userCardStore.getUser());
-      setIsLoading(userCardStore.getIsLoading());
     })
 
     loadUserCardAction(params.id);
-
-  }, [setIsLoading, params.id, setShowNavItems])
+  }, [updateIsLoadingAction, params.id, updateShowNavItemsAction])
 
   return (
     <div className={ `user-card ${ themeContext.darkTheme ? "user-card_dark" : "" }` }>
@@ -37,7 +35,7 @@ const UserCard = (props: IUserCardProps) => {
             <div className="user-card__id">{user.id}</div>
             <div className="user-card__info user-card__info_main">
               {user.title ?
-                <span className="user-card__title">{`${user.title}.`} </span> : null }
+                <span className="user-card__title">{`${user.title}.`}</span> : null }
               <span className="user-card__name">{user.firstName} </span>
               <span className="user-card__surname">{user.lastName}</span>
             </div>

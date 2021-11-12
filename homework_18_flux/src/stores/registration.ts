@@ -1,6 +1,6 @@
 import { EventEmitter } from "events";
 import dispatcher from "../dispatcher";
-import { updateInputValue } from "../@types/interfaces/actions";
+
 import {
   UPDATE_DATE_OF_BIRTH,
   UPDATE_EMAIL,
@@ -11,8 +11,9 @@ import {
   UPDATE_PHONE,
   UPDATE_CITY,
   UPDATE_COUNTRY,
-  UPDATE_PICTURE
+  UPDATE_PICTURE, SEND_FORM_AND_SHOW_USER
 } from "../constants/actions/registration";
+
 import {
   updateCityAction,
   updateCountryAction,
@@ -56,7 +57,7 @@ class RegistrationStore extends EventEmitter {
       email: [
         { required: true, message: "Please enter your email" },
         {
-          pattern: /^[a-z0-9]+[a-z-_0-9]+[a-z0-9]+@[a-z]+\.[a-z]{3}$/,
+          pattern: /^[a-z0-9]+[a-z-_0-9]+[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/,
           message: "Format required: (letters and numbers separated by - or _)@(letters).(letters)"
         }
       ],
@@ -169,6 +170,7 @@ class RegistrationStore extends EventEmitter {
     this.getSettings = this.getSettings.bind(this);
     this.getValues = this.getValues.bind(this);
     this.handleAction = this.handleAction.bind(this);
+    this.onFormSend = this.onFormSend.bind(this);
   }
 
   getSettings() {
@@ -179,7 +181,13 @@ class RegistrationStore extends EventEmitter {
     return this.values;
   }
 
-  handleAction(action: updateInputValue) {
+  onFormSend(id: any, history: any) {
+    if(id) {
+      history.push(`/user/${ id }`);
+    }
+  }
+
+  handleAction(action: any) {
     switch (action.type) {
       case UPDATE_FIRST_NAME:
         this.values = { ...this.values, firstName: action.payload };
@@ -219,6 +227,10 @@ class RegistrationStore extends EventEmitter {
         break;
       case UPDATE_PICTURE:
         this.values = { ...this.values, picture: action.payload };
+        this.emit("change");
+        break;
+      case SEND_FORM_AND_SHOW_USER:
+        this.onFormSend(action.payload.id, action.payload.history);
         this.emit("change");
         break;
     }
