@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect, useState} from "react";
 import "./UsersList.scss";
 import { IUsersListProps } from "../../@types/interfaces/components";
 import User from "../user/User";
@@ -14,24 +14,17 @@ import {
 const UsersList = (props: IUsersListProps) => {
   const [list, setList] = useState([] as IDummyUser[]);
   const { currentPage, perPageLimit } = props;
-  const isUnmounted = useRef(false);
 
   useEffect(() => {
-    usersListStore.on("change", () => {
-      if(!isUnmounted.current) {
-        setList(usersListStore.getUsers());
-      }
-    })
-  }, [])
-
-  useEffect(() => {
-    isUnmounted.current = false;
     updateShowNavItemsAction(true);
     updateCurrentMenuItemAction("main");
     loadUsersListAction(currentPage - 1, perPageLimit);
 
+    usersListStore.on("change", () => {
+      setList(usersListStore.getUsers());
+    });
+
     return () => {
-      isUnmounted.current = true;
       usersListStore.removeAllListeners("change");
     };
   }, [currentPage, perPageLimit]);

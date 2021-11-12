@@ -9,19 +9,9 @@ import { IThemeContextState } from "../../@types/interfaces/themeContext";
 import UserCard from "../userCard/UserCard";
 import Registration from "../registration/Registration";
 import appStore from "../../stores/app";
-import {
-  updateCurrentPageAction,
-  updatePerPageLimitAction } from "../../actions/app";
 
 const App = () => {
   const [settings, setSettings] = useState(appStore.getSettings());
-
-  const onLimitPerPageChange = (value: number) => {
-    if(settings.currentPage > Math.ceil(settings.itemsAmount / value)) {
-      updateCurrentPageAction(Math.ceil(settings.itemsAmount / value));
-    }
-    updatePerPageLimitAction(value);
-  }
 
   useEffect(() => {
     appStore.on("change", () => {
@@ -38,8 +28,7 @@ const App = () => {
               <HashRouter>
                 <div className={ `app ${ context.darkTheme ? "app_dark" : "" }` }>
                   <div className="app__container">
-                    <Header onLimitChange={ onLimitPerPageChange }
-                            showLimit={ settings.showNavItems }
+                    <Header showLimit={ settings.showNavItems }
                             perPageLimit={ settings.perPageLimit }
                             currentMenuItem={ settings.currentMenuItem }
                             isLoading={ settings.isLoading }/>

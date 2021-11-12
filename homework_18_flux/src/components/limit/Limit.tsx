@@ -1,9 +1,11 @@
-import React from "react";
 import "./Limit.scss";
 import { ILimitProps } from "../../@types/interfaces/components";
+import {updateCurrentPageAction, updatePerPageLimitAction} from "../../actions/app";
+import appStore from "../../stores/app";
 
 const Limit = (props: ILimitProps) => {
-  const { onValueChange, perPageLimit } = props;
+  const { perPageLimit } = props;
+
   const limits = [
     [10, "elements"],
     [20, "elements"],
@@ -23,7 +25,13 @@ const Limit = (props: ILimitProps) => {
   const onChange = (evt: React.ChangeEvent<HTMLSelectElement>) => {
     const select = evt.target as HTMLSelectElement;
     const value = select.options[select.selectedIndex].value;
-    onValueChange(parseInt(value, 10));
+    const newValue = parseInt(value, 10);
+    const settings = appStore.getSettings();
+
+    if(settings.currentPage > Math.ceil(settings.itemsAmount / newValue)) {
+      updateCurrentPageAction(Math.ceil(settings.itemsAmount / newValue));
+    }
+    updatePerPageLimitAction(newValue);
   }
 
   const options = getOptionsOrder().map((item) => {

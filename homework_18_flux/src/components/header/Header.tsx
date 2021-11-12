@@ -11,8 +11,7 @@ import {updateCurrentMenuItemAction} from "../../actions/app";
 const Header = (props: IHeaderProps) => {
   const themeContext = useContext(ThemeContext);
   const { isLoading, showLimit,
-          perPageLimit, currentMenuItem,
-          onLimitChange } = props;
+          perPageLimit, currentMenuItem } = props;
 
   const onMenuChange = (evt: { key: string; }) => {
     updateCurrentMenuItemAction(evt.key);
@@ -28,7 +27,7 @@ const Header = (props: IHeaderProps) => {
         <Menu.Item key="registration"><Link to="/registration">Registration</Link></Menu.Item>
       </Menu>
       { isLoading ? <Loader/> : null }
-      { !showLimit ? null : <Limit onValueChange={ onLimitChange } perPageLimit={ perPageLimit }/> }
+      { !showLimit ? null : <Limit perPageLimit={ perPageLimit }/> }
     </header>
   );
 }

@@ -18,7 +18,6 @@ export interface IAppState {
 }
 
 export interface IHeaderProps {
-  onLimitChange: (value: number) => void;
   isLoading: boolean;
   showLimit: boolean;
   perPageLimit: number;
@@ -44,7 +43,6 @@ export interface IPaginatorProps {
 }
 
 export interface ILimitProps {
-  onValueChange: (value: number) => void;
   perPageLimit: number;
 }
 
