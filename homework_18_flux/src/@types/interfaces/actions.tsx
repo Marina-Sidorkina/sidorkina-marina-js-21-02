@@ -13,3 +13,6 @@ export interface loadUserCardActionType extends ActionType {
   payload: IDummyUserCard;
 }
 
+export interface processLoaderAnimationActionType extends ActionType {
+  payload: boolean;
+}

@@ -3,7 +3,7 @@ import "./Paginator.scss";
 import { IPaginatorProps } from "../../@types/interfaces/components";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { getPagesArray } from "../../utils/components";
-import {updateCurrentPageAction} from "../../actions/app";
+import { updateCurrentPageAction } from "../../actions/app";
 
 const Paginator = (props: IPaginatorProps) => {
   const themeContext = useContext(ThemeContext);

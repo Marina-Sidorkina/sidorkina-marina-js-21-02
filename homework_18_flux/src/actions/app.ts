@@ -6,8 +6,11 @@ import {
   UPDATE_CURRENT_MENU_ITEM,
   UPDATE_CURRENT_PAGE,
   UPDATE_PER_PAGE_LIMIT } from "../constants/actions/app";
+import { processLoaderAnimationAction } from "./loader";
 
 export const updateIsLoadingAction = (value: boolean) => {
+  processLoaderAnimationAction(value);
+
   dispatcher.dispatch({
     type: UPDATE_IS_LOADING,
     payload: value
