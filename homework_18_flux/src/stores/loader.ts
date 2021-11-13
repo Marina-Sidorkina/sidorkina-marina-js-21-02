@@ -42,7 +42,10 @@ class LoaderStore extends EventEmitter {
   handleAction(action: processLoaderAnimationActionType) {
     switch (action.type) {
       case PROCESS_LOADER_ANIMATION:
-        this.processAnimation(action.payload);
+        if(this.check !== action.payload) {
+          this.check = action.payload;
+          this.processAnimation(action.payload);
+        }
         break;
 
     }
