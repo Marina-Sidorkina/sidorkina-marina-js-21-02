@@ -1,26 +1,18 @@
 import "./Limit.scss";
 import { ILimitProps } from "../../@types/interfaces/components";
-import {updateCurrentPageAction, updatePerPageLimitAction} from "../../actions/app";
+import limitStore from "../../stores/limit";
+import React, { useEffect, useState } from "react";
 import appStore from "../../stores/app";
+import { updateCurrentPageAction, updatePerPageLimitAction } from "../../actions/app";
 
 const Limit = (props: ILimitProps) => {
   const { perPageLimit } = props;
+  const [options, setOptions] = useState([] as any);
 
-  const limits = [
-    [10, "elements"],
-    [20, "elements"],
-    [5, "elements"]
-  ];
-  let startIndex: number;
-
-  const getOptionsOrder = () => {
-    limits.forEach((item,index) => {
-      if(item[0] === perPageLimit) {
-        startIndex = index
-      }
-    });
-    return [limits.splice(startIndex, 1)[0], ...limits];
-  }
+  useEffect(() => {
+    limitStore.updateLimits(perPageLimit);
+    setOptions(limitStore.getLimits());
+  }, [perPageLimit])
 
   const onChange = (evt: React.ChangeEvent<HTMLSelectElement>) => {
     const select = evt.target as HTMLSelectElement;
@@ -34,20 +26,20 @@ const Limit = (props: ILimitProps) => {
     updatePerPageLimitAction(newValue);
   }
 
-  const options = getOptionsOrder().map((item) => {
-    return (
-    <option key={ item[0] } className="limit__option" value={ item[0] }>
-      { `${item[0]} ${item[1]}`}
-    </option>
-    );
-  })
-
   return (
     <form className="limit">
       <label htmlFor="limit-select">Elements Per Page</label>
       <select name="limit__select" id="limit-select"
               onChange={ (evt) => onChange(evt) }>
-        { options }
+        {
+          options.map((item: (string | number)[]) => {
+            return (
+              <option key={ item[0] } className="limit__option" value={ item[0] }>
+                { `${item[0]} ${item[1]}`}
+              </option>
+            );
+          })
+        }
       </select>
     </form>
   );
