@@ -25,7 +25,7 @@ const Header = (props: any) => {
         <Menu.Item key="main"><Link to="/list">Main</Link></Menu.Item>
         <Menu.Item key="registration"><Link to="/registration">Registration</Link></Menu.Item>
       </Menu>
-      { props.isLoading ? <Loader/> : null }
+      { props.isLoading ? <Loader /> : null }
       { !props.showLimit ? null : <Limit /> }
     </header>
   );
@@ -38,6 +38,6 @@ export default connect(
     showLimit: state.app.settings.showNavItems
   }),
   (dispatch) => ({
-    updateCurrentMenuItem: bindActionCreators(updateCurrentMenuItemAction, dispatch)
+    updateCurrentMenuItem: bindActionCreators(updateCurrentMenuItemAction, dispatch),
   }),
 )(Header);

@@ -1,15 +1,10 @@
-//import { processLoaderAnimationAction } from "../../actions/loader";
 import { UPDATE_IS_LOADING, UPDATE_ITEMS_AMOUNT, UPDATE_SHOW_NAV_ITEMS,
 UPDATE_PER_PAGE_LIMIT, UPDATE_CURRENT_PAGE, UPDATE_CURRENT_MENU_ITEM } from "../constants/app";
 
-export const updateIsLoadingAction = (value: boolean, callback: (value: boolean) => void) => {
-  //processLoaderAnimationAction(value);
+export const updateIsLoadingAction = (value: boolean) => {
   return {
     type: UPDATE_IS_LOADING,
-    payload: {
-      value,
-      callback
-    }
+    payload: value
   }
 }
 

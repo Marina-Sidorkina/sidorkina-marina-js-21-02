@@ -17,8 +17,7 @@ const appReducer = (state = initialState, action: any) =>
   produce(state, (draft: any) => {
     switch (action.type) {
       case UPDATE_IS_LOADING:
-        action.payload.callback(action.payload.value);
-        draft.settings.isLoading =  action.payload.value;
+        draft.settings.isLoading =  action.payload;
         return draft;
       case UPDATE_ITEMS_AMOUNT:
         draft.settings.itemsAmount = action.payload;
