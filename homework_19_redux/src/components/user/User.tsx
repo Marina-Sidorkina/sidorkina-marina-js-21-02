@@ -1,8 +1,16 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import "./User.scss";
-import { IUserProps } from "../../@types/interfaces/components";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { Link } from "react-router-dom";
+
+interface IUserProps {
+  id: string;
+  title: string;
+  firstName: string;
+  lastName: string;
+  picture: string;
+  index: number;
+}
 
 const User = (props: IUserProps) => {
   const { id, title, firstName, lastName, picture, index } = props;

@@ -4,7 +4,11 @@ import Theme from "../theme/Theme";
 import Paginator from "../paginator/Paginator";
 import { connect } from "react-redux";
 
-const Footer = (props: any) => {
+interface IFooterProps {
+  showNavItems: boolean;
+}
+
+const Footer = (props: IFooterProps) => {
   const { showNavItems } = props;
   return (
     <footer className="footer">

@@ -19,8 +19,16 @@ import { addAndShowNewUser } from "../../api/dummyApi";
 import { createNewUser } from "../../utils/dummyApi";
 import { updateShowNavItemsAction, updateCurrentMenuItemAction } from "../../redux/actions/app";
 
-const Registration = (props: any) => {
-  const { history, values, actions, updateShowNavItems, updateCurrentMenuItem } = props;
+interface IRegistrationProps {
+  actions: any;
+  updateShowNavItems: Function;
+  updateCurrentMenuItem: Function;
+  values: any;
+  history: any;
+}
+
+const Registration = (props: IRegistrationProps) => {
+  const { history, values , actions, updateShowNavItems, updateCurrentMenuItem } = props;
   const settings: any = REGISTRATION_SETTINGS.formItems;
   const themeContext = useContext(ThemeContext);
 
@@ -41,7 +49,7 @@ const Registration = (props: any) => {
   return (
     <Form className={`registration ${ themeContext.darkTheme ? "registration_dark" : "" }`}
           onFinish={ onFinish }>
-      { Object.keys(settings).map((key) => {
+      { Object.keys(settings).map((key: any) => {
         return (
           <Form.Item key={ settings[key].name }
                      label={ settings[key].label }

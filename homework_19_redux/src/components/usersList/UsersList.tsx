@@ -13,7 +13,28 @@ import {
 import { toggleUsersListLoadingAction, updateUsersListAction } from "../../redux/actions/usersList";
 import { getUsersList } from "../../api/dummyApi";
 
-const UsersList = (props: any) => {
+interface IUserListItem {
+  id: string;
+  title: string;
+  firstName: string;
+  lastName: string;
+  picture: string;
+}
+
+interface IUserListProps {
+  currentPage: number;
+  perPageLimit: number;
+  isLoading:  boolean;
+  users: IUserListItem[];
+  updateShowNavItems: Function;
+  updateCurrentMenuItem: Function;
+  updateUsersList: Function;
+  toggleUsersListLoading: Function;
+  updateItemsAmount: Function;
+  updateIsLoading: Function;
+}
+
+const UsersList = (props: IUserListProps) => {
   const { users, currentPage, perPageLimit, updateShowNavItems,
     updateCurrentMenuItem, updateUsersList, isLoading,
     toggleUsersListLoading, updateItemsAmount, updateIsLoading } = props;
@@ -34,7 +55,7 @@ const UsersList = (props: any) => {
     updateCurrentMenuItem, toggleUsersListLoading, updateUsersList,
     updateItemsAmount, updateIsLoading]);
 
-  const elements = isLoading ? null : users.map((item: any, index: any) => {
+  const elements = isLoading ? null : users.map((item: IUserListItem, index: number) => {
     const UserWithHelper = helper(User, item.id);
     return (
       <li className="users-list__item" key={item.id}>

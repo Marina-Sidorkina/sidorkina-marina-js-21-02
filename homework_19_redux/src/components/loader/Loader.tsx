@@ -4,7 +4,12 @@ import { useEffect } from "react";
 import { changeLoaderWidthAction } from "../../redux/actions/loader";
 import { bindActionCreators } from "redux";
 
-const Loader = (props: any) =>  {
+interface ILoaderProps {
+  width: number;
+  changeLoaderWidth: Function;
+}
+
+const Loader = (props: ILoaderProps) =>  {
   const { width, changeLoaderWidth } = props;
 
   useEffect(() => {

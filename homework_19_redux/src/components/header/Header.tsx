@@ -9,7 +9,13 @@ import { connect } from "react-redux";
 import { updateCurrentMenuItemAction } from "../../redux/actions/app";
 import { bindActionCreators } from "redux";
 
-const Header = (props: any) => {
+interface IHeaderProps {
+  isLoading: boolean;
+  currentMenuItem: string,
+  showLimit: boolean;
+  updateCurrentMenuItem:  Function;
+}
+const Header = (props: IHeaderProps) => {
   const themeContext = useContext(ThemeContext);
 
   const onMenuChange = (evt: { key: string; }) => {

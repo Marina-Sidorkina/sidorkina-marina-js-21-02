@@ -6,7 +6,14 @@ import { connect } from "react-redux";
 import { updateCurrentPageAction } from "../../redux/actions/app";
 import { bindActionCreators } from "redux";
 
-const Paginator = (props: any) => {
+interface IPaginatorProps {
+  itemsAmount: number;
+  currentPage: number;
+  perPageLimit: number;
+  updateCurrentPage: Function;
+}
+
+const Paginator = (props: IPaginatorProps) => {
   const themeContext = useContext(ThemeContext);
   const { updateCurrentPage, itemsAmount, currentPage, perPageLimit } = props;
 

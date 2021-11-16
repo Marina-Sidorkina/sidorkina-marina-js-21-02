@@ -5,8 +5,16 @@ import { bindActionCreators } from "redux";
 import { updateCurrentPageAction, updatePerPageLimitAction } from "../../redux/actions/app";
 import { updateLimitsAction } from "../../redux/actions/limit";
 
+interface ILimitProps {
+  itemsAmount: number;
+  currentPage: number;
+  limits: any[];
+  updateCurrentPage: Function;
+  updatePerPageLimit: Function;
+  updateLimits: Function;
+}
 
-const Limit = (props: any) => {
+const Limit = (props: ILimitProps) => {
   const { itemsAmount, currentPage, limits,
   updateCurrentPage, updatePerPageLimit, updateLimits } = props;
   const [options, setOptions] = useState(limits);

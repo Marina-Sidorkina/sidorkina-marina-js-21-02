@@ -1,4 +1,15 @@
-import { IUserFormData } from "../@types/interfaces/components";
+interface IUserFormData {
+  title?: string;
+  firstName: string;
+  lastName: string;
+  gender?: string;
+  email: string;
+  dateOfBirth?: string;
+  phone?: string;
+  picture?: string;
+  city?: string;
+  country?: string;
+}
 
 export const createNewUser = (data: IUserFormData) => {
   return {

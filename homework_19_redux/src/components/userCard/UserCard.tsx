@@ -3,14 +3,27 @@ import "./UserCard.scss";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { useHistory, useParams } from "react-router-dom";
 import { processDate } from "../../utils/components";
-import { IUserCardParams } from "../../@types/interfaces/components";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { updateIsLoadingAction, updateShowNavItemsAction } from "../../redux/actions/app";
 import { updateUserCardAction, toggleUserCardLoadingAction } from "../../redux/actions/userCard";
 import { getUserCard } from "../../api/dummyApi";
+import { IDummyUserCard } from "../../@types/interfaces/dummyApi";
 
-const UserCard = (props: any) => {
+export interface IUserCardParams {
+  id: string;
+}
+
+interface IUserCardProps {
+  isLoading:  boolean;
+  user: IDummyUserCard;
+  updateShowNavItems: Function;
+  toggleUserCardLoading: Function;
+  updateUserCard: Function;
+  updateIsLoading: Function;
+}
+
+const UserCard = (props: IUserCardProps) => {
   const themeContext = useContext(ThemeContext);
   const params = useParams() as IUserCardParams;
   const history = useHistory();
