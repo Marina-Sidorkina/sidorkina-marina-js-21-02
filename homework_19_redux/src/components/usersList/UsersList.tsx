@@ -68,6 +68,6 @@ export default connect(
     updateUsersList: bindActionCreators(updateUsersListAction, dispatch),
     toggleUsersListLoading: bindActionCreators(toggleUsersListLoadingAction, dispatch),
     updateItemsAmount: bindActionCreators(updateItemsAmountAction, dispatch),
-    updateIsLoading: bindActionCreators(updateIsLoadingAction, dispatch),
+    updateIsLoading: bindActionCreators(updateIsLoadingAction, dispatch)
   })
 )(UsersList);

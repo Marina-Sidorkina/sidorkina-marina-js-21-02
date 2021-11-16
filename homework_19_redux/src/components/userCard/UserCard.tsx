@@ -6,7 +6,7 @@ import { processDate } from "../../utils/components";
 import { IUserCardParams } from "../../@types/interfaces/components";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { updateShowNavItemsAction } from "../../redux/actions/app";
+import { updateIsLoadingAction, updateShowNavItemsAction } from "../../redux/actions/app";
 import { updateUserCardAction, toggleUserCardLoadingAction } from "../../redux/actions/userCard";
 import { getUserCard } from "../../api/dummyApi";
 
@@ -14,17 +14,20 @@ const UserCard = (props: any) => {
   const themeContext = useContext(ThemeContext);
   const params = useParams() as IUserCardParams;
   const history = useHistory();
-  const { updateShowNavItems, user, isLoading, updateUserCard, toggleUserCardLoading } = props;
+  const { updateShowNavItems, user, isLoading, updateUserCard, toggleUserCardLoading,
+    updateIsLoading } = props;
 
   useEffect(() => {
     updateShowNavItems(false);
     toggleUserCardLoading();
+    updateIsLoading(true);
 
     getUserCard(params.id)
       .then((response) => {
         updateUserCard(response);
+        updateIsLoading(false);
       })
-  }, [params.id, updateShowNavItems, toggleUserCardLoading, updateUserCard])
+  }, [params.id, updateShowNavItems, toggleUserCardLoading, updateUserCard, updateIsLoading])
 
   return (
     <div className={ `user-card ${ themeContext.darkTheme ? "user-card_dark" : "" }` }>
@@ -70,6 +73,7 @@ export default connect(
   (dispatch) => ({
     updateShowNavItems: bindActionCreators(updateShowNavItemsAction, dispatch),
     toggleUserCardLoading: bindActionCreators(toggleUserCardLoadingAction, dispatch),
-    updateUserCard: bindActionCreators(updateUserCardAction, dispatch)
+    updateUserCard: bindActionCreators(updateUserCardAction, dispatch),
+    updateIsLoading: bindActionCreators(updateIsLoadingAction, dispatch)
   })
 )(UserCard);
