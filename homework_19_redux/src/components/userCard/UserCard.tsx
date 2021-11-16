@@ -1,40 +1,34 @@
-import React, {useContext, useEffect, useRef, useState} from "react";
+import React, { useContext, useEffect } from "react";
 import "./UserCard.scss";
 import { ThemeContext } from "../../contexts/ThemeContext";
-import { IDummyUserCard } from "../../@types/interfaces/dummyApi";
 import { useHistory, useParams } from "react-router-dom";
-import {processDate} from "../../utils/components";
-import {IUserCardParams} from "../../@types/interfaces/components";
-import userCardStore from "../../stores/userCard";
-import { loadUserCardAction } from "../../actions/userCard";
+import { processDate } from "../../utils/components";
+import { IUserCardParams } from "../../@types/interfaces/components";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { updateShowNavItemsAction } from "../../redux/actions/app";
+import { updateUserCardAction, toggleUserCardLoadingAction } from "../../redux/actions/userCard";
+import { getUserCard } from "../../api/dummyApi";
 
-const UserCard = () => {
-  const [user, setUser] = useState({} as IDummyUserCard);
+const UserCard = (props: any) => {
   const themeContext = useContext(ThemeContext);
   const params = useParams() as IUserCardParams;
   const history = useHistory();
-  const isUnmounted = useRef(false);
+  const { updateShowNavItems, user, isLoading, updateUserCard, toggleUserCardLoading } = props;
 
   useEffect(() => {
-    userCardStore.on("change", () => {
-      setUser(userCardStore.getUser());
-    })
-  }, [])
+    updateShowNavItems(false);
+    toggleUserCardLoading();
 
-  useEffect(() => {
-    isUnmounted.current = false;
-    //updateShowNavItemsAction(false);
-    loadUserCardAction(params.id);
-
-    return () => {
-      isUnmounted.current = true;
-      userCardStore.removeAllListeners("change");
-    };
-  }, [params.id])
+    getUserCard(params.id)
+      .then((response) => {
+        updateUserCard(response);
+      })
+  }, [params.id, updateShowNavItems, toggleUserCardLoading, updateUserCard])
 
   return (
     <div className={ `user-card ${ themeContext.darkTheme ? "user-card_dark" : "" }` }>
-      { userCardStore.getIsLoading() ? "Идёт загрузка..." :
+      { isLoading ? "Идёт загрузка..." :
         <React.Fragment>
           {user.picture ?
             <img className="user-card__img" src={user.picture} alt="User"/> : null }
@@ -68,4 +62,14 @@ const UserCard = () => {
   );
 }
 
-export default UserCard;
+export default connect(
+  (state: any) => ({
+    isLoading:  state.userCard.data.isLoading,
+    user: state.userCard.data.user
+  }),
+  (dispatch) => ({
+    updateShowNavItems: bindActionCreators(updateShowNavItemsAction, dispatch),
+    toggleUserCardLoading: bindActionCreators(toggleUserCardLoadingAction, dispatch),
+    updateUserCard: bindActionCreators(updateUserCardAction, dispatch)
+  })
+)(UserCard);

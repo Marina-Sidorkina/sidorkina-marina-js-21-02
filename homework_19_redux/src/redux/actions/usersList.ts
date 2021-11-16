@@ -1,4 +1,4 @@
-import {TOGGLE_USERS_LIST_LOADING, UPDATE_USERS_LIST} from "../constants/usersList";
+import { TOGGLE_USERS_LIST_LOADING, UPDATE_USERS_LIST } from "../constants/usersList";
 
 export const updateUsersListAction = (response: any) => {
   return {

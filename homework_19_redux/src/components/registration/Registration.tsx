@@ -17,16 +17,17 @@ import {
 } from "../../redux/actions/registration";
 import { addAndShowNewUser } from "../../api/dummyApi";
 import { createNewUser } from "../../utils/dummyApi";
+import { updateShowNavItemsAction, updateCurrentMenuItemAction } from "../../redux/actions/app";
 
 const Registration = (props: any) => {
-  const { history, values, actions } = props;
+  const { history, values, actions, updateShowNavItems, updateCurrentMenuItem } = props;
   const settings: any = REGISTRATION_SETTINGS.formItems;
   const themeContext = useContext(ThemeContext);
 
   useEffect(() => {
-    //updateShowNavItemsAction(false);
-    //updateCurrentMenuItemAction("registration");
-  }, [])
+    updateShowNavItems(false);
+    updateCurrentMenuItem("registration");
+  }, [updateShowNavItems, updateCurrentMenuItem])
 
   const onFinish = (values: any) => {
     addAndShowNewUser(createNewUser(values))
@@ -76,6 +77,8 @@ export default withRouter(connect(
       country:  bindActionCreators(updateCountryAction, dispatch),
       city: bindActionCreators(updateCityAction, dispatch),
       picture: bindActionCreators(updatePictureAction, dispatch),
-    }
+    },
+    updateShowNavItems: bindActionCreators(updateShowNavItemsAction, dispatch),
+    updateCurrentMenuItem: bindActionCreators(updateCurrentMenuItemAction, dispatch)
   }),
 )(Registration));

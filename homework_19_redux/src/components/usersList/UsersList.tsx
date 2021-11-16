@@ -4,14 +4,15 @@ import User from "../user/User";
 import helper from "../../hocs/helper/helper";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { updateShowNavItemsAction, updateCurrentMenuItemAction } from "../../redux/actions/app";
+import {updateShowNavItemsAction, updateCurrentMenuItemAction, updateItemsAmountAction} from "../../redux/actions/app";
 import { toggleUsersListLoadingAction, updateUsersListAction } from "../../redux/actions/usersList";
 import { getUsersList } from "../../api/dummyApi";
 
 
 const UsersList = (props: any) => {
   const { users, currentPage, perPageLimit, updateShowNavItems,
-    updateCurrentMenuItem, updateUsersList, isLoading, toggleUsersListLoading } = props;
+    updateCurrentMenuItem, updateUsersList, isLoading,
+    toggleUsersListLoading, updateItemsAmount } = props;
 
   useEffect(() => {
     updateShowNavItems(true);
@@ -21,9 +22,11 @@ const UsersList = (props: any) => {
     getUsersList(currentPage - 1, perPageLimit)
       .then((response) => {
         updateUsersList(response);
+        updateItemsAmount(response.total);
       })
   }, [currentPage, perPageLimit, updateShowNavItems,
-    updateCurrentMenuItem, toggleUsersListLoading, updateUsersList]);
+    updateCurrentMenuItem, toggleUsersListLoading, updateUsersList,
+    updateItemsAmount]);
 
   const elements = isLoading ? null : users.map((item: any, index: any) => {
     const UserWithHelper = helper(User, item.id);
@@ -58,5 +61,6 @@ export default connect(
     updateCurrentMenuItem: bindActionCreators(updateCurrentMenuItemAction, dispatch),
     updateUsersList: bindActionCreators(updateUsersListAction, dispatch),
     toggleUsersListLoading: bindActionCreators(toggleUsersListLoadingAction, dispatch),
+    updateItemsAmount: bindActionCreators(updateItemsAmountAction, dispatch)
   })
 )(UsersList);
