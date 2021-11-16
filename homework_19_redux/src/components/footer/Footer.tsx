@@ -2,20 +2,22 @@ import React from "react";
 import "./Footer.scss";
 import Theme from "../theme/Theme";
 import Paginator from "../paginator/Paginator";
-import { IFooterProps } from "../../@types/interfaces/components";
+import { connect } from "react-redux";
 
-const Footer = (props: IFooterProps) => {
-  const { currentPage, perPageLimit, showPaginator, itemsAmount} = props;
+const Footer = (props: any) => {
+  const { showNavItems } = props;
   return (
     <footer className="footer">
-      {!showPaginator ? null :
-        <Paginator current={ currentPage }
-                   itemsAmount={ itemsAmount }
-                   perPageLimit={ perPageLimit }/>
+      {!showNavItems ? null :
+        <Paginator />
       }
       <Theme />
     </footer>
   );
 }
 
-export default Footer;
+export default connect(
+  (state: any) => ({
+    showNavItems: state.app.settings.showNavItems,
+  })
+)(Footer);

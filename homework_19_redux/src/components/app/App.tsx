@@ -9,7 +9,7 @@ import UserCard from "../userCard/UserCard";
 import Registration from "../registration/Registration";
 import { connect } from "react-redux";
 
-const App = (props: any) => {
+const App = () => {
   return (
     <ThemeContextProvider>
       <ThemeContext.Consumer>
@@ -19,10 +19,7 @@ const App = (props: any) => {
               <HashRouter>
                 <div className={ `app ${ context.darkTheme ? "app_dark" : "" }` }>
                   <div className="app__container">
-                    <Header showLimit={ props.showNavItems }
-                            perPageLimit={ props.perPageLimit }
-                            currentMenuItem={ props.currentMenuItem }
-                            isLoading={ props.isLoading }/>
+                    <Header />
 
                     <main className="main app__main">
                       <Switch>
@@ -33,17 +30,13 @@ const App = (props: any) => {
                           <UserCard />
                         </Route>
                         <Route path="/list">
-                          <UsersList currentPage={ props.currentPage }
-                                     perPageLimit={ props.perPageLimit }/>
+                          <UsersList />
                         </Route>
                         <Redirect from="/" to="/list" />
                       </Switch>
                     </main>
 
-                    <Footer currentPage={ props.currentPage }
-                            showPaginator={ props.showNavItems }
-                            itemsAmount={ props.itemsAmount }
-                            perPageLimit={ props.perPageLimit }/>
+                    <Footer />
                   </div>
                 </div>
               </HashRouter>
@@ -57,11 +50,6 @@ const App = (props: any) => {
 
 export default connect(
   (state: any) => ({
-    currentPage: state.app.settings.currentPage,
-    perPageLimit: state.app.settings.perPageLimit,
-    isLoading: state.app.settings.isLoading,
-    showNavItems: state.app.settings.showNavItems,
-    itemsAmount: state.app.settings.itemsAmount,
-    currentMenuItem: state.app.settings.currentMenuItem
+    isLoading: state.app.settings.isLoading
   })
 )(App);
