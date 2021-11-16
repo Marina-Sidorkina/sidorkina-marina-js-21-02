@@ -1,46 +1,47 @@
-import React, {useContext, useEffect, useRef, useState} from "react";
+import React, { useContext, useEffect } from "react";
 import "./Registration.scss";
 import { Form, Input, Button } from "antd";
-import { IRegistrationProps } from "../../@types/interfaces/components";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { withRouter } from "react-router-dom";
-import registrationStore from "../../stores/registration";
-import registration from "../../stores/registration";
-import { sendFormAndShowUserAction } from "../../actions/registration";
 import { updateCurrentMenuItemAction, updateShowNavItemsAction } from "../../actions/app";
+import { connect } from "react-redux";
+import { REGISTRATION_SETTINGS } from "../../redux/settings/registration";
+import { bindActionCreators } from "redux";
+import {
+  updateCityAction,
+  updateCountryAction,
+  updateDateOfBirthAction,
+  updateEmailAction,
+  updateFirstNameAction,
+  updateGenderAction,
+  updateLastNameAction, updatePhoneAction, updatePictureAction, updateTitleAction
+} from "../../redux/actions/registration";
+import { addAndShowNewUser } from "../../api/dummyApi";
+import { createNewUser } from "../../utils/dummyApi";
 
-const Registration = (props: IRegistrationProps) => {
-  const { history } = props;
+const Registration = (props: any) => {
+  const { history, values, actions } = props;
+  const settings: any = REGISTRATION_SETTINGS.formItems;
   const themeContext = useContext(ThemeContext);
-  const [values, setValues] = useState(registrationStore.getValues());
-  const [settings, setSettings] = useState(registration.getSettings());
-  const isUnmounted = useRef(false);
 
   useEffect(() => {
-    isUnmounted.current = false;
     updateShowNavItemsAction(false);
     updateCurrentMenuItemAction("registration");
-
-    registrationStore.on("change", () => {
-      setValues({...registrationStore.getValues()});
-      setSettings({...registrationStore.getSettings()})
-    });
-
-    return () => {
-      isUnmounted.current = true;
-      registrationStore.removeAllListeners("change");
-    };
-
   }, [])
 
   const onFinish = (values: any) => {
-    sendFormAndShowUserAction(values, history);
+    addAndShowNewUser(createNewUser(values))
+      .then((response) => {
+        if(response.id) {
+          history.push(`/user/${ response.id }`);
+        }
+      })
   };
 
   return (
     <Form className={`registration ${ themeContext.darkTheme ? "registration_dark" : "" }`}
           onFinish={ onFinish }>
-      { Object.keys(registrationStore.getSettings()).map((key) => {
+      { Object.keys(settings).map((key) => {
         return (
           <Form.Item key={ settings[key].name }
                      label={ settings[key].label }
@@ -49,7 +50,7 @@ const Registration = (props: IRegistrationProps) => {
                      rules={ settings[key].rules }>
             <Input value={ values[key] }
                    onChange={ (value) => {
-                     settings[key].action(value.target.value);
+                     actions[key](value.target.value);
                    } }/>
           </Form.Item>
         )
@@ -60,5 +61,22 @@ const Registration = (props: IRegistrationProps) => {
     </Form>
   );
 }
-
-export default withRouter(Registration);
+export default withRouter(connect(
+  (state: any) => ({
+    values: state.registration.values,
+  }),
+  (dispatch) => ({
+    actions: {
+      firstName: bindActionCreators(updateFirstNameAction, dispatch),
+      lastName:  bindActionCreators(updateLastNameAction, dispatch),
+      email: bindActionCreators(updateEmailAction, dispatch),
+      gender: bindActionCreators(updateGenderAction, dispatch),
+      title: bindActionCreators(updateTitleAction, dispatch),
+      dateOfBirth: bindActionCreators(updateDateOfBirthAction, dispatch),
+      phone: bindActionCreators(updatePhoneAction, dispatch),
+      country:  bindActionCreators(updateCountryAction, dispatch),
+      city: bindActionCreators(updateCityAction, dispatch),
+      picture: bindActionCreators(updatePictureAction, dispatch),
+    }
+  }),
+)(Registration));
