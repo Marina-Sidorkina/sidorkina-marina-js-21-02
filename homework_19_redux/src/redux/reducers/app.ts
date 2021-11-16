@@ -1,6 +1,7 @@
 import produce from "immer";
 import { UPDATE_IS_LOADING, UPDATE_ITEMS_AMOUNT, UPDATE_SHOW_NAV_ITEMS,
   UPDATE_PER_PAGE_LIMIT, UPDATE_CURRENT_PAGE, UPDATE_CURRENT_MENU_ITEM } from "../constants/app";
+import {IAppActionType} from "../@types/actions";
 
 const initialState = {
   settings: {
@@ -13,7 +14,7 @@ const initialState = {
   }
 };
 
-const appReducer = (state = initialState, action: any) =>
+const appReducer = (state = initialState, action: IAppActionType) =>
   produce(state, (draft: any) => {
     switch (action.type) {
       case UPDATE_IS_LOADING:

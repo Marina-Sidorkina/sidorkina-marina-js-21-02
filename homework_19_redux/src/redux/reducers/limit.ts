@@ -1,5 +1,6 @@
 import produce from "immer";
 import { UPDATE_LIMITS } from "../constants/limit";
+import {ILimitActionType} from "../@types/actions";
 
 const initialState = {
   limits: [
@@ -23,7 +24,7 @@ const updateLimits = (perPageLimit: number, draft: any) => {
   return draft;
 }
 
-const limitReducer = (state = initialState, action: any) =>
+const limitReducer = (state = initialState, action: ILimitActionType) =>
   produce(state, (draft: any) => {
     switch (action.type) {
       case UPDATE_LIMITS:

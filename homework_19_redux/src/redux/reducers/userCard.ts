@@ -1,5 +1,6 @@
 import produce from "immer";
 import { LOAD_USER_CARD, TOGGLE_USER_CARD_LOADING } from "../constants/userCard";
+import {IUserCardActionType} from "../@types/actions";
 
 const initialState = {
   data: {
@@ -19,7 +20,7 @@ const toggleIsLoading = (draft: any) => {
   return draft;
 }
 
-const userCardReducer = (state = initialState, action: any) =>
+const userCardReducer = (state = initialState, action: IUserCardActionType) =>
   produce(state, (draft: any) => {
     switch (action.type) {
       case LOAD_USER_CARD:

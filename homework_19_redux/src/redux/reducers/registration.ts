@@ -9,6 +9,7 @@ import {
   UPDATE_LAST_NAME, UPDATE_PHONE, UPDATE_PICTURE,
   UPDATE_TITLE
 } from "../constants/registration";
+import {IRegistrationActionType} from "../@types/actions";
 
 const initialState = {
   values: {
@@ -25,7 +26,7 @@ const initialState = {
   }
 };
 
-const registrationReducer = (state = initialState, action: any) =>
+const registrationReducer = (state = initialState, action: IRegistrationActionType) =>
   produce(state, (draft: any) => {
     switch (action.type) {
       case UPDATE_FIRST_NAME:

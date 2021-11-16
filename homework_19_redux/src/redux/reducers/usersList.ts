@@ -1,6 +1,7 @@
 import produce from "immer";
 import { IDummyUser } from "../../@types/interfaces/dummyApi";
 import { TOGGLE_USERS_LIST_LOADING, UPDATE_USERS_LIST } from "../constants/usersList";
+import {IUsersListActionType} from "../@types/actions";
 
 const initialState = {
   data: {
@@ -22,7 +23,7 @@ const toggleIsLoading = (draft: any) => {
   return draft;
 }
 
-const usersListReducer = (state = initialState, action: any) =>
+const usersListReducer = (state = initialState, action: IUsersListActionType) =>
   produce(state, (draft: any) => {
     switch (action.type) {
       case UPDATE_USERS_LIST:
