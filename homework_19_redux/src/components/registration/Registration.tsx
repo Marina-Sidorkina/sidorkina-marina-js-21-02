@@ -3,7 +3,6 @@ import "./Registration.scss";
 import { Form, Input, Button } from "antd";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { withRouter } from "react-router-dom";
-import { updateCurrentMenuItemAction, updateShowNavItemsAction } from "../../actions/app";
 import { connect } from "react-redux";
 import { REGISTRATION_SETTINGS } from "../../redux/settings/registration";
 import { bindActionCreators } from "redux";
@@ -25,8 +24,8 @@ const Registration = (props: any) => {
   const themeContext = useContext(ThemeContext);
 
   useEffect(() => {
-    updateShowNavItemsAction(false);
-    updateCurrentMenuItemAction("registration");
+    //updateShowNavItemsAction(false);
+    //updateCurrentMenuItemAction("registration");
   }, [])
 
   const onFinish = (values: any) => {

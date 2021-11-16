@@ -1,29 +1,28 @@
 import "./Limit.scss";
-import { ILimitProps } from "../../@types/interfaces/components";
-import limitStore from "../../stores/limit";
 import React, { useEffect, useState } from "react";
-import appStore from "../../stores/app";
-import { updateCurrentPageAction, updatePerPageLimitAction } from "../../actions/app";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { updateCurrentPageAction, updatePerPageLimitAction } from "../../redux/actions/app";
+import { updateLimitsAction } from "../../redux/actions/limit";
 
-const Limit = (props: ILimitProps) => {
-  const { perPageLimit } = props;
+
+const Limit = (props: any) => {
   const [options, setOptions] = useState([] as any);
 
   useEffect(() => {
-    limitStore.updateLimits(perPageLimit);
-    setOptions(limitStore.getLimits());
-  }, [perPageLimit])
+    props.updateLimits(props.perPageLimit);
+    setOptions(props.limits);
+  }, [props.perPageLimit])
 
   const onChange = (evt: React.ChangeEvent<HTMLSelectElement>) => {
     const select = evt.target as HTMLSelectElement;
     const value = select.options[select.selectedIndex].value;
     const newValue = parseInt(value, 10);
-    const settings = appStore.getSettings();
 
-    if(settings.currentPage > Math.ceil(settings.itemsAmount / newValue)) {
-      updateCurrentPageAction(Math.ceil(settings.itemsAmount / newValue));
+    if(props.currentPage > Math.ceil(props.itemsAmount / newValue)) {
+      props.updateCurrentPage(Math.ceil(props.itemsAmount / newValue));
     }
-    updatePerPageLimitAction(newValue);
+    props.updatePerPageLimit(newValue);
   }
 
   return (
@@ -45,4 +44,16 @@ const Limit = (props: ILimitProps) => {
   );
 }
 
-export default Limit;
+export default connect(
+  (state: any) => ({
+    itemsAmount: state.app.settings.itemsAmount,
+    currentPage: state.app.settings.currentPage,
+    perPageLimit: state.app.settings.perPageLimit,
+    limits: state.limit.limits
+  }),
+  (dispatch) => ({
+    updateCurrentPage: bindActionCreators(updateCurrentPageAction, dispatch),
+    updatePerPageLimit: bindActionCreators(updatePerPageLimitAction, dispatch),
+    updateLimits: bindActionCreators(updateLimitsAction, dispatch)
+  }),
+)(Limit);
