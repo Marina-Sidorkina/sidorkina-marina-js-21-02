@@ -1,21 +1,23 @@
 import React, {SyntheticEvent, useContext } from "react";
 import "./Paginator.scss";
-import { IPaginatorProps } from "../../@types/interfaces/components";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { getPagesArray } from "../../utils/components";
+import { connect } from "react-redux";
+import { updateCurrentPageAction } from "../../redux/actions/app";
+import { bindActionCreators } from "redux";
 
-const Paginator = (props: IPaginatorProps) => {
+const Paginator = (props: any) => {
   const themeContext = useContext(ThemeContext);
-  const { current, itemsAmount, perPageLimit } = props;
+  const { updateCurrentPage, itemsAmount, currentPage, perPageLimit } = props;
 
   const onChange = React.useCallback((evt: SyntheticEvent) => {
     const value = parseInt((evt.target as HTMLElement).innerText, 10);
-    //updateCurrentPageAction(value);
-  }, []);
+    updateCurrentPage(value);
+  }, [updateCurrentPage]);
 
   return (
     <ul className={ `paginator ${ themeContext.darkTheme ? "paginator_dark" : "" }` }>
-      { itemsAmount ? getPagesArray(itemsAmount, current, perPageLimit)
+      { itemsAmount ? getPagesArray(itemsAmount, currentPage, perPageLimit)
         .map((item, index) => {
           if(item === 0) {
             return (
@@ -24,7 +26,7 @@ const Paginator = (props: IPaginatorProps) => {
           } else {
             return (
               <li className="paginator__item" key={ index } onClick={ onChange }>
-                <a className={`paginator__link ${ current === item ?
+                <a className={`paginator__link ${ currentPage === item ?
                   "paginator__link_current" : ""}`}
                    href={ `#${ index + 1 }` }>{ item }</a>
               </li>
@@ -35,4 +37,13 @@ const Paginator = (props: IPaginatorProps) => {
   );
 }
 
-export default Paginator;
+export default connect(
+  (state: any) => ({
+    itemsAmount: state.app.settings.itemsAmount,
+    currentPage: state.app.settings.currentPage,
+    perPageLimit: state.app.settings.perPageLimit
+  }),
+  (dispatch) => ({
+    updateCurrentPage: bindActionCreators(updateCurrentPageAction, dispatch),
+  })
+)(Paginator);

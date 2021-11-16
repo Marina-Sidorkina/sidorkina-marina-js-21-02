@@ -1,31 +1,31 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect } from "react";
 import "./UsersList.scss";
-import { IUsersListProps } from "../../@types/interfaces/components";
 import User from "../user/User";
 import helper from "../../hocs/helper/helper";
-import { IDummyUser } from "../../@types/interfaces/dummyApi";
-import usersListStore from "../../stores/usersList";
-import { loadUsersListAction } from "../../actions/usersList";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { updateShowNavItemsAction, updateCurrentMenuItemAction } from "../../redux/actions/app";
+import { toggleUsersListLoadingAction, updateUsersListAction } from "../../redux/actions/usersList";
+import { getUsersList } from "../../api/dummyApi";
 
-const UsersList = (props: IUsersListProps) => {
-  const [list, setList] = useState([] as IDummyUser[]);
-  const { currentPage, perPageLimit } = props;
+
+const UsersList = (props: any) => {
+  const { users, currentPage, perPageLimit, updateShowNavItems,
+    updateCurrentMenuItem, updateUsersList, isLoading, toggleUsersListLoading } = props;
 
   useEffect(() => {
-    //updateShowNavItemsAction(true);
-    //updateCurrentMenuItemAction("main");
-    loadUsersListAction(currentPage - 1, perPageLimit);
+    updateShowNavItems(true);
+    updateCurrentMenuItem("main");
+    toggleUsersListLoading();
 
-    usersListStore.on("change", () => {
-      setList(usersListStore.getUsers());
-    });
+    getUsersList(currentPage - 1, perPageLimit)
+      .then((response) => {
+        updateUsersList(response);
+      })
+  }, [currentPage, perPageLimit, updateShowNavItems,
+    updateCurrentMenuItem, toggleUsersListLoading, updateUsersList]);
 
-    return () => {
-      usersListStore.removeAllListeners("change");
-    };
-  }, [currentPage, perPageLimit]);
-
-  const elements = usersListStore.getIsLoading() ? null : list.map((item, index) => {
+  const elements = isLoading ? null : users.map((item: any, index: any) => {
     const UserWithHelper = helper(User, item.id);
     return (
       <li className="users-list__item" key={item.id}>
@@ -46,4 +46,17 @@ const UsersList = (props: IUsersListProps) => {
   );
 }
 
-export default UsersList;
+export default connect(
+  (state: any) => ({
+    currentPage: state.app.settings.currentPage,
+    perPageLimit: state.app.settings.perPageLimit,
+    isLoading:  state.usersList.data.isLoading,
+    users: state.usersList.data.users
+  }),
+  (dispatch) => ({
+    updateShowNavItems: bindActionCreators(updateShowNavItemsAction, dispatch),
+    updateCurrentMenuItem: bindActionCreators(updateCurrentMenuItemAction, dispatch),
+    updateUsersList: bindActionCreators(updateUsersListAction, dispatch),
+    toggleUsersListLoading: bindActionCreators(toggleUsersListLoadingAction, dispatch),
+  })
+)(UsersList);

@@ -7,22 +7,24 @@ import { updateLimitsAction } from "../../redux/actions/limit";
 
 
 const Limit = (props: any) => {
-  const [options, setOptions] = useState([] as any);
+  const { itemsAmount, currentPage, limits,
+  updateCurrentPage, updatePerPageLimit, updateLimits } = props;
+  const [options, setOptions] = useState(limits);
 
   useEffect(() => {
-    props.updateLimits(props.perPageLimit);
-    setOptions(props.limits);
-  }, [props.perPageLimit])
+    setOptions(limits);
+  }, [limits])
 
   const onChange = (evt: React.ChangeEvent<HTMLSelectElement>) => {
     const select = evt.target as HTMLSelectElement;
     const value = select.options[select.selectedIndex].value;
     const newValue = parseInt(value, 10);
 
-    if(props.currentPage > Math.ceil(props.itemsAmount / newValue)) {
-      props.updateCurrentPage(Math.ceil(props.itemsAmount / newValue));
+    if(currentPage > Math.ceil(itemsAmount / newValue)) {
+      updateCurrentPage(Math.ceil(itemsAmount / newValue));
     }
-    props.updatePerPageLimit(newValue);
+    updateLimits(newValue);
+    updatePerPageLimit(newValue);
   }
 
   return (
@@ -48,7 +50,6 @@ export default connect(
   (state: any) => ({
     itemsAmount: state.app.settings.itemsAmount,
     currentPage: state.app.settings.currentPage,
-    perPageLimit: state.app.settings.perPageLimit,
     limits: state.limit.limits
   }),
   (dispatch) => ({
