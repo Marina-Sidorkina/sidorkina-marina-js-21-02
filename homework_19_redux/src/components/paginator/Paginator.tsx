@@ -3,7 +3,6 @@ import "./Paginator.scss";
 import { IPaginatorProps } from "../../@types/interfaces/components";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { getPagesArray } from "../../utils/components";
-import { updateCurrentPageAction } from "../../actions/app";
 
 const Paginator = (props: IPaginatorProps) => {
   const themeContext = useContext(ThemeContext);
@@ -11,7 +10,7 @@ const Paginator = (props: IPaginatorProps) => {
 
   const onChange = React.useCallback((evt: SyntheticEvent) => {
     const value = parseInt((evt.target as HTMLElement).innerText, 10);
-    updateCurrentPageAction(value);
+    //updateCurrentPageAction(value);
   }, []);
 
   return (

@@ -55,5 +55,5 @@ export default connect(
     updateCurrentPage: bindActionCreators(updateCurrentPageAction, dispatch),
     updatePerPageLimit: bindActionCreators(updatePerPageLimitAction, dispatch),
     updateLimits: bindActionCreators(updateLimitsAction, dispatch)
-  }),
+  })
 )(Limit);

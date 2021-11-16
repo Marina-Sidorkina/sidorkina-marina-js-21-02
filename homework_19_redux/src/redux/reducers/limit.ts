@@ -9,18 +9,18 @@ const initialState = {
   ]
 }
 
-const updateLimits = (perPageLimit: number, limits: any[]) => {
+const updateLimits = (perPageLimit: number, draft: any) => {
   let startIndex = 0;
 
-  limits.forEach((item,index) => {
+  draft.limits.forEach((item: any,index: any) => {
     if(item[0] === perPageLimit) {
       startIndex = index
     }
   });
 
-  limits = [limits.splice(startIndex, 1)[0], ...limits];
+  draft.limits = [draft.limits.splice(startIndex, 1)[0], ...draft.limits];
 
-  return limits;
+  return draft;
 }
 
 const limitReducer = (state = initialState, action: any) =>

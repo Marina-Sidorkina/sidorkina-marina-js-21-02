@@ -7,7 +7,6 @@ import {processDate} from "../../utils/components";
 import {IUserCardParams} from "../../@types/interfaces/components";
 import userCardStore from "../../stores/userCard";
 import { loadUserCardAction } from "../../actions/userCard";
-import { updateShowNavItemsAction } from "../../actions/app";
 
 const UserCard = () => {
   const [user, setUser] = useState({} as IDummyUserCard);
@@ -24,7 +23,7 @@ const UserCard = () => {
 
   useEffect(() => {
     isUnmounted.current = false;
-    updateShowNavItemsAction(false);
+    //updateShowNavItemsAction(false);
     loadUserCardAction(params.id);
 
     return () => {

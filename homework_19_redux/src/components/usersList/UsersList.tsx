@@ -6,18 +6,14 @@ import helper from "../../hocs/helper/helper";
 import { IDummyUser } from "../../@types/interfaces/dummyApi";
 import usersListStore from "../../stores/usersList";
 import { loadUsersListAction } from "../../actions/usersList";
-import {
-  updateCurrentMenuItemAction,
-  updateShowNavItemsAction
-} from "../../actions/app";
 
 const UsersList = (props: IUsersListProps) => {
   const [list, setList] = useState([] as IDummyUser[]);
   const { currentPage, perPageLimit } = props;
 
   useEffect(() => {
-    updateShowNavItemsAction(true);
-    updateCurrentMenuItemAction("main");
+    //updateShowNavItemsAction(true);
+    //updateCurrentMenuItemAction("main");
     loadUsersListAction(currentPage - 1, perPageLimit);
 
     usersListStore.on("change", () => {
