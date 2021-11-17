@@ -26,4 +26,5 @@ export interface IUserCardActionType extends IAction{
 
 export interface IUsersListActionType extends IAction{
   payload?: IDummyApiResponse;
+  error?: any
 }

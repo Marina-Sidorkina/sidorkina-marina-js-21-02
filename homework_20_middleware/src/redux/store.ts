@@ -1,4 +1,5 @@
-import { combineReducers, createStore } from 'redux';
+import { applyMiddleware, combineReducers, createStore } from 'redux';
+import thunk from 'redux-thunk';
 import registrationReducer from './reducers/registration';
 import appReducer from './reducers/app';
 import limitReducer from './reducers/limit';
@@ -17,6 +18,7 @@ const store = createStore(
       loader: loaderReducer
     },
   ),
+  applyMiddleware(thunk)
 );
 
 export default store;

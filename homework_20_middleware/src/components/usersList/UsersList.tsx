@@ -7,11 +7,8 @@ import helper from '../../hocs/helper/helper';
 import {
   updateShowNavItemsAction,
   updateCurrentMenuItemAction,
-  updateItemsAmountAction,
-  updateIsLoadingAction
 } from '../../redux/actions/app';
-import { toggleUsersListLoadingAction, updateUsersListAction } from '../../redux/actions/usersList';
-import { getUsersList } from '../../api/dummyApi';
+import { loadUsersList } from '../../redux/actions/usersList';
 
 interface IUserListItem {
   id: string;
@@ -28,34 +25,21 @@ interface IUserListProps {
   users: IUserListItem[];
   updateShowNavItems: Function;
   updateCurrentMenuItem: Function;
-  updateUsersList: Function;
-  toggleUsersListLoading: Function;
-  updateItemsAmount: Function;
-  updateIsLoading: Function;
+  loadUsers: Function;
 }
 
 const UsersList = (props: IUserListProps) => {
   const {
     users, currentPage, perPageLimit, updateShowNavItems,
-    updateCurrentMenuItem, updateUsersList, isLoading,
-    toggleUsersListLoading, updateItemsAmount, updateIsLoading
+    updateCurrentMenuItem, isLoading, loadUsers
   } = props;
 
   useEffect(() => {
     updateShowNavItems(true);
     updateCurrentMenuItem('main');
-    toggleUsersListLoading();
-    updateIsLoading(true);
-
-    getUsersList(currentPage - 1, perPageLimit)
-      .then((response) => {
-        updateUsersList(response);
-        updateItemsAmount(response.total);
-        updateIsLoading(false);
-      });
+    loadUsers(currentPage - 1, perPageLimit);
   }, [currentPage, perPageLimit, updateShowNavItems,
-    updateCurrentMenuItem, toggleUsersListLoading, updateUsersList,
-    updateItemsAmount, updateIsLoading]);
+    updateCurrentMenuItem]);
 
   const elements = isLoading ? null : users.map((item: IUserListItem, index: number) => {
     const UserWithHelper = helper(User, item.id);
@@ -90,9 +74,6 @@ export default connect(
   (dispatch) => ({
     updateShowNavItems: bindActionCreators(updateShowNavItemsAction, dispatch),
     updateCurrentMenuItem: bindActionCreators(updateCurrentMenuItemAction, dispatch),
-    updateUsersList: bindActionCreators(updateUsersListAction, dispatch),
-    toggleUsersListLoading: bindActionCreators(toggleUsersListLoadingAction, dispatch),
-    updateItemsAmount: bindActionCreators(updateItemsAmountAction, dispatch),
-    updateIsLoading: bindActionCreators(updateIsLoadingAction, dispatch)
+    loadUsers: bindActionCreators(loadUsersList, dispatch)
   })
 )(UsersList);

@@ -1,13 +1,19 @@
 import produce from 'immer';
 import { IDummyUser } from '../../@types/interfaces/dummyApi';
-import { TOGGLE_USERS_LIST_LOADING, UPDATE_USERS_LIST } from '../constants/usersList';
+import {
+  SHOW_USERS_LIST_LOADING,
+  HIDE_USERS_LIST_LOADING,
+  UPDATE_USERS_LIST,
+  LOAD_USERS_LIST_ERROR
+} from '../constants/usersList';
 import { IUsersListActionType } from '../@types/actions';
 
 const initialState = {
   data: {
     users: [] as IDummyUser[],
     total: 0,
-    isLoading: false
+    isLoading: false,
+    error: ''
   }
 };
 
@@ -18,8 +24,19 @@ const updateData = (draft: any, response: any) => {
   return draft;
 };
 
-const toggleIsLoading = (draft: any) => {
+const showIsLoading = (draft: any) => {
   draft.data.isLoading = true;
+  return draft;
+};
+
+const hideIsLoading = (draft: any) => {
+  draft.data.isLoading = false;
+  return draft;
+};
+
+const loadError = (draft: any, error?: any) => {
+  draft.data.isLoading = false;
+  draft.data.error = error;
   return draft;
 };
 
@@ -27,8 +44,12 @@ const usersListReducer = (state = initialState, action: IUsersListActionType) =>
   switch (action.type) {
     case UPDATE_USERS_LIST:
       return updateData(draft, action.payload);
-    case TOGGLE_USERS_LIST_LOADING:
-      return toggleIsLoading(draft);
+    case SHOW_USERS_LIST_LOADING:
+      return showIsLoading(draft);
+    case HIDE_USERS_LIST_LOADING:
+      return hideIsLoading(draft);
+    case LOAD_USERS_LIST_ERROR:
+      return loadError(draft, action.error);
     default:
       return state;
   }
