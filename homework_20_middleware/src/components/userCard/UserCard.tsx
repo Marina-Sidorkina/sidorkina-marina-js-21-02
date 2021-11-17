@@ -5,9 +5,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { processDate } from '../../utils/components';
 import { ThemeContext } from '../../contexts/ThemeContext';
-import { updateIsLoadingAction, updateShowNavItemsAction } from '../../redux/actions/app';
-import { updateUserCardAction, toggleUserCardLoadingAction } from '../../redux/actions/userCard';
-import { getUserCard } from '../../api/dummyApi';
+import { updateShowNavItemsAction } from '../../redux/actions/app';
+import { loadUserCard } from '../../redux/actions/userCard';
 import { IDummyUserCard } from '../../@types/interfaces/dummyApi';
 
 export interface IUserCardParams {
@@ -18,9 +17,7 @@ interface IUserCardProps {
   isLoading: boolean;
   user: IDummyUserCard;
   updateShowNavItems: Function;
-  toggleUserCardLoading: Function;
-  updateUserCard: Function;
-  updateIsLoading: Function;
+  loadUser: Function;
 }
 
 const UserCard = (props: IUserCardProps) => {
@@ -28,21 +25,13 @@ const UserCard = (props: IUserCardProps) => {
   const params = useParams() as IUserCardParams;
   const history = useHistory();
   const {
-    updateShowNavItems, user, isLoading, updateUserCard, toggleUserCardLoading,
-    updateIsLoading
+    updateShowNavItems, user, isLoading, loadUser
   } = props;
 
   useEffect(() => {
     updateShowNavItems(false);
-    toggleUserCardLoading();
-    updateIsLoading(true);
-
-    getUserCard(params.id)
-      .then((response) => {
-        updateUserCard(response);
-        updateIsLoading(false);
-      });
-  }, [params.id, updateShowNavItems, toggleUserCardLoading, updateUserCard, updateIsLoading]);
+    loadUser(params.id);
+  }, [params.id, updateShowNavItems]);
 
   return (
     <div className={`user-card ${themeContext.darkTheme ? 'user-card_dark' : ''}`}>
@@ -96,8 +85,6 @@ export default connect(
   }),
   (dispatch) => ({
     updateShowNavItems: bindActionCreators(updateShowNavItemsAction, dispatch),
-    toggleUserCardLoading: bindActionCreators(toggleUserCardLoadingAction, dispatch),
-    updateUserCard: bindActionCreators(updateUserCardAction, dispatch),
-    updateIsLoading: bindActionCreators(updateIsLoadingAction, dispatch)
+    loadUser: bindActionCreators(loadUserCard, dispatch)
   })
 )(UserCard);

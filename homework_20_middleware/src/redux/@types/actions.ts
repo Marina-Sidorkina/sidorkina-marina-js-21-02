@@ -22,6 +22,7 @@ export interface IRegistrationActionType extends IAction{
 
 export interface IUserCardActionType extends IAction{
   payload?: IDummyUserCard;
+  error?: any
 }
 
 export interface IUsersListActionType extends IAction{

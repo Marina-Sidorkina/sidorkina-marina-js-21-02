@@ -1,11 +1,17 @@
 import produce from 'immer';
-import { LOAD_USER_CARD, TOGGLE_USER_CARD_LOADING } from '../constants/userCard';
+import {
+  HIDE_USER_CARD_LOADING,
+  LOAD_USER_CARD,
+  LOAD_USER_CARD_ERROR,
+  SHOW_USER_CARD_LOADING
+} from '../constants/userCard';
 import { IUserCardActionType } from '../@types/actions';
 
 const initialState = {
   data: {
     user: {},
-    isLoading: false
+    isLoading: false,
+    error: ''
   }
 };
 
@@ -15,8 +21,19 @@ const updateData = (draft: any, response: any) => {
   return draft;
 };
 
-const toggleIsLoading = (draft: any) => {
+const showIsLoading = (draft: any) => {
   draft.data.isLoading = true;
+  return draft;
+};
+
+const hideIsLoading = (draft: any) => {
+  draft.data.isLoading = false;
+  return draft;
+};
+
+const loadError = (draft: any, error?: any) => {
+  draft.data.isLoading = false;
+  draft.data.error = error;
   return draft;
 };
 
@@ -24,8 +41,12 @@ const userCardReducer = (state = initialState, action: IUserCardActionType) => p
   switch (action.type) {
     case LOAD_USER_CARD:
       return updateData(draft, action.payload);
-    case TOGGLE_USER_CARD_LOADING:
-      return toggleIsLoading(draft);
+    case SHOW_USER_CARD_LOADING:
+      return showIsLoading(draft);
+    case HIDE_USER_CARD_LOADING:
+      return hideIsLoading(draft);
+    case LOAD_USER_CARD_ERROR:
+      return loadError(draft, action.error);
     default:
       return state;
   }
