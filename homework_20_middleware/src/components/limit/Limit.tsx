@@ -1,9 +1,9 @@
-import "./Limit.scss";
-import React, { useEffect, useState } from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { updateCurrentPageAction, updatePerPageLimitAction } from "../../redux/actions/app";
-import { updateLimitsAction } from "../../redux/actions/limit";
+import './Limit.scss';
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { updateCurrentPageAction, updatePerPageLimitAction } from '../../redux/actions/app';
+import { updateLimitsAction } from '../../redux/actions/limit';
 
 interface ILimitProps {
   itemsAmount: number;
@@ -15,44 +15,47 @@ interface ILimitProps {
 }
 
 const Limit = (props: ILimitProps) => {
-  const { itemsAmount, currentPage, limits,
-  updateCurrentPage, updatePerPageLimit, updateLimits } = props;
+  const {
+    itemsAmount, currentPage, limits,
+    updateCurrentPage, updatePerPageLimit, updateLimits
+  } = props;
   const [options, setOptions] = useState(limits);
 
   useEffect(() => {
     setOptions(limits);
-  }, [limits])
+  }, [limits]);
 
   const onChange = (evt: React.ChangeEvent<HTMLSelectElement>) => {
     const select = evt.target as HTMLSelectElement;
-    const value = select.options[select.selectedIndex].value;
+    const { value } = select.options[select.selectedIndex];
     const newValue = parseInt(value, 10);
 
-    if(currentPage > Math.ceil(itemsAmount / newValue)) {
+    if (currentPage > Math.ceil(itemsAmount / newValue)) {
       updateCurrentPage(Math.ceil(itemsAmount / newValue));
     }
     updateLimits(newValue);
     updatePerPageLimit(newValue);
-  }
+  };
 
   return (
     <form className="limit">
       <label htmlFor="limit-select">Elements Per Page</label>
-      <select name="limit__select" id="limit-select"
-              onChange={ (evt) => onChange(evt) }>
+      <select
+        name="limit__select"
+        id="limit-select"
+        onChange={(evt) => onChange(evt)}
+      >
         {
-          options.map((item: (string | number)[]) => {
-            return (
-              <option key={ item[0] } className="limit__option" value={ item[0] }>
-                { `${item[0]} ${item[1]}`}
-              </option>
-            );
-          })
+          options.map((item: (string | number)[]) => (
+            <option key={item[0]} className="limit__option" value={item[0]}>
+              { `${item[0]} ${item[1]}`}
+            </option>
+          ))
         }
       </select>
     </form>
   );
-}
+};
 
 export default connect(
   (state: any) => ({

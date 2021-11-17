@@ -1,17 +1,17 @@
-import React, { useEffect } from "react";
-import "./UsersList.scss";
-import User from "../user/User";
-import helper from "../../hocs/helper/helper";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
+import React, { useEffect } from 'react';
+import './UsersList.scss';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import User from '../user/User';
+import helper from '../../hocs/helper/helper';
 import {
   updateShowNavItemsAction,
   updateCurrentMenuItemAction,
   updateItemsAmountAction,
   updateIsLoadingAction
-} from "../../redux/actions/app";
-import { toggleUsersListLoadingAction, updateUsersListAction } from "../../redux/actions/usersList";
-import { getUsersList } from "../../api/dummyApi";
+} from '../../redux/actions/app';
+import { toggleUsersListLoadingAction, updateUsersListAction } from '../../redux/actions/usersList';
+import { getUsersList } from '../../api/dummyApi';
 
 interface IUserListItem {
   id: string;
@@ -24,7 +24,7 @@ interface IUserListItem {
 interface IUserListProps {
   currentPage: number;
   perPageLimit: number;
-  isLoading:  boolean;
+  isLoading: boolean;
   users: IUserListItem[];
   updateShowNavItems: Function;
   updateCurrentMenuItem: Function;
@@ -35,13 +35,15 @@ interface IUserListProps {
 }
 
 const UsersList = (props: IUserListProps) => {
-  const { users, currentPage, perPageLimit, updateShowNavItems,
+  const {
+    users, currentPage, perPageLimit, updateShowNavItems,
     updateCurrentMenuItem, updateUsersList, isLoading,
-    toggleUsersListLoading, updateItemsAmount, updateIsLoading } = props;
+    toggleUsersListLoading, updateItemsAmount, updateIsLoading
+  } = props;
 
   useEffect(() => {
     updateShowNavItems(true);
-    updateCurrentMenuItem("main");
+    updateCurrentMenuItem('main');
     toggleUsersListLoading();
     updateIsLoading(true);
 
@@ -50,7 +52,7 @@ const UsersList = (props: IUserListProps) => {
         updateUsersList(response);
         updateItemsAmount(response.total);
         updateIsLoading(false);
-      })
+      });
   }, [currentPage, perPageLimit, updateShowNavItems,
     updateCurrentMenuItem, toggleUsersListLoading, updateUsersList,
     updateItemsAmount, updateIsLoading]);
@@ -59,14 +61,16 @@ const UsersList = (props: IUserListProps) => {
     const UserWithHelper = helper(User, item.id);
     return (
       <li className="users-list__item" key={item.id}>
-        <UserWithHelper id={item.id}
-                        title={item.title}
-                        firstName={item.firstName}
-                        lastName={item.lastName}
-                        picture={item.picture}
-                        index={index} />
+        <UserWithHelper
+          id={item.id}
+          title={item.title}
+          firstName={item.firstName}
+          lastName={item.lastName}
+          picture={item.picture}
+          index={index}
+        />
       </li>
-    )
+    );
   });
 
   return (
@@ -74,13 +78,13 @@ const UsersList = (props: IUserListProps) => {
       { elements }
     </ul>
   );
-}
+};
 
 export default connect(
   (state: any) => ({
     currentPage: state.app.settings.currentPage,
     perPageLimit: state.app.settings.perPageLimit,
-    isLoading:  state.usersList.data.isLoading,
+    isLoading: state.usersList.data.isLoading,
     users: state.usersList.data.users
   }),
   (dispatch) => ({

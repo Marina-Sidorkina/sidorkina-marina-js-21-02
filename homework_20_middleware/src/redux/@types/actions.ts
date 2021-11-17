@@ -1,4 +1,4 @@
-import { IDummyApiResponse, IDummyUserCard } from "../../@types/interfaces/dummyApi";
+import { IDummyApiResponse, IDummyUserCard } from '../../@types/interfaces/dummyApi';
 
 export interface IAction {
   type: string

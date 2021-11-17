@@ -1,11 +1,11 @@
-import React, { useContext, useEffect } from "react";
-import "./Registration.scss";
-import { Form, Input, Button } from "antd";
-import { ThemeContext } from "../../contexts/ThemeContext";
-import { withRouter } from "react-router-dom";
-import { connect } from "react-redux";
-import { REGISTRATION_SETTINGS } from "../../redux/settings/registration";
-import { bindActionCreators } from "redux";
+import React, { useContext, useEffect } from 'react';
+import './Registration.scss';
+import { Form, Input, Button } from 'antd';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { REGISTRATION_SETTINGS } from '../../redux/settings/registration';
+import { ThemeContext } from '../../contexts/ThemeContext';
 import {
   updateCityAction,
   updateCountryAction,
@@ -14,10 +14,10 @@ import {
   updateFirstNameAction,
   updateGenderAction,
   updateLastNameAction, updatePhoneAction, updatePictureAction, updateTitleAction
-} from "../../redux/actions/registration";
-import { addAndShowNewUser } from "../../api/dummyApi";
-import { createNewUser } from "../../utils/dummyApi";
-import { updateShowNavItemsAction, updateCurrentMenuItemAction } from "../../redux/actions/app";
+} from '../../redux/actions/registration';
+import { addAndShowNewUser } from '../../api/dummyApi';
+import { createNewUser } from '../../utils/dummyApi';
+import { updateShowNavItemsAction, updateCurrentMenuItemAction } from '../../redux/actions/app';
 
 interface IRegistrationProps {
   actions: any;
@@ -28,47 +28,53 @@ interface IRegistrationProps {
 }
 
 const Registration = (props: IRegistrationProps) => {
-  const { history, values , actions, updateShowNavItems, updateCurrentMenuItem } = props;
+  const {
+    history, values, actions, updateShowNavItems, updateCurrentMenuItem
+  } = props;
   const settings: any = REGISTRATION_SETTINGS.formItems;
   const themeContext = useContext(ThemeContext);
 
   useEffect(() => {
     updateShowNavItems(false);
-    updateCurrentMenuItem("registration");
-  }, [updateShowNavItems, updateCurrentMenuItem])
+    updateCurrentMenuItem('registration');
+  }, [updateShowNavItems, updateCurrentMenuItem]);
 
-  const onFinish = (values: any) => {
-    addAndShowNewUser(createNewUser(values))
+  const onFinish = (data: any) => {
+    addAndShowNewUser(createNewUser(data))
       .then((response) => {
-        if(response.id) {
-          history.push(`/user/${ response.id }`);
+        if (response.id) {
+          history.push(`/user/${response.id}`);
         }
-      })
+      });
   };
 
   return (
-    <Form className={`registration ${ themeContext.darkTheme ? "registration_dark" : "" }`}
-          onFinish={ onFinish }>
-      { Object.keys(settings).map((key: any) => {
-        return (
-          <Form.Item key={ settings[key].name }
-                     label={ settings[key].label }
-                     name={ settings[key].name }
-                     required={ settings[key].required }
-                     rules={ settings[key].rules }>
-            <Input value={ values[key] }
-                   onChange={ (value) => {
-                     actions[key](value.target.value);
-                   } }/>
-          </Form.Item>
-        )
-      }) }
+    <Form
+      className={`registration ${themeContext.darkTheme ? 'registration_dark' : ''}`}
+      onFinish={onFinish}
+    >
+      { Object.keys(settings).map((key: any) => (
+        <Form.Item
+          key={settings[key].name}
+          label={settings[key].label}
+          name={settings[key].name}
+          required={settings[key].required}
+          rules={settings[key].rules}
+        >
+          <Input
+            value={values[key]}
+            onChange={(value) => {
+              actions[key](value.target.value);
+            }}
+          />
+        </Form.Item>
+      )) }
       <Form.Item className="registration__submit">
         <Button type="primary" htmlType="submit">Register</Button>
       </Form.Item>
     </Form>
   );
-}
+};
 export default withRouter(connect(
   (state: any) => ({
     values: state.registration.values,
@@ -76,13 +82,13 @@ export default withRouter(connect(
   (dispatch) => ({
     actions: {
       firstName: bindActionCreators(updateFirstNameAction, dispatch),
-      lastName:  bindActionCreators(updateLastNameAction, dispatch),
+      lastName: bindActionCreators(updateLastNameAction, dispatch),
       email: bindActionCreators(updateEmailAction, dispatch),
       gender: bindActionCreators(updateGenderAction, dispatch),
       title: bindActionCreators(updateTitleAction, dispatch),
       dateOfBirth: bindActionCreators(updateDateOfBirthAction, dispatch),
       phone: bindActionCreators(updatePhoneAction, dispatch),
-      country:  bindActionCreators(updateCountryAction, dispatch),
+      country: bindActionCreators(updateCountryAction, dispatch),
       city: bindActionCreators(updateCityAction, dispatch),
       picture: bindActionCreators(updatePictureAction, dispatch),
     },

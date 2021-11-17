@@ -27,13 +27,41 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "eslint": "eslint ./src",
+    "eslint:fix": "eslint ./src --fix"
   },
   "eslintConfig": {
     "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+      "airbnb",
+      "airbnb-typescript"
+    ],
+    "plugins": [
+      "@typescript-eslint/eslint-plugin"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "project": "./tsconfig.json"
+    },
+    "rules": {
+      "jsx-a11y/mouse-events-have-key-events": "off",
+      "react/prefer-stateless-function": "off",
+      "react/no-array-index-key": "off",
+      "react/destructuring-assignment": "off",
+      "import/prefer-default-export": "off",
+      "@typescript-eslint/no-useless-constructor": "off",
+      "jsx-a11y/click-events-have-key-events": "off",
+      "jsx-a11y/no-static-element-interactions": "off",
+      "react/no-access-state-in-setstate": "off",
+      "@typescript-eslint/no-unused-expressions": "off",
+      "no-param-reassign": "off",
+      "@typescript-eslint/comma-dangle": "off",
+      "jsx-a11y/label-has-associated-control": "off",
+      "max-len": [
+        1,
+        120
+      ]
+    }
   },
   "browserslist": {
     "production": [
@@ -48,6 +76,8 @@
     ]
   },
   "devDependencies": {
-    "@types/react-router-dom": "^5.3.2"
+    "@types/react-router-dom": "^5.3.2",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-airbnb-typescript": "^14.0.2"
   }
 }

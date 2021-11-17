@@ -1,8 +1,6 @@
-import { UPDATE_LIMITS } from "../constants/limit";
+import { UPDATE_LIMITS } from '../constants/limit';
 
-export const updateLimitsAction = (value: number) => {
-  return {
-    type: UPDATE_LIMITS,
-    payload: value
-  }
-}
+export const updateLimitsAction = (value: number) => ({
+  type: UPDATE_LIMITS,
+  payload: value
+});
