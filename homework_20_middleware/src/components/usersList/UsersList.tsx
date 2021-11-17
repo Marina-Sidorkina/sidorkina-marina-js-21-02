@@ -26,12 +26,13 @@ interface IUserListProps {
   updateShowNavItems: Function;
   updateCurrentMenuItem: Function;
   loadUsers: Function;
+  error: any;
 }
 
 const UsersList = (props: IUserListProps) => {
   const {
     users, currentPage, perPageLimit, updateShowNavItems,
-    updateCurrentMenuItem, isLoading, loadUsers
+    updateCurrentMenuItem, isLoading, loadUsers, error
   } = props;
 
   useEffect(() => {
@@ -59,7 +60,7 @@ const UsersList = (props: IUserListProps) => {
 
   return (
     <ul className="users-list main__users-list">
-      { elements }
+      { error ? <div>Something has gone wrong. Please, try again later...</div> : elements }
     </ul>
   );
 };
@@ -69,7 +70,8 @@ export default connect(
     currentPage: state.app.settings.currentPage,
     perPageLimit: state.app.settings.perPageLimit,
     isLoading: state.usersList.data.isLoading,
-    users: state.usersList.data.users
+    users: state.usersList.data.users,
+    error: state.usersList.data.error
   }),
   (dispatch) => ({
     updateShowNavItems: bindActionCreators(updateShowNavItemsAction, dispatch),

@@ -18,6 +18,7 @@ const initialState = {
 const updateData = (draft: any, response: any) => {
   draft.data.user = { ...response };
   draft.data.isLoading = false;
+  draft.data.error = '';
   return draft;
 };
 

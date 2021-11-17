@@ -18,6 +18,7 @@ interface IUserCardProps {
   user: IDummyUserCard;
   updateShowNavItems: Function;
   loadUser: Function;
+  error: any;
 }
 
 const UserCard = (props: IUserCardProps) => {
@@ -25,7 +26,7 @@ const UserCard = (props: IUserCardProps) => {
   const params = useParams() as IUserCardParams;
   const history = useHistory();
   const {
-    updateShowNavItems, user, isLoading, loadUser
+    updateShowNavItems, user, isLoading, loadUser, error
   } = props;
 
   useEffect(() => {
@@ -71,6 +72,7 @@ const UserCard = (props: IUserCardProps) => {
             >
               BACK
             </button>
+            { error ? <div>Something has gone wrong. Please, try again later...</div> : null }
           </div>
         </>
       )}
@@ -81,7 +83,8 @@ const UserCard = (props: IUserCardProps) => {
 export default connect(
   (state: any) => ({
     isLoading: state.userCard.data.isLoading,
-    user: state.userCard.data.user
+    user: state.userCard.data.user,
+    error: state.userCard.data.error
   }),
   (dispatch) => ({
     updateShowNavItems: bindActionCreators(updateShowNavItemsAction, dispatch),

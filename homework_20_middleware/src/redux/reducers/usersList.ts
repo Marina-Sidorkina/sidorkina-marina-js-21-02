@@ -21,6 +21,7 @@ const updateData = (draft: any, response: any) => {
   draft.data.users = response.data;
   draft.data.total = response.total;
   draft.data.isLoading = false;
+  draft.data.error = '';
   return draft;
 };
 
