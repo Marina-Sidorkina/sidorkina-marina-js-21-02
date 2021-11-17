@@ -1,0 +1,38 @@
+.header {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 65px;
+  padding-left: 10px;
+
+  &_dark {
+    color: white;
+  }
+
+  &__menu {
+    background-color: transparent;
+    font-size: 19px;
+  }
+
+  & .ant-menu-horizontal > .ant-menu-item a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  &_dark .ant-menu-horizontal > .ant-menu-item a {
+    color: white;
+  }
+
+  & .ant-menu-horizontal > .ant-menu-item-selected a {
+    color: #1890ff;
+  }
+
+  & .ant-menu-horizontal > .ant-menu-item a:hover {
+    color:  #1890ff;
+  }
+
+  & .ant-menu-horizontal {
+    border-bottom: none;
+  }
+}
