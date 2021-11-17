@@ -17,6 +17,7 @@ interface IHeaderProps {
 }
 const Header = (props: IHeaderProps) => {
   const themeContext = useContext(ThemeContext);
+  const { isLoading, currentMenuItem, showLimit } = props;
 
   const onMenuChange = (evt: { key: string; }) => {
     props.updateCurrentMenuItem(evt.key);
@@ -26,13 +27,13 @@ const Header = (props: IHeaderProps) => {
     <header className={`header app__header ${ themeContext.darkTheme ? "header_dark" : "" }`}>
       <Menu className="header__menu"
             mode="horizontal"
-            selectedKeys={[props.currentMenuItem]}
+            selectedKeys={[currentMenuItem]}
             onClick={ onMenuChange }>
         <Menu.Item key="main"><Link to="/list">Main</Link></Menu.Item>
         <Menu.Item key="registration"><Link to="/registration">Registration</Link></Menu.Item>
       </Menu>
-      { props.isLoading ? <Loader /> : null }
-      { !props.showLimit ? null : <Limit /> }
+      { isLoading ? <Loader /> : null }
+      { !showLimit ? null : <Limit /> }
     </header>
   );
 }

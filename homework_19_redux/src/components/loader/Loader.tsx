@@ -40,7 +40,7 @@ const Loader = (props: ILoaderProps) =>  {
 
 export default connect(
   (state: any) => ({
-    width: state.loader.width,
+    width: state.loader.width
   }),
   (dispatch) => ({
     changeLoaderWidth: bindActionCreators(changeLoaderWidthAction, dispatch)
