@@ -2,13 +2,13 @@ import React from 'react';
 import './App.scss';
 import Header from '../header/Header';
 import Footer from '../footer/Footer';
-import Posts from '../../pages/posts/Posts';
+import Profile from '../../pages/profile/Profile';
 
 function App() {
   return (
     <div className="app">
       <Header />
-      <Posts />
+      <Profile />
       <Footer />
     </div>
   );

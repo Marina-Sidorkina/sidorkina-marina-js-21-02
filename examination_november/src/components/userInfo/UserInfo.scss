@@ -1,0 +1,36 @@
+.user-info {
+  display: grid;
+  grid-template-columns: 320px 1fr 100px;
+  grid-column-gap: 15px;
+  max-width: 1200px;
+  min-width: 320px;
+  min-height: 350px;
+  padding: 15px;
+  border-radius: 15px;
+  background-color: #ffffff;
+
+  &__image {
+    width: 320px;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 15px;
+  }
+
+  &__details {
+    height: 320px;
+    padding-top: 5px;
+  }
+
+  &__name {
+    margin-bottom: 10px;
+    font-size: 22px;
+  }
+
+  &__item {
+    margin-bottom: 5px;
+
+    &_tel {
+      margin-bottom: 115px;
+    }
+  }
+}
