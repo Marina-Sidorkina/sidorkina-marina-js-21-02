@@ -1,0 +1,10 @@
+.app {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 2000px;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #f2f2f2;
+}

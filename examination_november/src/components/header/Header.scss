@@ -1,0 +1,23 @@
+.header {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 2000px;
+  min-width: 320px;
+  height: 60px;
+  background-color: #ffffff;
+
+  &__container {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    min-width: 320px;
+    height: 60px;
+    padding: 0 15px;
+  }
+}
