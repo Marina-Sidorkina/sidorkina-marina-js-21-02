@@ -4,6 +4,7 @@ import './PostsListItem.scss';
 const PostsListItem = () => {
   const name = 'ms. Маша Михайлова';
   const date = '1 мая 04:20';
+  const text = 'Загруженное содержимое добавлено к альбому. Вы можете создать новый альбом.';
   return (
     <li className="posts-list__item post-item">
       <div className="post-item__user-block">
@@ -20,10 +21,7 @@ const PostsListItem = () => {
         src="https://i.ibb.co/cNbHTxL/photo-2021-11-21-00-19-15.jpg"
         alt="Пост пользователя"
       />
-      <p className="post-item__text">
-        Загруженное содержимое добавлено к альбому.
-        Вы можете создать новый альбом.
-      </p>
+      <p className="post-item__text">{ text }</p>
     </li>
   );
 };
