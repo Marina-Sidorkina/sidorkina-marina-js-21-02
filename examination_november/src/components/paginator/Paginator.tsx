@@ -2,14 +2,21 @@ import React from 'react';
 import './Paginator.scss';
 import { Pagination } from 'antd';
 
-const Paginator = () => (
+interface IPaginatorProps {
+  perPage: number | undefined;
+  current: number;
+  total: number;
+  onPageChange: (page: number) => void;
+}
+
+const Paginator = (props: IPaginatorProps) => (
   <Pagination
     className="paginator"
     simple
-    defaultPageSize={4}
-    defaultCurrent={1}
-    total={50}
-    onChange={(page: number) => { console.log(page); }}
+    defaultPageSize={props.perPage}
+    defaultCurrent={props.current}
+    total={props.total}
+    onChange={props.onPageChange}
   />
 );
 

@@ -1,11 +1,11 @@
 import React from 'react';
 import Main from '../../components/main/Main';
-import UsersList from '../../components/usersList/UsersList';
+import PostsList from '../../components/postsList/PostsList';
 import Paginator from '../../components/paginator/Paginator';
 
-const Users = () => (
+const Posts = () => (
   <Main>
-    <UsersList />
+    <PostsList />
     <Paginator
       current={1}
       total={50}
@@ -15,4 +15,4 @@ const Users = () => (
   </Main>
 );
 
-export default Users;
+export default Posts;
