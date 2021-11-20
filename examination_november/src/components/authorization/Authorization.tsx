@@ -1,6 +1,6 @@
 import React from 'react';
 import './Authorization.scss';
-import AuthorizedUserBlock from '../authorizesUseBlock/AuthorizedUserBlock';
+import AuthorizedUserBlock from '../authorizedUseBlock/AuthorizedUserBlock';
 
 const Authorization = () => (
   <div className="authorization">
