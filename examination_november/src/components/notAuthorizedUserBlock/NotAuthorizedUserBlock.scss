@@ -1,0 +1,54 @@
+.default-user-block {
+  display: flex;
+  align-items: center;
+  height: 50px;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    height: 40px;
+
+    &:first-child {
+      border-right: 1px solid lightgray;
+      padding-right: 15px;
+    }
+
+    &:last-child {
+      padding-left: 15px;
+    }
+  }
+
+  &__signIn,
+  &__register {
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  @media (max-width: 769px) {
+    align-items: flex-start;
+    flex-direction: column;
+    width: 150px;
+    height: 100%;
+    padding-top: 10px;
+
+    &__item {
+      box-sizing: border-box;
+      justify-content: flex-end;
+      height: 55px;
+      width: 150px;
+      font-size: 20px;
+
+      &:first-child {
+        border-right: none;
+        padding-right: 15px;
+      }
+
+      &:last-child {
+        padding-right: 15px;
+      }
+    }
+  }
+}

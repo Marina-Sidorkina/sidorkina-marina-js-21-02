@@ -57,6 +57,7 @@
       "@typescript-eslint/no-unused-expressions": "off",
       "no-param-reassign": "off",
       "@typescript-eslint/comma-dangle": "off",
+      "jsx-a11y/label-has-associated-control": "off",
       "max-len": [
         1,
         120

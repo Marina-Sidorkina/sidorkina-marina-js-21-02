@@ -4,12 +4,8 @@ html, body, #root {
   justify-content: center;
   margin: 0 auto;
   padding: 0;
-  overflow-x: hidden;
-}
-
-body, #root {
   width: 100%;
   min-width: 320px;
   max-width: 2000px;
+  background-color: #f2f2f2;
 }
-
