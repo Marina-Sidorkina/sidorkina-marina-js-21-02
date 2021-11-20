@@ -1,8 +1,7 @@
 import React from 'react';
 import './Logo.scss';
 import logo from './img/logo.png';
-
-const LOGO_ALT_TEXT = 'Logo image';
+import { LOGO_ALT_TEXT } from '../../constants/components/logo';
 
 const Logo = () => (
   <div className="logo">
