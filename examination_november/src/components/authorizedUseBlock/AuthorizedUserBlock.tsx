@@ -1,9 +1,9 @@
 import React from 'react';
-import './AuthorizedUserBloc.scss';
+import './AuthorizedUserBlock.scss';
 
 const AuthorizedUserBlock = () => {
   const name = 'Анжелика';
-  const src = 'http://placehold.it/30x30';
+  const src = 'https://i.ibb.co/0r1Jdjt/photo-2021-11-21-02-16-16.jpg';
 
   return (
     <div className="authorized-user-block">
