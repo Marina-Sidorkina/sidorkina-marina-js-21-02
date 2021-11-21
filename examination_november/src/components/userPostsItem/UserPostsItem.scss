@@ -8,8 +8,16 @@
   border-radius: 15px;
   background-color: #ffffff;
 
+  @media ( max-width: 769px) {
+    width: 380px;
+  }
+
   @media (max-width: 562px) {
     width: 320px;
+  }
+
+  @media (max-width: 345px) {
+    width: 290px;
   }
 
   &__photo {
