@@ -1,7 +1,7 @@
 .user-info {
   box-sizing: border-box;
   display: grid;
-  grid-template-columns: 320px 1fr 135px;
+  grid-template-columns: 320px 1fr;
   grid-column-gap: 15px;
   width: 100%;
   max-width: 1200px;
@@ -10,24 +10,7 @@
   border-radius: 15px;
   background-color: #ffffff;
 
-  @media (max-width: 866px) {
-    display: flex;
-    flex-direction: column;
-    align-content: flex-start;
-    flex-wrap: wrap;
-    height: 350px;
-  }
-
-  @media (max-width: 684px) {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    grid-row-gap: 15px;
-    justify-content: flex-start;
-    height: 270px;
-    min-height: 270px;
-  }
-
-  @media (max-width: 562px) {
+  @media (max-width: 770px) {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -47,23 +30,35 @@
     }
   }
 
+  &__container {
+    display: flex;
+    justify-content: space-between;
+
+    @media (max-width: 866px) {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 770px) {
+      justify-content: center;
+    }
+  }
+
   &__details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     height: 320px;
     padding-top: 5px;
 
     @media ( max-width: 866px) {
-      height: 280px;
+      height: auto;
     }
 
-    @media (max-width: 684px) {
-      height: 200px;
-      padding-top: 0;
-    }
-
-    @media (max-width: 562px) {
-      display: flex;
-      flex-direction: column;
+    @media (max-width: 770px) {
       align-items: center;
+      padding-top: 0;
     }
 
     @media (max-width: 350px) {
@@ -72,28 +67,29 @@
   }
 
   &__name {
+    max-width: 500px;
     margin-bottom: 10px;
+    margin-right: 15px;
     font-size: 22px;
+    word-break: break-all;
 
     @media (max-width: 684px) {
       margin-top: 0;
+    }
+
+    @media (max-width: 770px) {
+      text-align: center;
     }
   }
 
   &__item {
     margin-bottom: 5px;
+  }
 
-    &_tel {
-      margin-bottom: 115px;
-
-      @media ( max-width: 866px) {
-        margin-bottom: 10px;
-      }
-
-      @media (max-width: 684px) {
-        margin-bottom: 5px;
-      }
-    }
+  &__item_id {
+    display: flex;
+    align-items: flex-end;
+    height: 100%;
   }
 
   &__edit {
@@ -108,6 +104,10 @@
 
     &:hover {
       opacity: 0.7;
+    }
+
+    @media (max-width: 770px) {
+      margin: 0 auto;
     }
   }
 
