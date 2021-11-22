@@ -10,11 +10,13 @@ const PostsListItem = () => {
       <div className="post-item__user-block">
         <img
           className="post-item__user-img"
-          src="http://placehold.it/40x40"
+          src="https://i.ibb.co/0r1Jdjt/photo-2021-11-21-02-16-16.jpg"
           alt="Аватар пользователя"
         />
-        <div className="post-item__user-name">{ name }</div>
-        <div className="post-item__date">{ date }</div>
+        <div className="post-item__user">
+          <div className="post-item__name">{ name }</div>
+          <div className="post-item__date">{ date }</div>
+        </div>
       </div>
       <img
         className="post-item__post"
