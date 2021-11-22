@@ -58,7 +58,7 @@ const UserModalForm = () => {
       >
         <Input
           className="user-modal-form__input"
-          value={name}
+          value=""
           placeholder={name}
           onChange={(value) => console.log(value)}
         />
@@ -84,7 +84,7 @@ const UserModalForm = () => {
       >
         <Input
           className="user-modal-form__input"
-          value={gender}
+          value=""
           placeholder={gender}
           onChange={(value) => console.log(value)}
         />
@@ -114,7 +114,7 @@ const UserModalForm = () => {
       >
         <Input
           className="user-modal-form__input"
-          value={birthDate}
+          value=""
           placeholder={birthDate}
           onChange={(value) => console.log(value)}
         />
@@ -144,7 +144,7 @@ const UserModalForm = () => {
       >
         <Input
           className="user-modal-form__input"
-          value={registrationDate}
+          value=""
           placeholder={registrationDate}
           onChange={(value) => console.log(value)}
         />
@@ -163,7 +163,7 @@ const UserModalForm = () => {
       >
         <Input
           className="user-modal-form__input"
-          value={email}
+          value=""
           placeholder={email}
           onChange={(value) => console.log(value)}
         />
@@ -180,7 +180,7 @@ const UserModalForm = () => {
       >
         <Input
           className="user-modal-form__input"
-          value={tel}
+          value=""
           placeholder={tel}
           onChange={(value) => console.log(value)}
         />
