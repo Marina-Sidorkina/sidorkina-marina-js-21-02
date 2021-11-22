@@ -1,15 +1,27 @@
 import React from 'react';
 import './UsersListItem.scss';
 
-const UsersListItem = () => (
-  <li className="users-list__item user-item">
-    <img
-      className="user-item__img"
-      src="https://i.ibb.co/0r1Jdjt/photo-2021-11-21-02-16-16.jpg"
-      alt="Аватар пользователя"
-    />
-    <div className="user-item__avatar">ms. Маша Михайлова</div>
-  </li>
-);
+interface IUsersListItemProps {
+  title: string;
+  firstName: string;
+  lastName: string;
+  picture: string;
+}
+
+const UsersListItem = (props: IUsersListItemProps) => {
+  const {
+    title, firstName, lastName, picture,
+  } = props;
+  return (
+    <li className="users-list__item user-item">
+      <img
+        className="user-item__img"
+        src={picture}
+        alt="Аватар пользователя"
+      />
+      <div className="user-item__avatar">{`${title} ${firstName} ${lastName}`}</div>
+    </li>
+  );
+};
 
 export default UsersListItem;

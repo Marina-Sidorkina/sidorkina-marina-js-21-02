@@ -10,16 +10,22 @@ interface IPaginatorProps {
   modal?: boolean;
 }
 
-const Paginator = (props: IPaginatorProps) => (
-  <Pagination
-    className={props.modal ? 'paginator paginator_modal' : 'paginator'}
-    simple
-    defaultPageSize={props.perPage}
-    defaultCurrent={props.current}
-    total={props.total}
-    onChange={props.onPageChange}
-  />
-);
+const Paginator = (props: IPaginatorProps) => {
+  const {
+    perPage, onPageChange, current, total, modal
+  } = props;
+
+  return (
+    <Pagination
+      className={modal ? 'paginator paginator_modal' : 'paginator'}
+      simple
+      pageSize={perPage}
+      total={total}
+      current={current}
+      onChange={onPageChange}
+    />
+  );
+};
 
 Paginator.defaultProps = {
   modal: false

@@ -1,5 +1,6 @@
 import React from 'react';
 import './Navigation.scss';
+import { Link } from 'react-router-dom';
 
 const Navigation = () => (
   <nav className="navigation">
@@ -19,7 +20,9 @@ const Navigation = () => (
           <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
           <path d="M16 3.13a4 4 0 0 1 0 7.75" />
         </svg>
-        <span className="navigation__text">Пользователи</span>
+        <span className="navigation__text">
+          <Link className="navigation__link" to="/users">Пользователи</Link>
+        </span>
       </li>
       <li className="navigation__item navigation__item_posts">
         <svg
@@ -38,7 +41,9 @@ const Navigation = () => (
           19.608zM24 42c3.312 0 6-2.688 6-6s-2.688-6-6-6-6 2.688-6 6 2.688 6 6 6z"
           />
         </svg>
-        <span className="navigation__text">Посты</span>
+        <span className="navigation__text">
+          <Link className="navigation__link" to="/posts">Посты</Link>
+        </span>
       </li>
     </ul>
   </nav>

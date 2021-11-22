@@ -2,7 +2,6 @@
   position: fixed;
   left: 0;
   top: 0;
-  display: flex;
   justify-content: center;
   width: 100%;
   min-width: 320px;
@@ -10,6 +9,7 @@
   padding: 30px;
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 10;
+  display: none;
 
   &__content {
     position: relative;
