@@ -14,15 +14,19 @@ const PostModalCpmmentsItem = ({ name, date, text }: IPostModalCpmmentsItemProps
       src="https://i.ibb.co/0r1Jdjt/photo-2021-11-21-02-16-16.jpg"
       alt="Аватар пользователя"
     />
-    <div className="post-modal-comments__name">{ name }</div>
-    <div className="post-modal-comments__date">{ date }</div>
-    <p className="post-modal-comments__text">{ text }</p>
+    <div className="post-modal-comments__info">
+      <div className="post-modal-comments__user">
+        <div className="post-modal-comments__name">{ name }</div>
+        <div className="post-modal-comments__date">{ date }</div>
+      </div>
+      <p className="post-modal-comments__text">{ text }</p>
+    </div>
   </li>
 );
 
 const PostModalComments = () => {
   const name = 'ms. Маша Михайлова';
-  const date = '1 мая 04:20';
+  const date = '1 сентября 04:20';
   const text = 'Загруженное содержимое добавлено к альбому. Вы можете создать новый альбом.';
   return (
     <ul className="post-modal-comments">

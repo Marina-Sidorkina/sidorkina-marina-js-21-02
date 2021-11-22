@@ -11,11 +11,17 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
     height: 40px;
     width: 100%;
     margin-bottom: 10px;
     padding: 0 5px;
     font-size: 14px;
+
+    @media (max-width: 610px) {
+      height: auto;
+      max-height: 60px;
+    }
   }
 
   &__user {
@@ -25,6 +31,18 @@
 
     @media (max-width: 415px) {
       font-size: 12px;
+    }
+  }
+
+  &__user-name {
+    max-width: 350px;
+
+    @media (max-width: 489px) {
+      font-size: 12px;
+    }
+
+    @media (max-width: 447px) {
+      font-size: 8px;
     }
   }
 
@@ -40,14 +58,31 @@
       height: 30px;
       margin-right: 5px;
     }
+
+    @media (max-width: 405px) {
+      width: 20px;
+      height: 20px;
+    }
   }
 
   &__post-date {
     font-size: 12px;
     color: #808080;
 
-    @media (max-width: 415px) {
+    @media (max-width: 610px) {
+      margin-left: 55px;
+    }
+
+    @media (max-width: 489px) {
+      font-size: 12px;
+    }
+
+    @media (max-width: 447px) {
       font-size: 8px;
+    }
+
+    @media (max-width: 415px) {
+      margin-left: 35px;
     }
   }
 
