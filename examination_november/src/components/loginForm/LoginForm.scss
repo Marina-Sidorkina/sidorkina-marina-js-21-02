@@ -25,6 +25,14 @@
     }
   }
 
+  &__submit {
+    position: relative;
+  }
+
+  &__error {
+    color: red;
+  }
+
   &__form-item,
   &__button,
   &__submit,

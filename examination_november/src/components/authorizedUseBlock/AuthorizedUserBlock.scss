@@ -3,6 +3,14 @@
   align-items: center;
   height: 50px;
 
+  &__link {
+    color: inherit;
+
+    &:hover {
+      color: inherit;
+    }
+  }
+
   &__item {
     display: flex;
     align-items: center;

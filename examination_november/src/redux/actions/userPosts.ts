@@ -33,7 +33,6 @@ export const loadUserPosts = (currentPage: number, perPageLimit: number, id: str
   dispatch(showLoadingAction());
   getUserPosts(currentPage, perPageLimit, id)
     .then((response) => {
-      console.log(response);
       dispatch(updateUserPostsAction(response));
     })
     .catch((error) => dispatch(loadErrorAction(error)))

@@ -1,6 +1,6 @@
 import produce from 'immer';
 import { IDummyPost } from '../../@types/dummyApi';
-import { IUsersListActionType } from '../@types/actions';
+import { IPostsActionType } from '../@types/actions';
 import {
   UPDATE_POSTS_LIST, UPDATE_POSTS_LIST_PAGE, LOAD_POSTS_LIST_ERROR, SHOW_POSTS_LIST_LOADING, HIDE_POSTS_LIST_LOADING
 } from '../constants/postsList';
@@ -40,7 +40,7 @@ const loadError = (draft: any, error?: any) => {
   return draft;
 };
 
-const postsListReducer = (state = initialState, action: IUsersListActionType) => produce(state, (draft: any) => {
+const postsListReducer = (state = initialState, action: IPostsActionType) => produce(state, (draft: any) => {
   switch (action.type) {
     case UPDATE_POSTS_LIST:
       return updateData(draft, action.payload);

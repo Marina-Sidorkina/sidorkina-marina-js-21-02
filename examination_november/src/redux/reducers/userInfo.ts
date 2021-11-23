@@ -1,5 +1,5 @@
 import produce from 'immer';
-import { IUserCardActionType } from '../@types/actions';
+import { IUserInfoActionType } from '../@types/actions';
 import {
   LOAD_USER_INFO, HIDE_USER_INFO_LOADING, LOAD_USER_INFO_ERROR, SHOW_USER_INFO_LOADING
 } from '../constants/userInfo';
@@ -35,7 +35,7 @@ const loadError = (draft: any, error?: any) => {
   return draft;
 };
 
-const userInfoReducer = (state = initialState, action: IUserCardActionType) => produce(state, (draft: any) => {
+const userInfoReducer = (state = initialState, action: IUserInfoActionType) => produce(state, (draft: any) => {
   switch (action.type) {
     case LOAD_USER_INFO:
       return updateData(draft, action.payload);

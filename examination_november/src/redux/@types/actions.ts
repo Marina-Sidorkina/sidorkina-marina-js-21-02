@@ -1,4 +1,4 @@
-import { IDummyApiResponse, IDummyUserCard } from '../../@types/dummyApi';
+import { IDummyApiResponse, IDummyUserFull } from '../../@types/dummyApi';
 
 export interface IAction {
   type: string
@@ -6,10 +6,6 @@ export interface IAction {
 
 export interface IAppActionType extends IAction{
   payload: string | number | boolean;
-}
-
-export interface ILimitActionType extends IAction{
-  payload: number;
 }
 
 export interface ILoaderActionType extends IAction{
@@ -20,8 +16,8 @@ export interface IRegistrationActionType extends IAction{
   payload: string;
 }
 
-export interface IUserCardActionType extends IAction{
-  payload?: IDummyUserCard;
+export interface IUserInfoActionType extends IAction{
+  payload?: IDummyUserFull;
   error?: any
 }
 
@@ -32,5 +28,15 @@ export interface IUsersListActionType extends IAction{
 
 export interface IUserPostsActionType extends IAction{
   payload?: IDummyApiResponse;
+  error?: any
+}
+
+export interface IPostsActionType extends IAction{
+  payload?: IDummyApiResponse;
+  error?: any
+}
+
+export interface ILoginActionType extends IAction{
+  payload?: IDummyUserFull | string;
   error?: any
 }

@@ -20,7 +20,12 @@ const doGetRequest = (
     headers: new Headers({
       [API_ID_FIELD]: API_ID
     }),
-  }).then((resp) => resp.json());
+  }).then((resp) => {
+    if (!resp.ok) {
+      throw new Error('Could not fetch');
+    }
+    return resp.json();
+  });
 };
 
 export const getUsersList = (

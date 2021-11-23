@@ -14,7 +14,7 @@ export interface IDummyApiResponse {
   total: number;
 }
 
-export interface IDummyUserCard {
+export interface IDummyUserFull {
   id: string;
   title: string;
   firstName: string;
