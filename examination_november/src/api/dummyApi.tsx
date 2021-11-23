@@ -3,6 +3,7 @@ import {
   METHOD_GET, API_ID, API_ID_FIELD, NEW_USER_POST_URL, METHOD_POST,
   BASE_URL, USER_URL, PAGE_FIELD, LIMIT_FIELD, CONTENT_TYPE_FIELD, CONTENT_TYPE
 } from '../constants/dummyApi';
+import { getUserPostsUrl } from '../utils/api';
 
 const doGetRequest = (
   path: string,
@@ -30,7 +31,7 @@ export const getUsersList = (
   [LIMIT_FIELD]: limit,
 });
 
-export const getUserCard = (
+export const getUserInfo = (
   id: string
 ) => doGetRequest(`${USER_URL}/${id}`);
 
@@ -45,3 +46,12 @@ export const addAndShowNewUser = (newUserData: INewUserData) => {
     })
   }).then((resp) => resp.json());
 };
+
+export const getUserPosts = (
+  page: number,
+  limit: number,
+  id: string
+) => doGetRequest(getUserPostsUrl(id), {
+  [PAGE_FIELD]: page,
+  [LIMIT_FIELD]: limit,
+});

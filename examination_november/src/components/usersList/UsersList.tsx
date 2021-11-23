@@ -35,14 +35,18 @@ const UsersList = (props: IUserListProps) => {
     ? (
       <Spin
         className="users-list__spinner"
-        tip="Loading..."
+        tip="Идёт загрузка..."
         size="large"
-        style={{ width: '80px', height: '80px' }}
+        style={{
+          width: '110px',
+          height: '110px'
+        }}
       />
     )
     : users.map((item: IUserListItem) => (
       <UsersListItem
         key={item.id}
+        id={item.id}
         title={item.title}
         firstName={item.firstName}
         lastName={item.lastName}

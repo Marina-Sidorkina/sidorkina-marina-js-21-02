@@ -22,3 +22,12 @@
     object-fit: cover;
   }
 }
+
+.link-to-profile {
+  color: inherit;
+
+  &:hover {
+    color: inherit;
+    opacity: 0.9;
+  }
+}

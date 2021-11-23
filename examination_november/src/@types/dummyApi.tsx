@@ -48,3 +48,19 @@ export interface INewUserData {
   picture?: string;
   title?: string;
 }
+
+export interface IDummyPostPreview {
+  id: string;
+  text: string;
+  image: string;
+  likes: number;
+  tags: string[];
+  publishDate: string;
+  owner: {
+    id: string;
+    title: string;
+    firstName: string;
+    lastName: string;
+    picture: string;
+  };
+}

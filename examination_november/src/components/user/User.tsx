@@ -1,6 +1,6 @@
 import React from 'react';
 import UserInfo from '../userInfo/UserInfo';
-import UserPosts from '../userPosts/userPosts';
+import UserPosts from '../userPosts/UserPosts';
 
 const User = () => (
   <div className="user">

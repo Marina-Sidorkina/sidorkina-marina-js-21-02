@@ -29,3 +29,8 @@ export interface IUsersListActionType extends IAction{
   payload?: IDummyApiResponse;
   error?: any
 }
+
+export interface IUserPostsActionType extends IAction{
+  payload?: IDummyApiResponse;
+  error?: any
+}

@@ -1,20 +1,47 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import Main from '../../components/main/Main';
 import Paginator from '../../components/paginator/Paginator';
 import User from '../../components/user/User';
 import UserModal from '../../components/userModal/UserModal';
+import { updateUserPostsPageAction } from '../../redux/actions/userPosts';
 
-const Profile = () => (
-  <Main>
-    <User />
-    <Paginator
-      current={1}
-      total={50}
-      perPage={4}
-      onPageChange={(page: number) => console.log(page)}
-    />
-    <UserModal />
-  </Main>
-);
+interface IProfileProps {
+  page: number;
+  total: number;
+  perPage: number,
+  updatePage: Function;
+}
 
-export default Profile;
+const Profile = (props: IProfileProps) => {
+  const {
+    page, total, perPage, updatePage
+  } = props;
+
+  return (
+    <Main>
+      <User />
+      <Paginator
+        current={page}
+        total={total}
+        perPage={perPage}
+        onPageChange={(value: number) => {
+          updatePage(value);
+        }}
+      />
+      <UserModal />
+    </Main>
+  );
+};
+
+export default connect(
+  (state: any) => ({
+    page: state.userPosts.data.page,
+    total: state.userPosts.data.total,
+    perPage: state.userPosts.data.perPage,
+  }),
+  (dispatch) => ({
+    updatePage: bindActionCreators(updateUserPostsPageAction, dispatch)
+  })
+)(Profile);
