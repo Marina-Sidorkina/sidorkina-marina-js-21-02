@@ -64,3 +64,19 @@ export interface IDummyPostPreview {
     picture: string;
   };
 }
+
+export interface IDummyPost {
+  id: string;
+  text: string;
+  image: string;
+  likes: number;
+  tags: string[];
+  publishDate: string;
+  owner: {
+    id: string;
+    title: string;
+    firstName: string;
+    lastName: string;
+    picture: string;
+  };
+}

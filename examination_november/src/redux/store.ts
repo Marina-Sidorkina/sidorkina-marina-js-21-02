@@ -3,13 +3,15 @@ import thunk from 'redux-thunk';
 import usersListReducer from './reducers/usersList';
 import userInfoReducer from './reducers/userInfo';
 import userPostsReducer from './reducers/userPosts';
+import postsListReducer from './reducers/postsList';
 
 const store = createStore(
   combineReducers(
     {
       usersList: usersListReducer,
       userInfo: userInfoReducer,
-      userPosts: userPostsReducer
+      userPosts: userPostsReducer,
+      postsList: postsListReducer
     },
   ),
   applyMiddleware(thunk)

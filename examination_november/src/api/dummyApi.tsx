@@ -1,7 +1,7 @@
 import { INewUserData } from '../@types/dummyApi';
 import {
   METHOD_GET, API_ID, API_ID_FIELD, NEW_USER_POST_URL, METHOD_POST,
-  BASE_URL, USER_URL, PAGE_FIELD, LIMIT_FIELD, CONTENT_TYPE_FIELD, CONTENT_TYPE
+  BASE_URL, USER_URL, PAGE_FIELD, LIMIT_FIELD, CONTENT_TYPE_FIELD, CONTENT_TYPE, POST_URL
 } from '../constants/dummyApi';
 import { getUserPostsUrl } from '../utils/api';
 
@@ -27,6 +27,14 @@ export const getUsersList = (
   page: number,
   limit: number,
 ) => doGetRequest(USER_URL, {
+  [PAGE_FIELD]: page,
+  [LIMIT_FIELD]: limit,
+});
+
+export const getPostsList = (
+  page: number,
+  limit: number,
+) => doGetRequest(POST_URL, {
   [PAGE_FIELD]: page,
   [LIMIT_FIELD]: limit,
 });

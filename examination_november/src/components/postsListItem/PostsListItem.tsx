@@ -1,16 +1,24 @@
 import React from 'react';
 import './PostsListItem.scss';
 
-const PostsListItem = () => {
-  const name = 'ms. Маша Михайлова';
-  const date = '1 мая 04:20';
-  const text = 'Загруженное содержимое добавлено к альбому. Вы можете создать новый альбом.';
+interface IPostsListItem {
+  name: string;
+  date: string | null;
+  text: string;
+  image: string;
+  avatar: string;
+}
+
+const PostsListItem = (props: IPostsListItem) => {
+  const {
+    name, date, text, image, avatar
+  } = props;
   return (
     <li className="posts-list__item post-item">
       <div className="post-item__user-block">
         <img
           className="post-item__user-img"
-          src="https://i.ibb.co/0r1Jdjt/photo-2021-11-21-02-16-16.jpg"
+          src={avatar}
           alt="Аватар пользователя"
         />
         <div className="post-item__user">
@@ -20,7 +28,7 @@ const PostsListItem = () => {
       </div>
       <img
         className="post-item__post"
-        src="https://i.ibb.co/cNbHTxL/photo-2021-11-21-00-19-15.jpg"
+        src={image}
         alt="Пост пользователя"
       />
       <p className="post-item__text">{ text }</p>
