@@ -10,6 +10,7 @@ import {
 import { getUserInfo } from '../../api/dummyApi';
 import { IDummyUserFull } from '../../@types/dummyApi';
 import { getExpirationDate } from '../../utils/redux';
+import { DEFAULT_IMAGE } from '../../constants/components';
 
 export const updateAuthorizedUserDataAction = (response: IDummyUserFull) => ({
   type: UPDATE_AUTHORIZED_USER_DATA,
@@ -47,7 +48,7 @@ export const authorizeUser = (id: string, history: any) => (dispatch: Dispatch) 
     .then((response) => {
       dispatch(updateAuthorizedUserDataAction(response));
       document.cookie = `id=${response.id}; path=/; expires=${getExpirationDate()}`;
-      document.cookie = `picture=${response.picture}; path=/; expires=${getExpirationDate()}`;
+      document.cookie = `picture=${response.picture || DEFAULT_IMAGE}; path=/; expires=${getExpirationDate()}`;
       document.cookie = `name=${response.firstName}; path=/; expires=${getExpirationDate()}`;
       if (response.id) dispatch(history.push(`profile/${response.id}`));
       dispatch(hideLoadingAction());

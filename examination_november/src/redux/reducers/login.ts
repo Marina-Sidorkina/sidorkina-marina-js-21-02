@@ -8,6 +8,7 @@ import {
   RESET_AUTHORIZATION_ERROR
 } from '../constants/login';
 import { getCookie } from '../../utils/redux';
+import { DEFAULT_IMAGE } from '../../constants/components';
 
 export const initialState = {
   data: {
@@ -41,7 +42,7 @@ const loadError = (draft: any) => {
 const setAuthorizedUserData = (draft: any, payload: IDummyUserFull) => {
   draft.data.authorizedUserId = payload.id;
   draft.data.authorizedUserName = payload.firstName;
-  draft.data.authorizedUserPicture = payload.picture;
+  draft.data.authorizedUserPicture = payload.picture || DEFAULT_IMAGE;
   return draft;
 };
 

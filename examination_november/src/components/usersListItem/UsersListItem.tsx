@@ -1,6 +1,7 @@
 import React from 'react';
 import './UsersListItem.scss';
 import { Link } from 'react-router-dom';
+import { DEFAULT_IMAGE } from '../../constants/components';
 
 interface IUsersListItemProps {
   title: string;
@@ -19,10 +20,10 @@ const UsersListItem = (props: IUsersListItemProps) => {
       <li className="users-list__item user-item">
         <img
           className="user-item__img"
-          src={picture}
+          src={picture || DEFAULT_IMAGE}
           alt="Аватар пользователя"
         />
-        <div className="user-item__avatar">{`${title} ${firstName} ${lastName}`}</div>
+        <div className="user-item__avatar">{`${title || ''} ${firstName} ${lastName}`}</div>
       </li>
     </Link>
   );

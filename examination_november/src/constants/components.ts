@@ -11,3 +11,5 @@ export const MONTHS = ['Января',
   'Ноября',
   'Декабря'
 ];
+
+export const DEFAULT_IMAGE = 'https://i.ibb.co/2yWbJxP/default.png';

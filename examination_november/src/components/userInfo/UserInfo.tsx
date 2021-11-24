@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom';
 import { loadUserInfo } from '../../redux/actions/userInfo';
 import { processDate } from '../../utils/components';
 import { IDummyUserFull } from '../../@types/dummyApi';
+import { DEFAULT_IMAGE } from '../../constants/components';
 
 export interface IUserInfoParams {
   id: string;
@@ -49,12 +50,12 @@ const UserInfo = (props: IUserInfoProps) => {
           <>
             <img
               className="user-info__image"
-              src={user.picture}
+              src={user.picture || DEFAULT_IMAGE}
               alt="Аватар пользователя"
             />
             <div className="user-info__container">
               <div className="user-info__details">
-                <p className="user-info__name">{`${user.title} ${user.firstName} ${user.lastName}`}</p>
+                <p className="user-info__name">{`${user.title || ''} ${user.firstName} ${user.lastName}`}</p>
                 <p className="user-info__item">
                   <b>Пол: </b>
                   {user.gender}

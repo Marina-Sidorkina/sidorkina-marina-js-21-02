@@ -24,7 +24,7 @@ const Profile = (props: IProfileProps) => {
       <User />
       <Paginator
         current={page}
-        total={total}
+        total={total || 1}
         perPage={perPage}
         onPageChange={(value: number) => {
           updatePage(value);
