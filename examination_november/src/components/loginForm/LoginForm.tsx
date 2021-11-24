@@ -6,6 +6,7 @@ import {
 import { useHistory } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Link } from 'react-router-dom';
 import {
   authorizeUser,
   hideLoadingAction,
@@ -79,7 +80,7 @@ const LoginForm = (props: ILoginFormProps) => {
           {isLoading
             ? (
               <Spin
-                className="users-info__spinner"
+                className="login__spinner"
                 size="small"
                 style={{
                   width: '110px',
@@ -93,7 +94,9 @@ const LoginForm = (props: ILoginFormProps) => {
           {error ? <div className="login__error">ID не существует</div> : null}
         </Form.Item>
       </Form>
-      <a className="login__link" href="login">Ещё нет аккаунта? Зарегистрироваться</a>
+      <Link to="registration">
+        <span className="login__link">Ещё нет аккаунта? Зарегистрироваться</span>
+      </Link>
     </div>
   );
 };
