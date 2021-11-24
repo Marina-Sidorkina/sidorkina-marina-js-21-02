@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './RegistraionForm.scss';
 import {
   Button, Form, Input, Radio, Spin
@@ -50,6 +50,8 @@ const RegistrationForm = (props: IRegistrationFormProps) => {
     showRegistrationError, hideRegistrationError, error, isLoading,
     hideLoading, showLoading
   } = props;
+
+  useEffect(() => () => hideRegistrationError(), []);
 
   const onFinish = (data: any) => {
     showLoading();
