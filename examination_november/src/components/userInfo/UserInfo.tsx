@@ -8,6 +8,7 @@ import { loadUserInfo } from '../../redux/actions/userInfo';
 import { processDate } from '../../utils/components';
 import { IDummyUserFull } from '../../@types/dummyApi';
 import { DEFAULT_IMAGE } from '../../constants/components';
+import { openUserModalAction, updateUserModalPictureAction } from '../../redux/actions/userModalForm';
 
 export interface IUserInfoParams {
   id: string;
@@ -18,17 +19,23 @@ interface IUserInfoProps {
   user: IDummyUserFull;
   loadUser: Function;
   authorizedUserId: string;
+  openModal: Function;
+  resetFormImage: Function;
 }
 
 const UserInfo = (props: IUserInfoProps) => {
   const params = useParams() as IUserInfoParams;
   const {
-    isLoading, user, loadUser, authorizedUserId
+    isLoading, user, loadUser, authorizedUserId, openModal, resetFormImage
   } = props;
 
   useEffect(() => {
     loadUser(params.id);
   }, [params.id]);
+
+  useEffect(() => {
+    resetFormImage(user.picture);
+  }, [user.picture]);
 
   return (
     <div className="user-info">
@@ -119,7 +126,7 @@ const UserInfo = (props: IUserInfoProps) => {
                         />
                       </g>
                     </svg>
-                    <span className="user-info__edit-text">Редактировать</span>
+                    <span className="user-info__edit-text" onClick={() => openModal()}>Редактировать</span>
                   </button>
                 )
                 : null}
@@ -134,9 +141,11 @@ export default connect(
   (state: any) => ({
     isLoading: state.userInfo.data.isLoading,
     user: state.userInfo.data.user,
-    authorizedUserId: state.login.data.authorizedUserId,
+    authorizedUserId: state.login.data.authorizedUserId
   }),
   (dispatch) => ({
-    loadUser: bindActionCreators(loadUserInfo, dispatch)
+    loadUser: bindActionCreators(loadUserInfo, dispatch),
+    openModal: bindActionCreators(openUserModalAction, dispatch),
+    resetFormImage: bindActionCreators(updateUserModalPictureAction, dispatch)
   })
 )(UserInfo);

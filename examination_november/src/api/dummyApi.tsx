@@ -68,3 +68,15 @@ export const getUserPosts = (
   [PAGE_FIELD]: page,
   [LIMIT_FIELD]: limit,
 });
+
+export const updateUser = (newUserData: Object, id: string) => {
+  const url = new URL(`${USER_URL}/${id}`, BASE_URL);
+  return fetch(url.toString(), {
+    method: 'PUT',
+    body: JSON.stringify(newUserData),
+    headers: new Headers({
+      [API_ID_FIELD]: API_ID,
+      [CONTENT_TYPE_FIELD]: CONTENT_TYPE
+    })
+  }).then((resp) => resp.json());
+};

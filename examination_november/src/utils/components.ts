@@ -6,7 +6,7 @@ export const processDate = (dateString: string) => {
   let day = date.getDate();
   day = day < 10 ? parseInt(`0${day}`, 10) : day;
 
-  return day ? `${day} ${months[date.getMonth()]} ${date.getFullYear()} года` : null;
+  return day ? `${day} ${months[date.getMonth()]} ${date.getFullYear()} года` : '';
 };
 
 const getTime = (value: number) => {
@@ -23,4 +23,9 @@ export const processPostsListItemDate = (dateString: string) => {
   return day
     ? `${day} ${months[date.getMonth()]} ${getTime(date.getHours())}:${getTime(date.getMinutes())}`
     : null;
+};
+
+export const isEmptyObject = (obj: Object) => {
+  if (Object.keys(obj).length === 0) return true;
+  return false;
 };

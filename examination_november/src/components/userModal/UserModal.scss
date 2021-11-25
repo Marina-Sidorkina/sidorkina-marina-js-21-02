@@ -11,6 +11,10 @@
   z-index: 10;
   display: none;
 
+  &_opened {
+    display: flex;
+  }
+
   &__content {
     position: relative;
     box-sizing: border-box;
