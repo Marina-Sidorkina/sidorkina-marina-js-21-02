@@ -1,7 +1,7 @@
 import { INewUserData } from './@types/dummyApi';
 import {
   METHOD_GET, API_ID, API_ID_FIELD, NEW_USER_POST_URL, METHOD_POST, METHOD_PUT,
-  BASE_URL, USER_URL, PAGE_FIELD, LIMIT_FIELD, CONTENT_TYPE_FIELD, CONTENT_TYPE, POST_URL
+  BASE_URL, USER_URL, PAGE_FIELD, LIMIT_FIELD, CONTENT_TYPE_FIELD, CONTENT_TYPE, POST_URL, COMMENT_URL
 } from './constants/dummyApi';
 import { getUserPostsUrl } from '../../utils/api';
 
@@ -84,3 +84,12 @@ export const updateUser = (newUserData: Object, id: string) => {
 export const getPostInfo = (
   id: string
 ) => doGetRequest(`${POST_URL}/${id}`);
+
+export const getCommentsList = (
+  page: number,
+  limit: number,
+  id: string
+) => doGetRequest(`${POST_URL}/${id}/${COMMENT_URL}`, {
+  [PAGE_FIELD]: page,
+  [LIMIT_FIELD]: limit,
+});

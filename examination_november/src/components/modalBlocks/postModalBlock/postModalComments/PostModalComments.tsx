@@ -1,17 +1,36 @@
-import React from 'react';
-import './PostModalCommetns.scss';
+import React, { useEffect } from 'react';
+import './PostModalComments.scss';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { IDummyComment, IDummyOwner } from '../../../../api/dummyApi/@types/dummyApi';
+import { processPostsListItemDate } from '../../../../utils/components';
+import { getPostModalCommentsListAction } from '../../../../redux/actions/postModalComments';
 
-interface IPostModalCpmmentsItemProps {
+interface IPostModalCommentsItemProps {
   name: string;
-  date: string;
+  date: string | null;
   text: string;
+  img: string;
 }
 
-const PostModalCpmmentsItem = ({ name, date, text }: IPostModalCpmmentsItemProps) => (
+interface IPostModalCommentsProps {
+  comments: IDummyComment[];
+  owners: IDummyOwner[];
+  isLoading: boolean;
+  error: boolean;
+  getPostModalCommentsList: Function;
+  currentPostId: string;
+  limit: number;
+  page: number;
+}
+
+const PostModalCommentsItem = ({
+  name, date, text, img
+}: IPostModalCommentsItemProps) => (
   <li className="post-modal-comments__item">
     <img
       className="post-modal-comments__img"
-      src="https://i.ibb.co/0r1Jdjt/photo-2021-11-21-02-16-16.jpg"
+      src={img}
       alt="Аватар пользователя"
     />
     <div className="post-modal-comments__info">
@@ -24,16 +43,52 @@ const PostModalCpmmentsItem = ({ name, date, text }: IPostModalCpmmentsItemProps
   </li>
 );
 
-const PostModalComments = () => {
-  const name = 'ms. Маша Михайлова';
-  const date = '1 сентября 04:20';
-  const text = 'Загруженное содержимое добавлено к альбому. Вы можете создать новый альбом.';
+const PostModalComments = (props: IPostModalCommentsProps) => {
+  const {
+    comments, owners, error, isLoading, getPostModalCommentsList, currentPostId,
+    limit, page
+  } = props;
+
+  useEffect(() => {
+    getPostModalCommentsList(page - 1, limit, currentPostId);
+  }, [currentPostId, page]);
+
+  const getCommentsList = () => {
+    if (comments.length) {
+      return comments.map((comment, index) => (
+        <PostModalCommentsItem
+          key={comment.id}
+          name={`${owners[index].firstName} ${owners[index].firstName}`}
+          date={processPostsListItemDate(comment.publishDate)}
+          text={comment.message}
+          img={owners[index].picture}
+        />
+      ));
+    }
+    return <div>Комментариев пока нет...</div>;
+  };
+
+  const elements = isLoading
+    ? <div className="post-modal-comments__loading">Идёт загрузка комментариев...</div>
+    : getCommentsList();
   return (
     <ul className="post-modal-comments">
-      <PostModalCpmmentsItem name={name} date={date} text={text} />
-      <PostModalCpmmentsItem name={name} date={date} text={text} />
+      { error ? <div className="post-modal-comments__error">Ошибка загрузки</div> : elements }
     </ul>
   );
 };
 
-export default PostModalComments;
+export default connect(
+  (state: any) => ({
+    comments: state.postModalComments.comments,
+    owners: state.postModalComments.owners,
+    isLoading: state.postModalComments.isLoading,
+    error: state.postModalComments.error,
+    limit: state.postModalComments.limit,
+    page: state.postModalComments.page,
+    currentPostId: state.postModal.currentPostId
+  }),
+  (dispatch) => ({
+    getPostModalCommentsList: bindActionCreators(getPostModalCommentsListAction, dispatch)
+  })
+)(PostModalComments);

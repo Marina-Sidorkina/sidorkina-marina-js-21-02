@@ -7,20 +7,33 @@ import Paginator from '../../../commonBlocks/paginator/Paginator';
 import PostModalPost from '../postModalPost/PostModalPost';
 import PostModalComments from '../postModalComments/PostModalComments';
 import { closePostModalAction } from '../../../../redux/actions/postModal';
+import {
+  updatePostModalCommentsAction,
+  updatePostModalCommentsPageAction
+} from '../../../../redux/actions/postModalComments';
 
 interface IPostModalProps {
   closeModal: Function;
+  updatePostModalComments: Function;
+  page: number;
+  total: number;
+  updatePostModalCommentsPage: Function;
 }
 
 const PostModal = (props: IPostModalProps) => {
-  const { closeModal } = props;
+  const {
+    closeModal, updatePostModalComments, page, total, updatePostModalCommentsPage
+  } = props;
 
   return (
     <div className="post-modal">
       <button
         type="button"
         className="post-modal__button"
-        onClick={() => closeModal()}
+        onClick={() => {
+          updatePostModalComments([]);
+          closeModal();
+        }}
       >
         <CloseOutlined style={{ color: '#ffffff', fontSize: '25px' }} />
       </button>
@@ -29,10 +42,10 @@ const PostModal = (props: IPostModalProps) => {
         <PostModalComments />
         <div className="post-modal__paginator">
           <Paginator
-            current={1}
-            total={50}
-            perPage={4}
-            onPageChange={(page: number) => console.log(page)}
+            current={page}
+            total={total || 1}
+            perPage={6}
+            onPageChange={(newPage: number) => updatePostModalCommentsPage(newPage)}
             modal
           />
         </div>
@@ -42,8 +55,13 @@ const PostModal = (props: IPostModalProps) => {
 };
 
 export default connect(
-  () => ({}),
+  (state: any) => ({
+    page: state.postModalComments.page,
+    total: state.postModalComments.totalComments,
+  }),
   (dispatch) => ({
-    closeModal: bindActionCreators(closePostModalAction, dispatch)
+    closeModal: bindActionCreators(closePostModalAction, dispatch),
+    updatePostModalComments: bindActionCreators(updatePostModalCommentsAction, dispatch),
+    updatePostModalCommentsPage: bindActionCreators(updatePostModalCommentsPageAction, dispatch)
   })
 )(PostModal);
