@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import Main from '../../components/main/Main';
-import UsersList from '../../components/usersList/UsersList';
-import Paginator from '../../components/paginator/Paginator';
+import Main from '../../components/commonBlocks/main/Main';
+import UsersList from '../../components/usersListBlock/usersList/UsersList';
+import Paginator from '../../components/commonBlocks/paginator/Paginator';
 import { updateUsersListPageAction } from '../../redux/actions/usersList';
 
 interface IUsersProps {

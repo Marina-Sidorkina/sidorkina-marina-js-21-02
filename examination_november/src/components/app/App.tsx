@@ -3,8 +3,8 @@ import './App.scss';
 import {
   Route, Switch, HashRouter, Redirect
 } from 'react-router-dom';
-import Header from '../header/Header';
-import Footer from '../footer/Footer';
+import Header from '../headerBlock/header/Header';
+import Footer from '../footerBlock/footer/Footer';
 import Posts from '../../pages/posts/Posts';
 import Users from '../../pages/users/Users';
 import Login from '../../pages/login/Login';

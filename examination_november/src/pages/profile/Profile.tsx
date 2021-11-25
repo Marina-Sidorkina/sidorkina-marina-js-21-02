@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import Main from '../../components/main/Main';
-import Paginator from '../../components/paginator/Paginator';
-import User from '../../components/user/User';
-import UserModal from '../../components/userModal/UserModal';
+import Main from '../../components/commonBlocks/main/Main';
+import Paginator from '../../components/commonBlocks/paginator/Paginator';
+import User from '../../components/userBlock/user/User';
+import UserModal from '../../components/modalBlocks/userModalBlock/userModal/UserModal';
 import { updateUserPostsPageAction } from '../../redux/actions/userPosts';
-import PostModal from '../../components/postModal/PostModal';
+import PostModal from '../../components/modalBlocks/postModalBlock/postModal/PostModal';
 
 interface IProfileProps {
   page: number;
