@@ -9,8 +9,8 @@ import { IDummyUserFull } from '../../@types/dummyApi';
 import { DEFAULT_IMAGE, imageChangeCheckValue } from '../../constants/components';
 import { isEmptyObject, processDate } from '../../utils/components';
 import {
-  closeUserModalAction,
-  processUserModalPicture, resetValuesAction,
+  closeUserModalAction, hideLoadingAction,
+  processUserModalPicture, resetValuesAction, showLoadingAction,
   updateUserModalDateOfBirthAction,
   updateUserModalGenderAction,
   updateUserModalNameAction,
@@ -22,6 +22,7 @@ import { updateUser } from '../../api/dummyApi';
 import { createUpdatedUserData } from '../../utils/api';
 import { updateUserCardAction } from '../../redux/actions/userInfo';
 import { getExpirationDate } from '../../utils/redux';
+import { updateAuthorizedUserDataAction } from '../../redux/actions/login';
 
 interface IUserModalFormProps {
   user: IDummyUserFull;
@@ -43,6 +44,9 @@ interface IUserModalFormProps {
   isOpened: boolean;
   updateUserInfo: Function;
   closeModal: Function;
+  updateAuthorizedUserData: Function;
+  showLoading: Function;
+  hideLoading: Function;
 }
 
 interface IUserFormValues {
@@ -63,7 +67,8 @@ const UserModalForm = (props: IUserModalFormProps) => {
     user, nameValue, genderValue, dateOfBirthValue, registrationDateValue,
     emailValue, phoneValue, updateNameValue, updateGenderValue, updateDateOfBirthValue,
     updateRegistrationDateValue, updatePhoneValue, updatePictureValue,
-    pictureValue, resetImage, resetValues, isOpened, updateUserInfo, closeModal
+    pictureValue, resetImage, resetValues, isOpened, updateUserInfo, closeModal,
+    updateAuthorizedUserData, showLoading, hideLoading
   } = props;
 
   const {
@@ -79,18 +84,20 @@ const UserModalForm = (props: IUserModalFormProps) => {
   }, [isOpened]);
 
   const onFormSubmit = (values: IUserFormValues) => {
-    const data = {
+    const updatedData = createUpdatedUserData({
       ...values,
       image: pictureValue === picture
         ? imageChangeCheckValue
         : pictureValue
-    };
-    const updatedData = createUpdatedUserData(data);
+    });
     if (!isEmptyObject(updatedData)) {
+      showLoading();
       updateUser(updatedData, id)
         .then((response: IDummyUserFull) => {
           updateUserInfo(response);
+          updateAuthorizedUserData(response);
           closeModal();
+          hideLoading();
           document.cookie = `picture=${response.picture || DEFAULT_IMAGE}; path=/; expires=${getExpirationDate()}`;
           document.cookie = `name=${response.firstName}; path=/; expires=${getExpirationDate()}`;
         });
@@ -246,5 +253,8 @@ export default connect(
     resetValues: bindActionCreators(resetValuesAction, dispatch),
     updateUserInfo: bindActionCreators(updateUserCardAction, dispatch),
     closeModal: bindActionCreators(closeUserModalAction, dispatch),
+    updateAuthorizedUserData: bindActionCreators(updateAuthorizedUserDataAction, dispatch),
+    showLoading: bindActionCreators(showLoadingAction, dispatch),
+    hideLoading: bindActionCreators(hideLoadingAction, dispatch)
   })
 )(UserModalForm);
