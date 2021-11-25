@@ -6,17 +6,19 @@ import Paginator from '../../components/paginator/Paginator';
 import User from '../../components/user/User';
 import UserModal from '../../components/userModal/UserModal';
 import { updateUserPostsPageAction } from '../../redux/actions/userPosts';
+import PostModal from '../../components/postModal/PostModal';
 
 interface IProfileProps {
   page: number;
   total: number;
   perPage: number,
   updatePage: Function;
+  modalIsOpened: Function;
 }
 
 const Profile = (props: IProfileProps) => {
   const {
-    page, total, perPage, updatePage
+    page, total, perPage, updatePage, modalIsOpened
   } = props;
 
   return (
@@ -31,6 +33,7 @@ const Profile = (props: IProfileProps) => {
         }}
       />
       <UserModal />
+      { modalIsOpened ? <PostModal /> : null }
     </Main>
   );
 };
@@ -40,6 +43,7 @@ export default connect(
     page: state.userPosts.data.page,
     total: state.userPosts.data.total,
     perPage: state.userPosts.data.perPage,
+    modalIsOpened: state.postModal.isOpened
   }),
   (dispatch) => ({
     updatePage: bindActionCreators(updateUserPostsPageAction, dispatch)

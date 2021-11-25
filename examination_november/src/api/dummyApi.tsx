@@ -1,6 +1,6 @@
 import { INewUserData } from '../@types/dummyApi';
 import {
-  METHOD_GET, API_ID, API_ID_FIELD, NEW_USER_POST_URL, METHOD_POST,
+  METHOD_GET, API_ID, API_ID_FIELD, NEW_USER_POST_URL, METHOD_POST, METHOD_PUT,
   BASE_URL, USER_URL, PAGE_FIELD, LIMIT_FIELD, CONTENT_TYPE_FIELD, CONTENT_TYPE, POST_URL
 } from '../constants/dummyApi';
 import { getUserPostsUrl } from '../utils/api';
@@ -72,7 +72,7 @@ export const getUserPosts = (
 export const updateUser = (newUserData: Object, id: string) => {
   const url = new URL(`${USER_URL}/${id}`, BASE_URL);
   return fetch(url.toString(), {
-    method: 'PUT',
+    method: METHOD_PUT,
     body: JSON.stringify(newUserData),
     headers: new Headers({
       [API_ID_FIELD]: API_ID,

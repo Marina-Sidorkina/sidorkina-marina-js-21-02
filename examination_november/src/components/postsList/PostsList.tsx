@@ -38,14 +38,16 @@ const PostsList = (props: IPostsListProps) => {
       />
     )
     : posts.map((item: IDummyPost) => (
-      <PostsListItem
-        key={item.id}
-        avatar={item.owner.picture}
-        image={item.image}
-        text={item.text}
-        date={processPostsListItemDate(item.publishDate)}
-        name={`${item.owner.title} ${item.owner.firstName} ${item.owner.lastName}`}
-      />
+      <li key={item.id} className="posts-list__item">
+        <PostsListItem
+          id={item.id}
+          avatar={item.owner.picture}
+          image={item.image}
+          text={item.text}
+          date={processPostsListItemDate(item.publishDate)}
+          name={`${item.owner.title} ${item.owner.firstName} ${item.owner.lastName}`}
+        />
+      </li>
     ));
 
   return (

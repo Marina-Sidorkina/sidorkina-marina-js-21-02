@@ -49,11 +49,13 @@ const UserPosts = (props: IUserPostsProps) => {
       />
     )
     : posts.map((item: IDummyPostPreview) => (
-      <UserPostsItem
-        key={item.id}
-        image={item.image}
-        text={item.text}
-      />
+      <li key={item.id} className="user-posts__item">
+        <UserPostsItem
+          id={item.id}
+          image={item.image}
+          text={item.text}
+        />
+      </li>
     ));
 
   return (

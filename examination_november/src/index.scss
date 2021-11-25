@@ -6,8 +6,11 @@ html, body, #root {
   padding: 0;
   width: 100%;
   min-width: 320px;
-  max-width: 2000px;
   height: auto;
+}
+
+body, #root {
+  max-width: 2000px;
   min-height: 100vh;
   background-color: #f2f2f2;
 }
