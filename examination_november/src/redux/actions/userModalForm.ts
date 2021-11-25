@@ -78,9 +78,14 @@ export const processUserModalPicture = (value: any) => (dispatch: Dispatch) => {
   reader.readAsDataURL(value);
   reader.onload = () => {
     const formData = setFormData(reader);
+    dispatch(hideUserModalErrorAction());
     getImgLink({ method: IMGBB_API_METHOD, body: formData })
       .then((response) => {
         dispatch(updateUserModalPictureAction(response.data.display_url));
+        dispatch(hideLoadingAction());
+      })
+      .catch(() => {
+        dispatch(showUserModalErrorAction());
         dispatch(hideLoadingAction());
       });
   };

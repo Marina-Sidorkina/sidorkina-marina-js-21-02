@@ -85,6 +85,7 @@ const UserModalForm = (props: IUserModalFormProps) => {
     resetValues();
     resetImage(picture);
     form.resetFields();
+    if (fileInputElement.current) fileInputElement.current.value = '';
   }, [isOpened]);
 
   const onFormSubmit = (values: IUserFormValues) => {
