@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import './UserModalForm.scss';
 import {
   Button, Form, Input
@@ -76,6 +76,7 @@ const UserModalForm = (props: IUserModalFormProps) => {
   } = user;
 
   const [form] = Form.useForm();
+  const fileInputElement = useRef() as any;
 
   useEffect(() => {
     resetValues();
@@ -132,11 +133,15 @@ const UserModalForm = (props: IUserModalFormProps) => {
           type="file"
           id="file-input"
           onChange={onImageFileUpload}
+          ref={fileInputElement}
         />
         <button
           className="user-modal-form__file-delete"
           type="button"
-          onClick={() => resetImage('')}
+          onClick={() => {
+            if (fileInputElement.current) fileInputElement.current.value = '';
+            resetImage('');
+          }}
         >
           Удалить фотографию
         </button>
