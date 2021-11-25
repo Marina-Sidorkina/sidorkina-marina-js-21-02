@@ -28,7 +28,7 @@ export const createUpdatedUserData = (data: any) => {
   if (data.name) [result.firstName, result.lastName] = data.name.split(' ');
   if (data.gender) result.gender = data.gender === 'Женский' ? 'female' : 'male';
   if (data.birthDate) result.dateOfBirth = data.birthDate;
-  if (data.registrationDate) result.registerDate = data.birthDate;
+  if (data.registrationDate) result.registerDate = data.registrationDate;
   if (data.email) result.email = data.email;
   if (data.tel) result.phone = data.tel;
   return result;

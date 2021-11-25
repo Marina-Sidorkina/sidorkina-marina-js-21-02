@@ -34,7 +34,6 @@ const resetValues = (draft: any) => {
 };
 
 const showIsLoading = (draft: any) => {
-  console.log('LOADING');
   draft.isLoading = true;
   draft.error = false;
   return draft;
