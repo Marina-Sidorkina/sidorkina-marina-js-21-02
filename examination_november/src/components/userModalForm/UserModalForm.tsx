@@ -9,8 +9,8 @@ import { IDummyUserFull } from '../../@types/dummyApi';
 import { DEFAULT_IMAGE, imageChangeCheckValue } from '../../constants/components';
 import { isEmptyObject, processDate } from '../../utils/components';
 import {
-  closeUserModalAction, hideLoadingAction,
-  processUserModalPicture, resetValuesAction, showLoadingAction,
+  closeUserModalAction, hideLoadingAction, hideUserModalErrorAction,
+  processUserModalPicture, resetValuesAction, showLoadingAction, showUserModalErrorAction,
   updateUserModalDateOfBirthAction,
   updateUserModalGenderAction,
   updateUserModalNameAction,
@@ -47,6 +47,9 @@ interface IUserModalFormProps {
   updateAuthorizedUserData: Function;
   showLoading: Function;
   hideLoading: Function;
+  error: boolean;
+  showUserModalError: Function;
+  hideUserModalError: Function;
 }
 
 interface IUserFormValues {
@@ -68,7 +71,7 @@ const UserModalForm = (props: IUserModalFormProps) => {
     emailValue, phoneValue, updateNameValue, updateGenderValue, updateDateOfBirthValue,
     updateRegistrationDateValue, updatePhoneValue, updatePictureValue,
     pictureValue, resetImage, resetValues, isOpened, updateUserInfo, closeModal,
-    updateAuthorizedUserData, showLoading, hideLoading
+    updateAuthorizedUserData, showLoading, hideLoading, error, showUserModalError, hideUserModalError
   } = props;
 
   const {
@@ -99,8 +102,13 @@ const UserModalForm = (props: IUserModalFormProps) => {
           updateAuthorizedUserData(response);
           closeModal();
           hideLoading();
+          hideUserModalError();
           document.cookie = `picture=${response.picture || DEFAULT_IMAGE}; path=/; expires=${getExpirationDate()}`;
           document.cookie = `name=${response.firstName}; path=/; expires=${getExpirationDate()}`;
+        })
+        .catch(() => {
+          hideLoading();
+          showUserModalError();
         });
     }
     form.resetFields();
@@ -232,6 +240,7 @@ const UserModalForm = (props: IUserModalFormProps) => {
           Сохранить
         </Button>
       </Form.Item>
+      { error ? <div className="user-modal-form__error">Ошибка загрузки</div> : null }
     </Form>
   );
 };
@@ -245,7 +254,8 @@ export default connect(
     emailValue: state.userModal.values.email,
     phoneValue: state.userModal.values.phone,
     pictureValue: state.userModal.values.picture,
-    isOpened: state.userModal.isOpened
+    isOpened: state.userModal.isOpened,
+    error: state.userModal.error
   }),
   (dispatch) => ({
     updateNameValue: bindActionCreators(updateUserModalNameAction, dispatch),
@@ -260,6 +270,8 @@ export default connect(
     closeModal: bindActionCreators(closeUserModalAction, dispatch),
     updateAuthorizedUserData: bindActionCreators(updateAuthorizedUserDataAction, dispatch),
     showLoading: bindActionCreators(showLoadingAction, dispatch),
-    hideLoading: bindActionCreators(hideLoadingAction, dispatch)
+    hideLoading: bindActionCreators(hideLoadingAction, dispatch),
+    showUserModalError: bindActionCreators(showUserModalErrorAction, dispatch),
+    hideUserModalError: bindActionCreators(hideUserModalErrorAction, dispatch)
   })
 )(UserModalForm);

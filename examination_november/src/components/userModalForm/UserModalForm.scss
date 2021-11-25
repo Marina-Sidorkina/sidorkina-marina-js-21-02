@@ -75,4 +75,10 @@
     font-size: 16px;
     border: 10px;
   }
+
+  &__error {
+    margin-top: -23px;
+    color: red;
+    font-size: 12px;
+  }
 }
