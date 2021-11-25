@@ -1,5 +1,5 @@
 import produce from 'immer';
-import { IDummyOwner, IDummyPostFull } from '../../@types/dummyApi';
+import { IDummyOwner, IDummyPostFull } from '../../api/dummyApi/@types/dummyApi';
 import { IPostModalPostActionType } from '../@types/actions';
 import {
   HIDE_POST_MODAL_POST_ERROR,

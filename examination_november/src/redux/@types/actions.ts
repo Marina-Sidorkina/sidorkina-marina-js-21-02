@@ -1,4 +1,4 @@
-import { IDummyApiResponse, IDummyUserFull, IDummyPostFull } from '../../@types/dummyApi';
+import { IDummyApiResponse, IDummyUserFull, IDummyPostFull } from '../../api/dummyApi/@types/dummyApi';
 
 export interface IAction {
   type: string

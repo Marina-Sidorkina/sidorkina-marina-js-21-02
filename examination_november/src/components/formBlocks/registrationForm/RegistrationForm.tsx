@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { addAndShowNewUser } from '../../../api/dummyApi';
+import { addAndShowNewUser } from '../../../api/dummyApi/dummyApi';
 import { createNewUser } from '../../../utils/api';
 import { authorizeUser } from '../../../redux/actions/login';
 import {

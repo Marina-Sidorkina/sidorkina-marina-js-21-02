@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux';
-import { IDummyApiResponse } from '../../@types/dummyApi';
-import { getPostsList } from '../../api/dummyApi';
+import { IDummyApiResponse } from '../../api/dummyApi/@types/dummyApi';
+import { getPostsList } from '../../api/dummyApi/dummyApi';
 import {
   UPDATE_POSTS_LIST, HIDE_POSTS_LIST_LOADING, LOAD_POSTS_LIST_ERROR, SHOW_POSTS_LIST_LOADING, UPDATE_POSTS_LIST_PAGE
 } from '../constants/postsList';

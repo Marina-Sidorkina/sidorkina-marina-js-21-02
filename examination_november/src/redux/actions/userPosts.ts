@@ -1,10 +1,10 @@
 import { Dispatch } from 'redux';
-import { getUserPosts } from '../../api/dummyApi';
+import { getUserPosts } from '../../api/dummyApi/dummyApi';
 import {
   HIDE_USER_POSTS_LOADING, SHOW_USER_POSTS_LOADING,
   UPDATE_USER_POSTS, LOAD_USER_POSTS_ERROR, UPDATE_USER_POSTS_PAGE
 } from '../constants/userPosts';
-import { IDummyApiResponse } from '../../@types/dummyApi';
+import { IDummyApiResponse } from '../../api/dummyApi/@types/dummyApi';
 
 export const updateUserPostsAction = (response: IDummyApiResponse) => ({
   type: UPDATE_USER_POSTS,

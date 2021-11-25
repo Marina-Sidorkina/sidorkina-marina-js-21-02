@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Spin } from 'antd';
 import { getNewPostModalPost } from '../../../../redux/actions/postModalPost';
-import { IDummyOwner, IDummyPostFull } from '../../../../@types/dummyApi';
+import { IDummyOwner, IDummyPostFull } from '../../../../api/dummyApi/@types/dummyApi';
 import { processPostsListItemDate } from '../../../../utils/components';
 
 interface IPostModalPostProps {
@@ -25,42 +25,45 @@ const PostModalPost = (props: IPostModalPostProps) => {
     getNewPostModal(postId);
   }, []);
 
+  const element = isLoading ? (
+    <Spin
+      className="post-modal-post__spinner"
+      size="large"
+      style={{
+        width: '110px',
+        height: '110px',
+        position: 'absolute',
+        top: '200px',
+        left: 'calc(50% - 55px)'
+      }}
+    />
+  ) : (
+    <>
+      <div className="post-modal-post__user-info">
+        <div className="post-modal-post__user">
+          <img
+            className="post-modal-post__user-img"
+            src={owner.picture}
+            alt="Аватар пользователя"
+          />
+          <div className="post-modal-post__user-name">{ `${owner.firstName} ${owner.lastName}` }</div>
+        </div>
+        <div className="post-modal-post__post-date">{ processPostsListItemDate(post.publishDate) }</div>
+      </div>
+      <img
+        className="post-modal-post__img"
+        src={post.image}
+        alt="Пост пользователя"
+      />
+      <p className="post-modal-post__text">{ post.text }</p>
+    </>
+  );
+
   return (
     <div className="post-modal-post">
-      {error ? <div className="post-modal-post__error">Ошибка загрузки</div> : null}
-      {isLoading ? (
-        <Spin
-          className="post-modal-post__spinner"
-          size="large"
-          style={{
-            width: '110px',
-            height: '110px',
-            position: 'absolute',
-            top: '200px',
-            left: 'calc(50% - 55px)'
-          }}
-        />
-      ) : (
-        <>
-          <div className="post-modal-post__user-info">
-            <div className="post-modal-post__user">
-              <img
-                className="post-modal-post__user-img"
-                src={owner.picture}
-                alt="Аватар пользователя"
-              />
-              <div className="post-modal-post__user-name">{ `${owner.firstName} ${owner.lastName}` }</div>
-            </div>
-            <div className="post-modal-post__post-date">{ processPostsListItemDate(post.publishDate) }</div>
-          </div>
-          <img
-            className="post-modal-post__img"
-            src={post.image}
-            alt="Пост пользователя"
-          />
-          <p className="post-modal-post__text">{ post.text }</p>
-        </>
-      )}
+      { error
+        ? <div className="post-modal-post__error">Ошибка загрузки</div>
+        : element }
     </div>
   );
 };

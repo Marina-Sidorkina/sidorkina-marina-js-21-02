@@ -7,8 +7,8 @@ import {
   UPDATE_AUTHORIZATION_INPUT_VALUE,
   RESET_AUTHORIZED_USER, RESET_AUTHORIZATION_ERROR
 } from '../constants/login';
-import { getUserInfo } from '../../api/dummyApi';
-import { IDummyUserFull } from '../../@types/dummyApi';
+import { getUserInfo } from '../../api/dummyApi/dummyApi';
+import { IDummyUserFull } from '../../api/dummyApi/@types/dummyApi';
 import { getExpirationDate } from '../../utils/redux';
 import { DEFAULT_IMAGE } from '../../constants/components';
 

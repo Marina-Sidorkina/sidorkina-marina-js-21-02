@@ -4,8 +4,8 @@ import {
   SHOW_USERS_LIST_LOADING,
   UPDATE_USERS_LIST, UPDATE_USERS_LIST_PAGE
 } from '../constants/usersList';
-import { IDummyApiResponse } from '../../@types/dummyApi';
-import { getUsersList } from '../../api/dummyApi';
+import { IDummyApiResponse } from '../../api/dummyApi/@types/dummyApi';
+import { getUsersList } from '../../api/dummyApi/dummyApi';
 
 export const updateUsersListAction = (response: IDummyApiResponse) => ({
   type: UPDATE_USERS_LIST,

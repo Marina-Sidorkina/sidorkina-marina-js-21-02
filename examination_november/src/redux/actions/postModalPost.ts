@@ -3,8 +3,8 @@ import {
   HIDE_POST_MODAL_POST_LOADING, SHOW_POST_MODAL_POST_LOADING, HIDE_POST_MODAL_POST_ERROR,
   SHOW_POST_MODAL_POST_ERROR, UPDATE_POST_MODAL_POST
 } from '../constants/postModalPost';
-import { IDummyPostFull } from '../../@types/dummyApi';
-import { getPostInfo } from '../../api/dummyApi';
+import { IDummyPostFull } from '../../api/dummyApi/@types/dummyApi';
+import { getPostInfo } from '../../api/dummyApi/dummyApi';
 
 export const showPostModalPostLoading = () => ({
   type: SHOW_POST_MODAL_POST_LOADING

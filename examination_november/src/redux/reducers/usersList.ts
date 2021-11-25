@@ -1,5 +1,5 @@
 import produce from 'immer';
-import { IDummyUser } from '../../@types/dummyApi';
+import { IDummyUser } from '../../api/dummyApi/@types/dummyApi';
 import {
   SHOW_USERS_LIST_LOADING,
   HIDE_USERS_LIST_LOADING,

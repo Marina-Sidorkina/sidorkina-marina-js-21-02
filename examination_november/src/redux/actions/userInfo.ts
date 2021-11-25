@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux';
-import { IDummyUserFull } from '../../@types/dummyApi';
-import { getUserInfo } from '../../api/dummyApi';
+import { IDummyUserFull } from '../../api/dummyApi/@types/dummyApi';
+import { getUserInfo } from '../../api/dummyApi/dummyApi';
 import {
   LOAD_USER_INFO, LOAD_USER_INFO_ERROR, SHOW_USER_INFO_LOADING, HIDE_USER_INFO_LOADING
 } from '../constants/userInfo';

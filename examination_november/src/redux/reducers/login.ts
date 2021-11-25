@@ -1,5 +1,5 @@
 import produce from 'immer';
-import { IDummyUserFull } from '../../@types/dummyApi';
+import { IDummyUserFull } from '../../api/dummyApi/@types/dummyApi';
 import {
   UPDATE_AUTHORIZED_USER_DATA,
   HIDE_AUTHORIZATION_LOADING, LOAD_AUTHORIZATION_ERROR,

@@ -6,7 +6,7 @@ import { Spin } from 'antd';
 import { useParams } from 'react-router-dom';
 import { loadUserInfo } from '../../../redux/actions/userInfo';
 import { processDate } from '../../../utils/components';
-import { IDummyUserFull } from '../../../@types/dummyApi';
+import { IDummyUserFull } from '../../../api/dummyApi/@types/dummyApi';
 import { DEFAULT_IMAGE } from '../../../constants/components';
 import { openUserModalAction, updateUserModalPictureAction } from '../../../redux/actions/userModalForm';
 

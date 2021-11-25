@@ -1,5 +1,5 @@
 import produce from 'immer';
-import { IDummyPostPreview } from '../../@types/dummyApi';
+import { IDummyPostPreview } from '../../api/dummyApi/@types/dummyApi';
 import {
   HIDE_USER_POSTS_LOADING, LOAD_USER_POSTS_ERROR,
   SHOW_USER_POSTS_LOADING, UPDATE_USER_POSTS, UPDATE_USER_POSTS_PAGE

@@ -1,4 +1,4 @@
-import { IMGBB_API_KEY } from '../constants/imgbbApi';
+import { IMGBB_API_KEY } from '../api/imgbbApi/constants/imgbbApi';
 
 export const setFormData = (data: any) => {
   const formData = new FormData();

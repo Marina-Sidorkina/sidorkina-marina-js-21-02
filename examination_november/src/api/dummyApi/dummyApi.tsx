@@ -1,9 +1,9 @@
-import { INewUserData } from '../@types/dummyApi';
+import { INewUserData } from './@types/dummyApi';
 import {
   METHOD_GET, API_ID, API_ID_FIELD, NEW_USER_POST_URL, METHOD_POST, METHOD_PUT,
   BASE_URL, USER_URL, PAGE_FIELD, LIMIT_FIELD, CONTENT_TYPE_FIELD, CONTENT_TYPE, POST_URL
-} from '../constants/dummyApi';
-import { getUserPostsUrl } from '../utils/api';
+} from './constants/dummyApi';
+import { getUserPostsUrl } from '../../utils/api';
 
 const doGetRequest = (
   path: string,

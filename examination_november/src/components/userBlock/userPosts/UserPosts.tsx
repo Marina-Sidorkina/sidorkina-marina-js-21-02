@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 import { Spin } from 'antd';
 import UserPostsItem from '../userPostsItem/UserPostsItem';
 import { loadUserPosts, updateUserPostsPageAction } from '../../../redux/actions/userPosts';
-import { IDummyPostPreview } from '../../../@types/dummyApi';
+import { IDummyPostPreview } from '../../../api/dummyApi/@types/dummyApi';
 
 export interface IUserPostsParams {
   id: string;

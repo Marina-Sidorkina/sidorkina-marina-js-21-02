@@ -6,8 +6,8 @@ import {
   UPDATE_USER_MODAL_PICTURE, UPDATE_USER_MODAL_REGISTRATION_DATE
 } from '../constants/userModalForm';
 import { setFormData } from '../../utils/formData';
-import { getImgLink } from '../../api/imgbbApi';
-import { IMGBB_API_METHOD } from '../../constants/imgbbApi';
+import { getImgLink } from '../../api/imgbbApi/imgbbApi';
+import { IMGBB_API_METHOD } from '../../api/imgbbApi/constants/imgbbApi';
 
 export const showUserModalErrorAction = () => ({
   type: SHOW_USER_MODAL_ERROR

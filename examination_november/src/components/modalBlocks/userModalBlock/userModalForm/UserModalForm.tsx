@@ -5,7 +5,7 @@ import {
 } from 'antd';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { IDummyUserFull } from '../../../../@types/dummyApi';
+import { IDummyUserFull } from '../../../../api/dummyApi/@types/dummyApi';
 import { DEFAULT_IMAGE, imageChangeCheckValue } from '../../../../constants/components';
 import { isEmptyObject, processDate } from '../../../../utils/components';
 import {
@@ -17,8 +17,8 @@ import {
   updateUserModalPhoneAction, updateUserModalPictureAction,
   updateUserModalRegistrationDateAction
 } from '../../../../redux/actions/userModalForm';
-import { RULES } from '../../../../settings/userModalForm';
-import { updateUser } from '../../../../api/dummyApi';
+import { RULES } from '../../../../antDesignSettings/userModalForm';
+import { updateUser } from '../../../../api/dummyApi/dummyApi';
 import { createUpdatedUserData } from '../../../../utils/api';
 import { updateUserCardAction } from '../../../../redux/actions/userInfo';
 import { getExpirationDate } from '../../../../utils/redux';
