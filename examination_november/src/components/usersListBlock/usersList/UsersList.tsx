@@ -20,11 +20,12 @@ interface IUserListProps {
   loadUsers: Function;
   page: number;
   perPage: number;
+  error: boolean;
 }
 
 const UsersList = (props: IUserListProps) => {
   const {
-    loadUsers, users, isLoading, page, perPage
+    loadUsers, users, isLoading, page, perPage, error
   } = props;
 
   useEffect(() => {
@@ -56,7 +57,7 @@ const UsersList = (props: IUserListProps) => {
 
   return (
     <ul className="users-list">
-      { elements }
+      { error ? <div className="users-list__error">Ошибка загрузки...</div> : elements }
     </ul>
   );
 };

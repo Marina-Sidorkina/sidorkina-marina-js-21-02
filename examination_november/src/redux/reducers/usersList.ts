@@ -4,8 +4,7 @@ import {
   SHOW_USERS_LIST_LOADING,
   HIDE_USERS_LIST_LOADING,
   UPDATE_USERS_LIST,
-  LOAD_USERS_LIST_ERROR,
-  UPDATE_USERS_LIST_PAGE
+  UPDATE_USERS_LIST_PAGE, SHOW_USERS_LIST_ERROR, HIDE_USERS_LIST_ERROR
 } from '../constants/usersList';
 import { IUsersListActionType } from '../@types/actions';
 
@@ -38,12 +37,6 @@ const hideIsLoading = (draft: any) => {
   return draft;
 };
 
-const loadError = (draft: any, error?: any) => {
-  draft.data.isLoading = false;
-  draft.data.error = error;
-  return draft;
-};
-
 const usersListReducer = (state = initialState, action: IUsersListActionType) => produce(state, (draft: any) => {
   switch (action.type) {
     case UPDATE_USERS_LIST:
@@ -52,8 +45,12 @@ const usersListReducer = (state = initialState, action: IUsersListActionType) =>
       return showIsLoading(draft);
     case HIDE_USERS_LIST_LOADING:
       return hideIsLoading(draft);
-    case LOAD_USERS_LIST_ERROR:
-      return loadError(draft, action.error);
+    case SHOW_USERS_LIST_ERROR:
+      draft.data.error = true;
+      return draft;
+    case HIDE_USERS_LIST_ERROR:
+      draft.data.error = false;
+      return draft;
     case UPDATE_USERS_LIST_PAGE:
       draft.data.page = action.payload;
       return draft;
