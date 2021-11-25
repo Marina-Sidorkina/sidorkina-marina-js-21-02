@@ -17,14 +17,14 @@ const PostModal = (props: IPostModalProps) => {
 
   return (
     <div className="post-modal">
+      <button
+        type="button"
+        className="post-modal__button"
+        onClick={() => closeModal()}
+      >
+        <CloseOutlined style={{ color: '#ffffff', fontSize: '25px' }} />
+      </button>
       <div className="post-modal__content">
-        <button
-          type="button"
-          className="post-modal__button"
-          onClick={() => closeModal()}
-        >
-          <CloseOutlined style={{ color: '#ffffff', fontSize: '25px' }} />
-        </button>
         <PostModalPost />
         <PostModalComments />
         <div className="post-modal__paginator">

@@ -8,6 +8,7 @@ import loginReducer from './reducers/login';
 import registrationFormReducer from './reducers/registrationForm';
 import userModalReducer from './reducers/userModalForm';
 import postModalReducer from './reducers/postModal';
+import postModalPostReducer from './reducers/postModalPost';
 
 const store = createStore(
   combineReducers(
@@ -19,7 +20,8 @@ const store = createStore(
       login: loginReducer,
       registration: registrationFormReducer,
       userModal: userModalReducer,
-      postModal: postModalReducer
+      postModal: postModalReducer,
+      postModalPost: postModalPostReducer
     },
   ),
   applyMiddleware(thunk)

@@ -80,3 +80,7 @@ export const updateUser = (newUserData: Object, id: string) => {
     })
   }).then((resp) => resp.json());
 };
+
+export const getPostInfo = (
+  id: string
+) => doGetRequest(`${POST_URL}/${id}`);

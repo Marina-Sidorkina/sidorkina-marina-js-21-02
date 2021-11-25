@@ -11,3 +11,4 @@ export const CONTENT_TYPE_FIELD = 'Content-Type';
 export const CONTENT_TYPE = 'application/json';
 export const NEW_USER_POST_URL = 'user/create';
 export const POST_URL = 'post';
+export const COMMENT_URL = 'comment';

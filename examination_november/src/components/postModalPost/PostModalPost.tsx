@@ -1,33 +1,79 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './PostModalPost.scss';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { Spin } from 'antd';
+import { getNewPostModalPost } from '../../redux/actions/postModalPost';
+import { IDummyOwner, IDummyPostFull } from '../../@types/dummyApi';
+import { processPostsListItemDate } from '../../utils/components';
 
-const PostModalPost = () => {
-  const name = 'ms. Маша Михайлова';
-  const date = '1 сентября 04:20';
-  const text = 'Загруженное содержимое добавлено к альбому. Вы можете создать новый альбом.'
-    + 'Загруженное содержимое добавлено к альбому. Вы можете создать новый альбом.'
-    + 'Загруженное содержимое добавлено к альбому. Вы можете создать новый альбом.';
+interface IPostModalPostProps {
+  postId: string;
+  getNewPostModal: Function;
+  post: IDummyPostFull;
+  isLoading: boolean;
+  owner: IDummyOwner;
+  error: boolean;
+}
+
+const PostModalPost = (props: IPostModalPostProps) => {
+  const {
+    postId, getNewPostModal, post, isLoading, owner, error
+  } = props;
+
+  useEffect(() => {
+    getNewPostModal(postId);
+  }, []);
+
   return (
-    <div className="post-modal-post__post">
-      <div className="post-modal-post__user-info">
-        <div className="post-modal-post__user">
+    <div className="post-modal-post">
+      {error ? <div className="post-modal-post__error">Ошибка загрузки</div> : null}
+      {isLoading ? (
+        <Spin
+          className="post-modal-post__spinner"
+          size="large"
+          style={{
+            width: '110px',
+            height: '110px',
+            position: 'absolute',
+            top: '200px',
+            left: 'calc(50% - 55px)'
+          }}
+        />
+      ) : (
+        <>
+          <div className="post-modal-post__user-info">
+            <div className="post-modal-post__user">
+              <img
+                className="post-modal-post__user-img"
+                src={owner.picture}
+                alt="Аватар пользователя"
+              />
+              <div className="post-modal-post__user-name">{ `${owner.firstName} ${owner.lastName}` }</div>
+            </div>
+            <div className="post-modal-post__post-date">{ processPostsListItemDate(post.publishDate) }</div>
+          </div>
           <img
-            className="post-modal-post__user-img"
-            src="https://i.ibb.co/0r1Jdjt/photo-2021-11-21-02-16-16.jpg"
-            alt="Аватар пользователя"
+            className="post-modal-post__img"
+            src={post.image}
+            alt="Пост пользователя"
           />
-          <div className="post-modal-post__user-name">{ name }</div>
-        </div>
-        <div className="post-modal-post__post-date">{ date }</div>
-      </div>
-      <img
-        className="post-modal-post__img"
-        src="https://i.ibb.co/cNbHTxL/photo-2021-11-21-00-19-15.jpg"
-        alt="Пост пользователя"
-      />
-      <p className="post-modal-post__text">{ text }</p>
+          <p className="post-modal-post__text">{ post.text }</p>
+        </>
+      )}
     </div>
   );
 };
 
-export default PostModalPost;
+export default connect(
+  (state: any) => ({
+    postId: state.postModal.currentPostId,
+    post: state.postModalPost.post,
+    owner: state.postModalPost.owner,
+    isLoading: state.postModalPost.isLoading,
+    error: state.postModalPost.error
+  }),
+  (dispatch) => ({
+    getNewPostModal: bindActionCreators(getNewPostModalPost, dispatch)
+  })
+)(PostModalPost);

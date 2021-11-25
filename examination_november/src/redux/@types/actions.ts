@@ -1,11 +1,7 @@
-import { IDummyApiResponse, IDummyUserFull } from '../../@types/dummyApi';
+import { IDummyApiResponse, IDummyUserFull, IDummyPostFull } from '../../@types/dummyApi';
 
 export interface IAction {
   type: string
-}
-
-export interface IAppActionType extends IAction{
-  payload: string | number | boolean;
 }
 
 export interface ILoaderActionType extends IAction{
@@ -36,7 +32,7 @@ export interface IPostsActionType extends IAction{
   error?: any
 }
 
-export interface ILoginActionType extends IAction{
-  payload?: IDummyUserFull | string;
-  error?: any
+export interface IPostModalPostActionType extends IAction{
+  payload: IDummyPostFull;
+  error?: any;
 }

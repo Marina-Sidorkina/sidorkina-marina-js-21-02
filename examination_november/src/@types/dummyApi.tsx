@@ -111,3 +111,11 @@ export interface IDummyComment {
   post: string;
   publishDate: string;
 }
+
+export interface IDummyOwner {
+  id: string;
+  title: string;
+  firstName: string;
+  lastName: string;
+  picture: string;
+}
