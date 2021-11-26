@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import './UserInfo.scss';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -9,6 +9,7 @@ import { processDate } from '../../../utils/components';
 import { IDummyUserFull } from '../../../api/dummyApi/@types/dummyApi';
 import { DEFAULT_IMAGE } from '../../../constants/components';
 import { openUserModalAction, updateUserModalPictureAction } from '../../../redux/actions/userModalForm';
+import { ThemeContext } from '../../../contexts/ThemeContext';
 
 export interface IUserInfoParams {
   id: string;
@@ -26,9 +27,12 @@ interface IUserInfoProps {
 
 const UserInfo = (props: IUserInfoProps) => {
   const params = useParams() as IUserInfoParams;
+
   const {
     isLoading, user, loadUser, authorizedUserId, openModal, resetFormImage, error
   } = props;
+
+  const themeContext = useContext(ThemeContext);
 
   useEffect(() => {
     loadUser(params.id);
@@ -134,7 +138,10 @@ const UserInfo = (props: IUserInfoProps) => {
     );
 
   return (
-    <div className="user-info">
+    <div className={`${themeContext.darkTheme
+      ? 'user-info user-info_dark'
+      : 'user-info'}`}
+    >
       { error ? <div className="posts-list__error">Ошибка загрузки...</div> : element }
     </div>
   );

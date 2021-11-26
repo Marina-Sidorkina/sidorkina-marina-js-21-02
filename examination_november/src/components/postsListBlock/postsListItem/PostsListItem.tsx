@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './PostsListItem.scss';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { openPostModalAction, setPostModalCurrenIdAction } from '../../../redux/actions/postModal';
 import helper from '../../../hocs/helper/helper';
+import { ThemeContext } from '../../../contexts/ThemeContext';
 
 interface IPostsListItem {
   firstName: string;
@@ -36,7 +37,9 @@ const PostsListItem = (props: IPostsListItem) => {
     date, text, image, avatar, openModal, id, setPostModalCurrenId,
     firstName, lastName, title, userId
   } = props;
+
   const PostsListNameWithHelper = helper(PostsListItemName, userId);
+  const themeContext = useContext(ThemeContext);
 
   const onItemClick = () => {
     openModal();
@@ -44,7 +47,12 @@ const PostsListItem = (props: IPostsListItem) => {
   };
 
   return (
-    <div className="posts-list__item post-item" onClick={onItemClick}>
+    <div
+      className={`${themeContext.darkTheme
+        ? 'posts-list__item post-item post-item_dark'
+        : 'posts-list__item post-item'}`}
+      onClick={onItemClick}
+    >
       <div className="post-item__user-block">
         <img
           className="post-item__user-img"

@@ -32,6 +32,10 @@
     object-fit: cover;
     border-radius: 50%;
     margin-right: 5px;
+
+    &_dark {
+      border: 1px solid #c9d1d9;
+    }
   }
 
   &__user-name,

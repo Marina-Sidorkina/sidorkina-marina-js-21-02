@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './PostModal.scss';
 import { CloseOutlined } from '@ant-design/icons';
 import { connect } from 'react-redux';
@@ -11,6 +11,7 @@ import {
   updatePostModalCommentsAction,
   updatePostModalCommentsPageAction
 } from '../../../../redux/actions/postModalComments';
+import { ThemeContext } from '../../../../contexts/ThemeContext';
 
 interface IPostModalProps {
   closeModal: Function;
@@ -25,6 +26,8 @@ const PostModal = (props: IPostModalProps) => {
     closeModal, updatePostModalComments, page, total, updatePostModalCommentsPage
   } = props;
 
+  const themeContext = useContext(ThemeContext);
+
   return (
     <div className="post-modal">
       <button
@@ -37,7 +40,10 @@ const PostModal = (props: IPostModalProps) => {
       >
         <CloseOutlined style={{ color: '#ffffff', fontSize: '25px' }} />
       </button>
-      <div className="post-modal__content">
+      <div className={`${themeContext.darkTheme
+        ? 'post-modal__content post-modal__content_dark'
+        : 'post-modal__content'}`}
+      >
         <PostModalPost />
         <PostModalComments />
         <div className="post-modal__paginator">

@@ -12,6 +12,24 @@
   border-radius: 15px;
   border: 1px solid #cccccc;
 
+  &_dark {
+    background-color: #161b22;
+    border: 1px solid #30363d;
+    color: #c9d1d9;
+
+    .login__title {
+      color: #c9d1d9;
+    }
+
+    .login__button {
+      border: 1px solid #c9d1d9;
+    }
+
+    .ant-form-item-control-input-content {
+      color: #c9d1d9;
+    }
+  }
+
   &__title {
     text-align: center;
   }

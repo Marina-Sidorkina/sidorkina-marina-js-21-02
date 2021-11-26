@@ -7,6 +7,17 @@
   padding: 15px;
   border-radius: 15px;
   background-color: #ffffff;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  &_dark {
+    background-color: #161b22;
+    border: 1px solid #30363d;
+    color: #c9d1d9;
+  }
 
   &__btn {
     padding: 0;

@@ -23,6 +23,12 @@
     background-color: #f2f2f2;
     border-radius: 15px;
     overflow-y: auto;
+
+    &_dark {
+      background-color: #0d1117;
+      border: 1px solid #c9d1d9;
+      color: #c9d1d9;
+    }
   }
 
   &__button {

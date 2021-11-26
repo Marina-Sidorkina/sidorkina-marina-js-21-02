@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import './PostModalComments.scss';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { IDummyComment, IDummyOwner } from '../../../../api/dummyApi/@types/dummyApi';
 import { processPostsListItemDate } from '../../../../utils/components';
 import { getPostModalCommentsListAction } from '../../../../redux/actions/postModalComments';
+import { ThemeContext } from '../../../../contexts/ThemeContext';
 
 interface IPostModalCommentsItemProps {
   name: string;
@@ -26,22 +27,29 @@ interface IPostModalCommentsProps {
 
 const PostModalCommentsItem = ({
   name, date, text, img
-}: IPostModalCommentsItemProps) => (
-  <li className="post-modal-comments__item">
-    <img
-      className="post-modal-comments__img"
-      src={img}
-      alt="Аватар пользователя"
-    />
-    <div className="post-modal-comments__info">
-      <div className="post-modal-comments__user">
-        <div className="post-modal-comments__name">{ name }</div>
-        <div className="post-modal-comments__date">{ date }</div>
+}: IPostModalCommentsItemProps) => {
+  const themeContext = useContext(ThemeContext);
+
+  return (
+    <li className={`${themeContext.darkTheme
+      ? 'post-modal-comments__item post-modal-comments__item_dark'
+      : 'post-modal-comments__item'}`}
+    >
+      <img
+        className="post-modal-comments__img"
+        src={img}
+        alt="Аватар пользователя"
+      />
+      <div className="post-modal-comments__info">
+        <div className="post-modal-comments__user">
+          <div className="post-modal-comments__name">{ name }</div>
+          <div className="post-modal-comments__date">{ date }</div>
+        </div>
+        <p className="post-modal-comments__text">{ text }</p>
       </div>
-      <p className="post-modal-comments__text">{ text }</p>
-    </div>
-  </li>
-);
+    </li>
+  );
+};
 
 const PostModalComments = (props: IPostModalCommentsProps) => {
   const {

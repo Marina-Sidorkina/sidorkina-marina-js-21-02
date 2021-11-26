@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import './LoginForm.scss';
 import {
   Form, Input, Button, Spin
@@ -13,6 +13,7 @@ import {
   resetAuthorizationErrorAction,
   updateAuthorizationInputValue
 } from '../../../redux/actions/login';
+import { ThemeContext } from '../../../contexts/ThemeContext';
 
 interface ILoginFormProps {
   isLoading: boolean;
@@ -26,10 +27,13 @@ interface ILoginFormProps {
 
 const LoginForm = (props: ILoginFormProps) => {
   const history = useHistory();
+
   const {
     isLoading, authorize, updateInputValue, inputValue,
     hideLoading, error, resetError
   } = props;
+
+  const themeContext = useContext(ThemeContext);
 
   const onSubmit = (values: any) => {
     authorize(values['login-input'], history);
@@ -45,7 +49,10 @@ const LoginForm = (props: ILoginFormProps) => {
   }, []);
 
   return (
-    <div className="login">
+    <div className={`${themeContext.darkTheme
+      ? 'login login_dark'
+      : 'login'}`}
+    >
       <Form
         className="login__form"
         onFinish={onSubmit}

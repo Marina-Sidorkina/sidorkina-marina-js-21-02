@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './AuthorizedUserBlock.scss';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import {
   resetAuthorizedUserAction,
 } from '../../../redux/actions/login';
+import { ThemeContext } from '../../../contexts/ThemeContext';
 
 interface IAuthorizedUserBlockProps {
   resetUser: Function;
@@ -24,11 +25,15 @@ const AuthorizedUserBlock = (props: IAuthorizedUserBlockProps) => {
     evt.preventDefault();
   };
 
+  const themeContext = useContext(ThemeContext);
+
   return (
     <div className="authorized-user-block">
       <div className="authorized-user-block__item">
         <img
-          className="authorized-user-block__user-photo"
+          className={`${themeContext.darkTheme
+            ? 'authorized-user-block__user-photo authorized-user-block__user-photo_dark'
+            : 'authorized-user-block__user-photo'}`}
           src={authorizedUserPicture}
           alt="Фото пользователя"
         />

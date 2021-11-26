@@ -11,6 +11,25 @@
   border-radius: 15px;
   background-color: #ffffff;
 
+  &_dark {
+    background-color: #161b22;
+    border: 1px solid #30363d;
+    color: #c9d1d9;
+
+     & .user-info__image {
+       border: 1px solid #c9d1d9;
+     }
+
+    & .user-info__edit {
+      background-color: #161b22;
+      color: #c9d1d9;
+    }
+
+    & .user-info__edit-svg {
+      fill: #c9d1d9;
+    }
+  }
+
   @media (max-width: 770px) {
     display: flex;
     flex-direction: column;

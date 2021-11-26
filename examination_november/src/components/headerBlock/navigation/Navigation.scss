@@ -51,16 +51,29 @@
       width: 24px;
       height: 24px;
       stroke: #000000;
+
+      &_dark {
+        stroke: #c9d1d9;
+      }
     }
 
     &_posts {
       width: 24px;
       height: 24px;
       fill: #000000;
+
+      &_dark {
+        fill: #c9d1d9;
+      }
     }
   }
 
   &__text {
+
+    &_dark {
+      color: #c9d1d9;
+    }
+
     @media (max-width: 769px) {
       display: none;
     }

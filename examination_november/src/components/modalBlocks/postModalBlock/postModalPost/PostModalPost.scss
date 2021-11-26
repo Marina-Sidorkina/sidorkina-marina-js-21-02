@@ -6,6 +6,13 @@
   align-items: center;
   min-height: 400px;
 
+  &_dark {
+    & .post-modal-post__user-img,
+    & .post-modal-post__img {
+      border: 1px solid #c9d1d9;
+    }
+  }
+
   &__error {
     color: red;
   }

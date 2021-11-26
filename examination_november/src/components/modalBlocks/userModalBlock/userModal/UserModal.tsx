@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './UserModal.scss';
 import { CloseOutlined } from '@ant-design/icons';
 import { connect } from 'react-redux';
@@ -6,6 +6,7 @@ import { bindActionCreators } from 'redux';
 import { Spin } from 'antd';
 import UserModalForm from '../userModalForm/UserModalForm';
 import { closeUserModalAction } from '../../../../redux/actions/userModalForm';
+import { ThemeContext } from '../../../../contexts/ThemeContext';
 
 interface IUserModalProps {
   isOpened: boolean;
@@ -18,9 +19,14 @@ const UserModal = (props: IUserModalProps) => {
     isOpened, closeModal, isLoading
   } = props;
 
+  const themeContext = useContext(ThemeContext);
+
   return (
     <div className={`user-modal ${isOpened ? 'user-modal_opened' : ''}`}>
-      <div className="user-modal__content">
+      <div className={`${themeContext.darkTheme
+        ? 'user-modal__content user-modal__content_dark'
+        : 'user-modal__content'}`}
+      >
         <button type="button" className="user-modal__button">
           <CloseOutlined
             style={{ color: '#ffffff', fontSize: '25px' }}

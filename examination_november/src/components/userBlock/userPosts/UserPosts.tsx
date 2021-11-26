@@ -24,6 +24,7 @@ interface IUserPostsProps {
 
 const UserPosts = (props: IUserPostsProps) => {
   const params = useParams() as IUserPostsParams;
+
   const {
     isLoading, page, perPage, posts, loadPosts, updatePage, error
   } = props;

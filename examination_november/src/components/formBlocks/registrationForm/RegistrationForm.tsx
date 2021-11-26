@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import './RegistraionForm.scss';
 import {
   Button, Form, Input, Radio, Spin
@@ -19,6 +19,7 @@ import {
   updateGenderAction,
   updateNameAction, updatePhoneAction
 } from '../../../redux/actions/registrationForm';
+import { ThemeContext } from '../../../contexts/ThemeContext';
 
 interface IRegistrationFormProps {
   authorize: Function;
@@ -42,7 +43,6 @@ interface IRegistrationFormProps {
 }
 
 const RegistrationForm = (props: IRegistrationFormProps) => {
-  const history = useHistory();
   const {
     authorize, updateDateOfBirth, updateEmail,
     updateGender, updatePhone, updateName, resetValues,
@@ -50,6 +50,9 @@ const RegistrationForm = (props: IRegistrationFormProps) => {
     showRegistrationError, hideRegistrationError, error, isLoading,
     hideLoading, showLoading
   } = props;
+
+  const history = useHistory();
+  const themeContext = useContext(ThemeContext);
 
   useEffect(() => () => hideRegistrationError(), []);
 
@@ -70,7 +73,10 @@ const RegistrationForm = (props: IRegistrationFormProps) => {
   };
 
   return (
-    <div className="registration">
+    <div className={`${themeContext.darkTheme
+      ? 'registration registration_dark'
+      : 'registration'}`}
+    >
       <Form
         className="registration__form"
         onFinish={onFinish}

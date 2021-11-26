@@ -12,6 +12,32 @@
   border-radius: 15px;
   border: 1px solid #cccccc;
 
+  .ant-radio-wrapper {
+    color: #000000;
+  }
+
+  &_dark {
+    background-color: #161b22;
+    border: 1px solid #30363d;
+    color: #c9d1d9;
+
+    .registration__title {
+      color: #c9d1d9;
+    }
+
+    .registration__button {
+      border: 1px solid #c9d1d9;
+    }
+
+    .ant-col .ant-form-item-control-input-content {
+      color: #c9d1d9;
+    }
+
+    .ant-radio-wrapper {
+      color: #c9d1d9;
+    }
+  }
+
   &__submit {
     position: relative;
   }

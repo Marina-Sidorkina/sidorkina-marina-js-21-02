@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import './PostModalPost.scss';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -7,6 +7,7 @@ import { getNewPostModalPost } from '../../../../redux/actions/postModalPost';
 import { IDummyOwner, IDummyPostFull } from '../../../../api/dummyApi/@types/dummyApi';
 import { processPostsListItemDate } from '../../../../utils/components';
 import helper from '../../../../hocs/helper/helper';
+import { ThemeContext } from '../../../../contexts/ThemeContext';
 
 interface IPostModalPostProps {
   postId: string;
@@ -32,7 +33,10 @@ const PostModalPost = (props: IPostModalPostProps) => {
   const {
     postId, getNewPostModal, post, isLoading, owner, error
   } = props;
+
   const PostsListNameWithHelper = helper(PostModalPostName, owner.id);
+
+  const themeContext = useContext(ThemeContext);
 
   useEffect(() => {
     getNewPostModal(postId);
@@ -76,7 +80,10 @@ const PostModalPost = (props: IPostModalPostProps) => {
   );
 
   return (
-    <div className="post-modal-post">
+    <div className={`${themeContext.darkTheme
+      ? 'post-modal-post post-modal-post_dark'
+      : 'post-modal-post'}`}
+    >
       { error
         ? <div className="post-modal-post__error">Ошибка загрузки</div>
         : element }

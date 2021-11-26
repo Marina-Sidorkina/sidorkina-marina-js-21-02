@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import './UserModalForm.scss';
 import {
   Button, Form, Input
@@ -22,6 +22,7 @@ import { createUpdatedUserData } from '../../../../utils/api';
 import { updateUserCardAction } from '../../../../redux/actions/userInfo';
 import { getExpirationDate } from '../../../../utils/redux';
 import { updateAuthorizedUserDataAction } from '../../../../redux/actions/login';
+import { ThemeContext } from '../../../../contexts/ThemeContext';
 
 interface IUserModalFormProps {
   user: IDummyUserFull;
@@ -78,6 +79,15 @@ const UserModalForm = (props: IUserModalFormProps) => {
 
   const [form] = Form.useForm();
   const fileInputElement = useRef() as any;
+  const themeContext = useContext(ThemeContext);
+  const btnStyle = themeContext.darkTheme
+    ? {
+      backgroundColor: '#161b22',
+      border: '1px solid #c9d1d9',
+      display: 'flex',
+      alignItems: 'center'
+    }
+    : {};
 
   useEffect(() => {
     resetValues();
@@ -125,7 +135,9 @@ const UserModalForm = (props: IUserModalFormProps) => {
       labelCol={{ span: 10 }}
       wrapperCol={{ span: 16 }}
       labelAlign="left"
-      className="user-modal-form"
+      className={`${themeContext.darkTheme
+        ? 'user-modal-form user-modal-form_dark'
+        : 'user-modal-form'}`}
       onFinish={onFormSubmit}
       size="small"
     >
@@ -234,6 +246,7 @@ const UserModalForm = (props: IUserModalFormProps) => {
           className="user-modal-form__button"
           type="primary"
           htmlType="submit"
+          style={btnStyle}
         >
           Сохранить
         </Button>

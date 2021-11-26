@@ -26,6 +26,12 @@
     border-radius: 15px;
     background-color: #ffffff;
     border: 1px solid #cccccc;
+
+    &_dark {
+      background-color: #161b22;
+      border: 1px solid #c9d1d9;
+      color: #c9d1d9;
+    }
   }
 
   &__info {
