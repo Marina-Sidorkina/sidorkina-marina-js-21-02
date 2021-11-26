@@ -19,12 +19,13 @@ interface IUserPostsProps {
   page: number;
   perPage: number;
   updatePage: Function;
+  error: boolean;
 }
 
 const UserPosts = (props: IUserPostsProps) => {
   const params = useParams() as IUserPostsParams;
   const {
-    isLoading, page, perPage, posts, loadPosts, updatePage
+    isLoading, page, perPage, posts, loadPosts, updatePage, error
   } = props;
 
   useEffect(() => () => updatePage(1), []);
@@ -60,7 +61,7 @@ const UserPosts = (props: IUserPostsProps) => {
 
   return (
     <ul className="user-posts">
-      {elements}
+      { error ? <div className="posts-list__error">Ошибка загрузки...</div> : elements }
     </ul>
   );
 };

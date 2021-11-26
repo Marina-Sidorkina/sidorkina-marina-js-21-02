@@ -33,6 +33,7 @@ export const loadUserInfo = (paramsId: string) => (dispatch: Dispatch) => {
     .then((response) => {
       dispatch(updateUserCardAction(response));
       dispatch(hideLoadingAction());
+      dispatch(hideUserInfoErrorAction());
     })
     .catch(() => {
       dispatch(showUserInfoErrorAction());

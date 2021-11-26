@@ -2,18 +2,14 @@ import { Dispatch } from 'redux';
 import { getUserPosts } from '../../api/dummyApi/dummyApi';
 import {
   HIDE_USER_POSTS_LOADING, SHOW_USER_POSTS_LOADING,
-  UPDATE_USER_POSTS, LOAD_USER_POSTS_ERROR, UPDATE_USER_POSTS_PAGE
+  UPDATE_USER_POSTS, UPDATE_USER_POSTS_PAGE,
+  HIDE_USER_POSTS_ERROR, SHOW_USER_POSTS_ERROR
 } from '../constants/userPosts';
 import { IDummyApiResponse } from '../../api/dummyApi/@types/dummyApi';
 
 export const updateUserPostsAction = (response: IDummyApiResponse) => ({
   type: UPDATE_USER_POSTS,
   payload: response,
-});
-
-const loadErrorAction = (error: string) => ({
-  type: LOAD_USER_POSTS_ERROR,
-  error,
 });
 
 const showLoadingAction = () => ({
@@ -29,14 +25,24 @@ export const updateUserPostsPageAction = (value: number) => ({
   payload: value
 });
 
+export const showUserPostsErrorAction = () => ({
+  type: SHOW_USER_POSTS_ERROR
+});
+
+export const hideUserPostsErrorAction = () => ({
+  type: HIDE_USER_POSTS_ERROR
+});
+
 export const loadUserPosts = (currentPage: number, perPageLimit: number, id: string) => (dispatch: Dispatch) => {
   dispatch(showLoadingAction());
   getUserPosts(currentPage, perPageLimit, id)
     .then((response) => {
       dispatch(updateUserPostsAction(response));
+      dispatch(hideUserPostsErrorAction());
+      dispatch(hideLoadingAction());
     })
-    .catch((error) => dispatch(loadErrorAction(error)))
-    .finally(() => {
+    .catch(() => {
+      dispatch(showUserPostsErrorAction());
       dispatch(hideLoadingAction());
     });
 };

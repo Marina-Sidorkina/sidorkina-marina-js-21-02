@@ -1,7 +1,7 @@
 import produce from 'immer';
 import { IDummyPostPreview } from '../../api/dummyApi/@types/dummyApi';
 import {
-  HIDE_USER_POSTS_LOADING, LOAD_USER_POSTS_ERROR,
+  HIDE_USER_POSTS_LOADING, HIDE_USER_POSTS_ERROR, SHOW_USER_POSTS_ERROR,
   SHOW_USER_POSTS_LOADING, UPDATE_USER_POSTS, UPDATE_USER_POSTS_PAGE
 } from '../constants/userPosts';
 import { IUserPostsActionType } from '../@types/actions';
@@ -35,12 +35,6 @@ const hideIsLoading = (draft: any) => {
   return draft;
 };
 
-const loadError = (draft: any, error?: any) => {
-  draft.data.isLoading = false;
-  draft.data.error = error;
-  return draft;
-};
-
 const userPostsReducer = (state = initialState, action: IUserPostsActionType) => produce(state, (draft: any) => {
   switch (action.type) {
     case UPDATE_USER_POSTS:
@@ -49,8 +43,12 @@ const userPostsReducer = (state = initialState, action: IUserPostsActionType) =>
       return showIsLoading(draft);
     case HIDE_USER_POSTS_LOADING:
       return hideIsLoading(draft);
-    case LOAD_USER_POSTS_ERROR:
-      return loadError(draft, action.error);
+    case SHOW_USER_POSTS_ERROR:
+      draft.data.error = true;
+      return draft;
+    case HIDE_USER_POSTS_ERROR:
+      draft.data.error = false;
+      return draft;
     case UPDATE_USER_POSTS_PAGE:
       draft.data.page = action.payload;
       return draft;
