@@ -29,6 +29,7 @@ const UsersListItem = (props: IUsersListItemProps) => {
   const {
     title, firstName, lastName, picture, id
   } = props;
+
   const UserNameWithHelper = helper(UsersListItemName, id);
   const themeContext = useContext(ThemeContext);
 

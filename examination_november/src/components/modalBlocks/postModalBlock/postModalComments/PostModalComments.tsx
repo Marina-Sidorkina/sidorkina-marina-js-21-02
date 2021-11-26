@@ -6,12 +6,15 @@ import { IDummyComment, IDummyOwner } from '../../../../api/dummyApi/@types/dumm
 import { processPostsListItemDate } from '../../../../utils/components';
 import { getPostModalCommentsListAction } from '../../../../redux/actions/postModalComments';
 import { ThemeContext } from '../../../../contexts/ThemeContext';
+import helper from '../../../../hocs/helper/helper';
 
 interface IPostModalCommentsItemProps {
-  name: string;
   date: string | null;
   text: string;
   img: string;
+  id: string;
+  firstName: string;
+  lastName: string;
 }
 
 interface IPostModalCommentsProps {
@@ -25,10 +28,22 @@ interface IPostModalCommentsProps {
   page: number;
 }
 
+interface IPostModalCommentsItemNameProps {
+  firstName: string;
+  lastName: string;
+}
+
+const PostModalCommentsItemName = (props: IPostModalCommentsItemNameProps) => (
+  <div className="post-modal-comments__name">
+    {`${props.firstName} ${props.lastName}`}
+  </div>
+);
+
 const PostModalCommentsItem = ({
-  name, date, text, img
+  date, text, img, firstName, lastName, id
 }: IPostModalCommentsItemProps) => {
   const themeContext = useContext(ThemeContext);
+  const PostModalCommentsItemNameWithHelper = helper(PostModalCommentsItemName, id);
 
   return (
     <li className={`${themeContext.darkTheme
@@ -42,7 +57,10 @@ const PostModalCommentsItem = ({
       />
       <div className="post-modal-comments__info">
         <div className="post-modal-comments__user">
-          <div className="post-modal-comments__name">{ name }</div>
+          <PostModalCommentsItemNameWithHelper
+            firstName={firstName}
+            lastName={lastName}
+          />
           <div className="post-modal-comments__date">{ date }</div>
         </div>
         <p className="post-modal-comments__text">{ text }</p>
@@ -66,7 +84,9 @@ const PostModalComments = (props: IPostModalCommentsProps) => {
       return comments.map((comment, index) => (
         <PostModalCommentsItem
           key={comment.id}
-          name={`${owners[index].firstName} ${owners[index].firstName}`}
+          firstName={owners[index].firstName}
+          lastName={owners[index].lastName}
+          id={owners[index].id}
           date={processPostsListItemDate(comment.publishDate)}
           text={comment.message}
           img={owners[index].picture}
