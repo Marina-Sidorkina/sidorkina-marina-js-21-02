@@ -28,7 +28,7 @@ export const showPostsListErrorAction = () => ({
   type: SHOW_POSTS_LIST_ERROR
 });
 
-export const hidePostsErrorAction = () => ({
+export const hidePostsListErrorAction = () => ({
   type: HIDE_POSTS_LIST_ERROR
 });
 
@@ -38,7 +38,7 @@ export const loadPostsList = (currentPage: number, perPageLimit: number) => (dis
     .then((response) => {
       dispatch(updatePostsListAction(response));
       dispatch(hideLoadingAction());
-      dispatch(hidePostsErrorAction());
+      dispatch(hidePostsListErrorAction());
     })
     .catch(() => {
       dispatch(showPostsListErrorAction());
