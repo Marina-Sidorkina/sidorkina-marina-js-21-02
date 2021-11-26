@@ -14,4 +14,8 @@
   @media (max-width: 571px) {
     grid-template-columns: 1fr;
   }
+
+  &__error {
+    color: red;
+  }
 }

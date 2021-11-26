@@ -2,7 +2,8 @@ import produce from 'immer';
 import { IDummyPost } from '../../api/dummyApi/@types/dummyApi';
 import { IPostsActionType } from '../@types/actions';
 import {
-  UPDATE_POSTS_LIST, UPDATE_POSTS_LIST_PAGE, LOAD_POSTS_LIST_ERROR, SHOW_POSTS_LIST_LOADING, HIDE_POSTS_LIST_LOADING
+  UPDATE_POSTS_LIST, UPDATE_POSTS_LIST_PAGE, SHOW_POSTS_LIST_LOADING, HIDE_POSTS_LIST_LOADING,
+  HIDE_POSTS_LIST_ERROR, SHOW_POSTS_LIST_ERROR
 } from '../constants/postsList';
 
 const initialState = {
@@ -34,12 +35,6 @@ const hideIsLoading = (draft: any) => {
   return draft;
 };
 
-const loadError = (draft: any, error?: any) => {
-  draft.data.isLoading = false;
-  draft.data.error = error;
-  return draft;
-};
-
 const postsListReducer = (state = initialState, action: IPostsActionType) => produce(state, (draft: any) => {
   switch (action.type) {
     case UPDATE_POSTS_LIST:
@@ -48,8 +43,12 @@ const postsListReducer = (state = initialState, action: IPostsActionType) => pro
       return showIsLoading(draft);
     case HIDE_POSTS_LIST_LOADING:
       return hideIsLoading(draft);
-    case LOAD_POSTS_LIST_ERROR:
-      return loadError(draft, action.error);
+    case SHOW_POSTS_LIST_ERROR:
+      draft.data.error = true;
+      return draft;
+    case HIDE_POSTS_LIST_ERROR:
+      draft.data.error = false;
+      return draft;
     case UPDATE_POSTS_LIST_PAGE:
       draft.data.page = action.payload;
       return draft;

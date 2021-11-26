@@ -14,11 +14,12 @@ interface IPostsListProps {
   loadPosts: Function;
   page: number;
   perPage: number;
+  error: boolean;
 }
 
 const PostsList = (props: IPostsListProps) => {
   const {
-    loadPosts, posts, isLoading, page, perPage
+    loadPosts, posts, isLoading, page, perPage, error
   } = props;
 
   useEffect(() => {
@@ -52,7 +53,7 @@ const PostsList = (props: IPostsListProps) => {
 
   return (
     <ul className="posts-list">
-      {elements}
+      { error ? <div className="posts-list__error">Ошибка загрузки...</div> : elements }
     </ul>
   );
 };
