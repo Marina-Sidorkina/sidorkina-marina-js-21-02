@@ -2,6 +2,7 @@ import React from 'react';
 import './UsersListItem.scss';
 import { Link } from 'react-router-dom';
 import { DEFAULT_IMAGE } from '../../../constants/components';
+import helper from '../../../hocs/helper/helper';
 
 interface IUsersListItemProps {
   title: string;
@@ -11,10 +12,24 @@ interface IUsersListItemProps {
   id: string;
 }
 
+interface IUsersListItemNameProps {
+  title: string;
+  firstName: string;
+  lastName: string;
+}
+
+const UsersListItemName = (props: IUsersListItemNameProps) => (
+  <div className="user-item__avatar">
+    {`${props.title || ''} ${props.firstName} ${props.lastName}`}
+  </div>
+);
+
 const UsersListItem = (props: IUsersListItemProps) => {
   const {
     title, firstName, lastName, picture, id
   } = props;
+  const UserNameWithHelper = helper(UsersListItemName, id);
+
   return (
     <Link to={`/profile/${id}`} className="link-to-profile">
       <li className="users-list__item user-item">
@@ -23,7 +38,11 @@ const UsersListItem = (props: IUsersListItemProps) => {
           src={picture || DEFAULT_IMAGE}
           alt="Аватар пользователя"
         />
-        <div className="user-item__avatar">{`${title || ''} ${firstName} ${lastName}`}</div>
+        <UserNameWithHelper
+          firstName={firstName}
+          lastName={lastName}
+          title={title}
+        />
       </li>
     </Link>
   );

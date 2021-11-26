@@ -46,7 +46,10 @@ const PostsList = (props: IPostsListProps) => {
           image={item.image}
           text={item.text}
           date={processPostsListItemDate(item.publishDate)}
-          name={`${item.owner.title} ${item.owner.firstName} ${item.owner.lastName}`}
+          firstName={item.owner.firstName}
+          lastName={item.owner.lastName}
+          title={item.owner.title}
+          userId={item.owner.id}
         />
       </li>
     ));

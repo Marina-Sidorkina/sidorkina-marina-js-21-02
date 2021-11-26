@@ -3,22 +3,40 @@ import './PostsListItem.scss';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { openPostModalAction, setPostModalCurrenIdAction } from '../../../redux/actions/postModal';
+import helper from '../../../hocs/helper/helper';
 
 interface IPostsListItem {
-  name: string;
+  firstName: string;
+  lastName: string;
+  title: string;
   date: string | null;
   text: string;
   image: string;
   avatar: string;
   openModal: Function;
   id: string;
+  userId: string;
   setPostModalCurrenId: Function;
 }
 
+interface IPostsListItemNameProps {
+  title: string;
+  firstName: string;
+  lastName: string;
+}
+
+const PostsListItemName = (props: IPostsListItemNameProps) => (
+  <div className="post-item__name">
+    {`${props.title || ''} ${props.firstName} ${props.lastName}`}
+  </div>
+);
+
 const PostsListItem = (props: IPostsListItem) => {
   const {
-    name, date, text, image, avatar, openModal, id, setPostModalCurrenId
+    date, text, image, avatar, openModal, id, setPostModalCurrenId,
+    firstName, lastName, title, userId
   } = props;
+  const PostsListNameWithHelper = helper(PostsListItemName, userId);
 
   const onItemClick = () => {
     openModal();
@@ -34,7 +52,11 @@ const PostsListItem = (props: IPostsListItem) => {
           alt="Аватар пользователя"
         />
         <div className="post-item__user">
-          <div className="post-item__name">{ name }</div>
+          <PostsListNameWithHelper
+            firstName={firstName}
+            lastName={lastName}
+            title={title}
+          />
           <div className="post-item__date">{ date }</div>
         </div>
       </div>

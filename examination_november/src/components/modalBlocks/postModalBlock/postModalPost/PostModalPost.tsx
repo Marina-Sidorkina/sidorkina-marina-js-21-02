@@ -6,6 +6,7 @@ import { Spin } from 'antd';
 import { getNewPostModalPost } from '../../../../redux/actions/postModalPost';
 import { IDummyOwner, IDummyPostFull } from '../../../../api/dummyApi/@types/dummyApi';
 import { processPostsListItemDate } from '../../../../utils/components';
+import helper from '../../../../hocs/helper/helper';
 
 interface IPostModalPostProps {
   postId: string;
@@ -16,10 +17,22 @@ interface IPostModalPostProps {
   error: boolean;
 }
 
+interface IPostModalPostNameProps {
+  firstName: string;
+  lastName: string;
+}
+
+const PostModalPostName = (props: IPostModalPostNameProps) => (
+  <div className="post-modal-post__user-name">
+    { `${props.firstName} ${props.lastName}` }
+  </div>
+);
+
 const PostModalPost = (props: IPostModalPostProps) => {
   const {
     postId, getNewPostModal, post, isLoading, owner, error
   } = props;
+  const PostsListNameWithHelper = helper(PostModalPostName, owner.id);
 
   useEffect(() => {
     getNewPostModal(postId);
@@ -46,7 +59,10 @@ const PostModalPost = (props: IPostModalPostProps) => {
             src={owner.picture}
             alt="Аватар пользователя"
           />
-          <div className="post-modal-post__user-name">{ `${owner.firstName} ${owner.lastName}` }</div>
+          <PostsListNameWithHelper
+            firstName={owner.firstName}
+            lastName={owner.lastName}
+          />
         </div>
         <div className="post-modal-post__post-date">{ processPostsListItemDate(post.publishDate) }</div>
       </div>

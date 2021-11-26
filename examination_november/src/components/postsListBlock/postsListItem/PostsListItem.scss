@@ -11,6 +11,11 @@
   border-radius: 15px;
   background-color: #ffffff;
   border: 1px solid #cccccc;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.9;
+  }
 
   &__user-block {
     display: flex;

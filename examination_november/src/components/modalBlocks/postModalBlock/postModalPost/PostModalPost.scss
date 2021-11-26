@@ -39,6 +39,7 @@
 
   &__user-name {
     max-width: 350px;
+    cursor: pointer;
 
     @media (max-width: 489px) {
       font-size: 12px;
