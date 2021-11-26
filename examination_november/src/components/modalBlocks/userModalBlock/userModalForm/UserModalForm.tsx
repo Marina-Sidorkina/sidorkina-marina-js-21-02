@@ -14,8 +14,7 @@ import {
   updateUserModalDateOfBirthAction,
   updateUserModalGenderAction,
   updateUserModalNameAction,
-  updateUserModalPhoneAction, updateUserModalPictureAction,
-  updateUserModalRegistrationDateAction
+  updateUserModalPhoneAction, updateUserModalPictureAction
 } from '../../../../redux/actions/userModalForm';
 import { RULES } from '../../../../antDesignSettings/userModalForm';
 import { updateUser } from '../../../../api/dummyApi/dummyApi';
@@ -35,7 +34,6 @@ interface IUserModalFormProps {
   updateNameValue: Function;
   updateGenderValue: Function;
   updateDateOfBirthValue: Function;
-  updateRegistrationDateValue: Function;
   updatePhoneValue: Function;
   updatePictureValue: Function;
   pictureValue: string;
@@ -69,7 +67,7 @@ const UserModalForm = (props: IUserModalFormProps) => {
   const {
     user, nameValue, genderValue, dateOfBirthValue, registrationDateValue,
     emailValue, phoneValue, updateNameValue, updateGenderValue, updateDateOfBirthValue,
-    updateRegistrationDateValue, updatePhoneValue, updatePictureValue,
+    updatePhoneValue, updatePictureValue,
     pictureValue, resetImage, resetValues, isOpened, updateUserInfo, closeModal,
     updateAuthorizedUserData, showLoading, hideLoading, error, showUserModalError, hideUserModalError
   } = props;
@@ -198,13 +196,12 @@ const UserModalForm = (props: IUserModalFormProps) => {
         className="user-modal-form__item"
         name="registrationDate"
         label="Дата регистрации:"
-        rules={RULES.registrationDate}
       >
         <Input
           className="user-modal-form__input"
           value={registrationDateValue}
           placeholder={processDate(registerDate)}
-          onChange={(evt) => updateRegistrationDateValue(evt.target.value)}
+          disabled
         />
       </Form.Item>
       <Form.Item
@@ -262,7 +259,6 @@ export default connect(
     updateNameValue: bindActionCreators(updateUserModalNameAction, dispatch),
     updateGenderValue: bindActionCreators(updateUserModalGenderAction, dispatch),
     updateDateOfBirthValue: bindActionCreators(updateUserModalDateOfBirthAction, dispatch),
-    updateRegistrationDateValue: bindActionCreators(updateUserModalRegistrationDateAction, dispatch),
     updatePhoneValue: bindActionCreators(updateUserModalPhoneAction, dispatch),
     updatePictureValue: bindActionCreators(processUserModalPicture, dispatch),
     resetImage: bindActionCreators(updateUserModalPictureAction, dispatch),

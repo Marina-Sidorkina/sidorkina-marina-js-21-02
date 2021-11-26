@@ -44,23 +44,6 @@ export const RULES = {
       }
     }
   ],
-  registrationDate: [
-    {
-      pattern: /^(0[1-9]|1[012])[.](0[1-9]|[12][0-9]|3[01])[.](19|20)\d\d$/,
-      message: 'Формат: ММ.ДД.ГГГГ'
-    },
-    {
-      validator(rule: any, value: any) {
-        const today = new Date();
-        const dateArray = value ? value.split('.').map((item: string) => parseInt(item, 10)) : null;
-        const check = value ? new Date(dateArray[2], dateArray[0] - 1, dateArray[1]) : null;
-
-        if (check && check > today) return Promise.reject(new Error('Invalid date'));
-
-        return Promise.resolve();
-      }
-    }
-  ],
   phone: [
     { min: 5, message: 'Минимум 5' },
     { max: 20, message: 'Максимум 20' }

@@ -2,8 +2,8 @@ import { Dispatch } from 'redux';
 import {
   CLOSE_USER_MODAL, OPEN_USER_MODAL, HIDE_USER_MODAL_ERROR, HIDE_USER_MODAL_LOADING,
   SHOW_USER_MODAL_ERROR, SHOW_USER_MODAL_LOADING, RESET_USER_MODAL_VALUES, UPDATE_USER_MODAL_DATE_OF_BIRTH,
-  UPDATE_USER_MODAL_PHONE, UPDATE_USER_MODAL_EMAIL, UPDATE_USER_MODAL_GENDER, UPDATE_USER_MODAL_NAME,
-  UPDATE_USER_MODAL_PICTURE, UPDATE_USER_MODAL_REGISTRATION_DATE
+  UPDATE_USER_MODAL_PHONE, UPDATE_USER_MODAL_GENDER, UPDATE_USER_MODAL_NAME,
+  UPDATE_USER_MODAL_PICTURE
 } from '../constants/userModalForm';
 import { setFormData } from '../../utils/formData';
 import { getImgLink } from '../../api/imgbbApi/imgbbApi';
@@ -37,16 +37,6 @@ export const updateUserModalGenderAction = (value: string) => ({
 
 export const updateUserModalDateOfBirthAction = (value: string) => ({
   type: UPDATE_USER_MODAL_DATE_OF_BIRTH,
-  payload: value
-});
-
-export const updateUserModalRegistrationDateAction = (value: string) => ({
-  type: UPDATE_USER_MODAL_REGISTRATION_DATE,
-  payload: value
-});
-
-export const updateUserModalEmailAction = (value: string) => ({
-  type: UPDATE_USER_MODAL_EMAIL,
   payload: value
 });
 

@@ -2,8 +2,8 @@ import produce from 'immer';
 import {
   CLOSE_USER_MODAL, OPEN_USER_MODAL, HIDE_USER_MODAL_ERROR, HIDE_USER_MODAL_LOADING,
   SHOW_USER_MODAL_ERROR, SHOW_USER_MODAL_LOADING, RESET_USER_MODAL_VALUES, UPDATE_USER_MODAL_DATE_OF_BIRTH,
-  UPDATE_USER_MODAL_PHONE, UPDATE_USER_MODAL_EMAIL, UPDATE_USER_MODAL_GENDER, UPDATE_USER_MODAL_NAME,
-  UPDATE_USER_MODAL_PICTURE, UPDATE_USER_MODAL_REGISTRATION_DATE
+  UPDATE_USER_MODAL_PHONE, UPDATE_USER_MODAL_GENDER, UPDATE_USER_MODAL_NAME,
+  UPDATE_USER_MODAL_PICTURE
 } from '../constants/userModalForm';
 
 const initialState = {
@@ -60,12 +60,6 @@ const userModalReducer = (state = initialState, action: any) => produce(state, (
       return draft;
     case UPDATE_USER_MODAL_DATE_OF_BIRTH:
       draft.values.dateOfBirth = action.payload;
-      return draft;
-    case UPDATE_USER_MODAL_REGISTRATION_DATE:
-      draft.values.registrationDate = action.payload;
-      return draft;
-    case UPDATE_USER_MODAL_EMAIL:
-      draft.values.email = action.payload;
       return draft;
     case UPDATE_USER_MODAL_PHONE:
       draft.values.phone = action.payload;
