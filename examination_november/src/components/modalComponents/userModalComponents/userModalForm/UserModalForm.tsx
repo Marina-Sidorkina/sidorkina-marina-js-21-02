@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { IDummyUserFull } from '../../../../api/dummyApi/@types/dummyApi';
 import { DEFAULT_IMAGE, IMAGE_CHANGE_CHECK_VALUE } from '../../../../constants/components';
-import { isEmptyObject, processDate } from '../../../../utils/components';
+import { getGenderFieldValue, isEmptyObject, processDate } from '../../../../utils/components';
 import {
   closeUserModalAction, hideLoadingAction, hideUserModalErrorAction,
   processUserModalPicture, resetValuesAction, showLoadingAction, showUserModalErrorAction,
@@ -177,7 +177,7 @@ const UserModalForm = (props: IUserModalFormProps) => {
         <Input
           className="user-modal-form__input"
           value={genderValue}
-          placeholder={gender === 'female' ? 'Женский' : 'Мужской'}
+          placeholder={getGenderFieldValue(gender)}
           onChange={(evt) => updateGenderValue(evt.target.value)}
         />
       </Form.Item>

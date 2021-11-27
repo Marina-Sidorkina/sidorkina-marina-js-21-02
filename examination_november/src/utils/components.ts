@@ -31,3 +31,7 @@ export const getDarkThemeValue = () => {
   const value = localStorage.getItem(LOCAL_STORAGE_THEME_KEY);
   return value === DARK_THEME;
 };
+
+export const getGenderFieldValue = (gender: string) => (
+  gender === 'female' ? 'Женский' : 'Мужской'
+);
