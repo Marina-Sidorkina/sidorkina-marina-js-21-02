@@ -1,0 +1,16 @@
+.app {
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 2000px;
+  min-width: 320px;
+  min-height: 100vh;
+  padding-bottom: 60px;
+
+  &_dark {
+    background-color: #0d1117;
+  }
+}
