@@ -7,13 +7,7 @@ import {
   resetAuthorizedUserAction,
 } from '../../../redux/actions/login';
 import { ThemeContext } from '../../../contexts/ThemeContext';
-
-interface IAuthorizedUserBlockProps {
-  resetUser: Function;
-  authorizedUserId: string;
-  authorizedUserName: string;
-  authorizedUserPicture: string;
-}
+import { IAuthorizedUserBlockProps } from './@types/authorizedUserBlock';
 
 const AuthorizedUserBlock = (props: IAuthorizedUserBlockProps) => {
   const {

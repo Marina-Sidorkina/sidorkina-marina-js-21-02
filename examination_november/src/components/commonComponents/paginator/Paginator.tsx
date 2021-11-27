@@ -2,14 +2,7 @@ import React, { useContext } from 'react';
 import './Paginator.scss';
 import { Pagination } from 'antd';
 import { ThemeContext } from '../../../contexts/ThemeContext';
-
-interface IPaginatorProps {
-  perPage: number | undefined;
-  current: number;
-  total: number;
-  onPageChange: (page: number) => void;
-  modal?: boolean;
-}
+import { IPaginatorProps } from './@types/paginator';
 
 const Paginator = (props: IPaginatorProps) => {
   const {

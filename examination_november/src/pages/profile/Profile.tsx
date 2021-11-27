@@ -7,14 +7,7 @@ import User from '../../components/userComponents/user/User';
 import UserModal from '../../components/modalComponents/userModalComponents/userModal/UserModal';
 import { updateUserPostsPageAction } from '../../redux/actions/userPosts';
 import PostModal from '../../components/modalComponents/postModalComponents/postModal/PostModal';
-
-interface IProfileProps {
-  page: number;
-  total: number;
-  perPage: number,
-  updatePage: Function;
-  modalIsOpened: Function;
-}
+import { IProfileProps } from './@types/profile';
 
 const Profile = (props: IProfileProps) => {
   const {

@@ -16,16 +16,7 @@ import {
 import { ThemeContext } from '../../../contexts/ThemeContext';
 import { RULES } from '../../../antDesignSettings/loginForm';
 import { LOGIN_INPUT_FILED_NAME } from '../../../constants/components';
-
-interface ILoginFormProps {
-  isLoading: boolean;
-  authorize: Function;
-  updateInputValue: Function;
-  inputValue: string;
-  hideLoading: Function;
-  error: any;
-  resetError: Function;
-}
+import { ILoginFormProps } from './@types/loginForm';
 
 const LoginForm = (props: ILoginFormProps) => {
   const history = useHistory();

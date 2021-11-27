@@ -5,13 +5,7 @@ import Main from '../../components/commonComponents/main/Main';
 import UsersList from '../../components/usersListComponents/usersList/UsersList';
 import Paginator from '../../components/commonComponents/paginator/Paginator';
 import { updateUsersListPageAction } from '../../redux/actions/usersList';
-
-interface IUsersProps {
-  page: number;
-  total: number;
-  perPage: number,
-  updatePage: Function;
-}
+import { IUsersProps } from './@types/users';
 
 const Users = (props: IUsersProps) => {
   const {

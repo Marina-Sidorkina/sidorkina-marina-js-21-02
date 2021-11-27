@@ -6,25 +6,11 @@ import { Spin } from 'antd';
 import { useParams } from 'react-router-dom';
 import { loadUserInfo } from '../../../redux/actions/userInfo';
 import { getGenderFieldValue, processDate } from '../../../utils/components';
-import { IDummyUserFull } from '../../../api/dummyApi/@types/dummyApi';
 import { DEFAULT_IMAGE } from '../../../constants/components';
 import { openUserModalAction, updateUserModalPictureAction } from '../../../redux/actions/userModalForm';
 import { ThemeContext } from '../../../contexts/ThemeContext';
 import UserInfoEditIcon from '../userInfoEditIcon/UserInfoEditIcon';
-
-export interface IUserInfoParams {
-  id: string;
-}
-
-interface IUserInfoProps {
-  isLoading: boolean;
-  user: IDummyUserFull;
-  loadUser: Function;
-  authorizedUserId: string;
-  openModal: Function;
-  resetFormImage: Function;
-  error: boolean;
-}
+import { IUserInfoProps, IUserInfoParams } from './@types/userInfo';
 
 const UserInfo = (props: IUserInfoProps) => {
   const params = useParams() as IUserInfoParams;

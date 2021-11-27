@@ -1,15 +1,6 @@
 import React, { SyntheticEvent } from 'react';
 import './helper.scss';
-
-interface IHelperState {
-  hovered: boolean;
-}
-
-interface IComponentWithHelperProps {
-  title?: string;
-  firstName: string;
-  lastName: string;
-}
+import { IHelperState, IComponentWithHelperProps } from './@types/helper';
 
 function helper(Component: React.ElementType, comment: string) {
   return class ComponentWithHelper extends React.Component<any, IHelperState> {
@@ -37,7 +28,6 @@ function helper(Component: React.ElementType, comment: string) {
           onMouseOut={this.mouseOut}
           onMouseOver={this.mouseOver}
         >
-
           { this.state.hovered && <div className="helper__text">{ comment }</div>}
           <Component
             firstName={this.props.firstName}

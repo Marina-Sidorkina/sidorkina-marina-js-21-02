@@ -1,9 +1,6 @@
 import React from 'react';
 import './NavigationUsersIcon.scss';
-
-interface INavigationUsersIcon {
-  dark: boolean | undefined;
-}
+import { INavigationUsersIcon } from './@types/navigationUsersIcon';
 
 const NavigationUsersIcon = (props: INavigationUsersIcon) => {
   const { dark } = props;

@@ -4,24 +4,10 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Spin } from 'antd';
 import { getNewPostModalPost } from '../../../../redux/actions/postModalPost';
-import { IDummyOwner, IDummyPostFull } from '../../../../api/dummyApi/@types/dummyApi';
 import { processPostsListItemDate } from '../../../../utils/components';
 import helper from '../../../../hocs/helper/helper';
 import { ThemeContext } from '../../../../contexts/ThemeContext';
-
-interface IPostModalPostProps {
-  postId: string;
-  getNewPostModal: Function;
-  post: IDummyPostFull;
-  isLoading: boolean;
-  owner: IDummyOwner;
-  error: boolean;
-}
-
-interface IPostModalPostNameProps {
-  firstName: string;
-  lastName: string;
-}
+import { IPostModalPostNameProps, IPostModalPostProps } from './@types/postModalPost';
 
 const PostModalPostName = (props: IPostModalPostNameProps) => (
   <div className="post-modal-post__user-name">

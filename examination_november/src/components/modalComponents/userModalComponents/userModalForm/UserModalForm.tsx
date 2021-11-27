@@ -23,42 +23,7 @@ import { updateUserCardAction } from '../../../../redux/actions/userInfo';
 import { getExpirationDate } from '../../../../utils/redux';
 import { updateAuthorizedUserDataAction } from '../../../../redux/actions/login';
 import { ThemeContext } from '../../../../contexts/ThemeContext';
-
-interface IUserModalFormProps {
-  user: IDummyUserFull;
-  nameValue: string;
-  genderValue: string;
-  dateOfBirthValue: string;
-  registrationDateValue: string;
-  emailValue: string;
-  phoneValue: string;
-  updateNameValue: Function;
-  updateGenderValue: Function;
-  updateDateOfBirthValue: Function;
-  updatePhoneValue: Function;
-  updatePictureValue: Function;
-  pictureValue: string;
-  resetImage: Function;
-  resetValues: Function;
-  isOpened: boolean;
-  updateUserInfo: Function;
-  closeModal: Function;
-  updateAuthorizedUserData: Function;
-  showLoading: Function;
-  hideLoading: Function;
-  error: boolean;
-  showUserModalError: Function;
-  hideUserModalError: Function;
-}
-
-interface IUserFormValues {
-  name: string;
-  gender: string;
-  birthDate: string;
-  registrationDate: string;
-  email: string;
-  tel: string;
-}
+import { IUserModalFormProps, IUserFormValues } from './@types/userModalForm';
 
 const UserModalForm = (props: IUserModalFormProps) => {
   const {

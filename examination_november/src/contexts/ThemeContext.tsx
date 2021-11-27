@@ -1,15 +1,7 @@
 import React, { useState } from 'react';
 import { LOCAL_STORAGE_THEME_KEY } from '../constants/components';
 import { getDarkThemeValue } from '../utils/components';
-
-export interface IThemeContextProps {
-  children: React.ReactNode;
-}
-
-export interface IThemeContextState {
-  darkTheme: boolean;
-  toggleTheme: (value: boolean) => void;
-}
+import { IThemeContextProps, IThemeContextState } from './@types/themeContext';
 
 const ThemeContext = React.createContext<Partial<IThemeContextState>>({});
 

@@ -5,23 +5,7 @@ import { bindActionCreators } from 'redux';
 import { Spin } from 'antd';
 import UsersListItem from '../usersListItem/UsersListItem';
 import { loadUsersList } from '../../../redux/actions/usersList';
-
-interface IUserListItem {
-  id: string;
-  title: string;
-  firstName: string;
-  lastName: string;
-  picture: string;
-}
-
-interface IUserListProps {
-  isLoading: boolean;
-  users: IUserListItem[];
-  loadUsers: Function;
-  page: number;
-  perPage: number;
-  error: boolean;
-}
+import { IUserListItem, IUserListProps } from './@types/usersList';
 
 const UsersList = (props: IUserListProps) => {
   const {

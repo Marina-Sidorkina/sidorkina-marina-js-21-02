@@ -5,26 +5,7 @@ import { bindActionCreators } from 'redux';
 import { openPostModalAction, setPostModalCurrenIdAction } from '../../../redux/actions/postModal';
 import helper from '../../../hocs/helper/helper';
 import { ThemeContext } from '../../../contexts/ThemeContext';
-
-interface IPostsListItem {
-  firstName: string;
-  lastName: string;
-  title: string;
-  date: string | null;
-  text: string;
-  image: string;
-  avatar: string;
-  openModal: Function;
-  id: string;
-  userId: string;
-  setPostModalCurrenId: Function;
-}
-
-interface IPostsListItemNameProps {
-  title: string;
-  firstName: string;
-  lastName: string;
-}
+import { IPostsListItemNameProps, IPostsListItem } from './@types/postsListItem';
 
 const PostsListItemName = (props: IPostsListItemNameProps) => (
   <div className="post-item__name">

@@ -4,20 +4,7 @@ import { Link } from 'react-router-dom';
 import { DEFAULT_IMAGE } from '../../../constants/components';
 import helper from '../../../hocs/helper/helper';
 import { ThemeContext } from '../../../contexts/ThemeContext';
-
-interface IUsersListItemProps {
-  title: string;
-  firstName: string;
-  lastName: string;
-  picture: string;
-  id: string;
-}
-
-interface IUsersListItemNameProps {
-  title: string;
-  firstName: string;
-  lastName: string;
-}
+import { IUsersListItemProps, IUsersListItemNameProps } from './@types/usersListItem';
 
 const UsersListItemName = (props: IUsersListItemNameProps) => (
   <div className="user-item__avatar">

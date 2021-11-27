@@ -2,36 +2,15 @@ import React, { useContext, useEffect } from 'react';
 import './PostModalComments.scss';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { IDummyComment, IDummyOwner } from '../../../../api/dummyApi/@types/dummyApi';
 import { processPostsListItemDate } from '../../../../utils/components';
 import { getPostModalCommentsListAction } from '../../../../redux/actions/postModalComments';
 import { ThemeContext } from '../../../../contexts/ThemeContext';
 import helper from '../../../../hocs/helper/helper';
-
-interface IPostModalCommentsItemProps {
-  date: string | null;
-  text: string;
-  img: string;
-  id: string;
-  firstName: string;
-  lastName: string;
-}
-
-interface IPostModalCommentsProps {
-  comments: IDummyComment[];
-  owners: IDummyOwner[];
-  isLoading: boolean;
-  error: boolean;
-  getPostModalCommentsList: Function;
-  currentPostId: string;
-  limit: number;
-  page: number;
-}
-
-interface IPostModalCommentsItemNameProps {
-  firstName: string;
-  lastName: string;
-}
+import {
+  IPostModalCommentsItemNameProps,
+  IPostModalCommentsItemProps,
+  IPostModalCommentsProps
+} from './@types/postModalComments';
 
 const PostModalCommentsItemName = (props: IPostModalCommentsItemNameProps) => (
   <div className="post-modal-comments__name">

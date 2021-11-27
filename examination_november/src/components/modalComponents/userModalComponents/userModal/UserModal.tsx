@@ -7,12 +7,7 @@ import { Spin } from 'antd';
 import UserModalForm from '../userModalForm/UserModalForm';
 import { closeUserModalAction } from '../../../../redux/actions/userModalForm';
 import { ThemeContext } from '../../../../contexts/ThemeContext';
-
-interface IUserModalProps {
-  isOpened: boolean;
-  closeModal: Function;
-  isLoading: boolean;
-}
+import { IUserModalProps } from './@types/userModal';
 
 const UserModal = (props: IUserModalProps) => {
   const {

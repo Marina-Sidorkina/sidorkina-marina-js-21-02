@@ -6,14 +6,7 @@ import PostsList from '../../components/postsListComponents/postsList/PostsList'
 import Paginator from '../../components/commonComponents/paginator/Paginator';
 import { updatePostsListPageAction } from '../../redux/actions/postsList';
 import PostModal from '../../components/modalComponents/postModalComponents/postModal/PostModal';
-
-interface IPostsProps {
-  page: number;
-  total: number;
-  perPage: number,
-  updatePage: Function;
-  modalIsOpened: boolean;
-}
+import { IPostsProps } from './@types/posts';
 
 const Posts = (props: IPostsProps) => {
   const {

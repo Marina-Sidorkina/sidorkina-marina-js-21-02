@@ -7,20 +7,7 @@ import { Spin } from 'antd';
 import UserPostsItem from '../userPostsItem/UserPostsItem';
 import { loadUserPosts, updateUserPostsPageAction } from '../../../redux/actions/userPosts';
 import { IDummyPostPreview } from '../../../api/dummyApi/@types/dummyApi';
-
-export interface IUserPostsParams {
-  id: string;
-}
-
-interface IUserPostsProps {
-  isLoading: boolean;
-  posts: IDummyPostPreview[];
-  loadPosts: Function;
-  page: number;
-  perPage: number;
-  updatePage: Function;
-  error: boolean;
-}
+import { IUserPostsProps, IUserPostsParams } from './@types/userPosts';
 
 const UserPosts = (props: IUserPostsProps) => {
   const params = useParams() as IUserPostsParams;

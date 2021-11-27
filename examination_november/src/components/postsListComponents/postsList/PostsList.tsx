@@ -7,15 +7,7 @@ import PostsListItem from '../postsListItem/PostsListItem';
 import { loadPostsList } from '../../../redux/actions/postsList';
 import { IDummyPost } from '../../../api/dummyApi/@types/dummyApi';
 import { processPostsListItemDate } from '../../../utils/components';
-
-interface IPostsListProps {
-  isLoading: boolean;
-  posts: IDummyPost[];
-  loadPosts: Function;
-  page: number;
-  perPage: number;
-  error: boolean;
-}
+import { IPostsListProps } from './@types/postsList';
 
 const PostsList = (props: IPostsListProps) => {
   const {

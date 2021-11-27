@@ -12,14 +12,7 @@ import {
   updatePostModalCommentsPageAction
 } from '../../../../redux/actions/postModalComments';
 import { ThemeContext } from '../../../../contexts/ThemeContext';
-
-interface IPostModalProps {
-  closeModal: Function;
-  updatePostModalComments: Function;
-  page: number;
-  total: number;
-  updatePostModalCommentsPage: Function;
-}
+import { IPostModalProps } from './@types/postModal';
 
 const PostModal = (props: IPostModalProps) => {
   const {

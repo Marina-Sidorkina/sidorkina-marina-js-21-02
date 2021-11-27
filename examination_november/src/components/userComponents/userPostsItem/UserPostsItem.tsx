@@ -4,14 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { openPostModalAction, setPostModalCurrenIdAction } from '../../../redux/actions/postModal';
 import { ThemeContext } from '../../../contexts/ThemeContext';
-
-interface IUserPostsItemProps {
-  image: string;
-  text: string;
-  id: string;
-  openModal: Function;
-  setPostModalCurrenId: Function;
-}
+import { IUserPostsItemProps } from './@types/userPostsItem';
 
 const UserPostsItem = (props: IUserPostsItemProps) => {
   const {
