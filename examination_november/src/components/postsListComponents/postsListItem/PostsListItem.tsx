@@ -28,7 +28,7 @@ interface IPostsListItemNameProps {
 
 const PostsListItemName = (props: IPostsListItemNameProps) => (
   <div className="post-item__name">
-    {`${props.title || ''} ${props.firstName} ${props.lastName}`}
+    {`${props.title ? `${props.title}.` : ''} ${props.firstName} ${props.lastName}`}
   </div>
 );
 
