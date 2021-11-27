@@ -14,6 +14,7 @@ const Theme = () => {
         onChange={(switched: boolean) => (
           themeContext.toggleTheme && themeContext.toggleTheme(switched)
         )}
+        checked={themeContext.darkTheme}
       />
     </div>
   );

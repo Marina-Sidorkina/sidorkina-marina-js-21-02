@@ -1,4 +1,4 @@
-import { MONTHS } from '../constants/components';
+import { DARK_THEME, LOCAL_STORAGE_THEME_KEY, MONTHS } from '../constants/components';
 
 export const processDate = (dateString: string) => {
   const months = MONTHS;
@@ -25,7 +25,9 @@ export const processPostsListItemDate = (dateString: string) => {
     : null;
 };
 
-export const isEmptyObject = (obj: Object) => {
-  if (Object.keys(obj).length === 0) return true;
-  return false;
+export const isEmptyObject = (obj: Object) => Object.keys(obj).length === 0;
+
+export const getDarkThemeValue = () => {
+  const value = localStorage.getItem(LOCAL_STORAGE_THEME_KEY);
+  return value === DARK_THEME;
 };
