@@ -15,6 +15,7 @@ import {
 } from '../../../redux/actions/login';
 import { ThemeContext } from '../../../contexts/ThemeContext';
 import { RULES } from '../../../antDesignSettings/loginForm';
+import { LOGIN_INPUT_FILED_NAME } from '../../../constants/components';
 
 interface ILoginFormProps {
   isLoading: boolean;
@@ -37,7 +38,7 @@ const LoginForm = (props: ILoginFormProps) => {
   const themeContext = useContext(ThemeContext);
 
   const onSubmit = (values: any) => {
-    authorize(values['login-input'], history);
+    authorize(values[LOGIN_INPUT_FILED_NAME], history);
   };
 
   const onChange = (evt: any) => {

@@ -2,7 +2,7 @@ import React from 'react';
 import './Authorization.scss';
 import { connect } from 'react-redux';
 import NotAuthorizedUserBlock from '../notAuthorizedUserBlock/NotAuthorizedUserBlock';
-import AuthorizedUserBlock from '../authorizedUseBlock/AuthorizedUserBlock';
+import AuthorizedUserBlock from '../authorizedUserBlock/AuthorizedUserBlock';
 
 interface IAuthorizationProps {
   authorizedUserId: string;

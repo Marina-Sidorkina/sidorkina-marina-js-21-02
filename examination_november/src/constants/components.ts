@@ -19,3 +19,5 @@ export const IMAGE_CHANGE_CHECK_VALUE = 'notChanged';
 export const DARK_THEME = 'true';
 
 export const LOCAL_STORAGE_THEME_KEY = 'deltaWorldTheme';
+
+export const LOGIN_INPUT_FILED_NAME = 'login-input';
