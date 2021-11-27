@@ -21,7 +21,7 @@ interface IUsersListItemNameProps {
 
 const UsersListItemName = (props: IUsersListItemNameProps) => (
   <div className="user-item__avatar">
-    {`${props.title || ''} ${props.firstName} ${props.lastName}`}
+    {`${props.title ? `${props.title}.` : ''} ${props.firstName} ${props.lastName}`}
   </div>
 );
 

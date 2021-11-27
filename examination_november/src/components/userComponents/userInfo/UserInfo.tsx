@@ -66,7 +66,9 @@ const UserInfo = (props: IUserInfoProps) => {
         />
         <div className="user-info__container">
           <div className="user-info__details">
-            <p className="user-info__name">{`${user.title || ''} ${user.firstName} ${user.lastName}`}</p>
+            <p className="user-info__name">
+              {`${user.title ? `${user.title}.` : ''} ${user.firstName} ${user.lastName}`}
+            </p>
             <p className="user-info__item">
               <b>Пол: </b>
               {getGenderFieldValue(user.gender)}
