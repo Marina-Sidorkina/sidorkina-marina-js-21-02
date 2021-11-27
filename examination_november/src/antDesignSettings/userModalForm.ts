@@ -49,3 +49,10 @@ export const RULES = {
     { max: 20, message: 'Максимум 20' }
   ]
 };
+
+export const BTN_DARK_STYLE = {
+  backgroundColor: '#161b22',
+  border: '1px solid #c9d1d9',
+  display: 'flex',
+  alignItems: 'center'
+};

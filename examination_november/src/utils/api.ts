@@ -1,4 +1,4 @@
-import { imageChangeCheckValue } from '../constants/components';
+import { IMAGE_CHANGE_CHECK_VALUE } from '../constants/components';
 
 interface IUpdatedUserData {
   picture?: string;
@@ -24,7 +24,7 @@ export const createNewUser = (data: any) => ({
 
 export const createUpdatedUserData = (data: any) => {
   const result = {} as IUpdatedUserData;
-  if (data.image !== imageChangeCheckValue) result.picture = data.image;
+  if (data.image !== IMAGE_CHANGE_CHECK_VALUE) result.picture = data.image;
   if (data.name) [result.firstName, result.lastName] = data.name.split(' ');
   if (data.gender) result.gender = data.gender === 'Женский' ? 'female' : 'male';
   if (data.birthDate) result.dateOfBirth = data.birthDate;

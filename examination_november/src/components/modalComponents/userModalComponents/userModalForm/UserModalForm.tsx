@@ -6,7 +6,7 @@ import {
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { IDummyUserFull } from '../../../../api/dummyApi/@types/dummyApi';
-import { DEFAULT_IMAGE, imageChangeCheckValue } from '../../../../constants/components';
+import { DEFAULT_IMAGE, IMAGE_CHANGE_CHECK_VALUE } from '../../../../constants/components';
 import { isEmptyObject, processDate } from '../../../../utils/components';
 import {
   closeUserModalAction, hideLoadingAction, hideUserModalErrorAction,
@@ -16,7 +16,7 @@ import {
   updateUserModalNameAction,
   updateUserModalPhoneAction, updateUserModalPictureAction
 } from '../../../../redux/actions/userModalForm';
-import { RULES } from '../../../../antDesignSettings/userModalForm';
+import { BTN_DARK_STYLE, RULES } from '../../../../antDesignSettings/userModalForm';
 import { updateUser } from '../../../../api/dummyApi/dummyApi';
 import { createUpdatedUserData } from '../../../../utils/api';
 import { updateUserCardAction } from '../../../../redux/actions/userInfo';
@@ -60,10 +60,6 @@ interface IUserFormValues {
   tel: string;
 }
 
-export interface IUserModalFormParams {
-  id: string;
-}
-
 const UserModalForm = (props: IUserModalFormProps) => {
   const {
     user, nameValue, genderValue, dateOfBirthValue, registrationDateValue,
@@ -81,13 +77,7 @@ const UserModalForm = (props: IUserModalFormProps) => {
   const fileInputElement = useRef() as any;
   const themeContext = useContext(ThemeContext);
   const btnStyle = themeContext.darkTheme
-    ? {
-      backgroundColor: '#161b22',
-      border: '1px solid #c9d1d9',
-      display: 'flex',
-      alignItems: 'center'
-    }
-    : {};
+    ? BTN_DARK_STYLE : {};
 
   useEffect(() => {
     resetValues();
@@ -100,7 +90,7 @@ const UserModalForm = (props: IUserModalFormProps) => {
     const updatedData = createUpdatedUserData({
       ...values,
       image: pictureValue === picture
-        ? imageChangeCheckValue
+        ? IMAGE_CHANGE_CHECK_VALUE
         : pictureValue
     });
     if (!isEmptyObject(updatedData)) {

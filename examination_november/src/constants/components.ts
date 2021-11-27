@@ -14,7 +14,7 @@ export const MONTHS = ['Января',
 
 export const DEFAULT_IMAGE = 'https://i.ibb.co/2yWbJxP/default.png';
 
-export const imageChangeCheckValue = 'notChanged';
+export const IMAGE_CHANGE_CHECK_VALUE = 'notChanged';
 
 export const DARK_THEME = 'true';
 
