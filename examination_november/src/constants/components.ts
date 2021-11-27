@@ -18,4 +18,4 @@ export const IMAGE_CHANGE_CHECK_VALUE = 'notChanged';
 
 export const DARK_THEME = 'true';
 
-export const LOCAL_STORAGE_THEME_KEY = 'theme';
+export const LOCAL_STORAGE_THEME_KEY = 'deltaWorldTheme';
