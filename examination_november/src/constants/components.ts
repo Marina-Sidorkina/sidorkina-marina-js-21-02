@@ -21,3 +21,5 @@ export const DARK_THEME = 'true';
 export const LOCAL_STORAGE_THEME_KEY = 'deltaWorldTheme';
 
 export const LOGIN_INPUT_FILED_NAME = 'login-input';
+
+export const DEFAULT_PAGE = 1;

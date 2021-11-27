@@ -6,13 +6,14 @@ import UsersList from '../../components/usersListComponents/usersList/UsersList'
 import Paginator from '../../components/commonComponents/paginator/Paginator';
 import { updateUsersListPageAction } from '../../redux/actions/usersList';
 import { IUsersProps } from './@types/users';
+import { DEFAULT_PAGE } from '../../constants/components';
 
 const Users = (props: IUsersProps) => {
   const {
     page, total, perPage, updatePage
   } = props;
 
-  useEffect(() => () => updatePage(1), []);
+  useEffect(() => () => updatePage(DEFAULT_PAGE), []);
 
   return (
     <Main>

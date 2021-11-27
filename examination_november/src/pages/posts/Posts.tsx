@@ -7,13 +7,14 @@ import Paginator from '../../components/commonComponents/paginator/Paginator';
 import { updatePostsListPageAction } from '../../redux/actions/postsList';
 import PostModal from '../../components/modalComponents/postModalComponents/postModal/PostModal';
 import { IPostsProps } from './@types/posts';
+import { DEFAULT_PAGE } from '../../constants/components';
 
 const Posts = (props: IPostsProps) => {
   const {
     page, total, perPage, updatePage, modalIsOpened
   } = props;
 
-  useEffect(() => () => updatePage(1), []);
+  useEffect(() => () => updatePage(DEFAULT_PAGE), []);
 
   return (
     <Main>

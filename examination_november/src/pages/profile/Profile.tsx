@@ -8,6 +8,7 @@ import UserModal from '../../components/modalComponents/userModalComponents/user
 import { updateUserPostsPageAction } from '../../redux/actions/userPosts';
 import PostModal from '../../components/modalComponents/postModalComponents/postModal/PostModal';
 import { IProfileProps } from './@types/profile';
+import { DEFAULT_PAGE } from '../../constants/components';
 
 const Profile = (props: IProfileProps) => {
   const {
@@ -19,7 +20,7 @@ const Profile = (props: IProfileProps) => {
       <User />
       <Paginator
         current={page}
-        total={total || 1}
+        total={total || DEFAULT_PAGE}
         perPage={perPage}
         onPageChange={(value: number) => {
           updatePage(value);
