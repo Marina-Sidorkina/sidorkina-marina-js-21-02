@@ -14,6 +14,7 @@ import {
   updateAuthorizationInputValue
 } from '../../../redux/actions/login';
 import { ThemeContext } from '../../../contexts/ThemeContext';
+import { RULES } from '../../../antDesignSettings/loginForm';
 
 interface ILoginFormProps {
   isLoading: boolean;
@@ -63,9 +64,7 @@ const LoginForm = (props: ILoginFormProps) => {
           <Form.Item
             className="login__form-item"
             name="login-input"
-            rules={[
-              { required: true, message: 'Please enter your ID' }
-            ]}
+            rules={RULES.id}
           >
             <Input
               className="login__input"
