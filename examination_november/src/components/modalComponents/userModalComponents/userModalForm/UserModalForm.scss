@@ -46,10 +46,10 @@
     width: 100%;
     border-right: 1px solid #cccccc;
     cursor: pointer;
+  }
 
-    &:hover {
-      opacity: 0.7;
-    }
+  &__file-span:hover {
+    opacity: 0.7;
   }
 
   &__file-delete {

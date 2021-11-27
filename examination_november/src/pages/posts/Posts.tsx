@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import Main from '../../components/commonBlocks/main/Main';
-import PostsList from '../../components/postsListBlock/postsList/PostsList';
-import Paginator from '../../components/commonBlocks/paginator/Paginator';
+import Main from '../../components/commonComponents/main/Main';
+import PostsList from '../../components/postsListComponents/postsList/PostsList';
+import Paginator from '../../components/commonComponents/paginator/Paginator';
 import { updatePostsListPageAction } from '../../redux/actions/postsList';
-import PostModal from '../../components/modalBlocks/postModalBlock/postModal/PostModal';
+import PostModal from '../../components/modalComponents/postModalComponents/postModal/PostModal';
 
 interface IPostsProps {
   page: number;

@@ -3,7 +3,7 @@ import './PostModal.scss';
 import { CloseOutlined } from '@ant-design/icons';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import Paginator from '../../../commonBlocks/paginator/Paginator';
+import Paginator from '../../../commonComponents/paginator/Paginator';
 import PostModalPost from '../postModalPost/PostModalPost';
 import PostModalComments from '../postModalComments/PostModalComments';
 import { closePostModalAction } from '../../../../redux/actions/postModal';

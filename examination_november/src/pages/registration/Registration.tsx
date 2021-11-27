@@ -1,6 +1,6 @@
 import React from 'react';
-import Main from '../../components/commonBlocks/main/Main';
-import RegistrationForm from '../../components/formBlocks/registrationForm/RegistrationForm';
+import Main from '../../components/commonComponents/main/Main';
+import RegistrationForm from '../../components/formComponents/registrationForm/RegistrationForm';
 
 const Registration = () => (
   <Main>

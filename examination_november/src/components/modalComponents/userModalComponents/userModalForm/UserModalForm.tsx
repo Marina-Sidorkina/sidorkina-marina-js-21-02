@@ -144,7 +144,7 @@ const UserModalForm = (props: IUserModalFormProps) => {
       <img className="user-modal-form__img" src={pictureValue || DEFAULT_IMAGE} alt="Аватар" />
       <div className="user-modal-form__img-edit">
         <label className="user-modal-form__file-label" htmlFor="file-input">
-          Обновить фотографию
+          <span className="user-modal-form__file-span">Обновить фотографию</span>
         </label>
         <input
           name="file"
