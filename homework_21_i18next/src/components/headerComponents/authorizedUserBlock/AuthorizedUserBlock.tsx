@@ -3,16 +3,19 @@ import './AuthorizedUserBlock.scss';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import {
   resetAuthorizedUserAction,
 } from '../../../redux/actions/login';
 import { ThemeContext } from '../../../contexts/ThemeContext';
 import { IAuthorizedUserBlockProps } from './@types/authorizedUserBlock';
+import '../../../locale/i18next';
 
 const AuthorizedUserBlock = (props: IAuthorizedUserBlockProps) => {
   const {
     authorizedUserName, authorizedUserPicture, resetUser, authorizedUserId
   } = props;
+  const { t } = useTranslation();
 
   const onClickHandler = (evt: any) => {
     resetUser();
@@ -36,7 +39,9 @@ const AuthorizedUserBlock = (props: IAuthorizedUserBlockProps) => {
         </Link>
       </div>
       <div className="authorized-user-block__item">
-        <span className="authorized-user-block__logout" onClick={onClickHandler}>выход</span>
+        <span className="authorized-user-block__logout" onClick={onClickHandler}>
+          { t('authorization.logout', {}) }
+        </span>
       </div>
     </div>
   );

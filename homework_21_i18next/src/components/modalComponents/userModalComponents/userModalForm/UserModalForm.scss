@@ -46,10 +46,12 @@
     width: 100%;
     border-right: 1px solid #cccccc;
     cursor: pointer;
+    text-align: center;
   }
 
   &__file-span:hover {
     opacity: 0.7;
+    text-align: center;
   }
 
   &__file-delete {

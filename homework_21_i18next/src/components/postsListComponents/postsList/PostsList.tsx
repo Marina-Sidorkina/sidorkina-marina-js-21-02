@@ -3,16 +3,21 @@ import './PostsList.scss';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Spin } from 'antd';
+import { useTranslation } from 'react-i18next';
 import PostsListItem from '../postsListItem/PostsListItem';
 import { loadPostsList } from '../../../redux/actions/postsList';
 import { IDummyPost } from '../../../api/dummyApi/@types/dummyApi';
 import { processPostsListItemDate } from '../../../utils/components';
 import { IPostsListProps } from './@types/postsList';
+import '../../../locale/i18next';
+import { useTypedSelector } from '../../../redux/hooks/useTypedSelector';
 
 const PostsList = (props: IPostsListProps) => {
   const {
     loadPosts, posts, isLoading, page, perPage, error
   } = props;
+  const { t } = useTranslation();
+  const language = useTypedSelector((state) => state.languageSelector.value);
 
   useEffect(() => {
     loadPosts(page - 1, perPage);
@@ -22,7 +27,7 @@ const PostsList = (props: IPostsListProps) => {
     ? (
       <Spin
         className="users-list__spinner"
-        tip="Идёт загрузка..."
+        tip={t('loadingText', {})}
         size="large"
         style={{
           width: '110px',
@@ -37,7 +42,7 @@ const PostsList = (props: IPostsListProps) => {
           avatar={item.owner.picture}
           image={item.image}
           text={item.text}
-          date={processPostsListItemDate(item.publishDate)}
+          date={processPostsListItemDate(item.publishDate, language)}
           firstName={item.owner.firstName}
           lastName={item.owner.lastName}
           title={item.owner.title}
@@ -48,7 +53,11 @@ const PostsList = (props: IPostsListProps) => {
 
   return (
     <ul className="posts-list">
-      { error ? <div className="posts-list__error">Ошибка загрузки...</div> : elements }
+      { error ? (
+        <div className="posts-list__error">
+          { t('errorText', {}) }
+        </div>
+      ) : elements }
     </ul>
   );
 };

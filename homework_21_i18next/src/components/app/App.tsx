@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.scss';
 import {
   Route, Switch, HashRouter, Redirect
 } from 'react-router-dom';
+import i18next from 'i18next';
 import Header from '../headerComponents/header/Header';
 import Footer from '../footerComponents/footer/Footer';
 import Posts from '../../pages/posts/Posts';
@@ -12,8 +13,13 @@ import Registration from '../../pages/registration/Registration';
 import Profile from '../../pages/profile/Profile';
 import { ThemeContextProvider, ThemeContext } from '../../contexts/ThemeContext';
 import { IThemeContextState } from '../../../../homework_20_middleware/src/@types/interfaces/themeContext';
+import { RUSSIAN_LANGUAGE } from '../../constants/components';
 
 function App() {
+  useEffect(() => {
+    i18next.changeLanguage(RUSSIAN_LANGUAGE);
+  }, []);
+
   return (
     <ThemeContextProvider>
       <ThemeContext.Consumer>

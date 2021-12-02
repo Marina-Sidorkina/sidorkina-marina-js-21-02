@@ -5,6 +5,7 @@ import {
 } from 'antd';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { useTranslation } from 'react-i18next';
 import { IDummyUserFull } from '../../../../api/dummyApi/@types/dummyApi';
 import { DEFAULT_IMAGE, IMAGE_CHANGE_CHECK_VALUE } from '../../../../constants/components';
 import { getGenderFieldValue, isEmptyObject, processDate } from '../../../../utils/components';
@@ -16,7 +17,7 @@ import {
   updateUserModalNameAction,
   updateUserModalPhoneAction, updateUserModalPictureAction
 } from '../../../../redux/actions/userModalForm';
-import { BTN_DARK_STYLE, RULES } from '../../../../antDesignSettings/userModalForm';
+import { BTN_DARK_STYLE, RULES } from './antDesignSettings/userModalForm';
 import { updateUser } from '../../../../api/dummyApi/dummyApi';
 import { createUpdatedUserData } from '../../../../utils/api';
 import { updateUserCardAction } from '../../../../redux/actions/userInfo';
@@ -24,6 +25,8 @@ import { getExpirationDate } from '../../../../utils/redux';
 import { updateAuthorizedUserDataAction } from '../../../../redux/actions/login';
 import { ThemeContext } from '../../../../contexts/ThemeContext';
 import { IUserModalFormProps, IUserFormValues } from './@types/userModalForm';
+import { useTypedSelector } from '../../../../redux/hooks/useTypedSelector';
+import '../../../../locale/i18next';
 
 const UserModalForm = (props: IUserModalFormProps) => {
   const {
@@ -43,6 +46,8 @@ const UserModalForm = (props: IUserModalFormProps) => {
   const themeContext = useContext(ThemeContext);
   const btnStyle = themeContext.darkTheme
     ? BTN_DARK_STYLE : {};
+  const language = useTypedSelector((state) => state.languageSelector.value);
+  const { t } = useTranslation();
 
   useEffect(() => {
     resetValues();
@@ -99,7 +104,9 @@ const UserModalForm = (props: IUserModalFormProps) => {
       <img className="user-modal-form__img" src={pictureValue || DEFAULT_IMAGE} alt="Аватар" />
       <div className="user-modal-form__img-edit">
         <label className="user-modal-form__file-label" htmlFor="file-input">
-          <span className="user-modal-form__file-span">Обновить фотографию</span>
+          <span className="user-modal-form__file-span">
+            { t('photo.update', {}) }
+          </span>
         </label>
         <input
           name="file"
@@ -117,13 +124,13 @@ const UserModalForm = (props: IUserModalFormProps) => {
             resetImage('');
           }}
         >
-          Удалить фотографию
+          { t('photo.delete', {}) }
         </button>
       </div>
       <Form.Item
         className="user-modal-form__item"
         name="name"
-        label="Имя и фамилия:"
+        label={t('registration.nameField.title', {})}
         rules={RULES.name}
       >
         <Input
@@ -136,45 +143,45 @@ const UserModalForm = (props: IUserModalFormProps) => {
       <Form.Item
         className="user-modal-form__item"
         name="gender"
-        label="Пол:"
+        label={t('registration.genderField.title', {})}
         rules={RULES.gender}
       >
         <Input
           className="user-modal-form__input"
           value={genderValue}
-          placeholder={getGenderFieldValue(gender)}
+          placeholder={getGenderFieldValue(gender, language)}
           onChange={(evt) => updateGenderValue(evt.target.value)}
         />
       </Form.Item>
       <Form.Item
         className="user-modal-form__item"
         name="birthDate"
-        label="Дата рождения:"
+        label={t('registration.dateOfBirthField.title', {})}
         rules={RULES.birthDate}
       >
         <Input
           className="user-modal-form__input"
           value={dateOfBirthValue}
-          placeholder={processDate(dateOfBirth)}
+          placeholder={processDate(dateOfBirth, language)}
           onChange={(evt) => updateDateOfBirthValue(evt.target.value)}
         />
       </Form.Item>
       <Form.Item
         className="user-modal-form__item"
         name="registrationDate"
-        label="Дата регистрации:"
+        label={t('registration.registrationDateField.title', {})}
       >
         <Input
           className="user-modal-form__input"
           value={registrationDateValue}
-          placeholder={processDate(registerDate)}
+          placeholder={processDate(registerDate, language)}
           disabled
         />
       </Form.Item>
       <Form.Item
         className="user-modal-form__item user-modal-form__item_email"
         name="email"
-        label="Email"
+        label={t('registration.emailField.title', {})}
       >
         <Input
           className="user-modal-form__input"
@@ -186,7 +193,7 @@ const UserModalForm = (props: IUserModalFormProps) => {
       <Form.Item
         className="user-modal-form__item"
         name="tel"
-        label="Телефон:"
+        label={t('registration.phoneField.title', {})}
         rules={RULES.phone}
       >
         <Input
@@ -203,10 +210,14 @@ const UserModalForm = (props: IUserModalFormProps) => {
           htmlType="submit"
           style={btnStyle}
         >
-          Сохранить
+          { t('saveButton', {}) }
         </Button>
       </Form.Item>
-      { error ? <div className="user-modal-form__error">Ошибка загрузки</div> : null }
+      { error ? (
+        <div className="user-modal-form__error">
+          { t('errorText', {}) }
+        </div>
+      ) : null }
     </Form>
   );
 };

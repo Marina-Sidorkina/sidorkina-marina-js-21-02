@@ -4,13 +4,16 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { useParams } from 'react-router-dom';
 import { Spin } from 'antd';
+import { useTranslation } from 'react-i18next';
 import UserPostsItem from '../userPostsItem/UserPostsItem';
 import { loadUserPosts, updateUserPostsPageAction } from '../../../redux/actions/userPosts';
 import { IDummyPostPreview } from '../../../api/dummyApi/@types/dummyApi';
 import { IUserPostsProps, IUserPostsParams } from './@types/userPosts';
+import '../../../locale/i18next';
 
 const UserPosts = (props: IUserPostsProps) => {
   const params = useParams() as IUserPostsParams;
+  const { t } = useTranslation();
 
   const {
     isLoading, page, perPage, posts, loadPosts, updatePage, error
@@ -26,7 +29,7 @@ const UserPosts = (props: IUserPostsProps) => {
     ? (
       <Spin
         className="user-posts__spinner"
-        tip="Идёт загрузка..."
+        tip={t('loadingText', {})}
         size="large"
         style={{
           width: '110px',
@@ -49,7 +52,11 @@ const UserPosts = (props: IUserPostsProps) => {
 
   return (
     <ul className="user-posts">
-      { error ? <div className="posts-list__error">Ошибка загрузки...</div> : elements }
+      { error ? (
+        <div className="posts-list__error">
+          { t('errorText', {}) }
+        </div>
+      ) : elements }
     </ul>
   );
 };

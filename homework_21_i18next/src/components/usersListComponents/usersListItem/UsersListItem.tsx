@@ -5,12 +5,18 @@ import { DEFAULT_IMAGE } from '../../../constants/components';
 import helper from '../../../hocs/helper/helper';
 import { ThemeContext } from '../../../contexts/ThemeContext';
 import { IUsersListItemProps, IUsersListItemNameProps } from './@types/usersListItem';
+import { getTitleValue } from '../../../utils/components';
+import { useTypedSelector } from '../../../redux/hooks/useTypedSelector';
 
-const UsersListItemName = (props: IUsersListItemNameProps) => (
-  <div className="user-item__avatar">
-    {`${props.title ? `${props.title}.` : ''} ${props.firstName} ${props.lastName}`}
-  </div>
-);
+const UsersListItemName = (props: IUsersListItemNameProps) => {
+  const language = useTypedSelector((state) => state.languageSelector.value);
+
+  return (
+    <div className="user-item__avatar">
+      {`${props.title ? `${getTitleValue(props.title, language)}` : ''} ${props.firstName} ${props.lastName}`}
+    </div>
+  );
+};
 
 const UsersListItem = (props: IUsersListItemProps) => {
   const {

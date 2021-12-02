@@ -1,12 +1,15 @@
 import React, { useContext } from 'react';
 import './Navigation.scss';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { ThemeContext } from '../../../contexts/ThemeContext';
 import NavigationPostsIcon from '../navigationPostsIcon/NavigationPostsIcon';
 import NavigationUsersIcon from '../navigationUsersIcon/NavigationUsersIcon';
+import '../../../locale/i18next';
 
 const Navigation = () => {
   const themeContext = useContext(ThemeContext);
+  const { t } = useTranslation();
 
   return (
     <nav className="navigation">
@@ -20,7 +23,7 @@ const Navigation = () => {
               ? 'navigation__text navigation__text_dark'
               : 'navigation__text'}`}
             >
-              Пользователи
+              { t('navigation.users', {}) }
             </span>
           </Link>
         </li>
@@ -33,7 +36,7 @@ const Navigation = () => {
               ? 'navigation__text navigation__text_dark'
               : 'navigation__text'}`}
             >
-              Посты
+              { t('navigation.posts') }
             </span>
           </Link>
         </li>

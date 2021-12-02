@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import './Footer.scss';
 import Theme from '../theme/Theme';
 import { ThemeContext } from '../../../contexts/ThemeContext';
+import LanguageSelect from '../languageSelect/LanguageSelect';
 
 const Footer = () => {
   const themeContext = useContext(ThemeContext);
@@ -10,6 +11,7 @@ const Footer = () => {
     <footer className={`${themeContext.darkTheme ? 'footer footer_dark' : 'footer'}`}>
       <div className="footer__container">
         <div className="footer__copyright">Delta World &copy; 1970-2077</div>
+        <LanguageSelect />
         <Theme />
       </div>
     </footer>

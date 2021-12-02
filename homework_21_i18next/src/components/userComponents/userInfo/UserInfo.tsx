@@ -4,13 +4,16 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Spin } from 'antd';
 import { useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { loadUserInfo } from '../../../redux/actions/userInfo';
-import { getGenderFieldValue, processDate } from '../../../utils/components';
+import { getGenderFieldValue, getTitleValue, processDate } from '../../../utils/components';
 import { DEFAULT_IMAGE } from '../../../constants/components';
 import { openUserModalAction, updateUserModalPictureAction } from '../../../redux/actions/userModalForm';
 import { ThemeContext } from '../../../contexts/ThemeContext';
 import UserInfoEditIcon from '../userInfoEditIcon/UserInfoEditIcon';
 import { IUserInfoProps, IUserInfoParams } from './@types/userInfo';
+import '../../../locale/i18next';
+import { useTypedSelector } from '../../../redux/hooks/useTypedSelector';
 
 const UserInfo = (props: IUserInfoProps) => {
   const params = useParams() as IUserInfoParams;
@@ -20,6 +23,8 @@ const UserInfo = (props: IUserInfoProps) => {
   } = props;
 
   const themeContext = useContext(ThemeContext);
+  const { t } = useTranslation();
+  const language = useTypedSelector((state) => state.languageSelector.value);
 
   useEffect(() => {
     loadUser(params.id);
@@ -33,7 +38,7 @@ const UserInfo = (props: IUserInfoProps) => {
     ? (
       <Spin
         className="users-info__spinner"
-        tip="Идёт загрузка..."
+        tip={t('loadingText', {})}
         size="small"
         style={{
           width: '110px',
@@ -53,26 +58,41 @@ const UserInfo = (props: IUserInfoProps) => {
         <div className="user-info__container">
           <div className="user-info__details">
             <p className="user-info__name">
-              {`${user.title ? `${user.title}.` : ''} ${user.firstName} ${user.lastName}`}
+              {`${user.title ? `${getTitleValue(user.title, language)}` : ''} ${user.firstName} ${user.lastName}`}
             </p>
             <p className="user-info__item">
-              <b>Пол: </b>
-              {getGenderFieldValue(user.gender)}
+              <b>
+                { t('userInfo.gender', {}) }
+                {' '}
+              </b>
+              {getGenderFieldValue(user.gender, language)}
             </p>
             <p className="user-info__item">
-              <b>Дата рождения: </b>
-              {processDate(user.dateOfBirth)}
+              <b>
+                { t('userInfo.dateOfBirth', {}) }
+                {' '}
+              </b>
+              {processDate(user.dateOfBirth, language)}
             </p>
             <p className="user-info__item">
-              <b>Дата регистрации: </b>
-              {processDate(user.registerDate)}
+              <b>
+                { t('userInfo.registrationDate', {}) }
+                {' '}
+              </b>
+              {processDate(user.registerDate, language)}
             </p>
             <p className="user-info__item">
-              <b>Email: </b>
+              <b>
+                { t('userInfo.email', {}) }
+                {' '}
+              </b>
               {user.email}
             </p>
             <p className="user-info__item user-info__item_tel">
-              <b>Телефон: </b>
+              <b>
+                { t('userInfo.phone', {}) }
+                {' '}
+              </b>
               {user.phone}
             </p>
             <p className="user-info__item user-info__item_id">
@@ -84,7 +104,9 @@ const UserInfo = (props: IUserInfoProps) => {
             ? (
               <button type="button" className="user-info__edit">
                 <UserInfoEditIcon />
-                <span className="user-info__edit-text" onClick={() => openModal()}>Редактировать</span>
+                <span className="user-info__edit-text" onClick={() => openModal()}>
+                  { t('editButton', {}) }
+                </span>
               </button>
             )
             : null}
@@ -97,7 +119,11 @@ const UserInfo = (props: IUserInfoProps) => {
       ? 'user-info user-info_dark'
       : 'user-info'}`}
     >
-      { error ? <div className="posts-list__error">Ошибка загрузки...</div> : element }
+      { error ? (
+        <div className="posts-list__error">
+          { t('errorText', {}) }
+        </div>
+      ) : element }
     </div>
   );
 };

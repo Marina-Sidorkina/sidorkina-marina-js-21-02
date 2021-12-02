@@ -7,6 +7,8 @@ import { useHistory } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
+import '../../../locale/i18next';
+import { useTranslation } from 'react-i18next';
 import {
   authorizeUser,
   hideLoadingAction,
@@ -14,7 +16,7 @@ import {
   updateAuthorizationInputValue
 } from '../../../redux/actions/login';
 import { ThemeContext } from '../../../contexts/ThemeContext';
-import { RULES } from '../../../antDesignSettings/loginForm';
+import { RULES } from './antDesignSettings/loginForm';
 import { LOGIN_INPUT_FILED_NAME } from '../../../constants/components';
 import { ILoginFormProps } from './@types/loginForm';
 
@@ -27,6 +29,7 @@ const LoginForm = (props: ILoginFormProps) => {
   } = props;
 
   const themeContext = useContext(ThemeContext);
+  const { t } = useTranslation();
 
   const onSubmit = (values: any) => {
     authorize(values[LOGIN_INPUT_FILED_NAME], history);
@@ -50,7 +53,9 @@ const LoginForm = (props: ILoginFormProps) => {
         className="login__form"
         onFinish={onSubmit}
       >
-        <h2 className="login__title">Вход</h2>
+        <h2 className="login__title">
+          { t('login.title', {}) }
+        </h2>
         <Form.Item className="login__form-item login__form-item_add">
           <label className="login__label">ID:</label>
           <Form.Item
@@ -61,7 +66,7 @@ const LoginForm = (props: ILoginFormProps) => {
             <Input
               className="login__input"
               value={inputValue}
-              placeholder="Введите свой ID"
+              placeholder={t('login.placeholder', {})}
               onChange={onChange}
             />
           </Form.Item>
@@ -73,7 +78,7 @@ const LoginForm = (props: ILoginFormProps) => {
             type="primary"
             htmlType="submit"
           >
-            Войти
+            { t('login.button', {}) }
           </Button>
           {isLoading
             ? (
@@ -89,11 +94,19 @@ const LoginForm = (props: ILoginFormProps) => {
                 }}
               />
             ) : null}
-          {error ? <div className="login__error">ID не существует</div> : null}
+          {error
+            ? (
+              <div className="login__error">
+                { t('login.error', {}) }
+              </div>
+            )
+            : null}
         </Form.Item>
       </Form>
       <Link to="registration">
-        <span className="login__link">Ещё нет аккаунта? Зарегистрироваться</span>
+        <span className="login__link">
+          { t('login.link', {}) }
+        </span>
       </Link>
     </div>
   );

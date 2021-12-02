@@ -4,9 +4,11 @@ import {
   Button, Form, Input, Radio, Spin
 } from 'antd';
 import { Link } from 'react-router-dom';
+import '../../../locale/i18next';
 import { useHistory } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { useTranslation } from 'react-i18next';
 import { addAndShowNewUser } from '../../../api/dummyApi/dummyApi';
 import { createNewUser } from '../../../utils/api';
 import { authorizeUser } from '../../../redux/actions/login';
@@ -20,7 +22,7 @@ import {
   updateNameAction, updatePhoneAction
 } from '../../../redux/actions/registrationForm';
 import { ThemeContext } from '../../../contexts/ThemeContext';
-import { RULES } from '../../../antDesignSettings/registrationForm';
+import { RULES } from './antDesignSettings/registrationForm';
 import { IRegistrationFormProps } from './@types/registrationForm';
 
 const RegistrationForm = (props: IRegistrationFormProps) => {
@@ -34,6 +36,7 @@ const RegistrationForm = (props: IRegistrationFormProps) => {
 
   const history = useHistory();
   const themeContext = useContext(ThemeContext);
+  const { t } = useTranslation();
 
   useEffect(() => () => hideRegistrationError(), []);
 
@@ -62,9 +65,13 @@ const RegistrationForm = (props: IRegistrationFormProps) => {
         className="registration__form"
         onFinish={onFinish}
       >
-        <h2 className="registration__title">Регистрация</h2>
+        <h2 className="registration__title">
+          { t('registration.title') }
+        </h2>
         <Form.Item className="registration__form-item registration__form-item_add">
-          <label className="registration__label">Имя и фамилия:</label>
+          <label className="registration__label">
+            { t('registration.nameField.title') }
+          </label>
           <Form.Item
             className="registration__form-item registration__form-item_name"
             name="registration__name"
@@ -73,13 +80,15 @@ const RegistrationForm = (props: IRegistrationFormProps) => {
             <Input
               className="registration__input"
               value={name}
-              placeholder="Введите имя и фамилию"
+              placeholder={t('registration.nameField.placeholder')}
               onChange={(evt) => updateName(evt.target.value)}
             />
           </Form.Item>
         </Form.Item>
         <Form.Item className="registration__form-item registration__form-item_add">
-          <label className="registration__label registration__label_gender">Пол:</label>
+          <label className="registration__label registration__label_gender">
+            { t('registration.genderField.title') }
+          </label>
           <Form.Item
             className="registration__form-item registration__form-item_radio"
             name="registration__gender"
@@ -90,13 +99,19 @@ const RegistrationForm = (props: IRegistrationFormProps) => {
               onChange={(evt) => updateGender(evt.target.value)}
               className="registration__radio-group"
             >
-              <Radio value="мужской">Мужской</Radio>
-              <Radio value="женский">Женский</Radio>
+              <Radio value="мужской">
+                { t('registration.genderField.male') }
+              </Radio>
+              <Radio value="женский">
+                { t('registration.genderField.female') }
+              </Radio>
             </Radio.Group>
           </Form.Item>
         </Form.Item>
         <Form.Item className="registration__form-item registration__form-item_add">
-          <label className="registration__label">Дата рождения:</label>
+          <label className="registration__label">
+            { t('registration.dateOfBirthField.title') }
+          </label>
           <Form.Item
             className="registration__form-item"
             name="registration__date"
@@ -105,13 +120,15 @@ const RegistrationForm = (props: IRegistrationFormProps) => {
             <Input
               className="registration__input"
               value={dateOfBirth}
-              placeholder="ММ.ДД.ГГГГ"
+              placeholder={t('registration.dateOfBirthField.placeholder')}
               onChange={(evt) => updateDateOfBirth(evt.target.value)}
             />
           </Form.Item>
         </Form.Item>
         <Form.Item className="registration__form-item registration__form-item_add">
-          <label className="registration__label">Email:</label>
+          <label className="registration__label">
+            { t('registration.emailField.title') }
+          </label>
           <Form.Item
             className="registration__form-item"
             name="registration__email"
@@ -120,13 +137,15 @@ const RegistrationForm = (props: IRegistrationFormProps) => {
             <Input
               className="registration__input"
               value={email}
-              placeholder="anonim@example.com"
+              placeholder={t('registration.emailField.placeholder')}
               onChange={(evt) => updateEmail(evt.target.value)}
             />
           </Form.Item>
         </Form.Item>
         <Form.Item className="registration__form-item registration__form-item_add">
-          <label className="registration__label">Телефон:</label>
+          <label className="registration__label">
+            { t('registration.phoneField.title') }
+          </label>
           <Form.Item
             className="registration__form-item"
             name="registration__tel"
@@ -135,7 +154,7 @@ const RegistrationForm = (props: IRegistrationFormProps) => {
             <Input
               className="registration__input"
               value={phone}
-              placeholder="+79099099090"
+              placeholder={t('registration.phoneField.placeholder')}
               onChange={(evt) => updatePhone(evt.target.value)}
             />
           </Form.Item>
@@ -160,13 +179,15 @@ const RegistrationForm = (props: IRegistrationFormProps) => {
             type="primary"
             htmlType="submit"
           >
-            Зарегистрироваться
+            { t('registration.button') }
           </Button>
           { error ? <div className="registration__error">email уже зарегистрирован</div> : null}
         </Form.Item>
       </Form>
       <Link to="/login">
-        <span className="login__link">Уже есть аккаунт? Войти</span>
+        <span className="login__link">
+          { t('registration.link') }
+        </span>
       </Link>
     </div>
   );

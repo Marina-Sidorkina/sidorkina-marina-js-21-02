@@ -114,13 +114,14 @@
 
   &__edit {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 30px 1fr;
     height: 30px;
-    width: 135px;
+    width: auto;
     padding: 0;
     background-color: #ffffff;
     border: none;
     cursor: pointer;
+    text-align: right;
 
     &:hover {
       opacity: 0.7;
@@ -133,5 +134,6 @@
 
   &__edit-text {
     line-height: 30px;
+    text-align: left;
   }
 }

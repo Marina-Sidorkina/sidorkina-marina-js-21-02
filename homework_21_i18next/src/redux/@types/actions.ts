@@ -44,3 +44,7 @@ export interface IPostModalCommentsActionType extends IAction {
   page: number,
   total: number
 }
+
+export interface IChangeLanguageActionType extends IAction {
+  payload: string
+}

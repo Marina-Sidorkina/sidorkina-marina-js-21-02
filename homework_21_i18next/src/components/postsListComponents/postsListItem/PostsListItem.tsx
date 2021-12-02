@@ -6,12 +6,18 @@ import { openPostModalAction, setPostModalCurrenIdAction } from '../../../redux/
 import helper from '../../../hocs/helper/helper';
 import { ThemeContext } from '../../../contexts/ThemeContext';
 import { IPostsListItemNameProps, IPostsListItem } from './@types/postsListItem';
+import { useTypedSelector } from '../../../redux/hooks/useTypedSelector';
+import { getTitleValue } from '../../../utils/components';
 
-const PostsListItemName = (props: IPostsListItemNameProps) => (
-  <div className="post-item__name">
-    {`${props.title ? `${props.title}.` : ''} ${props.firstName} ${props.lastName}`}
-  </div>
-);
+const PostsListItemName = (props: IPostsListItemNameProps) => {
+  const language = useTypedSelector((state) => state.languageSelector.value);
+
+  return (
+    <div className="post-item__name">
+      {`${props.title ? `${getTitleValue(props.title, language)}` : ''} ${props.firstName} ${props.lastName}`}
+    </div>
+  );
+};
 
 const PostsListItem = (props: IPostsListItem) => {
   const {

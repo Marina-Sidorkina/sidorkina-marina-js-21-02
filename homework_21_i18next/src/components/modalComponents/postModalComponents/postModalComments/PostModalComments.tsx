@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import './PostModalComments.scss';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { useTranslation } from 'react-i18next';
 import { processPostsListItemDate } from '../../../../utils/components';
 import { getPostModalCommentsListAction } from '../../../../redux/actions/postModalComments';
 import { ThemeContext } from '../../../../contexts/ThemeContext';
@@ -11,6 +12,8 @@ import {
   IPostModalCommentsItemProps,
   IPostModalCommentsProps
 } from './@types/postModalComments';
+import { useTypedSelector } from '../../../../redux/hooks/useTypedSelector';
+import '../../../../locale/i18next';
 
 const PostModalCommentsItemName = (props: IPostModalCommentsItemNameProps) => (
   <div className="post-modal-comments__name">
@@ -53,6 +56,8 @@ const PostModalComments = (props: IPostModalCommentsProps) => {
     comments, owners, error, isLoading, getPostModalCommentsList, currentPostId,
     limit, page
   } = props;
+  const language = useTypedSelector((state) => state.languageSelector.value);
+  const { t } = useTranslation();
 
   useEffect(() => {
     getPostModalCommentsList(page - 1, limit, currentPostId);
@@ -66,21 +71,33 @@ const PostModalComments = (props: IPostModalCommentsProps) => {
           firstName={owners[index].firstName}
           lastName={owners[index].lastName}
           id={owners[index].id}
-          date={processPostsListItemDate(comment.publishDate)}
+          date={processPostsListItemDate(comment.publishDate, language)}
           text={comment.message}
           img={owners[index].picture}
         />
       ));
     }
-    return <div>Комментариев пока нет...</div>;
+    return (
+      <div>
+        { t('postComments.default', {}) }
+      </div>
+    );
   };
 
   const elements = isLoading
-    ? <div className="post-modal-comments__loading">Идёт загрузка комментариев...</div>
+    ? (
+      <div className="post-modal-comments__loading">
+        { t('postComments.loading', {}) }
+      </div>
+    )
     : getCommentsList();
   return (
     <ul className="post-modal-comments">
-      { error ? <div className="post-modal-comments__error">Ошибка загрузки</div> : elements }
+      { error ? (
+        <div className="post-modal-comments__error">
+          { t('postComments.error', {}) }
+        </div>
+      ) : elements }
     </ul>
   );
 };

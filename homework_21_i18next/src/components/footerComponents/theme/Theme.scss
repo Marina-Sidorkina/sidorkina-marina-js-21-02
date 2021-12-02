@@ -2,4 +2,8 @@
   &__text {
     margin-right: 10px;
   }
+
+  @media(max-width: 380px) {
+    font-size: 10px;
+  }
 }

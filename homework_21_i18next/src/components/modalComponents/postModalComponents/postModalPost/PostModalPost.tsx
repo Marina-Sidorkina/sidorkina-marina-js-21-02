@@ -3,11 +3,14 @@ import './PostModalPost.scss';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Spin } from 'antd';
+import { useTranslation } from 'react-i18next';
 import { getNewPostModalPost } from '../../../../redux/actions/postModalPost';
 import { processPostsListItemDate } from '../../../../utils/components';
 import helper from '../../../../hocs/helper/helper';
 import { ThemeContext } from '../../../../contexts/ThemeContext';
 import { IPostModalPostNameProps, IPostModalPostProps } from './@types/postModalPost';
+import { useTypedSelector } from '../../../../redux/hooks/useTypedSelector';
+import '../../../../locale/i18next';
 
 const PostModalPostName = (props: IPostModalPostNameProps) => (
   <div className="post-modal-post__user-name">
@@ -23,6 +26,8 @@ const PostModalPost = (props: IPostModalPostProps) => {
   const PostsListNameWithHelper = helper(PostModalPostName, owner.id);
 
   const themeContext = useContext(ThemeContext);
+  const language = useTypedSelector((state) => state.languageSelector.value);
+  const { t } = useTranslation();
 
   useEffect(() => {
     getNewPostModal(postId);
@@ -54,7 +59,9 @@ const PostModalPost = (props: IPostModalPostProps) => {
             lastName={owner.lastName}
           />
         </div>
-        <div className="post-modal-post__post-date">{ processPostsListItemDate(post.publishDate) }</div>
+        <div className="post-modal-post__post-date">
+          { processPostsListItemDate(post.publishDate, language) }
+        </div>
       </div>
       <img
         className="post-modal-post__img"
@@ -71,7 +78,11 @@ const PostModalPost = (props: IPostModalPostProps) => {
       : 'post-modal-post'}`}
     >
       { error
-        ? <div className="post-modal-post__error">Ошибка загрузки</div>
+        ? (
+          <div className="post-modal-post__error">
+            { t('errorText', {}) }
+          </div>
+        )
         : element }
     </div>
   );
