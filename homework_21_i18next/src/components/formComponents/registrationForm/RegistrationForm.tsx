@@ -22,8 +22,10 @@ import {
   updateNameAction, updatePhoneAction
 } from '../../../redux/actions/registrationForm';
 import { ThemeContext } from '../../../contexts/ThemeContext';
-import { RULES } from './antDesignSettings/registrationForm';
+import { RULES, RULES_EN } from './antDesignSettings/registrationForm';
 import { IRegistrationFormProps } from './@types/registrationForm';
+import { useTypedSelector } from '../../../redux/hooks/useTypedSelector';
+import { RUSSIAN_LANGUAGE } from '../../../constants/components';
 
 const RegistrationForm = (props: IRegistrationFormProps) => {
   const {
@@ -33,6 +35,9 @@ const RegistrationForm = (props: IRegistrationFormProps) => {
     showRegistrationError, hideRegistrationError, error, isLoading,
     hideLoading, showLoading
   } = props;
+
+  const language = useTypedSelector((state) => state.languageSelector.value);
+  const rules = language === RUSSIAN_LANGUAGE ? RULES : RULES_EN;
 
   const history = useHistory();
   const themeContext = useContext(ThemeContext);
@@ -75,7 +80,7 @@ const RegistrationForm = (props: IRegistrationFormProps) => {
           <Form.Item
             className="registration__form-item registration__form-item_name"
             name="registration__name"
-            rules={RULES.name}
+            rules={rules.name}
           >
             <Input
               className="registration__input"
@@ -92,7 +97,7 @@ const RegistrationForm = (props: IRegistrationFormProps) => {
           <Form.Item
             className="registration__form-item registration__form-item_radio"
             name="registration__gender"
-            rules={RULES.gender}
+            rules={rules.gender}
           >
             <Radio.Group
               value={gender}
@@ -115,7 +120,7 @@ const RegistrationForm = (props: IRegistrationFormProps) => {
           <Form.Item
             className="registration__form-item"
             name="registration__date"
-            rules={RULES.date}
+            rules={rules.date}
           >
             <Input
               className="registration__input"
@@ -132,7 +137,7 @@ const RegistrationForm = (props: IRegistrationFormProps) => {
           <Form.Item
             className="registration__form-item"
             name="registration__email"
-            rules={RULES.email}
+            rules={rules.email}
           >
             <Input
               className="registration__input"
@@ -149,7 +154,7 @@ const RegistrationForm = (props: IRegistrationFormProps) => {
           <Form.Item
             className="registration__form-item"
             name="registration__tel"
-            rules={RULES.tel}
+            rules={rules.tel}
           >
             <Input
               className="registration__input"

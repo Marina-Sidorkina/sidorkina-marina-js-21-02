@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { useTranslation } from 'react-i18next';
 import { IDummyUserFull } from '../../../../api/dummyApi/@types/dummyApi';
-import { DEFAULT_IMAGE, IMAGE_CHANGE_CHECK_VALUE } from '../../../../constants/components';
+import { DEFAULT_IMAGE, IMAGE_CHANGE_CHECK_VALUE, RUSSIAN_LANGUAGE } from '../../../../constants/components';
 import { getGenderFieldValue, isEmptyObject, processDate } from '../../../../utils/components';
 import {
   closeUserModalAction, hideLoadingAction, hideUserModalErrorAction,
@@ -17,7 +17,7 @@ import {
   updateUserModalNameAction,
   updateUserModalPhoneAction, updateUserModalPictureAction
 } from '../../../../redux/actions/userModalForm';
-import { BTN_DARK_STYLE, RULES } from './antDesignSettings/userModalForm';
+import { BTN_DARK_STYLE, RULES, RULES_EN } from './antDesignSettings/userModalForm';
 import { updateUser } from '../../../../api/dummyApi/dummyApi';
 import { createUpdatedUserData } from '../../../../utils/api';
 import { updateUserCardAction } from '../../../../redux/actions/userInfo';
@@ -48,6 +48,7 @@ const UserModalForm = (props: IUserModalFormProps) => {
     ? BTN_DARK_STYLE : {};
   const language = useTypedSelector((state) => state.languageSelector.value);
   const { t } = useTranslation();
+  const rules = language === RUSSIAN_LANGUAGE ? RULES : RULES_EN;
 
   useEffect(() => {
     resetValues();
@@ -131,7 +132,7 @@ const UserModalForm = (props: IUserModalFormProps) => {
         className="user-modal-form__item"
         name="name"
         label={t('registration.nameField.title', {})}
-        rules={RULES.name}
+        rules={rules.name}
       >
         <Input
           className="user-modal-form__input"
@@ -144,7 +145,7 @@ const UserModalForm = (props: IUserModalFormProps) => {
         className="user-modal-form__item"
         name="gender"
         label={t('registration.genderField.title', {})}
-        rules={RULES.gender}
+        rules={rules.gender}
       >
         <Input
           className="user-modal-form__input"
@@ -157,7 +158,7 @@ const UserModalForm = (props: IUserModalFormProps) => {
         className="user-modal-form__item"
         name="birthDate"
         label={t('registration.dateOfBirthField.title', {})}
-        rules={RULES.birthDate}
+        rules={rules.birthDate}
       >
         <Input
           className="user-modal-form__input"
@@ -194,7 +195,7 @@ const UserModalForm = (props: IUserModalFormProps) => {
         className="user-modal-form__item"
         name="tel"
         label={t('registration.phoneField.title', {})}
-        rules={RULES.phone}
+        rules={rules.phone}
       >
         <Input
           className="user-modal-form__input"
