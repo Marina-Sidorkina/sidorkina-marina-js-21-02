@@ -4,8 +4,7 @@ import {
   Form, Input, Button, Spin
 } from 'antd';
 import { useHistory } from 'react-router';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import '../../../locale/i18next';
 import { useTranslation } from 'react-i18next';
@@ -18,30 +17,28 @@ import {
 import { ThemeContext } from '../../../contexts/ThemeContext';
 import { RULES } from './antDesignSettings/loginForm';
 import { LOGIN_INPUT_FILED_NAME } from '../../../constants/components';
-import { ILoginFormProps } from './@types/loginForm';
+import { useTypedSelector } from '../../../redux/hooks/useTypedSelector';
 
-const LoginForm = (props: ILoginFormProps) => {
+const LoginForm = () => {
   const history = useHistory();
-
-  const {
-    isLoading, authorize, updateInputValue, inputValue,
-    hideLoading, error, resetError
-  } = props;
-
   const themeContext = useContext(ThemeContext);
   const { t } = useTranslation();
+  const stateValues = useTypedSelector((state) => state);
+  const dispatch = useDispatch();
 
   const onSubmit = (values: any) => {
-    authorize(values[LOGIN_INPUT_FILED_NAME], history);
+    dispatch(authorizeUser(values[LOGIN_INPUT_FILED_NAME], history));
   };
 
   const onChange = (evt: any) => {
-    updateInputValue(evt.target.value);
+    dispatch(updateAuthorizationInputValue(evt.target.value));
   };
 
   useEffect(() => {
-    resetError();
-    return () => hideLoading();
+    dispatch(resetAuthorizationErrorAction());
+    return () => {
+      dispatch(hideLoadingAction());
+    };
   }, []);
 
   return (
@@ -65,7 +62,7 @@ const LoginForm = (props: ILoginFormProps) => {
           >
             <Input
               className="login__input"
-              value={inputValue}
+              value={stateValues.login.data.inputValue}
               placeholder={t('login.placeholder', {})}
               onChange={onChange}
             />
@@ -80,7 +77,7 @@ const LoginForm = (props: ILoginFormProps) => {
           >
             { t('login.button', {}) }
           </Button>
-          {isLoading
+          {stateValues.login.data.isLoading
             ? (
               <Spin
                 className="login__spinner"
@@ -94,7 +91,7 @@ const LoginForm = (props: ILoginFormProps) => {
                 }}
               />
             ) : null}
-          {error
+          {stateValues.login.data.error
             ? (
               <div className="login__error">
                 { t('login.error', {}) }
@@ -112,16 +109,4 @@ const LoginForm = (props: ILoginFormProps) => {
   );
 };
 
-export default connect(
-  (state: any) => ({
-    isLoading: state.login.data.isLoading,
-    inputValue: state.login.data.inputValue,
-    error: state.login.data.error,
-  }),
-  (dispatch) => ({
-    authorize: bindActionCreators(authorizeUser, dispatch),
-    updateInputValue: bindActionCreators(updateAuthorizationInputValue, dispatch),
-    hideLoading: bindActionCreators(hideLoadingAction, dispatch),
-    resetError: bindActionCreators(resetAuthorizationErrorAction, dispatch)
-  })
-)(LoginForm);
+export default LoginForm;
