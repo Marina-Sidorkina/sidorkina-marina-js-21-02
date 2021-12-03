@@ -6,8 +6,7 @@ import {
 import { Link } from 'react-router-dom';
 import '../../../locale/i18next';
 import { useHistory } from 'react-router';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { addAndShowNewUser } from '../../../api/dummyApi/dummyApi';
 import { createNewUser } from '../../../utils/api';
@@ -23,40 +22,34 @@ import {
 } from '../../../redux/actions/registrationForm';
 import { ThemeContext } from '../../../contexts/ThemeContext';
 import { RULES, RULES_EN } from './antDesignSettings/registrationForm';
-import { IRegistrationFormProps } from './@types/registrationForm';
 import { useTypedSelector } from '../../../redux/hooks/useTypedSelector';
 import { RUSSIAN_LANGUAGE } from '../../../constants/components';
 
-const RegistrationForm = (props: IRegistrationFormProps) => {
-  const {
-    authorize, updateDateOfBirth, updateEmail,
-    updateGender, updatePhone, updateName, resetValues,
-    name, email, dateOfBirth, phone, gender,
-    showRegistrationError, hideRegistrationError, error, isLoading,
-    hideLoading, showLoading
-  } = props;
-
+const RegistrationForm = () => {
   const language = useTypedSelector((state) => state.languageSelector.value);
   const rules = language === RUSSIAN_LANGUAGE ? RULES : RULES_EN;
-
   const history = useHistory();
   const themeContext = useContext(ThemeContext);
   const { t } = useTranslation();
+  const stateValues = useTypedSelector((state) => state);
+  const dispatch = useDispatch();
 
-  useEffect(() => () => hideRegistrationError(), []);
+  useEffect(() => () => {
+    dispatch(hideRegistrationErrorAction());
+  }, []);
 
   const onFinish = (data: any) => {
-    showLoading();
+    dispatch(showLoadingAction());
     addAndShowNewUser(createNewUser(data))
       .then((response) => {
         if (response.id) {
-          resetValues();
-          hideRegistrationError();
-          hideLoading();
-          authorize(response.id, history);
+          dispatch(resetValuesAction());
+          dispatch(hideRegistrationErrorAction());
+          dispatch(hideLoadingAction());
+          dispatch(authorizeUser(response.id, history));
         } else {
-          showRegistrationError();
-          hideLoading();
+          dispatch(showRegistrationErrorAction());
+          dispatch(hideLoadingAction());
         }
       });
   };
@@ -84,9 +77,11 @@ const RegistrationForm = (props: IRegistrationFormProps) => {
           >
             <Input
               className="registration__input"
-              value={name}
+              value={stateValues.registration.values.name}
               placeholder={t('registration.nameField.placeholder')}
-              onChange={(evt) => updateName(evt.target.value)}
+              onChange={(evt) => {
+                dispatch(updateNameAction(evt.target.value));
+              }}
             />
           </Form.Item>
         </Form.Item>
@@ -100,8 +95,10 @@ const RegistrationForm = (props: IRegistrationFormProps) => {
             rules={rules.gender}
           >
             <Radio.Group
-              value={gender}
-              onChange={(evt) => updateGender(evt.target.value)}
+              value={stateValues.registration.values.gender}
+              onChange={(evt) => {
+                dispatch(updateGenderAction(evt.target.value));
+              }}
               className="registration__radio-group"
             >
               <Radio value="мужской">
@@ -124,9 +121,11 @@ const RegistrationForm = (props: IRegistrationFormProps) => {
           >
             <Input
               className="registration__input"
-              value={dateOfBirth}
+              value={stateValues.registration.values.dateOfBirth}
               placeholder={t('registration.dateOfBirthField.placeholder')}
-              onChange={(evt) => updateDateOfBirth(evt.target.value)}
+              onChange={(evt) => {
+                dispatch(updateDateOfBirthAction(evt.target.value));
+              }}
             />
           </Form.Item>
         </Form.Item>
@@ -141,9 +140,11 @@ const RegistrationForm = (props: IRegistrationFormProps) => {
           >
             <Input
               className="registration__input"
-              value={email}
+              value={stateValues.registration.values.email}
               placeholder={t('registration.emailField.placeholder')}
-              onChange={(evt) => updateEmail(evt.target.value)}
+              onChange={(evt) => {
+                dispatch(updateEmailAction(evt.target.value));
+              }}
             />
           </Form.Item>
         </Form.Item>
@@ -158,14 +159,16 @@ const RegistrationForm = (props: IRegistrationFormProps) => {
           >
             <Input
               className="registration__input"
-              value={phone}
+              value={stateValues.registration.values.phone}
               placeholder={t('registration.phoneField.placeholder')}
-              onChange={(evt) => updatePhone(evt.target.value)}
+              onChange={(evt) => {
+                dispatch(updatePhoneAction(evt.target.value));
+              }}
             />
           </Form.Item>
         </Form.Item>
         <Form.Item className="registration__submit">
-          {isLoading
+          {stateValues.registration.isLoading
             ? (
               <Spin
                 className="registration__spinner"
@@ -186,7 +189,9 @@ const RegistrationForm = (props: IRegistrationFormProps) => {
           >
             { t('registration.button') }
           </Button>
-          { error ? <div className="registration__error">email уже зарегистрирован</div> : null}
+          { stateValues.registration.error
+            ? <div className="registration__error">email уже зарегистрирован</div>
+            : null }
         </Form.Item>
       </Form>
       <Link to="/login">
@@ -198,27 +203,4 @@ const RegistrationForm = (props: IRegistrationFormProps) => {
   );
 };
 
-export default connect(
-  (state: any) => ({
-    name: state.registration.values.name,
-    email: state.registration.values.email,
-    gender: state.registration.values.gender,
-    dateOfBirth: state.registration.values.dateOfBirth,
-    phone: state.registration.values.phone,
-    error: state.registration.error,
-    isLoading: state.registration.isLoading
-  }),
-  (dispatch) => ({
-    authorize: bindActionCreators(authorizeUser, dispatch),
-    updateName: bindActionCreators(updateNameAction, dispatch),
-    updateEmail: bindActionCreators(updateEmailAction, dispatch),
-    updateGender: bindActionCreators(updateGenderAction, dispatch),
-    updateDateOfBirth: bindActionCreators(updateDateOfBirthAction, dispatch),
-    updatePhone: bindActionCreators(updatePhoneAction, dispatch),
-    resetValues: bindActionCreators(resetValuesAction, dispatch),
-    showRegistrationError: bindActionCreators(showRegistrationErrorAction, dispatch),
-    hideRegistrationError: bindActionCreators(hideRegistrationErrorAction, dispatch),
-    showLoading: bindActionCreators(showLoadingAction, dispatch),
-    hideLoading: bindActionCreators(hideLoadingAction, dispatch),
-  })
-)(RegistrationForm);
+export default RegistrationForm;
