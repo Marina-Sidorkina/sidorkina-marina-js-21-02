@@ -1,24 +1,22 @@
 import React, { useContext } from 'react';
 import './AuthorizedUserBlock.scss';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import {
   resetAuthorizedUserAction,
 } from '../../../redux/actions/login';
 import { ThemeContext } from '../../../contexts/ThemeContext';
-import { IAuthorizedUserBlockProps } from './@types/authorizedUserBlock';
 import '../../../locale/i18next';
+import { useTypedSelector } from '../../../redux/hooks/useTypedSelector';
 
-const AuthorizedUserBlock = (props: IAuthorizedUserBlockProps) => {
-  const {
-    authorizedUserName, authorizedUserPicture, resetUser, authorizedUserId
-  } = props;
+const AuthorizedUserBlock = () => {
   const { t } = useTranslation();
+  const stateValues = useTypedSelector((state) => state);
+  const dispatch = useDispatch();
 
   const onClickHandler = (evt: any) => {
-    resetUser();
+    dispatch(resetAuthorizedUserAction());
     evt.preventDefault();
   };
 
@@ -31,11 +29,16 @@ const AuthorizedUserBlock = (props: IAuthorizedUserBlockProps) => {
           className={`${themeContext.darkTheme
             ? 'authorized-user-block__user-photo authorized-user-block__user-photo_dark'
             : 'authorized-user-block__user-photo'}`}
-          src={authorizedUserPicture}
+          src={stateValues.login.data.authorizedUserPicture}
           alt="Фото пользователя"
         />
-        <Link to={`/profile/${authorizedUserId}`} className="authorized-user-block__link">
-          <span className="authorized-user-block__user-name">{ authorizedUserName }</span>
+        <Link
+          to={`/profile/${stateValues.login.data.authorizedUserId}`}
+          className="authorized-user-block__link"
+        >
+          <span className="authorized-user-block__user-name">
+            { stateValues.login.data.authorizedUserName }
+          </span>
         </Link>
       </div>
       <div className="authorized-user-block__item">
@@ -47,14 +50,4 @@ const AuthorizedUserBlock = (props: IAuthorizedUserBlockProps) => {
   );
 };
 
-export default connect(
-  (state: any) => ({
-    userData: state.login.data.authorizedUserData,
-    authorizedUserId: state.login.data.authorizedUserId,
-    authorizedUserName: state.login.data.authorizedUserName,
-    authorizedUserPicture: state.login.data.authorizedUserPicture
-  }),
-  (dispatch) => ({
-    resetUser: bindActionCreators(resetAuthorizedUserAction, dispatch)
-  })
-)(AuthorizedUserBlock);
+export default AuthorizedUserBlock;
