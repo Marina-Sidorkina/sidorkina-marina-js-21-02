@@ -5,12 +5,3 @@ export interface IUserListItem {
   lastName: string;
   picture: string;
 }
-
-export interface IUserListProps {
-  isLoading: boolean;
-  users: IUserListItem[];
-  loadUsers: Function;
-  page: number;
-  perPage: number;
-  error: boolean;
-}

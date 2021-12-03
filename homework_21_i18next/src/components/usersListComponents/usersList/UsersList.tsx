@@ -1,25 +1,27 @@
 import React, { useEffect } from 'react';
 import './UsersList.scss';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { useDispatch } from 'react-redux';
 import { Spin } from 'antd';
 import { useTranslation } from 'react-i18next';
 import UsersListItem from '../usersListItem/UsersListItem';
 import { loadUsersList } from '../../../redux/actions/usersList';
-import { IUserListItem, IUserListProps } from './@types/usersList';
+import { IUserListItem } from './@types/usersList';
 import '../../../locale/i18next';
+import { useTypedSelector } from '../../../redux/hooks/useTypedSelector';
 
-const UsersList = (props: IUserListProps) => {
-  const {
-    loadUsers, users, isLoading, page, perPage, error
-  } = props;
+const UsersList = () => {
   const { t } = useTranslation();
+  const stateValues = useTypedSelector((state) => state);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    loadUsers(page - 1, perPage);
-  }, [page]);
+    dispatch(loadUsersList(
+      stateValues.usersList.data.page - 1,
+      stateValues.usersList.data.perPage
+    ));
+  }, [stateValues.usersList.data.page]);
 
-  const elements = isLoading
+  const elements = stateValues.usersList.data.isLoading
     ? (
       <Spin
         className="users-list__spinner"
@@ -31,7 +33,7 @@ const UsersList = (props: IUserListProps) => {
         }}
       />
     )
-    : users.map((item: IUserListItem) => (
+    : stateValues.usersList.data.users.map((item: IUserListItem) => (
       <UsersListItem
         key={item.id}
         id={item.id}
@@ -44,7 +46,7 @@ const UsersList = (props: IUserListProps) => {
 
   return (
     <ul className="users-list">
-      { error ? (
+      { stateValues.usersList.data.error ? (
         <div className="users-list__error">
           { t('errorText', {}) }
         </div>
@@ -53,15 +55,4 @@ const UsersList = (props: IUserListProps) => {
   );
 };
 
-export default connect(
-  (state: any) => ({
-    users: state.usersList.data.users,
-    error: state.usersList.data.error,
-    isLoading: state.usersList.data.isLoading,
-    page: state.usersList.data.page,
-    perPage: state.usersList.data.perPage
-  }),
-  (dispatch) => ({
-    loadUsers: bindActionCreators(loadUsersList, dispatch)
-  })
-)(UsersList);
+export default UsersList;
