@@ -1,12 +1,12 @@
 import React from 'react';
 import './Authorization.scss';
-import { connect } from 'react-redux';
 import NotAuthorizedUserBlock from '../notAuthorizedUserBlock/NotAuthorizedUserBlock';
 import AuthorizedUserBlock from '../authorizedUserBlock/AuthorizedUserBlock';
-import { IAuthorizationProps } from './@types/authorization';
+import { useTypedSelector } from '../../../redux/hooks/useTypedSelector';
 
-const Authorization = (props: IAuthorizationProps) => {
-  const { authorizedUserId } = props;
+const Authorization = () => {
+  const authorizedUserId = useTypedSelector((state) => state.login.data.authorizedUserId);
+
   return (
     <div className="authorization">
       <div className="authorization__dropdown">
@@ -22,8 +22,4 @@ const Authorization = (props: IAuthorizationProps) => {
   );
 };
 
-export default connect(
-  (state: any) => ({
-    authorizedUserId: state.login.data.authorizedUserId,
-  })
-)(Authorization);
+export default Authorization;
