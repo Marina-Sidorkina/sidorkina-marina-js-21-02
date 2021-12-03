@@ -1,8 +1,7 @@
 import React, { useContext } from 'react';
 import './PostModal.scss';
 import { CloseOutlined } from '@ant-design/icons';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { useDispatch } from 'react-redux';
 import Paginator from '../../../commonComponents/paginator/Paginator';
 import PostModalPost from '../postModalPost/PostModalPost';
 import PostModalComments from '../postModalComments/PostModalComments';
@@ -12,14 +11,13 @@ import {
   updatePostModalCommentsPageAction
 } from '../../../../redux/actions/postModalComments';
 import { ThemeContext } from '../../../../contexts/ThemeContext';
-import { IPostModalProps } from './@types/postModal';
+import { useTypedSelector } from '../../../../redux/hooks/useTypedSelector';
+import { COMMENTS_PER_PAGE, DEFAULT_PAGES_AMOUNT } from '../../../../constants/components';
 
-const PostModal = (props: IPostModalProps) => {
-  const {
-    closeModal, updatePostModalComments, page, total, updatePostModalCommentsPage
-  } = props;
-
+const PostModal = () => {
   const themeContext = useContext(ThemeContext);
+  const stateValues = useTypedSelector((state) => state);
+  const dispatch = useDispatch();
 
   return (
     <div className="post-modal">
@@ -27,8 +25,8 @@ const PostModal = (props: IPostModalProps) => {
         type="button"
         className="post-modal__button"
         onClick={() => {
-          updatePostModalComments([]);
-          closeModal();
+          dispatch(updatePostModalCommentsAction([]));
+          dispatch(closePostModalAction());
         }}
       >
         <CloseOutlined style={{ color: '#ffffff', fontSize: '25px' }} />
@@ -41,10 +39,12 @@ const PostModal = (props: IPostModalProps) => {
         <PostModalComments />
         <div className="post-modal__paginator">
           <Paginator
-            current={page}
-            total={total || 1}
-            perPage={6}
-            onPageChange={(newPage: number) => updatePostModalCommentsPage(newPage)}
+            current={stateValues.postModalComments.page}
+            total={stateValues.postModalComments.totalComments || DEFAULT_PAGES_AMOUNT}
+            perPage={COMMENTS_PER_PAGE}
+            onPageChange={(newPage: number) => {
+              dispatch(updatePostModalCommentsPageAction(newPage));
+            }}
             modal
           />
         </div>
@@ -53,14 +53,4 @@ const PostModal = (props: IPostModalProps) => {
   );
 };
 
-export default connect(
-  (state: any) => ({
-    page: state.postModalComments.page,
-    total: state.postModalComments.totalComments,
-  }),
-  (dispatch) => ({
-    closeModal: bindActionCreators(closePostModalAction, dispatch),
-    updatePostModalComments: bindActionCreators(updatePostModalCommentsAction, dispatch),
-    updatePostModalCommentsPage: bindActionCreators(updatePostModalCommentsPageAction, dispatch)
-  })
-)(PostModal);
+export default PostModal;

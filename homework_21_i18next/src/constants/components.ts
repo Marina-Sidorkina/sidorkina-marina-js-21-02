@@ -68,3 +68,7 @@ export const MISS_EN = 'miss';
 export const MRS_AND_MISS_RU = 'г-жа';
 
 export const MR_RU = 'г-н';
+
+export const DEFAULT_PAGES_AMOUNT = 1;
+
+export const COMMENTS_PER_PAGE = 6;
