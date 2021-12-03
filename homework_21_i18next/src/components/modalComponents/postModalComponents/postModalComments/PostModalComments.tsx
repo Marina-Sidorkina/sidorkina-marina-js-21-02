@@ -1,81 +1,41 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import './PostModalComments.scss';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { processPostsListItemDate } from '../../../../utils/components';
 import { getPostModalCommentsListAction } from '../../../../redux/actions/postModalComments';
-import { ThemeContext } from '../../../../contexts/ThemeContext';
-import helper from '../../../../hocs/helper/helper';
-import {
-  IPostModalCommentsItemNameProps,
-  IPostModalCommentsItemProps,
-  IPostModalCommentsProps
-} from './@types/postModalComments';
 import { useTypedSelector } from '../../../../redux/hooks/useTypedSelector';
 import '../../../../locale/i18next';
+import PostModalCommentsItem from '../postModalCommentsItem/PostModalCommentsItem';
 
-const PostModalCommentsItemName = (props: IPostModalCommentsItemNameProps) => (
-  <div className="post-modal-comments__name">
-    {`${props.firstName} ${props.lastName}`}
-  </div>
-);
-
-const PostModalCommentsItem = ({
-  date, text, img, firstName, lastName, id
-}: IPostModalCommentsItemProps) => {
-  const themeContext = useContext(ThemeContext);
-  const PostModalCommentsItemNameWithHelper = helper(PostModalCommentsItemName, id);
-
-  return (
-    <li className={`${themeContext.darkTheme
-      ? 'post-modal-comments__item post-modal-comments__item_dark'
-      : 'post-modal-comments__item'}`}
-    >
-      <img
-        className="post-modal-comments__img"
-        src={img}
-        alt="Аватар пользователя"
-      />
-      <div className="post-modal-comments__info">
-        <div className="post-modal-comments__user">
-          <PostModalCommentsItemNameWithHelper
-            firstName={firstName}
-            lastName={lastName}
-          />
-          <div className="post-modal-comments__date">{ date }</div>
-        </div>
-        <p className="post-modal-comments__text">{ text }</p>
-      </div>
-    </li>
-  );
-};
-
-const PostModalComments = (props: IPostModalCommentsProps) => {
-  const {
-    comments, owners, error, isLoading, getPostModalCommentsList, currentPostId,
-    limit, page
-  } = props;
+const PostModalComments = () => {
   const language = useTypedSelector((state) => state.languageSelector.value);
   const { t } = useTranslation();
+  const stateValues = useTypedSelector((state) => state);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    getPostModalCommentsList(page - 1, limit, currentPostId);
-  }, [currentPostId, page]);
+    dispatch(getPostModalCommentsListAction(
+      stateValues.postModalComments.page - 1,
+      stateValues.postModalComments.limit,
+      stateValues.postModal.currentPostId
+    ));
+  }, [stateValues.postModal.currentPostId, stateValues.postModalComments.page]);
 
   const getCommentsList = () => {
-    if (comments.length) {
-      return comments.map((comment, index) => (
-        <PostModalCommentsItem
-          key={comment.id}
-          firstName={owners[index].firstName}
-          lastName={owners[index].lastName}
-          id={owners[index].id}
-          date={processPostsListItemDate(comment.publishDate, language)}
-          text={comment.message}
-          img={owners[index].picture}
-        />
-      ));
+    if (stateValues.postModalComments.comments.length) {
+      return stateValues.postModalComments.comments
+        .map((comment, index) => (
+          <PostModalCommentsItem
+            key={comment.id}
+            firstName={stateValues.postModalComments.owners[index].firstName}
+            lastName={stateValues.postModalComments.owners[index].lastName}
+            id={stateValues.postModalComments.owners[index].id}
+            date={processPostsListItemDate(comment.publishDate, language)}
+            text={comment.message}
+            img={stateValues.postModalComments.owners[index].picture}
+          />
+        ));
     }
     return (
       <div>
@@ -84,16 +44,17 @@ const PostModalComments = (props: IPostModalCommentsProps) => {
     );
   };
 
-  const elements = isLoading
+  const elements = stateValues.postModalComments.isLoading
     ? (
       <div className="post-modal-comments__loading">
         { t('postComments.loading', {}) }
       </div>
     )
     : getCommentsList();
+
   return (
     <ul className="post-modal-comments">
-      { error ? (
+      { stateValues.postModalComments.error ? (
         <div className="post-modal-comments__error">
           { t('postComments.error', {}) }
         </div>
@@ -102,17 +63,4 @@ const PostModalComments = (props: IPostModalCommentsProps) => {
   );
 };
 
-export default connect(
-  (state: any) => ({
-    comments: state.postModalComments.comments,
-    owners: state.postModalComments.owners,
-    isLoading: state.postModalComments.isLoading,
-    error: state.postModalComments.error,
-    limit: state.postModalComments.limit,
-    page: state.postModalComments.page,
-    currentPostId: state.postModal.currentPostId
-  }),
-  (dispatch) => ({
-    getPostModalCommentsList: bindActionCreators(getPostModalCommentsListAction, dispatch)
-  })
-)(PostModalComments);
+export default PostModalComments;
