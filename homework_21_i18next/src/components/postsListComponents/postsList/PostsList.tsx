@@ -1,29 +1,29 @@
 import React, { useEffect } from 'react';
 import './PostsList.scss';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { useDispatch } from 'react-redux';
 import { Spin } from 'antd';
 import { useTranslation } from 'react-i18next';
 import PostsListItem from '../postsListItem/PostsListItem';
 import { loadPostsList } from '../../../redux/actions/postsList';
 import { IDummyPost } from '../../../api/dummyApi/@types/dummyApi';
 import { processPostsListItemDate } from '../../../utils/components';
-import { IPostsListProps } from './@types/postsList';
 import '../../../locale/i18next';
 import { useTypedSelector } from '../../../redux/hooks/useTypedSelector';
 
-const PostsList = (props: IPostsListProps) => {
-  const {
-    loadPosts, posts, isLoading, page, perPage, error
-  } = props;
+const PostsList = () => {
   const { t } = useTranslation();
   const language = useTypedSelector((state) => state.languageSelector.value);
+  const stateValues = useTypedSelector((state) => state);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    loadPosts(page - 1, perPage);
-  }, [page]);
+    dispatch(loadPostsList(
+      stateValues.postsList.data.page - 1,
+      stateValues.postsList.data.perPage
+    ));
+  }, [stateValues.postsList.data.page]);
 
-  const elements = isLoading
+  const elements = stateValues.postsList.data.isLoading
     ? (
       <Spin
         className="users-list__spinner"
@@ -35,7 +35,7 @@ const PostsList = (props: IPostsListProps) => {
         }}
       />
     )
-    : posts.map((item: IDummyPost) => (
+    : stateValues.postsList.data.posts.map((item: IDummyPost) => (
       <li key={item.id} className="posts-list__item">
         <PostsListItem
           id={item.id}
@@ -53,7 +53,7 @@ const PostsList = (props: IPostsListProps) => {
 
   return (
     <ul className="posts-list">
-      { error ? (
+      { stateValues.postsList.data.error ? (
         <div className="posts-list__error">
           { t('errorText', {}) }
         </div>
@@ -62,15 +62,4 @@ const PostsList = (props: IPostsListProps) => {
   );
 };
 
-export default connect(
-  (state: any) => ({
-    posts: state.postsList.data.posts,
-    error: state.postsList.data.error,
-    isLoading: state.postsList.data.isLoading,
-    page: state.postsList.data.page,
-    perPage: state.postsList.data.perPage
-  }),
-  (dispatch) => ({
-    loadPosts: bindActionCreators(loadPostsList, dispatch)
-  })
-)(PostsList);
+export default PostsList;
