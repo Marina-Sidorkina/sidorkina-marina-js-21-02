@@ -1,8 +1,7 @@
 import React, { useContext } from 'react';
 import './UserModal.scss';
 import { CloseOutlined } from '@ant-design/icons';
-import { connect, useDispatch } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { useDispatch } from 'react-redux';
 import { Spin } from 'antd';
 import UserModalForm from '../userModalForm/UserModalForm';
 import { closeUserModalAction } from '../../../../redux/actions/userModalForm';
@@ -49,12 +48,4 @@ const UserModal = () => {
   );
 };
 
-export default connect(
-  (state: any) => ({
-    isOpened: state.userModal.isOpened,
-    isLoading: state.userModal.isLoading
-  }),
-  (dispatch) => ({
-    closeModal: bindActionCreators(closeUserModalAction, dispatch)
-  })
-)(UserModal);
+export default UserModal;
