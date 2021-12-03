@@ -1,21 +1,18 @@
 import React, { useContext } from 'react';
 import './UserPostsItem.scss';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { useDispatch } from 'react-redux';
 import { openPostModalAction, setPostModalCurrenIdAction } from '../../../redux/actions/postModal';
 import { ThemeContext } from '../../../contexts/ThemeContext';
 import { IUserPostsItemProps } from './@types/userPostsItem';
 
 const UserPostsItem = (props: IUserPostsItemProps) => {
-  const {
-    image, text, id, setPostModalCurrenId, openModal
-  } = props;
-
+  const { image, text, id } = props;
   const themeContext = useContext(ThemeContext);
+  const dispatch = useDispatch();
 
   const onItemClick = () => {
-    openModal();
-    setPostModalCurrenId(id);
+    dispatch(openPostModalAction());
+    dispatch(setPostModalCurrenIdAction(id));
   };
 
   return (
@@ -37,10 +34,4 @@ const UserPostsItem = (props: IUserPostsItemProps) => {
   );
 };
 
-export default connect(
-  () => ({}),
-  (dispatch) => ({
-    openModal: bindActionCreators(openPostModalAction, dispatch),
-    setPostModalCurrenId: bindActionCreators(setPostModalCurrenIdAction, dispatch)
-  })
-)(UserPostsItem);
+export default UserPostsItem;
