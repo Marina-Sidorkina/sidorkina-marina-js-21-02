@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import './UserInfo.scss';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { useDispatch } from 'react-redux';
 import { Spin } from 'antd';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -11,30 +10,29 @@ import { DEFAULT_IMAGE } from '../../../constants/components';
 import { openUserModalAction, updateUserModalPictureAction } from '../../../redux/actions/userModalForm';
 import { ThemeContext } from '../../../contexts/ThemeContext';
 import UserInfoEditIcon from '../userInfoEditIcon/UserInfoEditIcon';
-import { IUserInfoProps, IUserInfoParams } from './@types/userInfo';
+import { IUserInfoParams } from './@types/userInfo';
 import '../../../locale/i18next';
 import { useTypedSelector } from '../../../redux/hooks/useTypedSelector';
 
-const UserInfo = (props: IUserInfoProps) => {
+const UserInfo = () => {
   const params = useParams() as IUserInfoParams;
-
-  const {
-    isLoading, user, loadUser, authorizedUserId, openModal, resetFormImage, error
-  } = props;
-
   const themeContext = useContext(ThemeContext);
   const { t } = useTranslation();
-  const language = useTypedSelector((state) => state.languageSelector.value);
+  const stateValues = useTypedSelector((state) => state);
+  const dispatch = useDispatch();
+  const language = useTypedSelector(
+    (state) => state.languageSelector.value
+  );
 
   useEffect(() => {
-    loadUser(params.id);
+    dispatch(loadUserInfo(params.id));
   }, [params.id]);
 
   useEffect(() => {
-    resetFormImage(user.picture);
-  }, [user.picture]);
+    dispatch(updateUserModalPictureAction(stateValues.userInfo.data.user.picture));
+  }, [stateValues.userInfo.data.user.picture]);
 
-  const element = isLoading
+  const element = stateValues.userInfo.data.isLoading
     ? (
       <Spin
         className="users-info__spinner"
@@ -52,64 +50,69 @@ const UserInfo = (props: IUserInfoProps) => {
       <>
         <img
           className="user-info__image"
-          src={user.picture || DEFAULT_IMAGE}
+          src={stateValues.userInfo.data.user.picture || DEFAULT_IMAGE}
           alt="Аватар пользователя"
         />
         <div className="user-info__container">
           <div className="user-info__details">
             <p className="user-info__name">
-              {`${user.title ? `${getTitleValue(user.title, language)}` : ''} ${user.firstName} ${user.lastName}`}
+              {`${stateValues.userInfo.data.user.title
+                ? `${getTitleValue(stateValues.userInfo.data.user.title, language)}`
+                : ''} ${stateValues.userInfo.data.user.firstName} ${stateValues.userInfo.data.user.lastName}`}
             </p>
             <p className="user-info__item">
               <b>
                 { t('userInfo.gender', {}) }
                 {' '}
               </b>
-              {getGenderFieldValue(user.gender, language)}
+              {getGenderFieldValue(stateValues.userInfo.data.user.gender, language)}
             </p>
             <p className="user-info__item">
               <b>
                 { t('userInfo.dateOfBirth', {}) }
                 {' '}
               </b>
-              {processDate(user.dateOfBirth, language)}
+              {processDate(stateValues.userInfo.data.user.dateOfBirth, language)}
             </p>
             <p className="user-info__item">
               <b>
                 { t('userInfo.registrationDate', {}) }
                 {' '}
               </b>
-              {processDate(user.registerDate, language)}
+              {processDate(stateValues.userInfo.data.user.registerDate, language)}
             </p>
             <p className="user-info__item">
               <b>
                 { t('userInfo.email', {}) }
                 {' '}
               </b>
-              {user.email}
+              {stateValues.userInfo.data.user.email}
             </p>
             <p className="user-info__item user-info__item_tel">
               <b>
                 { t('userInfo.phone', {}) }
                 {' '}
               </b>
-              {user.phone}
+              {stateValues.userInfo.data.user.phone}
             </p>
             <p className="user-info__item user-info__item_id">
               <b>ID: </b>
-              {user.id}
+              {stateValues.userInfo.data.user.id}
             </p>
           </div>
-          {authorizedUserId === params.id
+          { stateValues.login.data.authorizedUserId === params.id
             ? (
               <button type="button" className="user-info__edit">
                 <UserInfoEditIcon />
-                <span className="user-info__edit-text" onClick={() => openModal()}>
+                <span
+                  className="user-info__edit-text"
+                  onClick={() => dispatch(openUserModalAction())}
+                >
                   { t('editButton', {}) }
                 </span>
               </button>
             )
-            : null}
+            : null }
         </div>
       </>
     );
@@ -119,7 +122,7 @@ const UserInfo = (props: IUserInfoProps) => {
       ? 'user-info user-info_dark'
       : 'user-info'}`}
     >
-      { error ? (
+      { stateValues.userInfo.data.error ? (
         <div className="posts-list__error">
           { t('errorText', {}) }
         </div>
@@ -128,16 +131,4 @@ const UserInfo = (props: IUserInfoProps) => {
   );
 };
 
-export default connect(
-  (state: any) => ({
-    isLoading: state.userInfo.data.isLoading,
-    user: state.userInfo.data.user,
-    error: state.userInfo.data.error,
-    authorizedUserId: state.login.data.authorizedUserId
-  }),
-  (dispatch) => ({
-    loadUser: bindActionCreators(loadUserInfo, dispatch),
-    openModal: bindActionCreators(openUserModalAction, dispatch),
-    resetFormImage: bindActionCreators(updateUserModalPictureAction, dispatch)
-  })
-)(UserInfo);
+export default UserInfo;
