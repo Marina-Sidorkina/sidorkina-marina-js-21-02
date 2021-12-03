@@ -8,6 +8,16 @@ import {
 import { setFormData } from '../../utils/formData';
 import { getImgLink } from '../../api/imgbbApi/imgbbApi';
 import { IMGBB_API_METHOD } from '../../api/imgbbApi/constants/imgbbApi';
+import { IUserFormValues }
+  from '../../components/modalComponents/userModalComponents/userModalForm/@types/userModalForm';
+import { createUpdatedUserData } from '../../utils/api';
+import { DEFAULT_IMAGE, IMAGE_CHANGE_CHECK_VALUE } from '../../constants/components';
+import { isEmptyObject } from '../../utils/components';
+import { updateUser } from '../../api/dummyApi/dummyApi';
+import { IDummyUserFull } from '../../api/dummyApi/@types/dummyApi';
+import { updateUserCardAction } from './userInfo';
+import { updateAuthorizedUserDataAction } from './login';
+import { getExpirationDate } from '../../utils/redux';
 
 export const showUserModalErrorAction = () => ({
   type: SHOW_USER_MODAL_ERROR
@@ -79,4 +89,37 @@ export const processUserModalPicture = (value: any) => (dispatch: Dispatch) => {
         dispatch(hideLoadingAction());
       });
   };
+};
+
+export const processUserModalFormAction = (
+  values: IUserFormValues,
+  userModalPicture: string,
+  userInfoPicture: string,
+  userInfoId: string,
+  form: any
+) => (dispatch: Dispatch) => {
+  const updatedData = createUpdatedUserData({
+    ...values,
+    image: userModalPicture === userInfoPicture
+      ? IMAGE_CHANGE_CHECK_VALUE
+      : userModalPicture
+  });
+  if (!isEmptyObject(updatedData)) {
+    dispatch(showLoadingAction());
+    updateUser(updatedData, userInfoId)
+      .then((response: IDummyUserFull) => {
+        dispatch(updateUserCardAction(response));
+        dispatch(updateAuthorizedUserDataAction(response));
+        dispatch(closeUserModalAction());
+        dispatch(hideLoadingAction());
+        dispatch(hideUserModalErrorAction());
+        document.cookie = `picture=${response.picture || DEFAULT_IMAGE}; path=/; expires=${getExpirationDate()}`;
+        document.cookie = `name=${response.firstName}; path=/; expires=${getExpirationDate()}`;
+      })
+      .catch(() => {
+        dispatch(hideLoadingAction());
+        dispatch(showUserModalErrorAction());
+      });
+  }
+  form.resetFields();
 };

@@ -1,27 +1,16 @@
 import React, { useContext, useEffect, useRef } from 'react';
 import './UserModalForm.scss';
-import {
-  Button, Form, Input
-} from 'antd';
+import { Button, Form, Input } from 'antd';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { IDummyUserFull } from '../../../../api/dummyApi/@types/dummyApi';
-import { DEFAULT_IMAGE, IMAGE_CHANGE_CHECK_VALUE, RUSSIAN_LANGUAGE } from '../../../../constants/components';
-import { getGenderFieldValue, isEmptyObject, processDate } from '../../../../utils/components';
+import { DEFAULT_IMAGE, RUSSIAN_LANGUAGE } from '../../../../constants/components';
+import { getGenderFieldValue, processDate } from '../../../../utils/components';
 import {
-  closeUserModalAction, hideLoadingAction, hideUserModalErrorAction,
-  processUserModalPicture, resetValuesAction, showLoadingAction, showUserModalErrorAction,
-  updateUserModalDateOfBirthAction,
-  updateUserModalGenderAction,
-  updateUserModalNameAction,
+  processUserModalFormAction, processUserModalPicture, resetValuesAction,
+  updateUserModalDateOfBirthAction, updateUserModalGenderAction, updateUserModalNameAction,
   updateUserModalPhoneAction, updateUserModalPictureAction
 } from '../../../../redux/actions/userModalForm';
 import { BTN_DARK_STYLE, RULES, RULES_EN } from './antDesignSettings/userModalForm';
-import { updateUser } from '../../../../api/dummyApi/dummyApi';
-import { createUpdatedUserData } from '../../../../utils/api';
-import { updateUserCardAction } from '../../../../redux/actions/userInfo';
-import { getExpirationDate } from '../../../../utils/redux';
-import { updateAuthorizedUserDataAction } from '../../../../redux/actions/login';
 import { ThemeContext } from '../../../../contexts/ThemeContext';
 import { IUserFormValues } from './@types/userModalForm';
 import { useTypedSelector } from '../../../../redux/hooks/useTypedSelector';
@@ -31,13 +20,11 @@ const UserModalForm = () => {
   const [form] = Form.useForm();
   const fileInputElement = useRef() as any;
   const themeContext = useContext(ThemeContext);
-  const btnStyle = themeContext.darkTheme
-    ? BTN_DARK_STYLE : {};
+  const btnStyle = themeContext.darkTheme ? BTN_DARK_STYLE : {};
   const language = useTypedSelector((state) => state.languageSelector.value);
   const { t } = useTranslation();
   const rules = language === RUSSIAN_LANGUAGE ? RULES : RULES_EN;
   const stateValues = useTypedSelector((state) => state);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -48,30 +35,13 @@ const UserModalForm = () => {
   }, [stateValues.userModal.isOpened]);
 
   const onFormSubmit = (values: IUserFormValues) => {
-    const updatedData = createUpdatedUserData({
-      ...values,
-      image: stateValues.userModal.values.picture === stateValues.userInfo.data.user.picture
-        ? IMAGE_CHANGE_CHECK_VALUE
-        : stateValues.userModal.values.picture
-    });
-    if (!isEmptyObject(updatedData)) {
-      dispatch(showLoadingAction());
-      updateUser(updatedData, stateValues.userInfo.data.user.id)
-        .then((response: IDummyUserFull) => {
-          dispatch(updateUserCardAction(response));
-          dispatch(updateAuthorizedUserDataAction(response));
-          dispatch(closeUserModalAction());
-          dispatch(hideLoadingAction());
-          dispatch(hideUserModalErrorAction());
-          document.cookie = `picture=${response.picture || DEFAULT_IMAGE}; path=/; expires=${getExpirationDate()}`;
-          document.cookie = `name=${response.firstName}; path=/; expires=${getExpirationDate()}`;
-        })
-        .catch(() => {
-          dispatch(hideLoadingAction());
-          dispatch(showUserModalErrorAction());
-        });
-    }
-    form.resetFields();
+    dispatch(processUserModalFormAction(
+      values,
+      stateValues.userModal.values.picture,
+      stateValues.userInfo.data.user.picture,
+      stateValues.userInfo.data.user.id,
+      form
+    ));
   };
 
   const onImageFileUpload = (evt: any) => {
@@ -224,4 +194,5 @@ const UserModalForm = () => {
     </Form>
   );
 };
+
 export default UserModalForm;
