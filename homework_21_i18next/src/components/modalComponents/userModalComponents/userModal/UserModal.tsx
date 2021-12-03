@@ -1,23 +1,21 @@
 import React, { useContext } from 'react';
 import './UserModal.scss';
 import { CloseOutlined } from '@ant-design/icons';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Spin } from 'antd';
 import UserModalForm from '../userModalForm/UserModalForm';
 import { closeUserModalAction } from '../../../../redux/actions/userModalForm';
 import { ThemeContext } from '../../../../contexts/ThemeContext';
-import { IUserModalProps } from './@types/userModal';
+import { useTypedSelector } from '../../../../redux/hooks/useTypedSelector';
 
-const UserModal = (props: IUserModalProps) => {
-  const {
-    isOpened, closeModal, isLoading
-  } = props;
-
+const UserModal = () => {
   const themeContext = useContext(ThemeContext);
+  const stateValues = useTypedSelector((state) => state);
+  const dispatch = useDispatch();
 
   return (
-    <div className={`user-modal ${isOpened ? 'user-modal_opened' : ''}`}>
+    <div className={`user-modal ${stateValues.userModal.isOpened ? 'user-modal_opened' : ''}`}>
       <div className={`${themeContext.darkTheme
         ? 'user-modal__content user-modal__content_dark'
         : 'user-modal__content'}`}
@@ -26,12 +24,12 @@ const UserModal = (props: IUserModalProps) => {
           <CloseOutlined
             style={{ color: '#ffffff', fontSize: '25px' }}
             onClick={() => {
-              closeModal();
+              dispatch(closeUserModalAction());
             }}
           />
         </button>
         <UserModalForm />
-        {isLoading
+        { stateValues.userModal.isLoading
           ? (
             <Spin
               className="registration__spinner"
@@ -44,7 +42,7 @@ const UserModal = (props: IUserModalProps) => {
                 left: 'calc(50% - 55px)'
               }}
             />
-          ) : null}
+          ) : null }
 
       </div>
     </div>
