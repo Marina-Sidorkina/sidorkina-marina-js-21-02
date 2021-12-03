@@ -6,10 +6,8 @@ export interface IPostsListItem {
   text: string;
   image: string;
   avatar: string;
-  openModal: Function;
   id: string;
   userId: string;
-  setPostModalCurrenId: Function;
 }
 
 export interface IPostsListItemNameProps {

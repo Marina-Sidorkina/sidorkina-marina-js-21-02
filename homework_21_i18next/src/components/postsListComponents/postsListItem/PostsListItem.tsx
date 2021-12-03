@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import './PostsListItem.scss';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { useDispatch } from 'react-redux';
 import { openPostModalAction, setPostModalCurrenIdAction } from '../../../redux/actions/postModal';
 import helper from '../../../hocs/helper/helper';
 import { ThemeContext } from '../../../contexts/ThemeContext';
@@ -21,16 +20,17 @@ const PostsListItemName = (props: IPostsListItemNameProps) => {
 
 const PostsListItem = (props: IPostsListItem) => {
   const {
-    date, text, image, avatar, openModal, id, setPostModalCurrenId,
+    date, text, image, avatar, id,
     firstName, lastName, title, userId
   } = props;
 
   const PostsListNameWithHelper = helper(PostsListItemName, userId);
   const themeContext = useContext(ThemeContext);
+  const dispatch = useDispatch();
 
   const onItemClick = () => {
-    openModal();
-    setPostModalCurrenId(id);
+    dispatch(openPostModalAction());
+    dispatch(setPostModalCurrenIdAction(id));
   };
 
   return (
@@ -65,10 +65,4 @@ const PostsListItem = (props: IPostsListItem) => {
   );
 };
 
-export default connect(
-  () => ({}),
-  (dispatch) => ({
-    openModal: bindActionCreators(openPostModalAction, dispatch),
-    setPostModalCurrenId: bindActionCreators(setPostModalCurrenIdAction, dispatch)
-  })
-)(PostsListItem);
+export default PostsListItem;
