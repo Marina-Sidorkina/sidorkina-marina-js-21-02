@@ -3,8 +3,7 @@ import './UserModalForm.scss';
 import {
   Button, Form, Input
 } from 'antd';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { IDummyUserFull } from '../../../../api/dummyApi/@types/dummyApi';
 import { DEFAULT_IMAGE, IMAGE_CHANGE_CHECK_VALUE, RUSSIAN_LANGUAGE } from '../../../../constants/components';
@@ -24,23 +23,11 @@ import { updateUserCardAction } from '../../../../redux/actions/userInfo';
 import { getExpirationDate } from '../../../../utils/redux';
 import { updateAuthorizedUserDataAction } from '../../../../redux/actions/login';
 import { ThemeContext } from '../../../../contexts/ThemeContext';
-import { IUserModalFormProps, IUserFormValues } from './@types/userModalForm';
+import { IUserFormValues } from './@types/userModalForm';
 import { useTypedSelector } from '../../../../redux/hooks/useTypedSelector';
 import '../../../../locale/i18next';
 
-const UserModalForm = (props: IUserModalFormProps) => {
-  const {
-    user, nameValue, genderValue, dateOfBirthValue, registrationDateValue,
-    emailValue, phoneValue, updateNameValue, updateGenderValue, updateDateOfBirthValue,
-    updatePhoneValue, updatePictureValue,
-    pictureValue, resetImage, resetValues, isOpened, updateUserInfo, closeModal,
-    updateAuthorizedUserData, showLoading, hideLoading, error, showUserModalError, hideUserModalError
-  } = props;
-
-  const {
-    id, firstName, lastName, picture, gender, dateOfBirth, registerDate, email, phone
-  } = user;
-
+const UserModalForm = () => {
   const [form] = Form.useForm();
   const fileInputElement = useRef() as any;
   const themeContext = useContext(ThemeContext);
@@ -49,36 +36,39 @@ const UserModalForm = (props: IUserModalFormProps) => {
   const language = useTypedSelector((state) => state.languageSelector.value);
   const { t } = useTranslation();
   const rules = language === RUSSIAN_LANGUAGE ? RULES : RULES_EN;
+  const stateValues = useTypedSelector((state) => state);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    resetValues();
-    resetImage(picture);
+    dispatch(resetValuesAction());
+    dispatch(updateUserModalPictureAction(stateValues.userInfo.data.user.picture));
     form.resetFields();
     if (fileInputElement.current) fileInputElement.current.value = '';
-  }, [isOpened]);
+  }, [stateValues.userModal.isOpened]);
 
   const onFormSubmit = (values: IUserFormValues) => {
     const updatedData = createUpdatedUserData({
       ...values,
-      image: pictureValue === picture
+      image: stateValues.userModal.values.picture === stateValues.userInfo.data.user.picture
         ? IMAGE_CHANGE_CHECK_VALUE
-        : pictureValue
+        : stateValues.userModal.values.picture
     });
     if (!isEmptyObject(updatedData)) {
-      showLoading();
-      updateUser(updatedData, id)
+      dispatch(showLoadingAction());
+      updateUser(updatedData, stateValues.userInfo.data.user.id)
         .then((response: IDummyUserFull) => {
-          updateUserInfo(response);
-          updateAuthorizedUserData(response);
-          closeModal();
-          hideLoading();
-          hideUserModalError();
+          dispatch(updateUserCardAction(response));
+          dispatch(updateAuthorizedUserDataAction(response));
+          dispatch(closeUserModalAction());
+          dispatch(hideLoadingAction());
+          dispatch(hideUserModalErrorAction());
           document.cookie = `picture=${response.picture || DEFAULT_IMAGE}; path=/; expires=${getExpirationDate()}`;
           document.cookie = `name=${response.firstName}; path=/; expires=${getExpirationDate()}`;
         })
         .catch(() => {
-          hideLoading();
-          showUserModalError();
+          dispatch(hideLoadingAction());
+          dispatch(showUserModalErrorAction());
         });
     }
     form.resetFields();
@@ -86,7 +76,7 @@ const UserModalForm = (props: IUserModalFormProps) => {
 
   const onImageFileUpload = (evt: any) => {
     if (evt.target.files[0]) {
-      updatePictureValue(evt.target.files[0]);
+      dispatch(processUserModalPicture(evt.target.files[0]));
     }
   };
 
@@ -102,7 +92,11 @@ const UserModalForm = (props: IUserModalFormProps) => {
       onFinish={onFormSubmit}
       size="small"
     >
-      <img className="user-modal-form__img" src={pictureValue || DEFAULT_IMAGE} alt="Аватар" />
+      <img
+        className="user-modal-form__img"
+        src={stateValues.userModal.values.picture || DEFAULT_IMAGE}
+        alt="Аватар"
+      />
       <div className="user-modal-form__img-edit">
         <label className="user-modal-form__file-label" htmlFor="file-input">
           <span className="user-modal-form__file-span">
@@ -122,7 +116,7 @@ const UserModalForm = (props: IUserModalFormProps) => {
           type="button"
           onClick={() => {
             if (fileInputElement.current) fileInputElement.current.value = '';
-            resetImage('');
+            dispatch(updateUserModalPictureAction(''));
           }}
         >
           { t('photo.delete', {}) }
@@ -136,9 +130,11 @@ const UserModalForm = (props: IUserModalFormProps) => {
       >
         <Input
           className="user-modal-form__input"
-          value={nameValue}
-          placeholder={`${firstName} ${lastName}`}
-          onChange={(evt) => updateNameValue(evt.target.value)}
+          value={stateValues.userModal.values.name}
+          placeholder={`${stateValues.userInfo.data.user.firstName} ${stateValues.userInfo.data.user.lastName}`}
+          onChange={(evt) => {
+            dispatch(updateUserModalNameAction(evt.target.value));
+          }}
         />
       </Form.Item>
       <Form.Item
@@ -149,9 +145,11 @@ const UserModalForm = (props: IUserModalFormProps) => {
       >
         <Input
           className="user-modal-form__input"
-          value={genderValue}
-          placeholder={getGenderFieldValue(gender, language)}
-          onChange={(evt) => updateGenderValue(evt.target.value)}
+          value={stateValues.userModal.values.gender}
+          placeholder={getGenderFieldValue(stateValues.userInfo.data.user.gender, language)}
+          onChange={(evt) => {
+            dispatch(updateUserModalGenderAction(evt.target.value));
+          }}
         />
       </Form.Item>
       <Form.Item
@@ -162,9 +160,11 @@ const UserModalForm = (props: IUserModalFormProps) => {
       >
         <Input
           className="user-modal-form__input"
-          value={dateOfBirthValue}
-          placeholder={processDate(dateOfBirth, language)}
-          onChange={(evt) => updateDateOfBirthValue(evt.target.value)}
+          value={stateValues.userModal.values.dateOfBirth}
+          placeholder={processDate(stateValues.userInfo.data.user.dateOfBirth, language)}
+          onChange={(evt) => {
+            dispatch(updateUserModalDateOfBirthAction(evt.target.value));
+          }}
         />
       </Form.Item>
       <Form.Item
@@ -174,8 +174,8 @@ const UserModalForm = (props: IUserModalFormProps) => {
       >
         <Input
           className="user-modal-form__input"
-          value={registrationDateValue}
-          placeholder={processDate(registerDate, language)}
+          value={stateValues.userModal.values.registrationDate}
+          placeholder={processDate(stateValues.userInfo.data.user.registerDate, language)}
           disabled
         />
       </Form.Item>
@@ -186,8 +186,8 @@ const UserModalForm = (props: IUserModalFormProps) => {
       >
         <Input
           className="user-modal-form__input"
-          value={emailValue}
-          placeholder={email}
+          value={stateValues.userModal.values.email}
+          placeholder={stateValues.userInfo.data.user.email}
           disabled
         />
       </Form.Item>
@@ -199,9 +199,11 @@ const UserModalForm = (props: IUserModalFormProps) => {
       >
         <Input
           className="user-modal-form__input"
-          value={phoneValue}
-          placeholder={phone}
-          onChange={(evt) => updatePhoneValue(evt.target.value)}
+          value={stateValues.userModal.values.phone}
+          placeholder={stateValues.userInfo.data.user.phone}
+          onChange={(evt) => {
+            dispatch(updateUserModalPhoneAction(evt.target.value));
+          }}
         />
       </Form.Item>
       <Form.Item className="user-modal-form__submit">
@@ -214,7 +216,7 @@ const UserModalForm = (props: IUserModalFormProps) => {
           { t('saveButton', {}) }
         </Button>
       </Form.Item>
-      { error ? (
+      { stateValues.userModal.error ? (
         <div className="user-modal-form__error">
           { t('errorText', {}) }
         </div>
@@ -222,33 +224,4 @@ const UserModalForm = (props: IUserModalFormProps) => {
     </Form>
   );
 };
-export default connect(
-  (state: any) => ({
-    user: state.userInfo.data.user,
-    nameValue: state.userModal.values.name,
-    genderValue: state.userModal.values.gender,
-    dateOfBirthValue: state.userModal.values.dateOfBirth,
-    registrationDateValue: state.userModal.values.registrationDate,
-    emailValue: state.userModal.values.email,
-    phoneValue: state.userModal.values.phone,
-    pictureValue: state.userModal.values.picture,
-    isOpened: state.userModal.isOpened,
-    error: state.userModal.error
-  }),
-  (dispatch) => ({
-    updateNameValue: bindActionCreators(updateUserModalNameAction, dispatch),
-    updateGenderValue: bindActionCreators(updateUserModalGenderAction, dispatch),
-    updateDateOfBirthValue: bindActionCreators(updateUserModalDateOfBirthAction, dispatch),
-    updatePhoneValue: bindActionCreators(updateUserModalPhoneAction, dispatch),
-    updatePictureValue: bindActionCreators(processUserModalPicture, dispatch),
-    resetImage: bindActionCreators(updateUserModalPictureAction, dispatch),
-    resetValues: bindActionCreators(resetValuesAction, dispatch),
-    updateUserInfo: bindActionCreators(updateUserCardAction, dispatch),
-    closeModal: bindActionCreators(closeUserModalAction, dispatch),
-    updateAuthorizedUserData: bindActionCreators(updateAuthorizedUserDataAction, dispatch),
-    showLoading: bindActionCreators(showLoadingAction, dispatch),
-    hideLoading: bindActionCreators(hideLoadingAction, dispatch),
-    showUserModalError: bindActionCreators(showUserModalErrorAction, dispatch),
-    hideUserModalError: bindActionCreators(hideUserModalErrorAction, dispatch)
-  })
-)(UserModalForm);
+export default UserModalForm;
