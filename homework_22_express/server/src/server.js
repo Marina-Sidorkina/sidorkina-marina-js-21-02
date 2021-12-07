@@ -5,6 +5,7 @@ const routes = require('./routes/index');
 const app = express()
 
 app.use(express.json());
+
 app.use((req, res, next) => {
   res.type('text/plain')
     .set('Access-Control-Allow-Origin', '*')
