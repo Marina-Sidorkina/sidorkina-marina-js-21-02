@@ -1,0 +1,123 @@
+.registration {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 530px;
+  padding: 15px;
+  margin-top: 50px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  border: 1px solid #cccccc;
+
+  .ant-radio-wrapper {
+    color: #000000;
+  }
+
+  &_dark {
+    background-color: #161b22;
+    border: 1px solid #30363d;
+    color: #c9d1d9;
+
+    .registration__title {
+      color: #c9d1d9;
+    }
+
+    .registration__button {
+      border: 1px solid #c9d1d9;
+    }
+
+    .ant-col .ant-form-item-control-input-content {
+      color: #c9d1d9;
+    }
+
+    .ant-radio-wrapper {
+      color: #c9d1d9;
+    }
+  }
+
+  &__submit {
+    position: relative;
+  }
+
+  &__error {
+    position: absolute;
+    bottom: -18px;
+    right: 5px;
+    font-size: 12px;
+    color: red;
+  }
+
+  &__title {
+    text-align: center;
+  }
+
+  &__form {
+    width: 500px;
+    height: 470px;
+
+    @media (max-width: 555px) {
+      width: 100%;
+    }
+  }
+
+  &__label_gender {
+    display: inline-block;
+    margin-bottom: 0;
+  }
+
+  &__radio-group {
+    height: 30px;
+    box-sizing: border-box;
+    padding-left: 50px;
+  }
+
+  &__form-item,
+  &__button,
+  &__submit,
+  &__input,
+  &__radio-group {
+    width: 500px;
+    min-width: 260px;
+
+    @media (max-width: 555px) {
+      width: 100%;
+    }
+  }
+
+  &__form-item {
+    box-sizing: border-box;
+  }
+
+  &__form-item_radio {
+    height: 50px;
+    margin-bottom: 0;
+  }
+
+  &__form-item_add {
+    margin: 0;
+  }
+
+  &__button {
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+
+    &:hover {
+      background-color: #000000;
+      opacity: 0.7;
+    }
+  }
+
+  &__input {
+    border-radius: 5px;
+  }
+
+  &__link {
+    text-align: center;
+    color: #808080;
+  }
+}
