@@ -4,6 +4,7 @@ const UserService = require('../services/userService');
 router
   .get('', UserService.getUsersList)
   .get('/:id', UserService.getUserById)
+  .get('/:id/post', UserService.getUsersPostsList)
   .put('/:id', UserService.updateUserById)
   .post('/create', UserService.createUser)
   .delete('/:id', UserService.deleteUserById);

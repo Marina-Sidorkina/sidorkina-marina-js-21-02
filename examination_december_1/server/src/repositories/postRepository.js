@@ -8,11 +8,11 @@ class PostRepository {
         [DUMMY_API_SETTINGS.query.page]: page,
         [DUMMY_API_SETTINGS.query.limit]: limit
       }
-    })
+    });
   }
 
   getPostById(id) {
-    return dummyApi.get(`/${DUMMY_API_SETTINGS.paths.post}/${id}`)
+    return dummyApi.get(`/${DUMMY_API_SETTINGS.paths.post}/${id}`);
   }
 }
 

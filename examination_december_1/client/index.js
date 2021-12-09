@@ -66,10 +66,16 @@ const getPostById = () => {
   });
 }
 
+const getPostsListByUser = () => {
+  return fetch(`http://127.0.0.1:5000/proxy/user/60d0fe4f5311236168a109ce/post?page=0&limit=5`, {
+    method: "GET"
+  });
+}
+
 
 const onFormSubmit = (evt) => {
   evt.preventDefault();
-  getPostById()
+  getPostsListByUser()
     .then((response) => response.json())
     .then((response) => console.log(response))
     .catch((error) => {

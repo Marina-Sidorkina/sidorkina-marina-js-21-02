@@ -3,6 +3,6 @@ const PostService = require('../services/postService');
 
 router
   .get('', PostService.getPostsList)
-  .get('/:id', PostService.getPostById);
+  .get('/:id', PostService.getPostById)
 
 module.exports = router;
