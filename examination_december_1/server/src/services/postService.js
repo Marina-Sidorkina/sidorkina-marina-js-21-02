@@ -17,6 +17,16 @@ class PostService {
         data: response.data
       }));
   }
+
+  getPostCommentsList(req, res) {
+    PostRepository.getPostCommentsList(
+      req.params.id,
+      req.query[DUMMY_API_SETTINGS.query.page],
+      req.query[DUMMY_API_SETTINGS.query.limit])
+      .then((response) => res.status(200).send({
+        data: response.data
+      }));
+  }
 }
 
 module.exports = new PostService();

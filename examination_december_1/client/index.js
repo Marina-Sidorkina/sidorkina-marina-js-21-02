@@ -72,6 +72,14 @@ const getPostsListByUser = () => {
   });
 }
 
+// COMMENTS
+
+const getCommentsByPost = () => {
+  return fetch(`http://127.0.0.1:5000/proxy/post/60d21b8667d0d8992e610d3f/comment?page=0&limit=5`, {
+    method: "GET"
+  });
+}
+
 
 const onFormSubmit = (evt) => {
   evt.preventDefault();

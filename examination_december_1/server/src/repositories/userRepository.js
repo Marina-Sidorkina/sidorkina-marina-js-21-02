@@ -15,7 +15,7 @@ class UserRepository {
     return dummyApi.get(`/${DUMMY_API_SETTINGS.paths.user}/${id}`)
   }
 
-  getUsersPostsList(userId, page, limit) {
+  getUserPostsList(userId, page, limit) {
     return dummyApi.get(`/user/${userId}/post`, {
       params: {
         [DUMMY_API_SETTINGS.query.page]: page,

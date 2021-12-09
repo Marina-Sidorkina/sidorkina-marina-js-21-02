@@ -40,8 +40,8 @@ class UserService {
       }));
   }
 
-  getUsersPostsList(req, res) {
-    UserRepository.getUsersPostsList(
+  getUserPostsList(req, res) {
+    UserRepository.getUserPostsList(
       req.params.id,
       req.query[DUMMY_API_SETTINGS.query.page],
       req.query[DUMMY_API_SETTINGS.query.limit])
