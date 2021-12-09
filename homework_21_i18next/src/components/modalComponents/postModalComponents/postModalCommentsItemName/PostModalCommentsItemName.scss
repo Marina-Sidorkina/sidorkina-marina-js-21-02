@@ -1,0 +1,13 @@
+.post-modal-comments__name {
+  margin-bottom: 0;
+  margin-right: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  word-break: break-all;
+  cursor: pointer;
+
+  @media (max-width: 788px) {
+    margin-right: 0;
+    font-size: 10px;
+  }
+}

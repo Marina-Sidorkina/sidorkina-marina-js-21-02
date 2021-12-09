@@ -1,0 +1,28 @@
+.logo {
+  display: flex;
+  height: 60px;
+  align-items: center;
+
+  &__img {
+    height: 55px;
+    object-fit: cover;
+    margin-right: 7px;
+    margin-bottom: 2px;
+
+    @media (max-width: 769px) {
+      display: none;
+    }
+  }
+
+  &__text {
+    box-sizing: border-box;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 20px;
+    font-weight: bold;
+
+    @media (max-width: 769px) {
+      font-size: 16px;
+    }
+  }
+}
