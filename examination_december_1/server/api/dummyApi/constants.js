@@ -10,9 +10,6 @@ const DUMMY_API_SETTINGS = {
     page: 'page',
     limit: 'limit',
   },
-  params: {
-    id: ':id'
-  },
   headers: {
     id: {
       name: "app-id",

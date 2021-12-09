@@ -2,7 +2,9 @@ const submitElement = document.querySelector('.app__submit');
 const testUserId_1 = "60d0fe4f5311236168a109cb";
 const testUserId_2 = "60d0fe4f5311236168a109ce";
 const userToEditId = '61a25502ba66731958f90803';
+const postId = "60d21b8667d0d8992e610d3f";
 
+// USERS
 const getUsersList = () => {
   return fetch('http://127.0.0.1:5000/proxy/user?page=0&limit=10', {
     method: "GET"
@@ -50,10 +52,24 @@ const deleteUserById = () => {
   });
 }
 
+// POSTS
+
+const getPostsList = () => {
+  return fetch('http://127.0.0.1:5000/proxy/post?page=0&limit=10', {
+    method: "GET"
+  });
+}
+
+const getPostById = () => {
+  return fetch(`http://127.0.0.1:5000/proxy/post/${postId}`, {
+    method: "GET"
+  });
+}
+
 
 const onFormSubmit = (evt) => {
   evt.preventDefault();
-  getUserById()
+  getPostById()
     .then((response) => response.json())
     .then((response) => console.log(response))
     .catch((error) => {
