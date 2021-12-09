@@ -1,0 +1,27 @@
+.users-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 15px;
+  grid-row-gap: 15px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (max-width: 571px) {
+    grid-template-columns: 1fr;
+  }
+
+  &__spinner {
+    position: fixed;
+    top: calc(50% - 40px);
+    left: calc(50% - 40px);
+  }
+
+  &__error {
+    color: red;
+  }
+}
