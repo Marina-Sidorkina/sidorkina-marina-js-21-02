@@ -2,13 +2,17 @@ const DUMMY_API_SETTINGS = require('../../api/dummyApi/constants');
 const dummyApi = require('../../api/dummyApi/index');
 
 class UserRepository {
-  getUsersList() {
+  getUsersList(page, limit) {
     return dummyApi.get(`/${DUMMY_API_SETTINGS.paths.user}`, {
       params: {
-        page: 0,
-        limit: 10
+        page: page,
+        limit: limit
       }
     })
+  }
+
+  getUserById(id) {
+    return dummyApi.get(`/${DUMMY_API_SETTINGS.paths.user}/${id}`)
   }
 }
 
