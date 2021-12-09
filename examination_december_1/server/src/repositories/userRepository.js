@@ -5,8 +5,8 @@ class UserRepository {
   getUsersList(page, limit) {
     return dummyApi.get(`/${DUMMY_API_SETTINGS.paths.user}`, {
       params: {
-        page: page,
-        limit: limit
+        [DUMMY_API_SETTINGS.query.page]: page,
+        [DUMMY_API_SETTINGS.query.limit]: limit
       }
     })
   }

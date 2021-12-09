@@ -4,6 +4,8 @@ const UserService = require('../services/userService');
 router
   .get('', UserService.getUsersList)
   .get('/:id', UserService.getUserById)
-  .put('/:id', UserService.updateUserById);
+  .put('/:id', UserService.updateUserById)
+  .post('/create', UserService.createUser)
+  .delete('/:id', UserService.deleteUserById);
 
 module.exports = router;

@@ -4,11 +4,14 @@ const DUMMY_API_SETTINGS = {
     user: 'user',
     post: 'post',
     comment: 'comment',
-    userCreate: 'user/create'
+    userCreate: 'create'
   },
-  params: {
+  query: {
     page: 'page',
     limit: 'limit',
+  },
+  params: {
+    id: ':id'
   },
   headers: {
     id: {
