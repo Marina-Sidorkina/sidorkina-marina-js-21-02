@@ -6,7 +6,6 @@ router
   .get('/:id', UserService.getUserById)
   .get('/:id/post', UserService.getUserPostsList)
   .put('/:id', UserService.updateUserById)
-  .post('/create', UserService.createUser)
-  .delete('/:id', UserService.deleteUserById);
+  .post('/create', UserService.createUser);
 
 module.exports = router;

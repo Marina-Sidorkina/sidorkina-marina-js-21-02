@@ -71,17 +71,22 @@ class UserService {
   }
 
   createUser(req, res) {
-    UserAction.createUser(req.body)
-      .then((response) => res.status(statuses.OK).json({
-        data: response.data
-      }));
-  }
+    logger.info(format(messages.CREATE_USER_INVOKE, JSON.stringify(req.body)));
 
-  deleteUserById(req, res) {
-    UserAction.deleteUserById(req.params.id)
-      .then((response) => res.status(statuses.OK).json({
-        data: response.data
-      }));
+    UserAction.createUser(req.body)
+      .then((response) => {
+        logger.info(format(messages.CREATE_USER_SUCCESS,
+          statuses.OK,
+          JSON.stringify(response.data)));
+
+        res.status(statuses.OK).json({
+          data: response.data
+        })
+      })
+      .catch((error) => {
+        logger.info(format(messages.CREATE_USER_ERROR, statuses.UNKNOWN_ERROR, error));
+        res.status(statuses.UNKNOWN_ERROR).json(error);
+      });
   }
 
   getUserPostsList(req, res) {

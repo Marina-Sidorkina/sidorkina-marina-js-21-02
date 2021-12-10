@@ -28,5 +28,9 @@ module.exports = {
     UPDATE_USER_BY_ID_INVOKE: '[UserService.updateUserById] invoke id={} body={}',
     UPDATE_USER_BY_ID_SUCCESS: '[UserService.updateUserById] success status={} data={}',
     UPDATE_USER_BY_ID_ERROR: '[UserService.updateUserById] error status={} error={}',
+
+    CREATE_USER_INVOKE: '[UserService.createUser] invoke body={}',
+    CREATE_USER_SUCCESS: '[UserService.createUser] success status={} data={}',
+    CREATE_USER_ERROR: '[UserService.createUser] error status={} error={}',
   }
 }

@@ -47,8 +47,11 @@ const createUser = () => {
 }
 
 const deleteUserById = () => {
-  return fetch(`http://127.0.0.1:5000/proxy/user/61b25e27b658e3c620b57997`, {
-    method: "DELETE"
+  return fetch(`https://dummyapi.io/data/v1/user/61b3df5288f7835076379ec9`, {
+    method: "DELETE",
+    headers: {
+      "app-id": '61a253f1dccd096821d20d74'
+    }
   });
 }
 
@@ -90,7 +93,7 @@ const test = () => {
 
 const onFormSubmit = (evt) => {
   evt.preventDefault();
-  updateUserById()
+  deleteUserById()
     .then((response) => {
       console.log(response)
       return response.json()
