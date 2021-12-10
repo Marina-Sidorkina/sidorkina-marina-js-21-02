@@ -12,7 +12,7 @@ const getUsersList = () => {
 }
 
 const getUserById = () => {
-  return fetch(`http://127.0.0.1:5000/proxy/user/${testUserId_1}`, {
+  return fetch(`http://127.0.0.1:5000/proxy/user/60d0fe4f5311236168a109cb`, {
     method: "GET"
   });
 }

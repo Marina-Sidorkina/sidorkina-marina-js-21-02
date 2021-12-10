@@ -8,12 +8,12 @@ class PostModel {
       id: data['owner']['id'],
       firstName: data['owner']['firstName'],
       lastName: data['owner']['lastName'],
-      picture: data['owner']['picture']
+      picture: data['owner']['picture'],
+      title: data['owner']['title']
     };
     this.piblishDate = parseDate(data['publishDate']);
     this.text = data['text']
   }
-
 
   static parseDatum(data) {
     return new PostModel(data);
