@@ -37,12 +37,21 @@ class UserRepository {
   }
 
   getUserPostsList(userId, page, limit) {
+    logger.info(format(messages.GET_USER_POSTS_LIST_INVOKE, page, limit, userId));
     return dummyApi.get(`/user/${userId}/post`, {
       params: {
         [DUMMY_API_SETTINGS.query.page]: page,
         [DUMMY_API_SETTINGS.query.limit]: limit
       }
-    });
+    })
+      .then((response) => {
+        logger.info(format(messages.GET_USER_POSTS_LIST_SUCCESS, JSON.stringify(response.data)));
+        return response.data;
+      })
+      .catch((error) => {
+        logger.error(format(messages.GET_USER_POSTS_LIST_ERROR, JSON.stringify(error)));
+        return Promise.reject(error);
+      });
   }
 }
 
