@@ -24,7 +24,16 @@ class UserRepository {
   }
 
   getUserById(id) {
-    return dummyApi.get(`/${DUMMY_API_SETTINGS.paths.user}/${id}`);
+    logger.info(format(messages.GET_USER_BY_ID_INVOKE, id));
+    return dummyApi.get(`/${DUMMY_API_SETTINGS.paths.user}/${id}`)
+      .then((response) => {
+        logger.info(format(messages.GET_USER_BY_ID_SUCCESS, JSON.stringify(response.data)));
+        return response.data;
+      })
+      .catch((error) => {
+        logger.error(format(messages.GET_USER_BY_ID_ERROR, JSON.stringify(error)));
+        return Promise.reject(error);
+      });
   }
 
   getUserPostsList(userId, page, limit) {

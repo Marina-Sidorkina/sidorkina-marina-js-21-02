@@ -23,20 +23,34 @@ class UserService {
 
         res.status(statuses.OK).json({
           data: response
-        })
+        });
       })
       .catch((error) => {
-        logger.info(format(messages.GET_USER_LIST_ERROR, statuses.UNKNOWN_ERROR, error))
-        res.status(statuses.UNKNOWN_ERROR).json(error)
+        logger.info(format(messages.GET_USER_LIST_ERROR, statuses.UNKNOWN_ERROR, error));
+        res.status(statuses.UNKNOWN_ERROR).json(error);
       });
 
   }
 
   getUserById(req, res) {
+    logger.info(format(messages.GET_USER_BY_ID_INVOKE, req.params.id));
+
     UserRepository.getUserById(req.params.id)
-      .then((response) => res.status(statuses.OK).json({
-        data: UserModel.parseDatum(response.data)
-      }));
+      .then((response) => {
+        const data = UserModel.parseDatum(response);
+
+        logger.info(format(messages.GET_USER_BY_ID_SUCCESS,
+          statuses.OK,
+          JSON.stringify(data)));
+
+        res.status(statuses.OK).json({
+          data: data
+        })
+      })
+      .catch((error) => {
+        logger.info(format(messages.GET_USER_BY_ID_ERROR, statuses.UNKNOWN_ERROR, error));
+        res.status(statuses.UNKNOWN_ERROR).json(error);
+      });
   }
 
   updateUserById(req, res) {
