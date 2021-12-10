@@ -3,15 +3,33 @@ const UserAction = require('../actions/userAction');
 const DUMMY_API_SETTINGS = require('../../api/dummyApi/constants');
 const { statuses } = require('../../config/serverConfig');
 const UserModel = require('../../models/userModel');
+const logger = require('../logger');
+const format = require('string-format');
+const { userService: messages } = require('../../constants/loggerMessages');
 
 class UserService {
   getUsersList(req, res) {
+    logger.info(format(messages.GET_USERS_LIST_INVOKE,
+      req.query[DUMMY_API_SETTINGS.query.page],
+      req.query[DUMMY_API_SETTINGS.query.limit]));
+
     UserRepository.getUsersList(
       req.query[DUMMY_API_SETTINGS.query.page],
       req.query[DUMMY_API_SETTINGS.query.limit])
-      .then((response) => res.status(statuses.OK).json({
-        data: response.data
-      }));
+      .then((response) => {
+        logger.info(format(messages.GET_USER_LIST_SUCCESS,
+          statuses.OK,
+          JSON.stringify(response)));
+
+        res.status(statuses.OK).json({
+          data: response
+        })
+      })
+      .catch((error) => {
+        logger.info(format(messages.GET_USER_LIST_ERROR, statuses.UNKNOWN_ERROR, error))
+        res.status(statuses.UNKNOWN_ERROR).json(error)
+      });
+
   }
 
   getUserById(req, res) {
