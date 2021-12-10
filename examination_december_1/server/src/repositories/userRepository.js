@@ -8,11 +8,11 @@ class UserRepository {
         [DUMMY_API_SETTINGS.query.page]: page,
         [DUMMY_API_SETTINGS.query.limit]: limit
       }
-    })
+    });
   }
 
   getUserById(id) {
-    return dummyApi.get(`/${DUMMY_API_SETTINGS.paths.user}/${id}`)
+    return dummyApi.get(`/${DUMMY_API_SETTINGS.paths.user}/${id}`);
   }
 
   getUserPostsList(userId, page, limit) {

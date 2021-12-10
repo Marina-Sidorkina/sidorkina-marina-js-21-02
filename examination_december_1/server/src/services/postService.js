@@ -1,19 +1,20 @@
 const PostRepository = require('../repositories/postRepository');
 const DUMMY_API_SETTINGS = require("../../api/dummyApi/constants");
+const { statuses } = require('../../config/serverConfig');
 
 class PostService {
   getPostsList(req, res) {
     PostRepository.getPostsList(
       req.query[DUMMY_API_SETTINGS.query.page],
       req.query[DUMMY_API_SETTINGS.query.limit])
-      .then((response) => res.status(200).send({
+      .then((response) => res.status(statuses.OK).json({
         data: response.data
       }));
   }
 
   getPostById(req, res) {
     PostRepository.getPostById(req.params.id)
-      .then((response) => res.status(200).send({
+      .then((response) => res.status(statuses.OK).json({
         data: response.data
       }));
   }
@@ -23,7 +24,7 @@ class PostService {
       req.params.id,
       req.query[DUMMY_API_SETTINGS.query.page],
       req.query[DUMMY_API_SETTINGS.query.limit])
-      .then((response) => res.status(200).send({
+      .then((response) => res.status(statuses.OK).json({
         data: response.data
       }));
   }

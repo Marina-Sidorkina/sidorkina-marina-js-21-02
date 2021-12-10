@@ -80,15 +80,28 @@ const getCommentsByPost = () => {
   });
 }
 
+// TESTS
+
+const test = () => {
+  return fetch(`http://127.0.0.1:5000/`, {
+    method: "GET"
+  });
+}
 
 const onFormSubmit = (evt) => {
   evt.preventDefault();
-  getPostsListByUser()
-    .then((response) => response.json())
-    .then((response) => console.log(response))
+  test()
+    .then((response) => {
+      console.log(response)
+      return response.json()
+    })
+    .then((response) => {
+      console.log(response)
+    })
     .catch((error) => {
-      alert(error);
+      console.log(error);
     });
 }
+
 
 submitElement.addEventListener('click', onFormSubmit);
