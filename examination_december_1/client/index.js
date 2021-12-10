@@ -90,7 +90,7 @@ const test = () => {
 
 const onFormSubmit = (evt) => {
   evt.preventDefault();
-  getUserById()
+  getPostsList()
     .then((response) => {
       console.log(response)
       return response.json()
