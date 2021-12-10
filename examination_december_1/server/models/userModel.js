@@ -17,10 +17,6 @@ class UserModel {
   static parseDatum(data) {
     return new UserModel(data);
   }
-
-  static parseData(data) {
-    return data.map(UserModel.parseDatum);
-  }
 }
 
 module.exports = UserModel;
