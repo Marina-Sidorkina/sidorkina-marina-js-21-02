@@ -2,6 +2,7 @@ const UserRepository = require('../repositories/userRepository');
 const UserAction = require('../actions/userAction');
 const DUMMY_API_SETTINGS = require('../../api/dummyApi/constants');
 const { statuses } = require('../../config/serverConfig');
+const UserModel = require('../../models/userModel');
 
 class UserService {
   getUsersList(req, res) {
@@ -16,7 +17,7 @@ class UserService {
   getUserById(req, res) {
     UserRepository.getUserById(req.params.id)
       .then((response) => res.status(statuses.OK).json({
-        data: response.data
+        data: UserModel.parseDatum(response.data)
       }));
   }
 
