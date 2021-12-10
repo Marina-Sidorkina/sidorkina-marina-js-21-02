@@ -1,7 +1,8 @@
 const PostRepository = require('../repositories/postRepository');
 const DUMMY_API_SETTINGS = require("../../api/dummyApi/constants");
 const { statuses } = require('../../config/serverConfig');
-const PostModel = require('../../models/PostModel');
+const PostModel = require('../../models/postModel');
+const CommentModel = require('../../models/commentModel');
 
 class PostService {
   getPostsList(req, res) {
@@ -26,7 +27,7 @@ class PostService {
       req.query[DUMMY_API_SETTINGS.query.page],
       req.query[DUMMY_API_SETTINGS.query.limit])
       .then((response) => res.status(statuses.OK).json({
-        data: response.data
+        data: CommentModel.parseData(response.data)
       }));
   }
 }

@@ -90,7 +90,7 @@ const test = () => {
 
 const onFormSubmit = (evt) => {
   evt.preventDefault();
-  getPostsList()
+  getCommentsByPost()
     .then((response) => {
       console.log(response)
       return response.json()
