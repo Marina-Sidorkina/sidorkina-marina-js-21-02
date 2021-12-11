@@ -16,6 +16,10 @@ module.exports = {
     GET_POSTS_LIST_INVOKE: '[PostRepository.getPostsList] invoke page={} limit={}',
     GET_POSTS_LIST_SUCCESS: '[PostRepository.getPostsList] success data={}',
     GET_POSTS_LIST_ERROR: '[PostRepository.getPostsList] error error={}',
+
+    GET_POST_BY_ID_INVOKE: '[PostRepository.getPostById] invoke id={}',
+    GET_POST_BY_ID_SUCCESS: '[PostRepository.getPostById] success data={}',
+    GET_POST_BY_ID_ERROR: '[PostRepository.getPostById] error error={}',
   },
   userService: {
     GET_USERS_LIST_INVOKE: '[UserService.getUsersList] invoke page={} limit={}',
@@ -42,5 +46,9 @@ module.exports = {
     GET_POSTS_LIST_INVOKE: '[PostService.getPostsList] invoke page={} limit={}',
     GET_POSTS_LIST_SUCCESS: '[PostService.getPostsList] success status={} data={}',
     GET_POSTS_LIST_ERROR: '[PostService.getPostsList] error status={} error={}',
+
+    GET_POST_BY_ID_INVOKE: '[PostService.getPostById] invoke id={}',
+    GET_POST_BY_ID_SUCCESS: '[PostService.getPostById] success status={} data={}',
+    GET_POST_BY_ID_ERROR: '[PostService.getPostById] error status={} error={}',
   }
 }

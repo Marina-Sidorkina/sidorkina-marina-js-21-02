@@ -32,10 +32,21 @@ class PostService {
   }
 
   getPostById(req, res) {
+    logger.info(format(messages.GET_POST_BY_ID_INVOKE, req.params.id));
     PostRepository.getPostById(req.params.id)
-      .then((response) => res.status(statuses.OK).json({
-        data: PostModel.parseDatum(response.data)
-      }));
+      .then((response) => {
+        const data = PostModel.parseDatum(response);
+
+        logger.info(format(messages.GET_POST_BY_ID_SUCCESS,
+          statuses.OK,
+          JSON.stringify(data)));
+
+        res.status(statuses.OK).json({ data: data })
+      })
+      .catch((error) => {
+        logger.info(format(messages.GET_POST_BY_ID_ERROR, statuses.UNKNOWN_ERROR, error));
+        res.status(statuses.UNKNOWN_ERROR).json(error);
+      });
   }
 
   getPostCommentsList(req, res) {
