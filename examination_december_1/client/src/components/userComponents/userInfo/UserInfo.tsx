@@ -5,8 +5,8 @@ import { Spin } from 'antd';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { loadUserInfo } from '../../../redux/actions/userInfo';
-import { getGenderFieldValue, getTitleValue, processDate } from '../../../utils/components';
-import { DEFAULT_IMAGE } from '../../../constants/components';
+import { getGenderFieldValue, getTitleValue } from '../../../utils/components';
+import { DEFAULT_IMAGE, RUSSIAN_LANGUAGE } from '../../../constants/components';
 import { openUserModalAction, updateUserModalPictureAction } from '../../../redux/actions/userModalForm';
 import { ThemeContext } from '../../../contexts/ThemeContext';
 import UserInfoEditIcon from '../userInfoEditIcon/UserInfoEditIcon';
@@ -20,8 +20,11 @@ const UserInfo = () => {
   const { t } = useTranslation();
   const stateValues = useTypedSelector((state) => state);
   const dispatch = useDispatch();
-  const language = useTypedSelector(
-    (state) => state.languageSelector.value
+  const language = useTypedSelector((state) => state.languageSelector.value);
+  const getDateValue = (value: { ruDate: string, enDate: string }) => (
+    language === RUSSIAN_LANGUAGE
+      ? value.ruDate
+      : value.enDate
   );
 
   useEffect(() => {
@@ -72,14 +75,18 @@ const UserInfo = () => {
                 { t('userInfo.dateOfBirth', {}) }
                 {' '}
               </b>
-              {processDate(stateValues.userInfo.data.user.dateOfBirth, language)}
+              { stateValues.userInfo.data.user.dateOfBirth
+                ? getDateValue(stateValues.userInfo.data.user.dateOfBirth)
+                : '' }
             </p>
             <p className="user-info__item">
               <b>
                 { t('userInfo.registrationDate', {}) }
                 {' '}
               </b>
-              {processDate(stateValues.userInfo.data.user.registerDate, language)}
+              {stateValues.userInfo.data.user.registerDate
+                ? getDateValue(stateValues.userInfo.data.user.registerDate)
+                : '' }
             </p>
             <p className="user-info__item">
               <b>

@@ -4,7 +4,7 @@ import { Button, Form, Input } from 'antd';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { DEFAULT_IMAGE, RUSSIAN_LANGUAGE } from '../../../../constants/components';
-import { getGenderFieldValue, processDate } from '../../../../utils/components';
+import { getGenderFieldValue } from '../../../../utils/components';
 import {
   processUserModalFormAction, processUserModalPicture, resetValuesAction,
   updateUserModalDateOfBirthAction, updateUserModalGenderAction, updateUserModalNameAction,
@@ -49,6 +49,12 @@ const UserModalForm = () => {
       dispatch(processUserModalPicture(evt.target.files[0]));
     }
   };
+
+  const getDateValue = (value: { ruDate: string, enDate: string }) => (
+    language === RUSSIAN_LANGUAGE
+      ? value.ruDate
+      : value.enDate
+  );
 
   return (
     <Form
@@ -131,7 +137,9 @@ const UserModalForm = () => {
         <Input
           className="user-modal-form__input"
           value={stateValues.userModal.values.dateOfBirth}
-          placeholder={processDate(stateValues.userInfo.data.user.dateOfBirth, language)}
+          placeholder={stateValues.userInfo.data.user.dateOfBirth
+            ? getDateValue(stateValues.userInfo.data.user.dateOfBirth)
+            : ''}
           onChange={(evt) => {
             dispatch(updateUserModalDateOfBirthAction(evt.target.value));
           }}
@@ -145,7 +153,9 @@ const UserModalForm = () => {
         <Input
           className="user-modal-form__input"
           value={stateValues.userModal.values.registrationDate}
-          placeholder={processDate(stateValues.userInfo.data.user.registerDate, language)}
+          placeholder={stateValues.userInfo.data.user.registerDate
+            ? getDateValue(stateValues.userInfo.data.user.registerDate)
+            : ''}
           disabled
         />
       </Form.Item>

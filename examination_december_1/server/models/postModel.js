@@ -11,7 +11,7 @@ class PostModel {
       picture: data['owner']['picture'],
       title: data['owner']['title']
     };
-    this.piblishDate = parseDate(data['publishDate']);
+    this.publishDate = parseDate(data['publishDate']);
     this.text = data['text']
   }
 

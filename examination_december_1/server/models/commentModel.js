@@ -8,7 +8,7 @@ class CommentModel {
       lastName: data['owner']['lastName'],
       picture: data['owner']['picture']
     };
-    this.piblishDate = parseDate(data['publishDate']);
+    this.publishDate = parseDate(data['publishDate']);
     this.message = data['message'];
     this.id = data['id'];
   }

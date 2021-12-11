@@ -21,8 +21,18 @@ export interface IDummyUserFull {
   lastName: string;
   gender: string;
   email: string;
-  dateOfBirth: string;
-  registerDate: string;
+  dateOfBirth: {
+    enDate: string;
+    ruDate: string
+    enDateAndTime: string;
+    ruDateAndTime: string;
+  };
+  registerDate: {
+    enDate: string;
+    ruDate: string
+    enDateAndTime: string;
+    ruDateAndTime: string;
+  };
   phone: string;
   picture: string;
   location: {
@@ -55,7 +65,12 @@ export interface IDummyPostPreview {
   image: string;
   likes: number;
   tags: string[];
-  publishDate: string;
+  publishDate: {
+    enDate: string;
+    ruDate: string
+    enDateAndTime: string;
+    ruDateAndTime: string;
+  };
   owner: {
     id: string;
     title: string;
@@ -71,7 +86,12 @@ export interface IDummyPost {
   image: string;
   likes: number;
   tags: string[];
-  publishDate: string;
+  publishDate: {
+    enDate: string;
+    ruDate: string
+    enDateAndTime: string;
+    ruDateAndTime: string;
+  };
   owner: {
     id: string;
     title: string;
@@ -88,7 +108,12 @@ export interface IDummyPostFull {
   likes: number;
   link: string;
   tags: string[];
-  publishDate: string;
+  publishDate: {
+    enDate: string;
+    ruDate: string
+    enDateAndTime: string;
+    ruDateAndTime: string;
+  };
   owner: {
     id: string;
     title: string;
@@ -109,7 +134,12 @@ export interface IDummyComment {
     picture: string;
   };
   post: string;
-  publishDate: string;
+  publishDate: {
+    enDate: string;
+    ruDate: string
+    enDateAndTime: string;
+    ruDateAndTime: string;
+  };
 }
 
 export interface IDummyOwner {

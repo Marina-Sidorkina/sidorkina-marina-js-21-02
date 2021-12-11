@@ -1,5 +1,10 @@
 export interface IPostModalCommentsItemProps {
-  date: string | null;
+  date: {
+    enDate: string;
+    ruDate: string
+    enDateAndTime: string;
+    ruDateAndTime: string;
+  };
   text: string;
   img: string;
   id: string;

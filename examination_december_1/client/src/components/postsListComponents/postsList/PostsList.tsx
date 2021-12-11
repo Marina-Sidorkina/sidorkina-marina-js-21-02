@@ -6,9 +6,9 @@ import { useTranslation } from 'react-i18next';
 import PostsListItem from '../postsListItem/PostsListItem';
 import { loadPostsList } from '../../../redux/actions/postsList';
 import { IDummyPost } from '../../../api/proxy/@types/proxy';
-import { processPostsListItemDate } from '../../../utils/components';
 import '../../../locale/i18next';
 import { useTypedSelector } from '../../../redux/hooks/useTypedSelector';
+import { RUSSIAN_LANGUAGE } from '../../../constants/components';
 
 const PostsList = () => {
   const { t } = useTranslation();
@@ -42,7 +42,9 @@ const PostsList = () => {
           avatar={item.owner.picture}
           image={item.image}
           text={item.text}
-          date={processPostsListItemDate(item.publishDate, language)}
+          date={language === RUSSIAN_LANGUAGE
+            ? item.publishDate.ruDateAndTime
+            : item.publishDate.enDateAndTime}
           firstName={item.owner.firstName}
           lastName={item.owner.lastName}
           title={item.owner.title}

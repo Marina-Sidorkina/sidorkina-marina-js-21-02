@@ -5,12 +5,12 @@ import { bindActionCreators } from 'redux';
 import { Spin } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { getNewPostModalPost } from '../../../../redux/actions/postModalPost';
-import { processPostsListItemDate } from '../../../../utils/components';
 import helper from '../../../../hocs/helper/helper';
 import { ThemeContext } from '../../../../contexts/ThemeContext';
 import { IPostModalPostNameProps, IPostModalPostProps } from './@types/postModalPost';
-import { useTypedSelector } from '../../../../redux/hooks/useTypedSelector';
 import '../../../../locale/i18next';
+import { RUSSIAN_LANGUAGE } from '../../../../constants/components';
+import { useTypedSelector } from '../../../../redux/hooks/useTypedSelector';
 
 const PostModalPostName = (props: IPostModalPostNameProps) => (
   <div className="post-modal-post__user-name">
@@ -26,8 +26,11 @@ const PostModalPost = (props: IPostModalPostProps) => {
   const PostsListNameWithHelper = helper(PostModalPostName, owner.id);
 
   const themeContext = useContext(ThemeContext);
-  const language = useTypedSelector((state) => state.languageSelector.value);
   const { t } = useTranslation();
+  const language = useTypedSelector((state) => state.languageSelector.value);
+  const getDateValue = (date: { enDateAndTime: string, ruDateAndTime: string }) => (
+    language === RUSSIAN_LANGUAGE ? date.ruDateAndTime : date.enDateAndTime
+  );
 
   useEffect(() => {
     getNewPostModal(postId);
@@ -60,7 +63,7 @@ const PostModalPost = (props: IPostModalPostProps) => {
           />
         </div>
         <div className="post-modal-post__post-date">
-          { processPostsListItemDate(post.publishDate, language) }
+          { post.publishDate ? getDateValue(post.publishDate) : '' }
         </div>
       </div>
       <img

@@ -2,14 +2,12 @@ import React, { useEffect } from 'react';
 import './PostModalComments.scss';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { processPostsListItemDate } from '../../../../utils/components';
 import { getPostModalCommentsListAction } from '../../../../redux/actions/postModalComments';
 import { useTypedSelector } from '../../../../redux/hooks/useTypedSelector';
 import '../../../../locale/i18next';
 import PostModalCommentsItem from '../postModalCommentsItem/PostModalCommentsItem';
 
 const PostModalComments = () => {
-  const language = useTypedSelector((state) => state.languageSelector.value);
   const { t } = useTranslation();
   const stateValues = useTypedSelector((state) => state);
   const dispatch = useDispatch();
@@ -31,7 +29,7 @@ const PostModalComments = () => {
             firstName={stateValues.postModalComments.owners[index].firstName}
             lastName={stateValues.postModalComments.owners[index].lastName}
             id={stateValues.postModalComments.owners[index].id}
-            date={processPostsListItemDate(comment.publishDate, language)}
+            date={comment.publishDate}
             text={comment.message}
             img={stateValues.postModalComments.owners[index].picture}
           />
