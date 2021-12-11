@@ -58,11 +58,9 @@ class UserService {
       .then((response) => {
         logger.info(format(messages.UPDATE_USER_BY_ID_SUCCESS,
           statuses.OK,
-          JSON.stringify(response.data)));
+          JSON.stringify(response)));
 
-        res.status(statuses.OK).json({
-          data: response.data
-        })
+        res.status(statuses.OK).json({ data: response })
       })
       .catch((error) => {
         logger.info(format(messages.UPDATE_USER_BY_ID_ERROR, statuses.UNKNOWN_ERROR, error));
@@ -77,11 +75,9 @@ class UserService {
       .then((response) => {
         logger.info(format(messages.CREATE_USER_SUCCESS,
           statuses.OK,
-          JSON.stringify(response.data)));
+          JSON.stringify(response)));
 
-        res.status(statuses.OK).json({
-          data: response.data
-        })
+        res.status(statuses.OK).json({ data: response })
       })
       .catch((error) => {
         logger.info(format(messages.CREATE_USER_ERROR, statuses.UNKNOWN_ERROR, error));
@@ -104,9 +100,7 @@ class UserService {
           statuses.OK,
           JSON.stringify(response)));
 
-        res.status(statuses.OK).json({
-          data: response
-        })
+        res.status(statuses.OK).json({ data: response })
       })
       .catch((error) => {
         logger.info(format(messages.GET_USER_POSTS_LIST_ERROR, statuses.UNKNOWN_ERROR, error));

@@ -47,7 +47,7 @@ const createUser = () => {
 }
 
 const deleteUserById = () => {
-  return fetch(`https://dummyapi.io/data/v1/user/61b3df5288f7835076379ec9`, {
+  return fetch(`https://dummyapi.io/data/v1/user/61b4ab91a58d7b72fe506a4f`, {
     method: "DELETE",
     headers: {
       "app-id": '61a253f1dccd096821d20d74'
@@ -93,7 +93,7 @@ const test = () => {
 
 const onFormSubmit = (evt) => {
   evt.preventDefault();
-  getCommentsByPost()
+  deleteUserById()
     .then((response) => {
       console.log(response)
       return response.json()
