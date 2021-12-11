@@ -50,13 +50,28 @@ class PostService {
   }
 
   getPostCommentsList(req, res) {
+    logger.info(format(messages.GET_POST_COMMENTS_LIST_INVOKE,
+      req.query[DUMMY_API_SETTINGS.query.page],
+      req.query[DUMMY_API_SETTINGS.query.limit],
+      req.params.id));
+
     PostRepository.getPostCommentsList(
       req.params.id,
       req.query[DUMMY_API_SETTINGS.query.page],
       req.query[DUMMY_API_SETTINGS.query.limit])
-      .then((response) => res.status(statuses.OK).json({
-        data: CommentModel.parseData(response.data)
-      }));
+      .then((response) => {
+        const data = CommentModel.parseData(response);
+
+        logger.info(format(messages.GET_POST_COMMENTS_LIST_SUCCESS,
+          statuses.OK,
+          JSON.stringify(data)));
+
+        res.status(statuses.OK).json({ data: data });
+      })
+      .catch((error) => {
+        logger.info(format(messages.GET_POST_COMMENTS_LIST_ERROR, statuses.UNKNOWN_ERROR, error));
+        res.status(statuses.UNKNOWN_ERROR).json(error);
+      });
   }
 }
 

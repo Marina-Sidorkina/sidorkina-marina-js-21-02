@@ -20,6 +20,10 @@ module.exports = {
     GET_POST_BY_ID_INVOKE: '[PostRepository.getPostById] invoke id={}',
     GET_POST_BY_ID_SUCCESS: '[PostRepository.getPostById] success data={}',
     GET_POST_BY_ID_ERROR: '[PostRepository.getPostById] error error={}',
+
+    GET_POST_COMMENTS_LIST_INVOKE: '[PostRepository.getPostCommentsList] invoke page={} limit={} postId={}',
+    GET_POST_COMMENTS_LIST_SUCCESS: '[PostRepository.getPostCommentsList] success data={}',
+    GET_POST_COMMENTS_LIST_ERROR: '[PostRepository.getPostCommentsList] error error={}',
   },
   userService: {
     GET_USERS_LIST_INVOKE: '[UserService.getUsersList] invoke page={} limit={}',
@@ -50,5 +54,9 @@ module.exports = {
     GET_POST_BY_ID_INVOKE: '[PostService.getPostById] invoke id={}',
     GET_POST_BY_ID_SUCCESS: '[PostService.getPostById] success status={} data={}',
     GET_POST_BY_ID_ERROR: '[PostService.getPostById] error status={} error={}',
+
+    GET_POST_COMMENTS_LIST_INVOKE: '[PostService.getPostCommentsList] invoke page={} limit={} postId={}',
+    GET_POST_COMMENTS_LIST_SUCCESS: '[PostService.getPostCommentsList] success data={}',
+    GET_POST_COMMENTS_LIST_ERROR: '[PostService.getPostCommentsList] error error={}',
   }
 }

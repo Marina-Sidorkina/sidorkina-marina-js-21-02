@@ -37,12 +37,21 @@ class PostRepository {
   }
 
   getPostCommentsList(postId, page, limit) {
+    logger.info(format(messages.GET_POST_COMMENTS_LIST_INVOKE, page, limit, postId));
     return dummyApi.get(`/post/${postId}/comment`, {
       params: {
         [DUMMY_API_SETTINGS.query.page]: page,
         [DUMMY_API_SETTINGS.query.limit]: limit
       }
-    });
+    })
+      .then((response) => {
+        logger.info(format(messages.GET_POST_COMMENTS_LIST_SUCCESS, JSON.stringify(response.data)));
+        return response.data;
+      })
+      .catch((error) => {
+        logger.error(format(messages.GET_POST_COMMENTS_LIST_ERROR, JSON.stringify(error)));
+        return Promise.reject(error);
+      });
   }
 }
 

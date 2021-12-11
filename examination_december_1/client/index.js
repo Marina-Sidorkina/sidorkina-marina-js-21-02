@@ -93,7 +93,7 @@ const test = () => {
 
 const onFormSubmit = (evt) => {
   evt.preventDefault();
-  getPostById()
+  getCommentsByPost()
     .then((response) => {
       console.log(response)
       return response.json()
