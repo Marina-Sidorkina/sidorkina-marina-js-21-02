@@ -3,7 +3,7 @@
   height: 60px;
   align-items: center;
 
-  &__img {
+  .img {
     height: 55px;
     object-fit: cover;
     margin-right: 7px;
@@ -14,7 +14,7 @@
     }
   }
 
-  &__text {
+  .text {
     box-sizing: border-box;
     margin-top: 0;
     margin-bottom: 0;

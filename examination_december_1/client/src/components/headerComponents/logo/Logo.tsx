@@ -1,11 +1,11 @@
 import React from 'react';
-import './Logo.scss';
+import styles from './Logo.module.scss';
 import logo from './img/logo.png';
 
 const Logo = () => (
-  <div className="logo">
-    <img className="logo__img" src={logo} alt="Логотип" />
-    <p className="logo__text">Delta World</p>
+  <div className={styles.logo}>
+    <img className={styles.img} src={logo} alt="Логотип" />
+    <p className={styles.text}>Delta World</p>
   </div>
 );
 
