@@ -18,6 +18,7 @@
   &__info {
     display: flex;
     flex-direction: column;
+    width: 100%;
   }
 
   &__user {
@@ -25,6 +26,12 @@
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
+
+    @media (max-width: 384px) {
+      flex-direction: column;
+      flex-wrap: nowrap;
+      align-items: flex-start;
+    }
   }
 
   &__img {
