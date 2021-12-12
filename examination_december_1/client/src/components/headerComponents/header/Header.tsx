@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import './Header.scss';
+import styles from './Header.module.scss';
 import Logo from '../logo/Logo';
 import Navigation from '../navigation/Navigation';
 import Authorization from '../authorization/Authorization';
@@ -9,7 +9,10 @@ const Header = () => {
   const themeContext = useContext(ThemeContext);
 
   return (
-    <header className={`${themeContext.darkTheme ? 'header header_dark' : 'header'}`}>
+    <header className={themeContext.darkTheme
+      ? `${styles.header} ${styles.header_dark}`
+      : styles.header}
+    >
       <div className="header__container">
         <Logo />
         <Navigation />
