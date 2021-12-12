@@ -1,5 +1,4 @@
 import React, { ChangeEvent } from 'react';
-import './LanguageSelect.scss';
 import { useDispatch } from 'react-redux';
 import { useTypedSelector } from '../../../redux/hooks/useTypedSelector';
 import { changeLanguageAction } from '../../../redux/actions/languageSelect';
@@ -14,6 +13,7 @@ const LanguageSelect = () => {
 
   return (
     <select
+      className="language"
       name="language"
       id="language"
       value={value}

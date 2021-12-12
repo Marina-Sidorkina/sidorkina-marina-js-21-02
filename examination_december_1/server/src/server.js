@@ -4,6 +4,11 @@ const routes = require('./routes/index');
 const logger = require('./logger');
 const context = require('request-context');
 const { v4: generateUUID } = require('uuid');
+const fs = require('fs')
+
+if(!fs.existsSync('./logs')) {
+  fs.mkdirSync('./logs');
+}
 
 const app = express();
 
@@ -12,7 +17,6 @@ app.use(context.middleware('request'));
 
 app.use((request, response, next) => {
   context.set('uuid', generateUUID());
-
   response.type('text/plain')
     .set('Access-Control-Allow-Origin', '*')
     .set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS')

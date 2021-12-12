@@ -6,10 +6,8 @@ import Paginator from '../../../commonComponents/paginator/Paginator';
 import PostModalPost from '../postModalPost/PostModalPost';
 import PostModalComments from '../postModalComments/PostModalComments';
 import { closePostModalAction } from '../../../../redux/actions/postModal';
-import {
-  updatePostModalCommentsAction,
-  updatePostModalCommentsPageAction
-} from '../../../../redux/actions/postModalComments';
+import { updatePostModalCommentsAction, updatePostModalCommentsPageAction }
+  from '../../../../redux/actions/postModalComments';
 import { ThemeContext } from '../../../../contexts/ThemeContext';
 import { useTypedSelector } from '../../../../redux/hooks/useTypedSelector';
 import { COMMENTS_PER_PAGE, DEFAULT_PAGES_AMOUNT } from '../../../../constants/components';

@@ -3,9 +3,7 @@ import './AuthorizedUserBlock.scss';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import {
-  resetAuthorizedUserAction,
-} from '../../../redux/actions/login';
+import { resetAuthorizedUserAction } from '../../../redux/actions/login';
 import { ThemeContext } from '../../../contexts/ThemeContext';
 import '../../../locale/i18next';
 import { useTypedSelector } from '../../../redux/hooks/useTypedSelector';
