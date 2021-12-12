@@ -12,7 +12,7 @@
     margin-left: -15px;
   }
 
-  &__list {
+  .list {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -32,7 +32,7 @@
     }
   }
 
-  &__item {
+  .item {
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
@@ -44,7 +44,7 @@
     }
   }
 
-  &__text {
+  .text {
 
     &_dark {
       color: #c9d1d9;
@@ -55,7 +55,7 @@
     }
   }
 
-  &__link {
+  .link {
     display: flex;
     align-items: center;
     color: #000000;
