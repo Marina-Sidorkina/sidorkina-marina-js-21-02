@@ -1,5 +1,6 @@
-.post-modal {
+.modal {
   position: fixed;
+  display: flex;
   left: 0;
   top: 0;
   justify-content: center;
@@ -9,9 +10,8 @@
   padding: 30px;
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 10;
-  display: flex;
 
-  &__content {
+  .content {
     position: relative;
     box-sizing: border-box;
     width: 100%;
@@ -31,7 +31,7 @@
     }
   }
 
-  &__button {
+  .button {
     position: fixed;
     right: 10px;
     top: 10px;
@@ -46,9 +46,9 @@
     }
   }
 
-  &__paginator {
-    width: 100%;
+  .paginator {
+    display: flex;
+    justify-content: flex-end;
     margin-top: 10px;
-    text-align: right;
   }
 }

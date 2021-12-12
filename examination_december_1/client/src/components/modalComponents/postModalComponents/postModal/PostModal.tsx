@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import './PostModal.scss';
 import { CloseOutlined } from '@ant-design/icons';
 import { useDispatch } from 'react-redux';
+import styles from './PostModal.module.scss';
 import Paginator from '../../../commonComponents/paginator/Paginator';
 import PostModalPost from '../postModalPost/PostModalPost';
 import PostModalComments from '../postModalComments/PostModalComments';
@@ -18,10 +18,10 @@ const PostModal = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className="post-modal">
+    <div className={styles.modal}>
       <button
         type="button"
-        className="post-modal__button"
+        className={styles.button}
         onClick={() => {
           dispatch(updatePostModalCommentsAction([]));
           dispatch(closePostModalAction());
@@ -29,13 +29,13 @@ const PostModal = () => {
       >
         <CloseOutlined style={{ color: '#ffffff', fontSize: '25px' }} />
       </button>
-      <div className={`${themeContext.darkTheme
-        ? 'post-modal__content post-modal__content_dark'
-        : 'post-modal__content'}`}
+      <div className={themeContext.darkTheme
+        ? `${styles.content} ${styles.content_dark}`
+        : styles.content}
       >
         <PostModalPost />
         <PostModalComments />
-        <div className="post-modal__paginator">
+        <div className={styles.paginator}>
           <Paginator
             current={stateValues.postModalComments.page}
             total={stateValues.postModalComments.totalComments || DEFAULT_PAGES_AMOUNT}
