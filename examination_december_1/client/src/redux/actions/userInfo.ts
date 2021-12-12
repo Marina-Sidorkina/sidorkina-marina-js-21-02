@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
 import { Dispatch } from 'redux';
-import { getUserInfo } from '../../api/proxy/proxy';
+import { getUserInfo } from '../../api/proxy';
 import {
   LOAD_USER_INFO, SHOW_USER_INFO_LOADING, HIDE_USER_INFO_LOADING,
   HIDE_USER_INFO_ERROR, SHOW_USER_INFO_ERROR

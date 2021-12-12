@@ -1,5 +1,5 @@
 import produce from 'immer';
-import { IDummyUserFull } from '../../api/proxy/@types/proxy';
+import { IProxyUserFull } from '../../api/proxy/@types/proxy';
 import {
   UPDATE_AUTHORIZED_USER_DATA,
   HIDE_AUTHORIZATION_LOADING, LOAD_AUTHORIZATION_ERROR,
@@ -39,7 +39,7 @@ const loadError = (draft: any) => {
   return draft;
 };
 
-const setAuthorizedUserData = (draft: any, payload: IDummyUserFull) => {
+const setAuthorizedUserData = (draft: any, payload: IProxyUserFull) => {
   draft.data.authorizedUserId = payload.id;
   draft.data.authorizedUserName = payload.firstName;
   draft.data.authorizedUserPicture = payload.picture || DEFAULT_IMAGE;

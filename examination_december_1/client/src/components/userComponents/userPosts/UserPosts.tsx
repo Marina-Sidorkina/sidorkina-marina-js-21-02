@@ -6,7 +6,7 @@ import { Spin } from 'antd';
 import { useTranslation } from 'react-i18next';
 import UserPostsItem from '../userPostsItem/UserPostsItem';
 import { loadUserPosts, updateUserPostsPageAction } from '../../../redux/actions/userPosts';
-import { IDummyPostPreview } from '../../../api/proxy/@types/proxy';
+import { IProxyPostPreview } from '../../../api/proxy/@types/proxy';
 import { IUserPostsParams } from './@types/userPosts';
 import '../../../locale/i18next';
 import { useTypedSelector } from '../../../redux/hooks/useTypedSelector';
@@ -45,7 +45,7 @@ const UserPosts = () => {
         }}
       />
     )
-    : stateValues.userPosts.data.posts.map((item: IDummyPostPreview) => (
+    : stateValues.userPosts.data.posts.map((item: IProxyPostPreview) => (
       <li key={item.id} className="user-posts__item">
         <UserPostsItem
           id={item.id}

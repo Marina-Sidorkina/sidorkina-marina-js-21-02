@@ -5,7 +5,7 @@ import { Spin } from 'antd';
 import { useTranslation } from 'react-i18next';
 import PostsListItem from '../postsListItem/PostsListItem';
 import { loadPostsList } from '../../../redux/actions/postsList';
-import { IDummyPost } from '../../../api/proxy/@types/proxy';
+import { IProxyPost } from '../../../api/proxy/@types/proxy';
 import '../../../locale/i18next';
 import { useTypedSelector } from '../../../redux/hooks/useTypedSelector';
 import { RUSSIAN_LANGUAGE } from '../../../constants/components';
@@ -35,7 +35,7 @@ const PostsList = () => {
         }}
       />
     )
-    : stateValues.postsList.data.posts.map((item: IDummyPost) => (
+    : stateValues.postsList.data.posts.map((item: IProxyPost) => (
       <li key={item.id} className="posts-list__item">
         <PostsListItem
           id={item.id}

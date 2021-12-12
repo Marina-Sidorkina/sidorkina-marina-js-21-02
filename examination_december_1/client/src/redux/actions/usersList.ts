@@ -6,7 +6,7 @@ import {
   UPDATE_USERS_LIST, UPDATE_USERS_LIST_PAGE,
   HIDE_USERS_LIST_ERROR, SHOW_USERS_LIST_ERROR
 } from '../constants/usersList';
-import { getUsersList } from '../../api/proxy/proxy';
+import { getUsersList } from '../../api/proxy';
 
 export const updateUsersListAction = (response: AxiosResponse<any, any>) => ({
   type: UPDATE_USERS_LIST,

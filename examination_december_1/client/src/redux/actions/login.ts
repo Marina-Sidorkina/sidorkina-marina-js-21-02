@@ -8,12 +8,12 @@ import {
   UPDATE_AUTHORIZATION_INPUT_VALUE,
   RESET_AUTHORIZED_USER, RESET_AUTHORIZATION_ERROR
 } from '../constants/login';
-import { getUserInfo } from '../../api/proxy/proxy';
+import { getUserInfo } from '../../api/proxy';
 import { getExpirationDate } from '../../utils/redux';
 import { DEFAULT_IMAGE } from '../../constants/components';
-import { IDummyUserFull } from '../../api/proxy/@types/proxy';
+import { IProxyUserFull } from '../../api/proxy/@types/proxy';
 
-export const updateAuthorizedUserDataAction = (response: AxiosResponse<any, any> | IDummyUserFull) => ({
+export const updateAuthorizedUserDataAction = (response: AxiosResponse<any, any> | IProxyUserFull) => ({
   type: UPDATE_AUTHORIZED_USER_DATA,
   payload: response,
 });

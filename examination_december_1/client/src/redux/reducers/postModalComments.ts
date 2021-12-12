@@ -1,5 +1,5 @@
 import produce from 'immer';
-import { IDummyComment, IDummyOwner } from '../../api/proxy/@types/proxy';
+import { IProxyComment, IProxyOwner } from '../../api/proxy/@types/proxy';
 import { IPostModalCommentsActionType } from '../@types/actions';
 import {
   UPDATE_POST_MODAL_COMMENTS_PAGE,
@@ -14,8 +14,8 @@ import {
 interface IPostModalDraft {
   error: boolean;
   isLoading: boolean;
-  comments: IDummyComment[];
-  owners: IDummyOwner[];
+  comments: IProxyComment[];
+  owners: IProxyOwner[];
   page: number;
   limit: number;
   totalComments: number;
@@ -24,14 +24,14 @@ interface IPostModalDraft {
 const initialState = {
   error: false,
   isLoading: false,
-  comments: [] as IDummyComment[],
-  owners: [] as IDummyOwner[],
+  comments: [] as IProxyComment[],
+  owners: [] as IProxyOwner[],
   page: 1,
   limit: 6,
   totalComments: 0
 };
 
-const updateComments = (draft: IPostModalDraft, payload: IDummyComment[]) => {
+const updateComments = (draft: IPostModalDraft, payload: IProxyComment[]) => {
   if (payload.length) {
     draft.comments = payload;
     payload.forEach((comment) => {

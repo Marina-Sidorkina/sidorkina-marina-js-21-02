@@ -1,5 +1,5 @@
 import produce from 'immer';
-import { IDummyOwner, IDummyPostFull } from '../../api/proxy/@types/proxy';
+import { IProxyOwner, IProxyPostFull } from '../../api/proxy/@types/proxy';
 import { IPostModalPostActionType } from '../@types/actions';
 import {
   HIDE_POST_MODAL_POST_ERROR,
@@ -9,13 +9,13 @@ import {
 } from '../constants/postModalPost';
 
 const initialState = {
-  post: {} as IDummyPostFull,
-  owner: {} as IDummyOwner,
+  post: {} as IProxyPostFull,
+  owner: {} as IProxyOwner,
   error: false,
   isLoading: false
 };
 
-const updatePost = (draft: any, payload: IDummyPostFull) => {
+const updatePost = (draft: any, payload: IProxyPostFull) => {
   draft.post = payload;
   draft.owner = payload.owner;
   return draft;

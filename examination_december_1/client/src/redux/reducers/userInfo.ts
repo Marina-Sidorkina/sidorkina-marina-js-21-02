@@ -4,11 +4,11 @@ import {
   LOAD_USER_INFO, HIDE_USER_INFO_LOADING, SHOW_USER_INFO_LOADING,
   HIDE_USER_INFO_ERROR, SHOW_USER_INFO_ERROR
 } from '../constants/userInfo';
-import { IDummyUserFull } from '../../api/proxy/@types/proxy';
+import { IProxyUserFull } from '../../api/proxy/@types/proxy';
 
 const initialState = {
   data: {
-    user: {} as IDummyUserFull,
+    user: {} as IProxyUserFull,
     isLoading: false,
     error: ''
   }

@@ -1,5 +1,5 @@
 import {
-  IDummyApiResponse, IDummyUserFull, IDummyPostFull, IDummyComment
+  IProxyApiResponse, IProxyUserFull, IProxyPostFull, IProxyComment
 } from '../../api/proxy/@types/proxy';
 
 export interface IAction {
@@ -15,32 +15,32 @@ export interface IRegistrationActionType extends IAction {
 }
 
 export interface IUserInfoActionType extends IAction {
-  payload?: IDummyUserFull;
+  payload?: IProxyUserFull;
   error?: any
 }
 
 export interface IUsersListActionType extends IAction {
-  payload?: IDummyApiResponse;
+  payload?: IProxyApiResponse;
   error?: any
 }
 
 export interface IUserPostsActionType extends IAction {
-  payload?: IDummyApiResponse;
+  payload?: IProxyApiResponse;
   error?: any
 }
 
 export interface IPostsActionType extends IAction {
-  payload?: IDummyApiResponse;
+  payload?: IProxyApiResponse;
   error?: any
 }
 
 export interface IPostModalPostActionType extends IAction {
-  payload: IDummyPostFull;
+  payload: IProxyPostFull;
   error?: any;
 }
 
 export interface IPostModalCommentsActionType extends IAction {
-  payload: IDummyComment[],
+  payload: IProxyComment[],
   page: number,
   total: number
 }

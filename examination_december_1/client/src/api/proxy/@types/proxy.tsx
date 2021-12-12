@@ -1,4 +1,4 @@
-export interface IDummyUser {
+export interface IProxyUser {
   id: string;
   title: string;
   firstName: string;
@@ -7,14 +7,14 @@ export interface IDummyUser {
   index: number;
 }
 
-export interface IDummyApiResponse {
-  data: IDummyUser[];
+export interface IProxyApiResponse {
+  data: IProxyUser[];
   limit: number;
   page: number;
   total: number;
 }
 
-export interface IDummyUserFull {
+export interface IProxyUserFull {
   id: string;
   title: string;
   firstName: string;
@@ -59,7 +59,7 @@ export interface INewUserData {
   title?: string;
 }
 
-export interface IDummyPostPreview {
+export interface IProxyPostPreview {
   id: string;
   text: string;
   image: string;
@@ -80,7 +80,7 @@ export interface IDummyPostPreview {
   };
 }
 
-export interface IDummyPost {
+export interface IProxyPost {
   id: string;
   text: string;
   image: string;
@@ -101,7 +101,7 @@ export interface IDummyPost {
   };
 }
 
-export interface IDummyPostFull {
+export interface IProxyPostFull {
   id: string;
   text: string;
   image: string;
@@ -123,7 +123,7 @@ export interface IDummyPostFull {
   };
 }
 
-export interface IDummyComment {
+export interface IProxyComment {
   id: string;
   message: string;
   owner: {
@@ -142,7 +142,7 @@ export interface IDummyComment {
   };
 }
 
-export interface IDummyOwner {
+export interface IProxyOwner {
   id: string;
   title: string;
   firstName: string;

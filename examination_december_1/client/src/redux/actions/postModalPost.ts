@@ -4,7 +4,7 @@ import {
   HIDE_POST_MODAL_POST_LOADING, SHOW_POST_MODAL_POST_LOADING, HIDE_POST_MODAL_POST_ERROR,
   SHOW_POST_MODAL_POST_ERROR, UPDATE_POST_MODAL_POST
 } from '../constants/postModalPost';
-import { getPostInfo } from '../../api/proxy/proxy';
+import { getPostInfo } from '../../api/proxy';
 
 export const showPostModalPostLoading = () => ({
   type: SHOW_POST_MODAL_POST_LOADING

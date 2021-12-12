@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux';
 import { AxiosResponse } from 'axios';
-import { getUserPosts } from '../../api/proxy/proxy';
+import { getUserPosts } from '../../api/proxy';
 import {
   HIDE_USER_POSTS_LOADING, SHOW_USER_POSTS_LOADING,
   UPDATE_USER_POSTS, UPDATE_USER_POSTS_PAGE,

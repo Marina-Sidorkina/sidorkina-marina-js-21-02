@@ -1,11 +1,11 @@
-import { IDummyOwner, IDummyPostFull } from '../../../../../api/proxy/@types/proxy';
+import { IProxyOwner, IProxyPostFull } from '../../../../../api/proxy/@types/proxy';
 
 export interface IPostModalPostProps {
   postId: string;
   getNewPostModal: Function;
-  post: IDummyPostFull;
+  post: IProxyPostFull;
   isLoading: boolean;
-  owner: IDummyOwner;
+  owner: IProxyOwner;
   error: boolean;
 }
 

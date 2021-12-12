@@ -1,5 +1,5 @@
 import produce from 'immer';
-import { IDummyPostPreview } from '../../api/proxy/@types/proxy';
+import { IProxyPostPreview } from '../../api/proxy/@types/proxy';
 import {
   HIDE_USER_POSTS_LOADING, HIDE_USER_POSTS_ERROR, SHOW_USER_POSTS_ERROR,
   SHOW_USER_POSTS_LOADING, UPDATE_USER_POSTS, UPDATE_USER_POSTS_PAGE
@@ -8,7 +8,7 @@ import { IUserPostsActionType } from '../@types/actions';
 
 const initialState = {
   data: {
-    posts: [] as IDummyPostPreview[],
+    posts: [] as IProxyPostPreview[],
     total: 0,
     isLoading: false,
     error: '',

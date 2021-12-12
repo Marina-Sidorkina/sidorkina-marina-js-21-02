@@ -1,5 +1,5 @@
 import produce from 'immer';
-import { IDummyUser } from '../../api/proxy/@types/proxy';
+import { IProxyUser } from '../../api/proxy/@types/proxy';
 import {
   SHOW_USERS_LIST_LOADING,
   HIDE_USERS_LIST_LOADING,
@@ -10,7 +10,7 @@ import { IUsersListActionType } from '../@types/actions';
 
 const initialState = {
   data: {
-    users: [] as IDummyUser[],
+    users: [] as IProxyUser[],
     total: 0,
     isLoading: false,
     error: '',

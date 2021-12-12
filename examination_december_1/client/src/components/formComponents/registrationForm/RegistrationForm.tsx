@@ -8,7 +8,7 @@ import '../../../locale/i18next';
 import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { addAndShowNewUser } from '../../../api/proxy/proxy';
+import { addAndShowNewUser } from '../../../api/proxy';
 import { createNewUser } from '../../../utils/api';
 import { authorizeUser } from '../../../redux/actions/login';
 import {

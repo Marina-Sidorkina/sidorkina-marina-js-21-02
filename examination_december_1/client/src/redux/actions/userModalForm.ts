@@ -12,7 +12,7 @@ import { IUserFormValues }
 import { createUpdatedUserData } from '../../utils/api';
 import { DEFAULT_IMAGE, IMAGE_CHANGE_CHECK_VALUE } from '../../constants/components';
 import { isEmptyObject } from '../../utils/components';
-import { updateUser } from '../../api/proxy/proxy';
+import { updateUser } from '../../api/proxy';
 import { updateUserCardAction } from './userInfo';
 import { updateAuthorizedUserDataAction } from './login';
 import { getExpirationDate } from '../../utils/redux';

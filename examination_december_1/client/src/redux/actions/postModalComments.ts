@@ -1,5 +1,5 @@
 import { Dispatch } from 'redux';
-import { IDummyComment } from '../../api/proxy/@types/proxy';
+import { IProxyComment } from '../../api/proxy/@types/proxy';
 import {
   UPDATE_POST_MODAL_COMMENTS,
   SHOW_POST_MODAL_COMMENTS_ERROR,
@@ -9,7 +9,7 @@ import {
   SHOW_POST_MODAL_COMMENTS_LOADING,
   UPDATE_POST_MODAL_TOTAL_COMMENTS
 } from '../constants/postModalComments';
-import { getCommentsList } from '../../api/proxy/proxy';
+import { getCommentsList } from '../../api/proxy';
 
 export const showPostModalCommentsLoadingAction = () => ({
   type: SHOW_POST_MODAL_COMMENTS_LOADING
@@ -27,7 +27,7 @@ export const hidePostModalCommentsErrorAction = () => ({
   type: HIDE_POST_MODAL_COMMENTS_ERROR
 });
 
-export const updatePostModalCommentsAction = (comments: IDummyComment[]) => ({
+export const updatePostModalCommentsAction = (comments: IProxyComment[]) => ({
   type: UPDATE_POST_MODAL_COMMENTS,
   payload: comments
 });
