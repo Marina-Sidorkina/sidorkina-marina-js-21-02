@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-import './PostsList.scss';
 import { useDispatch } from 'react-redux';
 import { Spin } from 'antd';
 import { useTranslation } from 'react-i18next';
+import styles from './PostsList.module.scss';
 import PostsListItem from '../postsListItem/PostsListItem';
 import { loadPostsList } from '../../../redux/actions/postsList';
 import { IProxyPost } from '../../../api/proxy/@types/proxy';
@@ -26,7 +26,6 @@ const PostsList = () => {
   const elements = stateValues.postsList.data.isLoading
     ? (
       <Spin
-        className="users-list__spinner"
         tip={t('loadingText', {})}
         size="large"
         style={{
@@ -36,7 +35,7 @@ const PostsList = () => {
       />
     )
     : stateValues.postsList.data.posts.map((item: IProxyPost) => (
-      <li key={item.id} className="posts-list__item">
+      <li key={item.id}>
         <PostsListItem
           id={item.id}
           avatar={item.owner.picture}
@@ -54,9 +53,9 @@ const PostsList = () => {
     ));
 
   return (
-    <ul className="posts-list">
+    <ul className={styles.list}>
       { stateValues.postsList.data.error ? (
-        <div className="posts-list__error">
+        <div className={styles.error}>
           { t('errorText', {}) }
         </div>
       ) : elements }
