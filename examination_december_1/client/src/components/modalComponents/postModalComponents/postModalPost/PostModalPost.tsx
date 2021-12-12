@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from 'react';
-import './PostModalPost.scss';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Spin } from 'antd';
 import { useTranslation } from 'react-i18next';
+import styles from './PostModalPost.module.scss';
 import { getNewPostModalPost } from '../../../../redux/actions/postModalPost';
 import helper from '../../../../hocs/helper/helper';
 import { ThemeContext } from '../../../../contexts/ThemeContext';
@@ -13,7 +13,7 @@ import { RUSSIAN_LANGUAGE } from '../../../../constants/components';
 import { useTypedSelector } from '../../../../redux/hooks/useTypedSelector';
 
 const PostModalPostName = (props: IPostModalPostNameProps) => (
-  <div className="post-modal-post__user-name">
+  <div className={styles.userName}>
     { `${props.firstName} ${props.lastName}` }
   </div>
 );
@@ -38,7 +38,6 @@ const PostModalPost = (props: IPostModalPostProps) => {
 
   const element = isLoading ? (
     <Spin
-      className="post-modal-post__spinner"
       size="large"
       style={{
         width: '110px',
@@ -50,10 +49,10 @@ const PostModalPost = (props: IPostModalPostProps) => {
     />
   ) : (
     <>
-      <div className="post-modal-post__user-info">
-        <div className="post-modal-post__user">
+      <div className={styles.userInfo}>
+        <div className={styles.user}>
           <img
-            className="post-modal-post__user-img"
+            className={styles.userImg}
             src={owner.picture}
             alt="Аватар пользователя"
           />
@@ -62,27 +61,27 @@ const PostModalPost = (props: IPostModalPostProps) => {
             lastName={owner.lastName}
           />
         </div>
-        <div className="post-modal-post__post-date">
+        <div className={styles.postDate}>
           { post.publishDate ? getDateValue(post.publishDate) : '' }
         </div>
       </div>
       <img
-        className="post-modal-post__img"
+        className={styles.img}
         src={post.image}
         alt="Пост пользователя"
       />
-      <p className="post-modal-post__text">{ post.text }</p>
+      <p className={styles.text}>{ post.text }</p>
     </>
   );
 
   return (
-    <div className={`${themeContext.darkTheme
-      ? 'post-modal-post post-modal-post_dark'
-      : 'post-modal-post'}`}
+    <div className={themeContext.darkTheme
+      ? `${styles.modalPost} ${styles.modalPost_dark}`
+      : styles.modalPost}
     >
       { error
         ? (
-          <div className="post-modal-post__error">
+          <div className={styles.error}>
             { t('errorText', {}) }
           </div>
         )
