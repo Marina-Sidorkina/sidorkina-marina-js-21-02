@@ -1,9 +1,9 @@
 import React from 'react';
 import { IPostModalCommentsItemNameProps } from './@types/postModalCommentsItemName';
-import './PostModalCommentsItemName.scss';
+import styles from './PostModalCommentsItemName.module.scss';
 
 const PostModalCommentsItemName = (props: IPostModalCommentsItemNameProps) => (
-  <div className="post-modal-comments__name">
+  <div className={styles.name}>
     {`${props.firstName} ${props.lastName}`}
   </div>
 );
