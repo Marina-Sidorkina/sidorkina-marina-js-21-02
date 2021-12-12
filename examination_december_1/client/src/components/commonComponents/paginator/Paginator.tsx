@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import './Paginator.scss';
 import { Pagination } from 'antd';
+import styles from './Paginator.module.scss';
 import { ThemeContext } from '../../../contexts/ThemeContext';
 import { IPaginatorProps } from './@types/paginator';
 
@@ -13,11 +13,11 @@ const Paginator = (props: IPaginatorProps) => {
   return (
     <Pagination
       className={
-        `${modal
-          ? 'paginator paginator_modal'
-          : 'paginator'} ${themeContext.darkTheme ? 'paginator_dark' : ''}`
+        `${modal ? `${styles.paginator} ${styles.paginator_modal}` : styles.paginator}
+        ${themeContext.darkTheme ? styles.paginator_dark : ''}`
       }
       simple
+      showQuickJumper
       pageSize={perPage}
       total={total}
       current={current}

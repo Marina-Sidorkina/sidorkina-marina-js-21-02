@@ -1,19 +1,17 @@
 import React, { useContext, useEffect } from 'react';
-import './LoginForm.scss';
+import '../../../locale/i18next';
 import {
   Form, Input, Button, Spin
 } from 'antd';
 import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import '../../../locale/i18next';
 import { useTranslation } from 'react-i18next';
 import {
-  authorizeUser,
-  hideLoadingAction,
-  resetAuthorizationErrorAction,
-  updateAuthorizationInputValue
+  authorizeUser, hideLoadingAction,
+  resetAuthorizationErrorAction, updateAuthorizationInputValue
 } from '../../../redux/actions/login';
+import styles from './LoginForm.module.scss';
 import { ThemeContext } from '../../../contexts/ThemeContext';
 import { RULES } from './antDesignSettings/loginForm';
 import { LOGIN_INPUT_FILED_NAME } from '../../../constants/components';
@@ -42,26 +40,23 @@ const LoginForm = () => {
   }, []);
 
   return (
-    <div className={`${themeContext.darkTheme
-      ? 'login login_dark'
-      : 'login'}`}
-    >
+    <div className={themeContext.darkTheme ? `${styles.login} ${styles.login_dark}` : styles.login}>
       <Form
-        className="login__form"
+        className={styles.form}
         onFinish={onSubmit}
       >
-        <h2 className="login__title">
+        <h2 className={styles.title}>
           { t('login.title', {}) }
         </h2>
-        <Form.Item className="login__form-item login__form-item_add">
-          <label className="login__label">ID:</label>
+        <Form.Item className={`${styles.formItem} ${styles.formItem_add}`}>
+          <label className={styles.label}>ID:</label>
           <Form.Item
-            className="login__form-item"
+            className={styles.formItem}
             name="login-input"
             rules={RULES.id}
           >
             <Input
-              className="login__input"
+              className={styles.input}
               value={stateValues.login.data.inputValue}
               placeholder={t('login.placeholder', {})}
               onChange={onChange}
@@ -69,9 +64,9 @@ const LoginForm = () => {
           </Form.Item>
         </Form.Item>
 
-        <Form.Item className="login__submit">
+        <Form.Item className={styles.submit}>
           <Button
-            className="login__button"
+            className={styles.button}
             type="primary"
             htmlType="submit"
           >
@@ -80,7 +75,6 @@ const LoginForm = () => {
           {stateValues.login.data.isLoading
             ? (
               <Spin
-                className="login__spinner"
                 size="small"
                 style={{
                   width: '110px',
@@ -93,7 +87,7 @@ const LoginForm = () => {
             ) : null}
           {stateValues.login.data.error
             ? (
-              <div className="login__error">
+              <div className={styles.error}>
                 { t('login.error', {}) }
               </div>
             )
@@ -101,7 +95,7 @@ const LoginForm = () => {
         </Form.Item>
       </Form>
       <Link to="registration">
-        <span className="login__link">
+        <span className={styles.link}>
           { t('login.link', {}) }
         </span>
       </Link>

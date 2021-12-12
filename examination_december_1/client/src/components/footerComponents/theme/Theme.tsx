@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import './Theme.scss';
 import { Switch } from 'antd';
 import { useTranslation } from 'react-i18next';
+import styles from './Theme.module.scss';
 import { ThemeContext } from '../../../contexts/ThemeContext';
 import '../../../locale/i18next';
 
@@ -10,8 +10,8 @@ const Theme = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="theme">
-      <span className="theme__text">
+    <div className={styles.theme}>
+      <span className={styles.text}>
         { t('theme', {}) }
       </span>
       <Switch

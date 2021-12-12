@@ -12,29 +12,11 @@
   border-radius: 15px;
   border: 1px solid #cccccc;
 
-  &_dark {
-    background-color: #161b22;
-    border: 1px solid #30363d;
-    color: #c9d1d9;
-
-    .login__title {
-      color: #c9d1d9;
-    }
-
-    .login__button {
-      border: 1px solid #c9d1d9;
-    }
-
-    .ant-form-item-control-input-content {
-      color: #c9d1d9;
-    }
-  }
-
-  &__title {
+  .title {
     text-align: center;
   }
 
-  &__form {
+  .form {
     width: 500px;
     height: 170px;
 
@@ -43,18 +25,14 @@
     }
   }
 
-  &__submit {
-    position: relative;
-  }
-
-  &__error {
+  .error {
     color: red;
   }
 
-  &__form-item,
-  &__button,
-  &__submit,
-  &__input {
+  .formItem,
+  .button,
+  .submit,
+  .input {
     width: 500px;
     min-width: 260px;
 
@@ -63,11 +41,15 @@
     }
   }
 
-  &__form-item_add {
+  .formItem_add {
     margin: 0;
   }
 
-  &__button {
+  .submit {
+    position: relative;
+  }
+
+  .button {
     background-color: #000000;
     color: #ffffff;
     border: none;
@@ -79,12 +61,27 @@
     }
   }
 
-  &__input {
+  .input {
     border-radius: 5px;
   }
 
-  &__link {
+  .link {
     text-align: center;
     color: #808080;
+  }
+
+  &_dark {
+    background-color: #161b22;
+    border: 1px solid #30363d;
+    color: #c9d1d9;
+
+    .title,
+    .label {
+      color: #c9d1d9;
+    }
+
+    .button {
+      border: 1px solid #c9d1d9;
+    }
   }
 }

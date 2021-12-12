@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
-import './App.scss';
+import i18next from 'i18next';
 import {
   Route, Switch, HashRouter, Redirect
 } from 'react-router-dom';
-import i18next from 'i18next';
+import styles from './App.module.scss';
 import Header from '../headerComponents/header/Header';
 import Footer from '../footerComponents/footer/Footer';
-import Posts from '../../pages/posts/Posts';
-import Users from '../../pages/users/Users';
 import Login from '../../pages/login/Login';
 import Registration from '../../pages/registration/Registration';
+import Posts from '../../pages/posts/Posts';
+import Users from '../../pages/users/Users';
 import Profile from '../../pages/profile/Profile';
 import { ThemeContextProvider, ThemeContext } from '../../contexts/ThemeContext';
 import { IThemeContextState } from '../../contexts/@types/themeContext';
@@ -24,7 +24,7 @@ function App() {
     <ThemeContextProvider>
       <ThemeContext.Consumer>
         {(context: Partial<IThemeContextState>) => (
-          <div className={`app ${context.darkTheme ? 'app_dark' : ''}`}>
+          <div className={!context.darkTheme ? styles.app : `${styles.app} ${styles.app_dark}`}>
             <HashRouter>
               <Header />
               <Switch>

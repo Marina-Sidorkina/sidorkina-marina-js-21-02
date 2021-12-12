@@ -1,5 +1,4 @@
 import React, { useContext, useEffect } from 'react';
-import './RegistraionForm.scss';
 import {
   Button, Form, Input, Radio, Spin
 } from 'antd';
@@ -20,6 +19,7 @@ import {
   updateGenderAction,
   updateNameAction, updatePhoneAction
 } from '../../../redux/actions/registrationForm';
+import styles from './RegistraionForm.module.scss';
 import { ThemeContext } from '../../../contexts/ThemeContext';
 import { RULES, RULES_EN } from './antDesignSettings/registrationForm';
 import { useTypedSelector } from '../../../redux/hooks/useTypedSelector';
@@ -59,28 +59,28 @@ const RegistrationForm = () => {
   };
 
   return (
-    <div className={`${themeContext.darkTheme
-      ? 'registration registration_dark'
-      : 'registration'}`}
+    <div className={themeContext.darkTheme
+      ? `${styles.registration} ${styles.registration_dark}`
+      : styles.registration}
     >
       <Form
-        className="registration__form"
+        className={styles.form}
         onFinish={onFinish}
       >
-        <h2 className="registration__title">
+        <h2 className={styles.title}>
           { t('registration.title') }
         </h2>
-        <Form.Item className="registration__form-item registration__form-item_add">
-          <label className="registration__label">
+        <Form.Item className={`${styles.formItem} ${styles.formItem_add}`}>
+          <label className={styles.label}>
             { t('registration.nameField.title') }
           </label>
           <Form.Item
-            className="registration__form-item registration__form-item_name"
+            className={`${styles.formItem} ${styles.formItem_name}`}
             name="registration__name"
             rules={rules.name}
           >
             <Input
-              className="registration__input"
+              className={styles.input}
               value={stateValues.registration.values.name}
               placeholder={t('registration.nameField.placeholder')}
               onChange={(evt) => {
@@ -89,12 +89,12 @@ const RegistrationForm = () => {
             />
           </Form.Item>
         </Form.Item>
-        <Form.Item className="registration__form-item registration__form-item_add">
-          <label className="registration__label registration__label_gender">
+        <Form.Item className={`${styles.formItem} ${styles.formItem_add}`}>
+          <label className={`${styles.label} ${styles.label_gender}`}>
             { t('registration.genderField.title') }
           </label>
           <Form.Item
-            className="registration__form-item registration__form-item_radio"
+            className={`${styles.formItem} ${styles.formItem_radio}`}
             name="registration__gender"
             rules={rules.gender}
           >
@@ -103,28 +103,28 @@ const RegistrationForm = () => {
               onChange={(evt) => {
                 dispatch(updateGenderAction(evt.target.value));
               }}
-              className="registration__radio-group"
+              className={styles.radioGroup}
             >
-              <Radio value="мужской">
+              <Radio value="мужской" className={styles.label}>
                 { t('registration.genderField.male') }
               </Radio>
-              <Radio value="женский">
+              <Radio value="женский" className={styles.label}>
                 { t('registration.genderField.female') }
               </Radio>
             </Radio.Group>
           </Form.Item>
         </Form.Item>
-        <Form.Item className="registration__form-item registration__form-item_add">
-          <label className="registration__label">
+        <Form.Item className={`${styles.formItem} ${styles.formItem_add}`}>
+          <label className={styles.label}>
             { t('registration.dateOfBirthField.title') }
           </label>
           <Form.Item
-            className="registration__form-item"
+            className={styles.formItem}
             name="registration__date"
             rules={rules.date}
           >
             <Input
-              className="registration__input"
+              className={styles.input}
               value={stateValues.registration.values.dateOfBirth}
               placeholder={t('registration.dateOfBirthField.placeholder')}
               onChange={(evt) => {
@@ -133,17 +133,17 @@ const RegistrationForm = () => {
             />
           </Form.Item>
         </Form.Item>
-        <Form.Item className="registration__form-item registration__form-item_add">
-          <label className="registration__label">
+        <Form.Item className={`${styles.formItem} ${styles.formItem_add}`}>
+          <label className={styles.label}>
             { t('registration.emailField.title') }
           </label>
           <Form.Item
-            className="registration__form-item"
+            className={styles.formItem}
             name="registration__email"
             rules={rules.email}
           >
             <Input
-              className="registration__input"
+              className={styles.input}
               value={stateValues.registration.values.email}
               placeholder={t('registration.emailField.placeholder')}
               onChange={(evt) => {
@@ -152,17 +152,17 @@ const RegistrationForm = () => {
             />
           </Form.Item>
         </Form.Item>
-        <Form.Item className="registration__form-item registration__form-item_add">
-          <label className="registration__label">
+        <Form.Item className={`${styles.formItem} ${styles.formItem_add}`}>
+          <label className={styles.label}>
             { t('registration.phoneField.title') }
           </label>
           <Form.Item
-            className="registration__form-item"
+            className={styles.formItem}
             name="registration__tel"
             rules={rules.tel}
           >
             <Input
-              className="registration__input"
+              className={styles.input}
               value={stateValues.registration.values.phone}
               placeholder={t('registration.phoneField.placeholder')}
               onChange={(evt) => {
@@ -171,11 +171,10 @@ const RegistrationForm = () => {
             />
           </Form.Item>
         </Form.Item>
-        <Form.Item className="registration__submit">
+        <Form.Item className={styles.submit}>
           {stateValues.registration.isLoading
             ? (
               <Spin
-                className="registration__spinner"
                 size="small"
                 style={{
                   width: '110px',
@@ -187,19 +186,19 @@ const RegistrationForm = () => {
               />
             ) : null}
           <Button
-            className="registration__button"
+            className={styles.button}
             type="primary"
             htmlType="submit"
           >
             { t('registration.button') }
           </Button>
           { stateValues.registration.error
-            ? <div className="registration__error">email уже зарегистрирован</div>
+            ? <div className={styles.error}>email уже зарегистрирован</div>
             : null }
         </Form.Item>
       </Form>
       <Link to="/login">
-        <span className="login__link">
+        <span className={styles.link}>
           { t('registration.link') }
         </span>
       </Link>

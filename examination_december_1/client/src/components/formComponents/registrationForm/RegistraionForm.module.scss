@@ -12,37 +12,11 @@
   border-radius: 15px;
   border: 1px solid #cccccc;
 
-  .ant-radio-wrapper {
-    color: #000000;
-  }
-
-  &_dark {
-    background-color: #161b22;
-    border: 1px solid #30363d;
-    color: #c9d1d9;
-
-    .registration__title {
-      color: #c9d1d9;
-    }
-
-    .registration__button {
-      border: 1px solid #c9d1d9;
-    }
-
-    .ant-col .ant-form-item-control-input-content {
-      color: #c9d1d9;
-    }
-
-    .ant-radio-wrapper {
-      color: #c9d1d9;
-    }
-  }
-
-  &__submit {
+  .submit {
     position: relative;
   }
 
-  &__error {
+  .error {
     position: absolute;
     bottom: -18px;
     right: 5px;
@@ -50,11 +24,11 @@
     color: red;
   }
 
-  &__title {
+  .title {
     text-align: center;
   }
 
-  &__form {
+  .form {
     width: 500px;
     height: 470px;
 
@@ -63,22 +37,22 @@
     }
   }
 
-  &__label_gender {
+  .label_gender {
     display: inline-block;
     margin-bottom: 0;
   }
 
-  &__radio-group {
+  .radioGroup {
     height: 30px;
     box-sizing: border-box;
     padding-left: 50px;
   }
 
-  &__form-item,
-  &__button,
-  &__submit,
-  &__input,
-  &__radio-group {
+  .formItem,
+  .button,
+  .submit,
+  .input,
+  .radioGroup {
     width: 500px;
     min-width: 260px;
 
@@ -87,20 +61,20 @@
     }
   }
 
-  &__form-item {
+  .formItem {
     box-sizing: border-box;
   }
 
-  &__form-item_radio {
+  .formItem_radio {
     height: 50px;
     margin-bottom: 0;
   }
 
-  &__form-item_add {
+  .formItem_add {
     margin: 0;
   }
 
-  &__button {
+  .button {
     background-color: #000000;
     color: #ffffff;
     border: none;
@@ -112,12 +86,27 @@
     }
   }
 
-  &__input {
+  .input {
     border-radius: 5px;
   }
 
-  &__link {
+  .link {
     text-align: center;
     color: #808080;
+  }
+
+  &_dark {
+    background-color: #161b22;
+    border: 1px solid #30363d;
+    color: #c9d1d9;
+
+    .title,
+    .label {
+      color: #c9d1d9;
+    }
+
+    .button {
+      border: 1px solid #c9d1d9;
+    }
   }
 }

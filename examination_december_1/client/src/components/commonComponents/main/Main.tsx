@@ -1,9 +1,9 @@
 import React from 'react';
-import './Main.scss';
+import styles from './Main.module.scss';
 
 const Main = (props: { children: React.ReactChild | React.ReactFragment | null | undefined; }) => (
-  <main className="main">
-    <div className="main__container">
+  <main className={styles.main}>
+    <div className={styles.container}>
       { props.children }
     </div>
   </main>
