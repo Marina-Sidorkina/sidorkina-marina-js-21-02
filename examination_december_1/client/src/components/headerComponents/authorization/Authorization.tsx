@@ -1,5 +1,5 @@
 import React from 'react';
-import './Authorization.scss';
+import styles from './Authorization.module.scss';
 import NotAuthorizedUserBlock from '../notAuthorizedUserBlock/NotAuthorizedUserBlock';
 import AuthorizedUserBlock from '../authorizedUserBlock/AuthorizedUserBlock';
 import { useTypedSelector } from '../../../redux/hooks/useTypedSelector';
@@ -8,13 +8,13 @@ const Authorization = () => {
   const authorizedUserId = useTypedSelector((state) => state.login.data.authorizedUserId);
 
   return (
-    <div className="authorization">
-      <div className="authorization__dropdown">
-        <input className="authorization__toggle" id="authorization__toggle" type="checkbox" />
-        <label className="authorization__btn" htmlFor="authorization__toggle">
-          <span className="authorization__control" />
+    <div className={styles.authorization}>
+      <div className={styles.dropdown}>
+        <input className={styles.toggle} id="authorization__toggle" type="checkbox" />
+        <label className={styles.btn} htmlFor="authorization__toggle">
+          <span className={styles.control} />
         </label>
-        <div className="authorization__menu">
+        <div className={styles.menu}>
           { authorizedUserId ? <AuthorizedUserBlock /> : <NotAuthorizedUserBlock />}
         </div>
       </div>

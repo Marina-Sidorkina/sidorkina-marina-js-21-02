@@ -4,33 +4,33 @@
   align-items: center;
   height: 60px;
 
-  &__toggle,
-  &__btn {
+  .toggle,
+  .btn {
     display: none;
   }
 
   @media (max-width: 769px) {
-    &__toggle:checked ~ &__btn > &__control {
+    .toggle:checked ~ .btn > .control {
       transform: rotate(45deg);
     }
-    &__toggle:checked ~ &__btn > &__control::before {
+    .toggle:checked ~ .btn > .control::before {
       top: 0;
       transform: rotate(0);
     }
-    &__toggle:checked ~ &__btn > &__control::after {
+    .toggle:checked ~ .btn > .control::after {
       top: 0;
       transform: rotate(90deg);
     }
-    &__toggle:checked ~ &__menu {
+    .toggle:checked ~ .menu {
       display: block;
     }
 
-    &__toggle:checked ~ &__btn {
+    .toggle:checked ~ .btn {
       position: fixed;
       right: 15px;
     }
 
-    &__btn {
+    .btn {
       display: flex;
       align-items: center;
       position: absolute;
@@ -44,9 +44,9 @@
       z-index: 10;
     }
 
-    &__btn > &__control,
-    &__btn > &__control::before,
-    &__btn > &__control::after {
+    .btn > .control,
+    .btn > .control::before,
+    .btn > .control::after {
       display: block;
       position: absolute;
 
@@ -58,17 +58,17 @@
       transition-duration: .25s;
     }
 
-    &__btn > &__control::before {
+    .btn > .control::before {
       content: '';
       top: -8px;
     }
 
-    &__btn > &__control::after {
+    .btn > .control::after {
       content: '';
       top: 8px;
     }
 
-    &__menu {
+    .menu {
       position: fixed;
       display: none;
       right: 0;
