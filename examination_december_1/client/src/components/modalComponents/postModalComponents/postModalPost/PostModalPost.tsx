@@ -1,13 +1,12 @@
 import React, { useContext, useEffect } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { useDispatch } from 'react-redux';
 import { Spin } from 'antd';
 import { useTranslation } from 'react-i18next';
 import styles from './PostModalPost.module.scss';
 import { getNewPostModalPost } from '../../../../redux/actions/postModalPost';
 import helper from '../../../../hocs/helper/helper';
 import { ThemeContext } from '../../../../contexts/ThemeContext';
-import { IPostModalPostNameProps, IPostModalPostProps } from './@types/postModalPost';
+import { IPostModalPostNameProps } from './@types/postModalPost';
 import '../../../../locale/i18next';
 import { RUSSIAN_LANGUAGE } from '../../../../constants/components';
 import { useTypedSelector } from '../../../../redux/hooks/useTypedSelector';
@@ -18,25 +17,22 @@ const PostModalPostName = (props: IPostModalPostNameProps) => (
   </div>
 );
 
-const PostModalPost = (props: IPostModalPostProps) => {
-  const {
-    postId, getNewPostModal, post, isLoading, owner, error
-  } = props;
-
-  const PostsListNameWithHelper = helper(PostModalPostName, owner.id);
-
+const PostModalPost = () => {
   const themeContext = useContext(ThemeContext);
   const { t } = useTranslation();
   const language = useTypedSelector((state) => state.languageSelector.value);
   const getDateValue = (date: { enDateAndTime: string, ruDateAndTime: string }) => (
     language === RUSSIAN_LANGUAGE ? date.ruDateAndTime : date.enDateAndTime
   );
+  const stateValues = useTypedSelector((state) => state);
+  const dispatch = useDispatch();
+  const PostsListNameWithHelper = helper(PostModalPostName, stateValues.postModalPost.owner.id);
 
   useEffect(() => {
-    getNewPostModal(postId);
+    dispatch(getNewPostModalPost(stateValues.postModal.currentPostId));
   }, []);
 
-  const element = isLoading ? (
+  const element = stateValues.postModalPost.isLoading ? (
     <Spin
       size="large"
       style={{
@@ -53,24 +49,24 @@ const PostModalPost = (props: IPostModalPostProps) => {
         <div className={styles.user}>
           <img
             className={styles.userImg}
-            src={owner.picture}
+            src={stateValues.postModalPost.owner.picture}
             alt="Аватар пользователя"
           />
           <PostsListNameWithHelper
-            firstName={owner.firstName}
-            lastName={owner.lastName}
+            firstName={stateValues.postModalPost.owner.firstName}
+            lastName={stateValues.postModalPost.owner.lastName}
           />
         </div>
         <div className={styles.postDate}>
-          { post.publishDate ? getDateValue(post.publishDate) : '' }
+          { stateValues.postModalPost.post.publishDate ? getDateValue(stateValues.postModalPost.post.publishDate) : '' }
         </div>
       </div>
       <img
         className={styles.img}
-        src={post.image}
+        src={stateValues.postModalPost.post.image}
         alt="Пост пользователя"
       />
-      <p className={styles.text}>{ post.text }</p>
+      <p className={styles.text}>{ stateValues.postModalPost.post.text }</p>
     </>
   );
 
@@ -79,7 +75,7 @@ const PostModalPost = (props: IPostModalPostProps) => {
       ? `${styles.modalPost} ${styles.modalPost_dark}`
       : styles.modalPost}
     >
-      { error
+      { stateValues.postModalPost.error
         ? (
           <div className={styles.error}>
             { t('errorText', {}) }
@@ -90,15 +86,4 @@ const PostModalPost = (props: IPostModalPostProps) => {
   );
 };
 
-export default connect(
-  (state: any) => ({
-    postId: state.postModal.currentPostId,
-    post: state.postModalPost.post,
-    owner: state.postModalPost.owner,
-    isLoading: state.postModalPost.isLoading,
-    error: state.postModalPost.error
-  }),
-  (dispatch) => ({
-    getNewPostModal: bindActionCreators(getNewPostModalPost, dispatch)
-  })
-)(PostModalPost);
+export default PostModalPost;
