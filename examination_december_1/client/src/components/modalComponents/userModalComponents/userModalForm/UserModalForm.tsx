@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useRef } from 'react';
-import './UserModalForm.scss';
 import { Button, Form, Input } from 'antd';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import styles from './UserModalForm.module.scss';
 import { DEFAULT_IMAGE, RUSSIAN_LANGUAGE } from '../../../../constants/components';
 import { getGenderFieldValue } from '../../../../utils/components';
 import {
@@ -62,52 +62,52 @@ const UserModalForm = () => {
       labelCol={{ span: 10 }}
       wrapperCol={{ span: 16 }}
       labelAlign="left"
-      className={`${themeContext.darkTheme
-        ? 'user-modal-form user-modal-form_dark'
-        : 'user-modal-form'}`}
+      className={themeContext.darkTheme
+        ? `${styles.form} ${styles.form_dark}`
+        : styles.form}
       onFinish={onFormSubmit}
       size="small"
     >
       <img
-        className="user-modal-form__img"
+        className={styles.img}
         src={stateValues.userModal.values.picture || DEFAULT_IMAGE}
         alt="Аватар"
       />
-      <div className="user-modal-form__img-edit">
-        <label className="user-modal-form__file-label" htmlFor="file-input">
-          <span className="user-modal-form__file-span">
+      <div className={styles.imgEdit}>
+        <label className={styles.fileLabel} htmlFor="file-input">
+          <span className={styles.fileSpan}>
             { t('photo.update', {}) }
           </span>
         </label>
         <input
           name="file"
-          className="user-modal-form__file-input"
+          className={styles.fileInput}
           type="file"
           id="file-input"
           onChange={onImageFileUpload}
           ref={fileInputElement}
         />
         <button
-          className="user-modal-form__file-delete"
+          className={styles.fileDelete}
           type="button"
           onClick={() => {
             if (fileInputElement.current) fileInputElement.current.value = '';
             dispatch(updateUserModalPictureAction(''));
           }}
         >
-          <span className="user-modal-form__file-span">
+          <span className={styles.fileSpan}>
             { t('photo.delete', {}) }
           </span>
         </button>
       </div>
       <Form.Item
-        className="user-modal-form__item"
+        className={styles.item}
         name="name"
-        label={t('registration.nameField.title', {})}
+        label={<label className={styles.label}>{t('registration.nameField.title')}</label>}
         rules={rules.name}
       >
         <Input
-          className="user-modal-form__input"
+          className={styles.input}
           value={stateValues.userModal.values.name}
           placeholder={`${stateValues.userInfo.data.user.firstName} ${stateValues.userInfo.data.user.lastName}`}
           onChange={(evt) => {
@@ -116,13 +116,13 @@ const UserModalForm = () => {
         />
       </Form.Item>
       <Form.Item
-        className="user-modal-form__item"
+        className={styles.item}
         name="gender"
-        label={t('registration.genderField.title', {})}
+        label={<label className={styles.label}>{t('registration.genderField.title', {})}</label>}
         rules={rules.gender}
       >
         <Input
-          className="user-modal-form__input"
+          className={styles.input}
           value={stateValues.userModal.values.gender}
           placeholder={getGenderFieldValue(stateValues.userInfo.data.user.gender, language)}
           onChange={(evt) => {
@@ -131,13 +131,13 @@ const UserModalForm = () => {
         />
       </Form.Item>
       <Form.Item
-        className="user-modal-form__item"
+        className={styles.item}
         name="birthDate"
-        label={t('registration.dateOfBirthField.title', {})}
+        label={<label className={styles.label}>{t('registration.dateOfBirthField.title', {})}</label>}
         rules={rules.birthDate}
       >
         <Input
-          className="user-modal-form__input"
+          className={styles.input}
           value={stateValues.userModal.values.dateOfBirth}
           placeholder={stateValues.userInfo.data.user.dateOfBirth
             ? getDateValue(stateValues.userInfo.data.user.dateOfBirth)
@@ -148,12 +148,12 @@ const UserModalForm = () => {
         />
       </Form.Item>
       <Form.Item
-        className="user-modal-form__item"
+        className={styles.item}
         name="registrationDate"
-        label={t('registration.registrationDateField.title', {})}
+        label={<label className={styles.label}>{t('registration.registrationDateField.title', {})}</label>}
       >
         <Input
-          className="user-modal-form__input"
+          className={styles.input}
           value={stateValues.userModal.values.registrationDate}
           placeholder={stateValues.userInfo.data.user.registerDate
             ? getDateValue(stateValues.userInfo.data.user.registerDate)
@@ -162,25 +162,25 @@ const UserModalForm = () => {
         />
       </Form.Item>
       <Form.Item
-        className="user-modal-form__item user-modal-form__item_email"
+        className={`${styles.item} ${styles.item_email}`}
         name="email"
-        label={t('registration.emailField.title', {})}
+        label={<label className={styles.label}>{t('registration.emailField.title', {})}</label>}
       >
         <Input
-          className="user-modal-form__input"
+          className={styles.input}
           value={stateValues.userModal.values.email}
           placeholder={stateValues.userInfo.data.user.email}
           disabled
         />
       </Form.Item>
       <Form.Item
-        className="user-modal-form__item"
+        className={styles.item}
         name="tel"
-        label={t('registration.phoneField.title', {})}
+        label={<label className={styles.label}>{t('registration.phoneField.title', {})}</label>}
         rules={rules.phone}
       >
         <Input
-          className="user-modal-form__input"
+          className={styles.input}
           value={stateValues.userModal.values.phone}
           placeholder={stateValues.userInfo.data.user.phone}
           onChange={(evt) => {
@@ -188,9 +188,9 @@ const UserModalForm = () => {
           }}
         />
       </Form.Item>
-      <Form.Item className="user-modal-form__submit">
+      <Form.Item className={styles.submit}>
         <Button
-          className="user-modal-form__button"
+          className={styles.button}
           type="primary"
           htmlType="submit"
           style={btnStyle}
@@ -199,7 +199,7 @@ const UserModalForm = () => {
         </Button>
       </Form.Item>
       { stateValues.userModal.error ? (
-        <div className="user-modal-form__error">
+        <div className={styles.error}>
           { t('errorText', {}) }
         </div>
       ) : null }
