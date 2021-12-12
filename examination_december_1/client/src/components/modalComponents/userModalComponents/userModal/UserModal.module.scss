@@ -1,4 +1,4 @@
-.user-modal {
+.modal {
   position: fixed;
   left: 0;
   top: 0;
@@ -15,7 +15,7 @@
     display: flex;
   }
 
-  &__content {
+  .content {
     position: relative;
     box-sizing: border-box;
     width: 100%;
@@ -36,7 +36,7 @@
     }
   }
 
-  &__button {
+  .button {
     position: fixed;
     right: 0;
     top: 0;

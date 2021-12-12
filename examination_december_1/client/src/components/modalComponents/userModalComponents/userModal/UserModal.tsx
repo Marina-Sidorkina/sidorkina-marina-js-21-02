@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import './UserModal.scss';
 import { CloseOutlined } from '@ant-design/icons';
 import { useDispatch } from 'react-redux';
 import { Spin } from 'antd';
+import styles from './UserModal.module.scss';
 import UserModalForm from '../userModalForm/UserModalForm';
 import { closeUserModalAction } from '../../../../redux/actions/userModalForm';
 import { ThemeContext } from '../../../../contexts/ThemeContext';
@@ -14,12 +14,15 @@ const UserModal = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className={`user-modal ${stateValues.userModal.isOpened ? 'user-modal_opened' : ''}`}>
-      <div className={`${themeContext.darkTheme
-        ? 'user-modal__content user-modal__content_dark'
-        : 'user-modal__content'}`}
+    <div className={stateValues.userModal.isOpened
+      ? `${styles.modal} ${styles.modal_opened}`
+      : styles.modal}
+    >
+      <div className={themeContext.darkTheme
+        ? `${styles.content} ${styles.content_dark}`
+        : styles.content}
       >
-        <button type="button" className="user-modal__button">
+        <button type="button" className={styles.button}>
           <CloseOutlined
             style={{ color: '#ffffff', fontSize: '25px' }}
             onClick={() => {
@@ -31,7 +34,6 @@ const UserModal = () => {
         { stateValues.userModal.isLoading
           ? (
             <Spin
-              className="registration__spinner"
               size="large"
               style={{
                 width: '110px',
