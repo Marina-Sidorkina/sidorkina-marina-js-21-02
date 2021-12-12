@@ -6,8 +6,7 @@ import {
   UPDATE_USER_MODAL_PICTURE
 } from '../constants/userModalForm';
 import { setFormData } from '../../utils/formData';
-import { getImgLink } from '../../api/imgbbApi/imgbbApi';
-import { IMGBB_API_METHOD } from '../../api/imgbbApi/constants/imgbbApi';
+import { getImgLink } from '../../api/imgbbApi';
 import { IUserFormValues }
   from '../../components/modalComponents/userModalComponents/userModalForm/@types/userModalForm';
 import { createUpdatedUserData } from '../../utils/api';
@@ -78,9 +77,9 @@ export const processUserModalPicture = (value: any) => (dispatch: Dispatch) => {
   reader.onload = () => {
     const formData = setFormData(reader);
     dispatch(hideUserModalErrorAction());
-    getImgLink({ method: IMGBB_API_METHOD, body: formData })
+    getImgLink(formData)
       .then((response) => {
-        dispatch(updateUserModalPictureAction(response.data.display_url));
+        dispatch(updateUserModalPictureAction(response.data.data.display_url));
         dispatch(hideLoadingAction());
       })
       .catch(() => {
