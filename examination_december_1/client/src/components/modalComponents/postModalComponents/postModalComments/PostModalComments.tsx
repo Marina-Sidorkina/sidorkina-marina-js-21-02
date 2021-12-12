@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import './PostModalComments.scss';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import styles from './PostModalComments.module.scss';
 import { getPostModalCommentsListAction } from '../../../../redux/actions/postModalComments';
 import { useTypedSelector } from '../../../../redux/hooks/useTypedSelector';
 import '../../../../locale/i18next';
@@ -44,16 +44,16 @@ const PostModalComments = () => {
 
   const elements = stateValues.postModalComments.isLoading
     ? (
-      <div className="post-modal-comments__loading">
+      <div className={styles.loading}>
         { t('postComments.loading', {}) }
       </div>
     )
     : getCommentsList();
 
   return (
-    <ul className="post-modal-comments">
+    <ul className={styles.comments}>
       { stateValues.postModalComments.error ? (
-        <div className="post-modal-comments__error">
+        <div className={styles.error}>
           { t('postComments.error', {}) }
         </div>
       ) : elements }

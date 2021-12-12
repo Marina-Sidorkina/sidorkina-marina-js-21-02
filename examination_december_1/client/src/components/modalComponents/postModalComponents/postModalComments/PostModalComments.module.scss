@@ -1,0 +1,25 @@
+.comments {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 15px;
+  grid-row-gap: 15px;
+  justify-content: space-between;
+  height: auto;
+  min-height: 190px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  @media (max-width: 788px) {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .error {
+    color: red;
+  }
+
+  .loading {
+    color: #1E90FF;
+  }
+}
