@@ -1,5 +1,5 @@
 import React from 'react';
-import './NavigationPostsIcon.scss';
+import styles from './NavigationPostsIcon.module.scss';
 import { INavigationPostsIconProps } from './@types/navigationPostsIcon';
 
 const NavigationPostsIcon = (props: INavigationPostsIconProps) => {
@@ -7,9 +7,9 @@ const NavigationPostsIcon = (props: INavigationPostsIconProps) => {
 
   return (
     <svg
-      className={`${dark
-        ? 'navigation__svg navigation__svg_posts_dark'
-        : 'navigation__svg navigation__svg_posts'}`}
+      className={dark
+        ? `${styles.svg} ${styles.svg_posts_dark}`
+        : `${styles.svg} ${styles.svg_posts}`}
       width="30"
       xmlns="http://www.w3.org/2000/svg"
       height="30"

@@ -1,5 +1,5 @@
 import React from 'react';
-import './NavigationUsersIcon.scss';
+import styles from './NavigationUsersIcon.module.scss';
 import { INavigationUsersIcon } from './@types/navigationUsersIcon';
 
 const NavigationUsersIcon = (props: INavigationUsersIcon) => {
@@ -7,9 +7,9 @@ const NavigationUsersIcon = (props: INavigationUsersIcon) => {
 
   return (
     <svg
-      className={`${dark
-        ? 'navigation__svg navigation__svg_users navigation__svg_users_dark'
-        : 'navigation__svg navigation__svg_users'}`}
+      className={dark
+        ? `${styles.svg} ${styles.svg_users} ${styles.svg_users_dark}`
+        : `${styles.svg} ${styles.svg_users}`}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill="none"
