@@ -95,7 +95,9 @@ const UserModalForm = () => {
             dispatch(updateUserModalPictureAction(''));
           }}
         >
-          { t('photo.delete', {}) }
+          <span className="user-modal-form__file-span">
+            { t('photo.delete', {}) }
+          </span>
         </button>
       </div>
       <Form.Item
