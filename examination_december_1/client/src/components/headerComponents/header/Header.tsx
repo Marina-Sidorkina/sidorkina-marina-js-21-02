@@ -13,7 +13,7 @@ const Header = () => {
       ? `${styles.header} ${styles.header_dark}`
       : styles.header}
     >
-      <div className="header__container">
+      <div className={styles.container}>
         <Logo />
         <Navigation />
         <Authorization />
