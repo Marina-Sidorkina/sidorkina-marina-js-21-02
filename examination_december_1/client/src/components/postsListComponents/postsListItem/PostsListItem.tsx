@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import './PostsListItem.scss';
 import { useDispatch } from 'react-redux';
+import styles from './PostsListItem.module.scss';
 import { openPostModalAction, setPostModalCurrenIdAction } from '../../../redux/actions/postModal';
 import helper from '../../../hocs/helper/helper';
 import { ThemeContext } from '../../../contexts/ThemeContext';
@@ -12,7 +12,7 @@ const PostsListItemName = (props: IPostsListItemNameProps) => {
   const language = useTypedSelector((state) => state.languageSelector.value);
 
   return (
-    <div className="post-item__name">
+    <div className={styles.userName}>
       {`${props.title ? `${getTitleValue(props.title, language)}` : ''} ${props.firstName} ${props.lastName}`}
     </div>
   );
@@ -35,32 +35,32 @@ const PostsListItem = (props: IPostsListItem) => {
 
   return (
     <div
-      className={`${themeContext.darkTheme
-        ? 'posts-list__item post-item post-item_dark'
-        : 'posts-list__item post-item'}`}
+      className={themeContext.darkTheme
+        ? `${styles.item} ${styles.item_dark}`
+        : styles.item}
       onClick={onItemClick}
     >
-      <div className="post-item__user-block">
+      <div className={styles.userBlock}>
         <img
-          className="post-item__user-img"
+          className={styles.userImg}
           src={avatar}
           alt="Аватар пользователя"
         />
-        <div className="post-item__user">
+        <div className={styles.user}>
           <PostsListNameWithHelper
             firstName={firstName}
             lastName={lastName}
             title={title}
           />
-          <div className="post-item__date">{ date }</div>
+          <div className={styles.date}>{ date }</div>
         </div>
       </div>
       <img
-        className="post-item__post"
+        className={styles.post}
         src={image}
         alt="Пост пользователя"
       />
-      <p className="post-item__text">{ text }</p>
+      <p className={styles.text}>{ text }</p>
     </div>
   );
 };
