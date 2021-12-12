@@ -1,9 +1,9 @@
-.authorized-user-block {
+.userBlock {
   display: flex;
   align-items: center;
   height: 50px;
 
-  &__link {
+  .link {
     color: inherit;
 
     &:hover {
@@ -11,7 +11,7 @@
     }
   }
 
-  &__item {
+  .item {
     display: flex;
     align-items: center;
     height: 40px;
@@ -26,7 +26,7 @@
     }
   }
 
-  &__user-photo {
+  .userPhoto {
     width: 30px;
     height: 30px;
     object-fit: cover;
@@ -38,8 +38,8 @@
     }
   }
 
-  &__user-name,
-  &__logout {
+  .userName,
+  .logout {
     cursor: pointer;
 
     &:hover {
@@ -47,7 +47,7 @@
     }
   }
 
-  &__logout {
+  .logout {
     color: #808080;
   }
 
@@ -58,7 +58,7 @@
     height: 100%;
     padding-top: 10px;
 
-    &__item {
+    .item {
       box-sizing: border-box;
       justify-content: flex-end;
       height: 55px;

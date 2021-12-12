@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import './AuthorizedUserBlock.scss';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import styles from './AuthorizedUserBlock.module.scss';
 import { resetAuthorizedUserAction } from '../../../redux/actions/login';
 import { ThemeContext } from '../../../contexts/ThemeContext';
 import '../../../locale/i18next';
@@ -21,26 +21,26 @@ const AuthorizedUserBlock = () => {
   const themeContext = useContext(ThemeContext);
 
   return (
-    <div className="authorized-user-block">
-      <div className="authorized-user-block__item">
+    <div className={styles.userBlock}>
+      <div className={styles.item}>
         <img
-          className={`${themeContext.darkTheme
-            ? 'authorized-user-block__user-photo authorized-user-block__user-photo_dark'
-            : 'authorized-user-block__user-photo'}`}
+          className={themeContext.darkTheme
+            ? `${styles.userPhoto} ${styles.userPhoto_dark}`
+            : styles.userPhoto}
           src={stateValues.login.data.authorizedUserPicture}
           alt="Фото пользователя"
         />
         <Link
           to={`/profile/${stateValues.login.data.authorizedUserId}`}
-          className="authorized-user-block__link"
+          className={styles.link}
         >
-          <span className="authorized-user-block__user-name">
+          <span className={styles.userName}>
             { stateValues.login.data.authorizedUserName }
           </span>
         </Link>
       </div>
-      <div className="authorized-user-block__item">
-        <span className="authorized-user-block__logout" onClick={onClickHandler}>
+      <div className={styles.item}>
+        <span className={styles.logout} onClick={onClickHandler}>
           { t('authorization.logout', {}) }
         </span>
       </div>
