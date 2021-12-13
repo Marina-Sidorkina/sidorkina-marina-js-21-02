@@ -11,5 +11,6 @@ export const PROXY_API_CONFIG = {
     headers: {
       'Content-Type': 'application/json'
     }
-  }
+  },
+  errorText: 'Could not fetch'
 };

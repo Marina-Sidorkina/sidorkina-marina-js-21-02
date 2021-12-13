@@ -3,7 +3,7 @@ import { INewUserData } from './@types/proxy';
 import { PROXY_API_CONFIG } from './config';
 
 const processResponse = (response: AxiosResponse<any, any>) => {
-  if (response.status !== PROXY_API_CONFIG.statusOk) throw new Error('Could not fetch');
+  if (response.status !== PROXY_API_CONFIG.statusOk) throw new Error(PROXY_API_CONFIG.errorText);
   return response;
 };
 
