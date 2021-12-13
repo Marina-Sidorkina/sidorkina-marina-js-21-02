@@ -7,5 +7,6 @@ module.exports = {
     NOT_FOUND: 404,
     SERVER_ERROR: 500,
     UNKNOWN_ERROR: 520
-  }
+  },
+  timeout: 30000
 }

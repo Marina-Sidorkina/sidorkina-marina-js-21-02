@@ -1,5 +1,5 @@
 const express = require('express');
-const { host, port, statuses } = require('../config/serverConfig');
+const { host, port, statuses, timeout } = require('../config/serverConfig');
 const routes = require('./routes/index');
 const logger = require('./logger');
 const context = require('request-context');
@@ -39,4 +39,4 @@ app.use((error, request, response, next) => {
 })
 
 const server = app.listen(port, host, () => console.log('App started'));
-server.keepAliveTimeout = 61 * 1000;
+server.keepAliveTimeout = timeout;
