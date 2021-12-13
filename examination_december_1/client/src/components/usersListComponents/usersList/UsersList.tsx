@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-import './UsersList.scss';
 import { useDispatch } from 'react-redux';
 import { Spin } from 'antd';
 import { useTranslation } from 'react-i18next';
+import styles from './UsersList.module.scss';
 import UsersListItem from '../usersListItem/UsersListItem';
 import { loadUsersList } from '../../../redux/actions/usersList';
 import { IUserListItem } from './@types/usersList';
@@ -24,7 +24,7 @@ const UsersList = () => {
   const elements = stateValues.usersList.data.isLoading
     ? (
       <Spin
-        className="users-list__spinner"
+        className={styles.spinner}
         tip={t('loadingText', {})}
         size="large"
         style={{
@@ -45,9 +45,9 @@ const UsersList = () => {
     ));
 
   return (
-    <ul className="users-list">
+    <ul className={styles.list}>
       { stateValues.usersList.data.error ? (
-        <div className="users-list__error">
+        <div className={styles.error}>
           { t('errorText', {}) }
         </div>
       ) : elements }
