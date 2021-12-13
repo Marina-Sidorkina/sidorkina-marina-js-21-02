@@ -11,8 +11,6 @@ interface IUpdatedUserData {
   phone?: string;
 }
 
-export const getUserPostsUrl = (id: string) => `user/${id}/post`;
-
 export const createNewUser = (data: any) => ({
   firstName: data.registration__name.split(' ')[0],
   lastName: data.registration__name.split(' ')[1],

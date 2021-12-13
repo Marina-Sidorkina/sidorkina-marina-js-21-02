@@ -1,5 +1,5 @@
 import React, { SyntheticEvent } from 'react';
-import './helper.scss';
+import styles from './helper.module.scss';
 import { IHelperState, IComponentWithHelperProps } from './@types/helper';
 
 function helper(Component: React.ElementType, comment: string) {
@@ -24,11 +24,11 @@ function helper(Component: React.ElementType, comment: string) {
     render() {
       return (
         <div
-          className="helper"
+          className={styles.helper}
           onMouseOut={this.mouseOut}
           onMouseOver={this.mouseOver}
         >
-          { this.state.hovered && <div className="helper__text">{ comment }</div>}
+          { this.state.hovered && <div className={styles.text}>{ comment }</div>}
           <Component
             firstName={this.props.firstName}
             lastName={this.props.lastName}
