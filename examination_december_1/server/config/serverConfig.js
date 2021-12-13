@@ -8,5 +8,5 @@ module.exports = {
     SERVER_ERROR: 500,
     UNKNOWN_ERROR: 520
   },
-  timeout: 30000
+  timeout: 50000
 }
