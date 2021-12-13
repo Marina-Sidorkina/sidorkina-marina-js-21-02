@@ -56,8 +56,8 @@ module.exports = {
     GET_POST_BY_ID_ERROR: '[PostService.getPostById] error status={} error={}',
 
     GET_POST_COMMENTS_LIST_INVOKE: '[PostService.getPostCommentsList] invoke page={} limit={} postId={}',
-    GET_POST_COMMENTS_LIST_SUCCESS: '[PostService.getPostCommentsList] success data={}',
-    GET_POST_COMMENTS_LIST_ERROR: '[PostService.getPostCommentsList] error error={}',
+    GET_POST_COMMENTS_LIST_SUCCESS: '[PostService.getPostCommentsList] success status={} data={}',
+    GET_POST_COMMENTS_LIST_ERROR: '[PostService.getPostCommentsList] error status={} error={}',
   },
   userAction: {
     UPDATE_USER_BY_ID_INVOKE: '[UserAction.updateUserById] invoke id={} data={}',

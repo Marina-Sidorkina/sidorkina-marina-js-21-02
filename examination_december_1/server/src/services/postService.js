@@ -61,7 +61,6 @@ class PostService {
       req.query[DUMMY_API_SETTINGS.query.limit])
       .then((response) => {
         const data = CommentModel.parseData(response);
-
         logger.info(format(messages.GET_POST_COMMENTS_LIST_SUCCESS,
           statuses.OK,
           JSON.stringify(data)));
