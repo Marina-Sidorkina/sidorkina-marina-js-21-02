@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import './UserPostsItem.scss';
 import { useDispatch } from 'react-redux';
+import styles from './UserPostsItem.module.scss';
 import { openPostModalAction, setPostModalCurrenIdAction } from '../../../redux/actions/postModal';
 import { ThemeContext } from '../../../contexts/ThemeContext';
 import { IUserPostsItemProps } from './@types/userPostsItem';
@@ -17,17 +17,17 @@ const UserPostsItem = (props: IUserPostsItemProps) => {
 
   return (
     <div
-      className={`${themeContext.darkTheme
-        ? 'user-posts__item user-post-item user-post-item_dark'
-        : 'user-posts__item user-post-item'}`}
+      className={themeContext.darkTheme
+        ? `${styles.post} ${styles.post_dark}`
+        : styles.post}
       onClick={onItemClick}
     >
       <img
-        className="user-post-item__photo"
+        className={styles.photo}
         src={image}
         alt="Фото"
       />
-      <p className="user-post-item__text">
+      <p className={styles.text}>
         {text}
       </p>
     </div>

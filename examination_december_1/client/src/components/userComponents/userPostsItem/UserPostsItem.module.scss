@@ -1,4 +1,4 @@
-.user-post-item {
+.post {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -19,7 +19,7 @@
     color: #c9d1d9;
   }
 
-  &__btn {
+  .btn {
     padding: 0;
     border: none;
     font: inherit;
@@ -40,7 +40,7 @@
     width: 290px;
   }
 
-  &__photo {
+  .photo {
     height: 170px;
     width: 100%;
     margin-bottom: 10px;
@@ -48,7 +48,7 @@
     border-radius: 15px;
   }
 
-  &__text {
+  .text {
     padding: 0 5px;
     font-size: 12px;
   }
