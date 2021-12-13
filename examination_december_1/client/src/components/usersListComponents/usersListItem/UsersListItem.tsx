@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import './UsersListItem.scss';
 import { Link } from 'react-router-dom';
+import styles from './UsersListItem.module.scss';
 import { DEFAULT_IMAGE } from '../../../constants/components';
 import helper from '../../../hocs/helper/helper';
 import { ThemeContext } from '../../../contexts/ThemeContext';
@@ -27,18 +27,17 @@ const UsersListItem = (props: IUsersListItemProps) => {
   const themeContext = useContext(ThemeContext);
 
   return (
-    <Link to={`/profile/${id}`} className="link-to-profile">
-      <li className={`users-list__item user-item ${themeContext.darkTheme
-        ? 'user-item_dark' : ''}`}
+    <Link to={`/profile/${id}`} className={styles.link}>
+      <li className={themeContext.darkTheme
+        ? `${styles.item} ${styles.item_dark}`
+        : styles.item}
       >
         <img
-          className="user-item__img"
+          className={styles.img}
           src={picture || DEFAULT_IMAGE}
           alt="Аватар пользователя"
         />
         <UserNameWithHelper
-          className={`${themeContext.darkTheme
-            ? 'user-item__name user-item__name_dark' : 'user-item__name'}`}
           firstName={firstName}
           lastName={lastName}
           title={title}
