@@ -26,6 +26,7 @@ const PostsList = () => {
   const elements = stateValues.postsList.data.isLoading
     ? (
       <Spin
+        className={styles.spinner}
         tip={t('loadingText', {})}
         size="large"
         style={{

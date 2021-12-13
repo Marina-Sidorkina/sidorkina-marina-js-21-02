@@ -41,18 +41,18 @@ export const getCommentsList = (
 ) => proxy.get(
   `${PROXY_API_CONFIG.paths.post}/${id}/${PROXY_API_CONFIG.paths.comment}`,
   { params: { page, limit } }
-)
-  .then(processResponse);
+).then(processResponse);
 
 export const updateUser = (
   newUserData: Object,
   id: string
-) => proxy.put(`/${PROXY_API_CONFIG.paths.user}/${id}`, newUserData)
+) => proxy.put(`/${PROXY_API_CONFIG.paths.user}/${id}`,
+  JSON.stringify(newUserData), PROXY_API_CONFIG.configuration)
   .then(processResponse);
 
 export const addAndShowNewUser = (
   newUserData: INewUserData
 ) => proxy.post(
   `${PROXY_API_CONFIG.paths.user}/${PROXY_API_CONFIG.paths.create}`,
-  newUserData
-);
+  JSON.stringify(newUserData), PROXY_API_CONFIG.configuration
+).then(processResponse);

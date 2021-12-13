@@ -6,5 +6,10 @@ export const PROXY_API_CONFIG = {
     post: 'post',
     comment: 'comment',
     create: 'create'
+  },
+  configuration: {
+    headers: {
+      'Content-Type': 'application/json'
+    }
   }
 };
