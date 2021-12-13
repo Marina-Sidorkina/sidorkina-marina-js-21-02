@@ -38,4 +38,5 @@ app.use((error, request, response, next) => {
   next();
 })
 
-app.listen(port, host, () => console.log('App started'));
+const server = app.listen(port, host, () => console.log('App started'));
+server.keepAliveTimeout = 61 * 1000;
