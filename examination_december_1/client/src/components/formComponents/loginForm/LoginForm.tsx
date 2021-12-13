@@ -13,8 +13,8 @@ import {
 } from '../../../redux/actions/login';
 import styles from './LoginForm.module.scss';
 import { ThemeContext } from '../../../contexts/ThemeContext';
-import { RULES } from './antDesignSettings/loginForm';
-import { LOGIN_INPUT_FILED_NAME } from '../../../constants/components';
+import { RULES, RULES_EN } from './antDesignSettings/loginForm';
+import { LOGIN_INPUT_FILED_NAME, RUSSIAN_LANGUAGE } from '../../../constants/components';
 import { useTypedSelector } from '../../../redux/hooks/useTypedSelector';
 
 const LoginForm = () => {
@@ -23,6 +23,8 @@ const LoginForm = () => {
   const { t } = useTranslation();
   const stateValues = useTypedSelector((state) => state);
   const dispatch = useDispatch();
+  const language = useTypedSelector((state) => state.languageSelector.value);
+  const rules = language === RUSSIAN_LANGUAGE ? RULES : RULES_EN;
 
   const onSubmit = (values: any) => {
     dispatch(authorizeUser(values[LOGIN_INPUT_FILED_NAME], history));
@@ -53,7 +55,7 @@ const LoginForm = () => {
           <Form.Item
             className={styles.formItem}
             name="login-input"
-            rules={RULES.id}
+            rules={rules.id}
           >
             <Input
               className={styles.input}
