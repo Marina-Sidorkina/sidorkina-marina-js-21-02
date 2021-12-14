@@ -1,4 +1,4 @@
-const {task_1, task_2, task_3, task_4, task_5, task_6} = require('./index');
+const {task_1, task_2, task_3, task_4, task_5, task_6, task_7} = require('./index');
 
 describe('task_1', () => {
   it('should compare two words in different cases', () => {
@@ -104,5 +104,21 @@ describe('task_6', () => {
 
   it('should return false if no value', () => {
     expect(task_6('')).toBeFalsy();
+  });
+});
+
+describe('task_7', () => {
+  it('should return numbers', () => {
+    expect(task_7('34.5 value 23 string')).toStrictEqual(['34.5', '23']);
+    expect(task_7('2.2 333 456.1 some string')).toStrictEqual(['2.2', '333', '456.1']);
+  });
+
+  it('should return "Числа не найдены..." if no numbers', () => {
+    expect(task_7('value value')).toBe("Числа не найдены...");
+    expect(task_7('some value, string')).toBe("Числа не найдены...");
+  });
+
+  it('should return false if no value', () => {
+    expect(task_7('')).toBeFalsy();
   });
 });

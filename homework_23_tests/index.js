@@ -82,16 +82,16 @@ const task_6 = (input) => {
   }
 }
 
-const task_7 = () => {
-  const input = prompt("Введите строку с числами");
+// Введите строку с числами
+const task_7 = (input) => {
   const regexp = /\d+\.?(\d+)?/g;
 
   if(input && input.match(regexp)) {
-    alert(input.match(regexp));
+    return input.match(regexp);
   } else if(input && !input.match(regexp)) {
-    alert("Числа не найдены...");
+    return "Числа не найдены...";
   } else if(input !== null) {
-    alert("Необходимо выполнить условие задачи!");
+    return false;
   }
 }
 
