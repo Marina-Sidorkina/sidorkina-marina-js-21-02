@@ -51,3 +51,18 @@ describe('task_3', () => {
     expect(task_3('45890')).toBeFalsy();
   })
 });
+
+
+describe('task_4', () => {
+  it('should return true if correct value', () => {
+    expect(task_4('иванов иван иванович')).toBeTruthy();
+    expect(task_4('Иванов Иван Иванович')).toBeTruthy();
+    expect(task_4('Иванов иван иванович')).toBeTruthy();
+    expect(task_4('иванов иван')).toBeTruthy();
+  });
+
+  it('should return fasle if incorrect value', () => {
+    expect(task_4('Иван Иван Иван')).toBeFalsy();
+    expect(task_4('12345')).toBeFalsy();
+  })
+})
