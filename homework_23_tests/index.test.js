@@ -1,4 +1,4 @@
-const {task_1, task_2, task_3, task_4} = require('./index');
+const {task_1, task_2, task_3, task_4, task_5} = require('./index');
 
 describe('task_1', () => {
   it('should compare two words in different cases', () => {
@@ -17,7 +17,7 @@ describe('task_1', () => {
   it('should return false if no value or one value', () => {
     expect(task_1('TestTestTest')).toBeFalsy();
     expect(task_1('')).toBeFalsy();
-  })
+  });
 });
 
 
@@ -31,25 +31,25 @@ describe('task_2', () => {
   it('should return shortened string', () => {
     expect(task_2('TestTestTest, 3')).toBe("Tes...");
     expect(task_2('valueSomeString, 5')).toBe("value...");
-  })
+  });
 
   it('should return false if no value or one value', () => {
     expect(task_2('TestTestTest')).toBeFalsy();
     expect(task_2('')).toBeFalsy();
-  })
+  });
 });
 
 describe('task_3', () => {
   it('should return date from dd/mm/yyyy hh-mm as dd.mm.yyyy hh:mm', () => {
     expect(task_3('12/02/2021 12-00')).toBe('12.02.2021 12:00');
     expect(task_3('22/11/1985 12-00')).toBe('22.11.1985 12:00');
-  })
+  });
 
   it('should return false if value not in format dd/mm/yyyy hh-mm', () => {
     expect(task_3('12/02/2021')).toBeFalsy();
     expect(task_3('12-00')).toBeFalsy();
     expect(task_3('45890')).toBeFalsy();
-  })
+  });
 });
 
 
@@ -64,5 +64,18 @@ describe('task_4', () => {
   it('should return false if incorrect value', () => {
     expect(task_4('Иван Иван Иван')).toBeFalsy();
     expect(task_4('12345')).toBeFalsy();
-  })
-})
+  });
+});
+
+describe('task_5', () => {
+  it('should return true if correct value', () => {
+    expect(task_5('ValueValueValue')).toBe('value_value_value');
+    expect(task_5('TestTest')).toBe('test_test');
+  });
+
+  it('should return false if incorrect value', () => {
+    expect(task_4('Value Value Value')).toBeFalsy();
+    expect(task_4('12345')).toBeFalsy();
+    expect(task_4('valuevalue')).toBeFalsy();
+  });
+});

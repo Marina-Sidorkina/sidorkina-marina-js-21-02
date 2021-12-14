@@ -56,15 +56,15 @@ const task_4 = (input) => {
   }
 }
 
-const task_5 = () => {
-  const input = prompt("Введите строку  в CamelCase");
+//Введите строку в CamelCase
+const task_5 = (input) => {
   const replace = (value) => `_${value.toLowerCase()}`;
   const camelCaseTest = /^([A-ZА-Я]{1}[a-zа-я]+){2,}$/;
 
   if(input && camelCaseTest.test(input)) {
-    alert(input.replace(/[A-ZА-Я]/g, replace).slice(1))
+    return input.replace(/[A-ZА-Я]/g, replace).slice(1);
   } else if(input !== null) {
-    alert("Необходимо выполнить условие задачи!");
+    return false;
   }
 }
 
