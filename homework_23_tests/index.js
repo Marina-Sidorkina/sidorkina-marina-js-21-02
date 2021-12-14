@@ -95,18 +95,16 @@ const task_7 = (input) => {
   }
 }
 
-// Возможна комбинация групп с тире и без
-const task_8 = () => {
-  const input = prompt("Введите идентификатор (4 группы по 4 символа с тире и/или без)");
+// Введите идентификатор (4 группы по 4 символа с тире и/или без)
+const task_8 = (input) => {
   const regexp = /^([a-zA-Z0-9]{4}-?){3}[a-zA-Z0-9]{4}$/;
 
   if(input && regexp.test(input)) {
-    alert("Ведется поиск...");
+    return "Ведется поиск...";
   } else if(input && !regexp.test(input)) {
-    alert("Неверный идентификатор!");
-    task_8_1();
+    return "Неверный идентификатор!";
   } else if(input !== null) {
-    alert("Необходимо выполнить условие задачи!");
+    return false;
   }
 }
 

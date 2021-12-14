@@ -1,4 +1,4 @@
-const {task_1, task_2, task_3, task_4, task_5, task_6, task_7} = require('./index');
+const {task_1, task_2, task_3, task_4, task_5, task_6, task_7, task_8} = require('./index');
 
 describe('task_1', () => {
   it('should compare two words in different cases', () => {
@@ -120,5 +120,23 @@ describe('task_7', () => {
 
   it('should return false if no value', () => {
     expect(task_7('')).toBeFalsy();
+  });
+});
+
+describe('task_8', () => {
+  it('should return "Ведется поиск..."', () => {
+    expect(task_8('1234-1234-1234-1234')).toBe('Ведется поиск...');
+    expect(task_8('12341234-12341234')).toBe('Ведется поиск...');
+    expect(task_8('1234123412341234')).toBe('Ведется поиск...');
+  });
+
+  it('should return "Неверный идентификатор!"', () => {
+    expect(task_8('1234-123-123-123')).toBe('Неверный идентификатор!');
+    expect(task_8('12341234-123412')).toBe('Неверный идентификатор!');
+    expect(task_8('12343412341234')).toBe('Неверный идентификатор!');
+  });
+
+  it('should return false', () => {
+    expect(task_8('')).toBeFalsy();
   });
 });
