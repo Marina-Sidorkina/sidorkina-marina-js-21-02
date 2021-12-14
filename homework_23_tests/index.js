@@ -32,29 +32,27 @@ const task_2 = (input) => {
   }
 }
 
-const task_3 = () => {
-  const input = prompt("Введите строку с датой и временем в формате \"12/02/2021 12-00\"");
+// Введите строку с датой и временем в формате "12/02/2021 12-00"
+const task_3 = (input) => {
   const dateTest = /^\d{2}\/\d{2}\/\d{4} \d{2}-\d{2}$/;
 
   if(input && input.match(dateTest)) {
-    const firstChange = /\//g;
-    const secondChange = /-/g;
-    alert(input.replace(/\//g, ".").replace(/-/g, ":"));
+    return input.replace(/\//g, ".").replace(/-/g, ":");
   } else if(input !== null) {
-    alert("Необходимо выполнить условие задачи!");
+    return false;
   }
 }
 
-const task_4 = () => {
-  const input = prompt("Введите строку кириллических символов (проверка ФИО)");
+// Введите строку кириллических символов (проверка ФИО)
+const task_4 = (input) => {
   const regexp = /^[а-яА-Я]+ [а-яА-Я]+( [а-яА-Я]+(вич|вна))?$/;
 
   if(input && input.match(regexp)) {
-    alert(true);
+    return true;
   } else if(input && !input.match(regexp)) {
-    alert(false);
+    return false;
   } else if(input !== null) {
-    alert("Необходимо выполнить условие задачи!");
+    return false;
   }
 }
 
@@ -97,7 +95,7 @@ const task_7 = () => {
 }
 
 // Возможна комбинация групп с тире и без
-const task_8_1 = () => {
+const task_8 = () => {
   const input = prompt("Введите идентификатор (4 группы по 4 символа с тире и/или без)");
   const regexp = /^([a-zA-Z0-9]{4}-?){3}[a-zA-Z0-9]{4}$/;
 
@@ -111,21 +109,6 @@ const task_8_1 = () => {
   }
 }
 
-// Все группы или разделены или нет
-const task_8_2 = () => {
-  const input = prompt("Введите идентификатор (4 группы по 4 символа с тире или без)");
-  const regexp = /^((([a-zA-Z0-9]{4}-){3})|(([a-zA-Z0-9]{4}){3}))[a-zA-Z0-9]{4}$/;
-
-  if(input && regexp.test(input)) {
-    alert("Ведется поиск...");
-  } else if(input && !regexp.test(input)) {
-    alert("Неверный идентификатор!");
-    task_8_2();
-  } else if(input !== null) {
-    alert("Необходимо выполнить условие задачи!");
-  }
-}
-
 module.exports = {
   task_1,
   task_2,
@@ -134,6 +117,5 @@ module.exports = {
   task_5,
   task_6,
   task_7,
-  task_8_1,
-  task_8_2
+  task_8
 }

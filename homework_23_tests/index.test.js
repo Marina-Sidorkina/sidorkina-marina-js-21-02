@@ -1,4 +1,4 @@
-const {task_1, task_2} = require('./index');
+const {task_1, task_2, task_3, task_4} = require('./index');
 
 describe('task_1', () => {
   it('should compare two words in different cases', () => {
@@ -37,4 +37,17 @@ describe('task_2', () => {
     expect(task_2('TestTestTest')).toBeFalsy();
     expect(task_2('')).toBeFalsy();
   })
-})
+});
+
+describe('task_3', () => {
+  it('should return date from dd/mm/yyyy hh-mm as dd.mm.yyyy hh:mm', () => {
+    expect(task_3('12/02/2021 12-00')).toBe('12.02.2021 12:00');
+    expect(task_3('22/11/1985 12-00')).toBe('22.11.1985 12:00');
+  })
+
+  it('should return false if value not in format dd/mm/yyyy hh-mm', () => {
+    expect(task_3('12/02/2021')).toBeFalsy();
+    expect(task_3('12-00')).toBeFalsy();
+    expect(task_3('45890')).toBeFalsy();
+  })
+});
