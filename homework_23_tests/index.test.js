@@ -1,4 +1,4 @@
-const {task_1, task_2, task_3, task_4, task_5} = require('./index');
+const {task_1, task_2, task_3, task_4, task_5, task_6} = require('./index');
 
 describe('task_1', () => {
   it('should compare two words in different cases', () => {
@@ -77,5 +77,32 @@ describe('task_5', () => {
     expect(task_4('Value Value Value')).toBeFalsy();
     expect(task_4('12345')).toBeFalsy();
     expect(task_4('valuevalue')).toBeFalsy();
+  });
+});
+
+const test1 = `value value
+               <!-- Comment --> value
+               value value`;
+
+const test2 = `
+               <!-- Comment --> value
+               `;
+
+const test3= `value value
+                   value
+               value value`
+
+describe('task_6', () => {
+  it('should return array of html comments', () => {
+    expect(task_6(test1)).toStrictEqual(['<!-- Comment -->']);
+    expect(task_6(test2)).toStrictEqual(['<!-- Comment -->']);
+  });
+
+  it('should return Комментарии не найдены... if no comments', () => {
+    expect(task_6(test3)).toBe("Комментарии не найдены...");
+  });
+
+  it('should return false if no value', () => {
+    expect(task_6('')).toBeFalsy();
   });
 });

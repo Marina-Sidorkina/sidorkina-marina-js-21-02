@@ -68,16 +68,17 @@ const task_5 = (input) => {
   }
 }
 
-const task_6 = () => {
-  const input = prompt("Введите многострочную строку");
+
+// Введите многострочную строку
+const task_6 = (input) => {
   const regexp = /<!--.+?-->/gs;
 
   if(input && input.match(regexp)) {
-    alert(input.match(regexp));
+    return input.match(regexp);
   } else if(input && !input.match(regexp)) {
-    alert("Комментарии не найдены...");
+    return "Комментарии не найдены...";
   } else if(input !== null) {
-    alert("Необходимо выполнить условие задачи!");
+    return false;
   }
 }
 
