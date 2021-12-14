@@ -19,3 +19,22 @@ describe('task_1', () => {
     expect(task_1('')).toBeFalsy();
   })
 });
+
+
+describe('task_2', () => {
+  it('should return false if not a string and a number', () => {
+    expect(task_2('testTest, test')).toBeFalsy();
+    expect(task_2('testTest, value')).toBeFalsy();
+    expect(task_2('3, value')).toBeFalsy();
+  });
+
+  it('should return shortened string', () => {
+    expect(task_2('TestTestTest, 3')).toBe("Tes...");
+    expect(task_2('valueSomeString, 5')).toBe("value...");
+  })
+
+  it('should return false if no value or one value', () => {
+    expect(task_2('TestTestTest')).toBeFalsy();
+    expect(task_2('')).toBeFalsy();
+  })
+})
