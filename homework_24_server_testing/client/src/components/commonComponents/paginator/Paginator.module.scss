@@ -1,0 +1,14 @@
+.paginator {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+
+  &_modal {
+    position: static;
+  }
+
+  &_dark {
+    background-color: white;
+    border-radius: 30px;
+  }
+}

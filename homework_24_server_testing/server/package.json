@@ -1,0 +1,35 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/server",
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.6",
+    "request-context": "^2.0.0",
+    "simple-node-logger": "^21.8.12",
+    "string-format": "^2.0.0",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "axios-mock-adapter": "^1.20.0",
+    "jest": "^27.4.5",
+    "nodemon": "^2.0.15",
+    "supertest": "^6.1.6"
+  },
+  "jest": {
+    "testRegex": "(/tests/.*|(\\.|/)(test|spec))\\.jsx?$",
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "**/src/**/**/*.js"
+    ]
+  }
+}
