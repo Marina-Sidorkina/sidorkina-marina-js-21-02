@@ -1,0 +1,2581 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Profile test should render Profile 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <HashRouter>
+    <Router
+      history={
+        Object {
+          "action": "POP",
+          "block": [Function],
+          "createHref": [Function],
+          "go": [Function],
+          "goBack": [Function],
+          "goForward": [Function],
+          "length": 1,
+          "listen": [Function],
+          "location": Object {
+            "hash": "",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          },
+          "push": [Function],
+          "replace": [Function],
+        }
+      }
+    >
+      <Connect(Profile)>
+        <Profile
+          modalIsOpened={false}
+          page={0}
+          perPage={6}
+          total={100}
+          updatePage={[Function]}
+        >
+          <Main>
+            <main
+              className="main"
+            >
+              <div
+                className="container"
+              >
+                <User>
+                  <div
+                    className="user"
+                  >
+                    <UserInfo>
+                      <div
+                        className="info"
+                      >
+                        <img
+                          alt="Аватар пользователя"
+                          className="image"
+                          src="https://i.ibb.co/2yWbJxP/default.png"
+                        />
+                        <div
+                          className="container"
+                        >
+                          <div
+                            className="details"
+                          >
+                            <p
+                              className="name"
+                            >
+                              г-н John Doe
+                            </p>
+                            <p
+                              className="item"
+                            >
+                              <b>
+                                Gender:
+                                 
+                              </b>
+                              Мужской
+                            </p>
+                            <p
+                              className="item"
+                            >
+                              <b>
+                                Date of birth:
+                                 
+                              </b>
+                            </p>
+                            <p
+                              className="item"
+                            >
+                              <b>
+                                Registration date:
+                                 
+                              </b>
+                            </p>
+                            <p
+                              className="item"
+                            >
+                              <b>
+                                Email:
+                                 
+                              </b>
+                            </p>
+                            <p
+                              className="item"
+                            >
+                              <b>
+                                Phone:
+                                 
+                              </b>
+                              55555
+                            </p>
+                            <p
+                              className="itemId"
+                            >
+                              <b>
+                                ID: 
+                              </b>
+                              12345
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </UserInfo>
+                    <UserPosts>
+                      <ul
+                        className="posts"
+                      >
+                        <li
+                          key="12345"
+                        >
+                          <UserPostsItem
+                            id="12345"
+                            image=""
+                            text="text"
+                          >
+                            <div
+                              className="post"
+                              onClick={[Function]}
+                            >
+                              <img
+                                alt="Фото"
+                                className="photo"
+                                src=""
+                              />
+                              <p
+                                className="text"
+                              >
+                                text
+                              </p>
+                            </div>
+                          </UserPostsItem>
+                        </li>
+                      </ul>
+                    </UserPosts>
+                  </div>
+                </User>
+                <Paginator
+                  current={0}
+                  modal={false}
+                  onPageChange={[Function]}
+                  perPage={6}
+                  total={100}
+                >
+                  <Pagination
+                    className="paginator
+        "
+                    current={0}
+                    onChange={[Function]}
+                    pageSize={6}
+                    showQuickJumper={true}
+                    simple={true}
+                    total={100}
+                  >
+                    <LocaleReceiver
+                      componentName="Pagination"
+                      defaultLocale={
+                        Object {
+                          "items_per_page": "/ page",
+                          "jump_to": "Go to",
+                          "jump_to_confirm": "confirm",
+                          "next_3": "Next 3 Pages",
+                          "next_5": "Next 5 Pages",
+                          "next_page": "Next Page",
+                          "page": "Page",
+                          "page_size": "Page Size",
+                          "prev_3": "Previous 3 Pages",
+                          "prev_5": "Previous 5 Pages",
+                          "prev_page": "Previous Page",
+                        }
+                      }
+                    >
+                      <Pagination
+                        className="paginator
+        "
+                        current={0}
+                        defaultCurrent={1}
+                        defaultPageSize={10}
+                        hideOnSinglePage={false}
+                        itemRender={[Function]}
+                        jumpNextIcon={
+                          <a
+                            className="ant-pagination-item-link"
+                          >
+                            <div
+                              className="ant-pagination-item-container"
+                            >
+                              <ForwardRef(DoubleRightOutlined)
+                                className="ant-pagination-item-link-icon"
+                              />
+                              <span
+                                className="ant-pagination-item-ellipsis"
+                              >
+                                •••
+                              </span>
+                            </div>
+                          </a>
+                        }
+                        jumpPrevIcon={
+                          <a
+                            className="ant-pagination-item-link"
+                          >
+                            <div
+                              className="ant-pagination-item-container"
+                            >
+                              <ForwardRef(DoubleLeftOutlined)
+                                className="ant-pagination-item-link-icon"
+                              />
+                              <span
+                                className="ant-pagination-item-ellipsis"
+                              >
+                                •••
+                              </span>
+                            </div>
+                          </a>
+                        }
+                        locale={
+                          Object {
+                            "items_per_page": "/ page",
+                            "jump_to": "Go to",
+                            "jump_to_confirm": "confirm",
+                            "next_3": "Next 3 Pages",
+                            "next_5": "Next 5 Pages",
+                            "next_page": "Next Page",
+                            "page": "Page",
+                            "page_size": "Page Size",
+                            "prev_3": "Previous 3 Pages",
+                            "prev_5": "Previous 5 Pages",
+                            "prev_page": "Previous Page",
+                          }
+                        }
+                        nextIcon={
+                          <button
+                            className="ant-pagination-item-link"
+                            tabIndex={-1}
+                            type="button"
+                          >
+                            <ForwardRef(RightOutlined) />
+                          </button>
+                        }
+                        onChange={[Function]}
+                        onShowSizeChange={[Function]}
+                        pageSize={6}
+                        prefixCls="ant-pagination"
+                        prevIcon={
+                          <button
+                            className="ant-pagination-item-link"
+                            tabIndex={-1}
+                            type="button"
+                          >
+                            <ForwardRef(LeftOutlined) />
+                          </button>
+                        }
+                        selectComponentClass={
+                          Object {
+                            "$$typeof": Symbol(react.forward_ref),
+                            "OptGroup": [Function],
+                            "Option": [Function],
+                            "SECRET_COMBOBOX_MODE_DO_NOT_USE": "SECRET_COMBOBOX_MODE_DO_NOT_USE",
+                            "render": [Function],
+                          }
+                        }
+                        selectPrefixCls="ant-select"
+                        showLessItems={false}
+                        showPrevNextJumpers={true}
+                        showQuickJumper={true}
+                        showTitle={true}
+                        simple={true}
+                        style={Object {}}
+                        total={100}
+                        totalBoundaryShowSizeChanger={50}
+                      >
+                        <ul
+                          className="ant-pagination ant-pagination-simple paginator
+        "
+                          style={Object {}}
+                        >
+                          <li
+                            aria-disabled={true}
+                            className="ant-pagination-prev ant-pagination-disabled"
+                            onClick={[Function]}
+                            onKeyPress={[Function]}
+                            tabIndex={null}
+                            title="Previous Page"
+                          >
+                            <button
+                              className="ant-pagination-item-link"
+                              disabled={true}
+                              tabIndex={-1}
+                              type="button"
+                            >
+                              <ForwardRef(LeftOutlined)>
+                                <AntdIcon
+                                  icon={
+                                    Object {
+                                      "icon": Object {
+                                        "attrs": Object {
+                                          "focusable": "false",
+                                          "viewBox": "64 64 896 896",
+                                        },
+                                        "children": Array [
+                                          Object {
+                                            "attrs": Object {
+                                              "d": "M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 000 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z",
+                                            },
+                                            "tag": "path",
+                                          },
+                                        ],
+                                        "tag": "svg",
+                                      },
+                                      "name": "left",
+                                      "theme": "outlined",
+                                    }
+                                  }
+                                >
+                                  <span
+                                    aria-label="left"
+                                    className="anticon anticon-left"
+                                    role="img"
+                                  >
+                                    <IconReact
+                                      icon={
+                                        Object {
+                                          "icon": Object {
+                                            "attrs": Object {
+                                              "focusable": "false",
+                                              "viewBox": "64 64 896 896",
+                                            },
+                                            "children": Array [
+                                              Object {
+                                                "attrs": Object {
+                                                  "d": "M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 000 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z",
+                                                },
+                                                "tag": "path",
+                                              },
+                                            ],
+                                            "tag": "svg",
+                                          },
+                                          "name": "left",
+                                          "theme": "outlined",
+                                        }
+                                      }
+                                    >
+                                      <svg
+                                        aria-hidden="true"
+                                        data-icon="left"
+                                        fill="currentColor"
+                                        focusable="false"
+                                        height="1em"
+                                        key="svg-left"
+                                        viewBox="64 64 896 896"
+                                        width="1em"
+                                      >
+                                        <path
+                                          d="M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 000 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z"
+                                          key="svg-left-svg-0"
+                                        />
+                                      </svg>
+                                    </IconReact>
+                                  </span>
+                                </AntdIcon>
+                              </ForwardRef(LeftOutlined)>
+                            </button>
+                          </li>
+                          <li
+                            className="ant-pagination-simple-pager"
+                            title="0/17"
+                          >
+                            <input
+                              onBlur={[Function]}
+                              onChange={[Function]}
+                              onKeyDown={[Function]}
+                              onKeyUp={[Function]}
+                              size="3"
+                              type="text"
+                              value={0}
+                            />
+                            <span
+                              className="ant-pagination-slash"
+                            >
+                              /
+                            </span>
+                            17
+                          </li>
+                          <li
+                            aria-disabled={false}
+                            className="ant-pagination-next"
+                            onClick={[Function]}
+                            onKeyPress={[Function]}
+                            tabIndex={null}
+                            title="Next Page"
+                          >
+                            <button
+                              className="ant-pagination-item-link"
+                              disabled={false}
+                              tabIndex={-1}
+                              type="button"
+                            >
+                              <ForwardRef(RightOutlined)>
+                                <AntdIcon
+                                  icon={
+                                    Object {
+                                      "icon": Object {
+                                        "attrs": Object {
+                                          "focusable": "false",
+                                          "viewBox": "64 64 896 896",
+                                        },
+                                        "children": Array [
+                                          Object {
+                                            "attrs": Object {
+                                              "d": "M765.7 486.8L314.9 134.7A7.97 7.97 0 00302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 000-50.4z",
+                                            },
+                                            "tag": "path",
+                                          },
+                                        ],
+                                        "tag": "svg",
+                                      },
+                                      "name": "right",
+                                      "theme": "outlined",
+                                    }
+                                  }
+                                >
+                                  <span
+                                    aria-label="right"
+                                    className="anticon anticon-right"
+                                    role="img"
+                                  >
+                                    <IconReact
+                                      icon={
+                                        Object {
+                                          "icon": Object {
+                                            "attrs": Object {
+                                              "focusable": "false",
+                                              "viewBox": "64 64 896 896",
+                                            },
+                                            "children": Array [
+                                              Object {
+                                                "attrs": Object {
+                                                  "d": "M765.7 486.8L314.9 134.7A7.97 7.97 0 00302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 000-50.4z",
+                                                },
+                                                "tag": "path",
+                                              },
+                                            ],
+                                            "tag": "svg",
+                                          },
+                                          "name": "right",
+                                          "theme": "outlined",
+                                        }
+                                      }
+                                    >
+                                      <svg
+                                        aria-hidden="true"
+                                        data-icon="right"
+                                        fill="currentColor"
+                                        focusable="false"
+                                        height="1em"
+                                        key="svg-right"
+                                        viewBox="64 64 896 896"
+                                        width="1em"
+                                      >
+                                        <path
+                                          d="M765.7 486.8L314.9 134.7A7.97 7.97 0 00302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 000-50.4z"
+                                          key="svg-right-svg-0"
+                                        />
+                                      </svg>
+                                    </IconReact>
+                                  </span>
+                                </AntdIcon>
+                              </ForwardRef(RightOutlined)>
+                            </button>
+                          </li>
+                        </ul>
+                      </Pagination>
+                    </LocaleReceiver>
+                  </Pagination>
+                </Paginator>
+                <UserModal>
+                  <div
+                    className="modal"
+                  >
+                    <div
+                      className="content"
+                    >
+                      <button
+                        className="button"
+                        type="button"
+                      >
+                        <ForwardRef(CloseOutlined)
+                          onClick={[Function]}
+                          style={
+                            Object {
+                              "color": "#ffffff",
+                              "fontSize": "25px",
+                            }
+                          }
+                        >
+                          <AntdIcon
+                            icon={
+                              Object {
+                                "icon": Object {
+                                  "attrs": Object {
+                                    "focusable": "false",
+                                    "viewBox": "64 64 896 896",
+                                  },
+                                  "children": Array [
+                                    Object {
+                                      "attrs": Object {
+                                        "d": "M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 0-9.2 2.1-12.3 5.7L511.6 449.8 295.1 191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0 00203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z",
+                                      },
+                                      "tag": "path",
+                                    },
+                                  ],
+                                  "tag": "svg",
+                                },
+                                "name": "close",
+                                "theme": "outlined",
+                              }
+                            }
+                            onClick={[Function]}
+                            style={
+                              Object {
+                                "color": "#ffffff",
+                                "fontSize": "25px",
+                              }
+                            }
+                          >
+                            <span
+                              aria-label="close"
+                              className="anticon anticon-close"
+                              onClick={[Function]}
+                              role="img"
+                              style={
+                                Object {
+                                  "color": "#ffffff",
+                                  "fontSize": "25px",
+                                }
+                              }
+                              tabIndex={-1}
+                            >
+                              <IconReact
+                                icon={
+                                  Object {
+                                    "icon": Object {
+                                      "attrs": Object {
+                                        "focusable": "false",
+                                        "viewBox": "64 64 896 896",
+                                      },
+                                      "children": Array [
+                                        Object {
+                                          "attrs": Object {
+                                            "d": "M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 0-9.2 2.1-12.3 5.7L511.6 449.8 295.1 191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0 00203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z",
+                                          },
+                                          "tag": "path",
+                                        },
+                                      ],
+                                      "tag": "svg",
+                                    },
+                                    "name": "close",
+                                    "theme": "outlined",
+                                  }
+                                }
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  data-icon="close"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="1em"
+                                  key="svg-close"
+                                  viewBox="64 64 896 896"
+                                  width="1em"
+                                >
+                                  <path
+                                    d="M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 0-9.2 2.1-12.3 5.7L511.6 449.8 295.1 191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0 00203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z"
+                                    key="svg-close-svg-0"
+                                  />
+                                </svg>
+                              </IconReact>
+                            </span>
+                          </AntdIcon>
+                        </ForwardRef(CloseOutlined)>
+                      </button>
+                      <UserModalForm>
+                        <ForwardRef(InternalForm)
+                          className="form"
+                          form={
+                            Object {
+                              "__INTERNAL__": Object {
+                                "itemRef": [Function],
+                                "name": undefined,
+                              },
+                              "getFieldError": [Function],
+                              "getFieldInstance": [Function],
+                              "getFieldValue": [Function],
+                              "getFieldWarning": [Function],
+                              "getFieldsError": [Function],
+                              "getFieldsValue": [Function],
+                              "getInternalHooks": [Function],
+                              "isFieldTouched": [Function],
+                              "isFieldValidating": [Function],
+                              "isFieldsTouched": [Function],
+                              "isFieldsValidating": [Function],
+                              "resetFields": [Function],
+                              "scrollToField": [Function],
+                              "setFields": [Function],
+                              "setFieldsValue": [Function],
+                              "submit": [Function],
+                              "validateFields": [Function],
+                            }
+                          }
+                          labelAlign="left"
+                          labelCol={
+                            Object {
+                              "span": 10,
+                            }
+                          }
+                          onFinish={[Function]}
+                          size="small"
+                          wrapperCol={
+                            Object {
+                              "span": 16,
+                            }
+                          }
+                        >
+                          <SizeContextProvider
+                            size="small"
+                          >
+                            <ForwardRef(Form)
+                              className="ant-form ant-form-horizontal ant-form-small form"
+                              form={
+                                Object {
+                                  "__INTERNAL__": Object {
+                                    "itemRef": [Function],
+                                    "name": undefined,
+                                  },
+                                  "getFieldError": [Function],
+                                  "getFieldInstance": [Function],
+                                  "getFieldValue": [Function],
+                                  "getFieldWarning": [Function],
+                                  "getFieldsError": [Function],
+                                  "getFieldsValue": [Function],
+                                  "getInternalHooks": [Function],
+                                  "isFieldTouched": [Function],
+                                  "isFieldValidating": [Function],
+                                  "isFieldsTouched": [Function],
+                                  "isFieldsValidating": [Function],
+                                  "resetFields": [Function],
+                                  "scrollToField": [Function],
+                                  "setFields": [Function],
+                                  "setFieldsValue": [Function],
+                                  "submit": [Function],
+                                  "validateFields": [Function],
+                                }
+                              }
+                              onFinish={[Function]}
+                              onFinishFailed={[Function]}
+                            >
+                              <form
+                                className="ant-form ant-form-horizontal ant-form-small form"
+                                onReset={[Function]}
+                                onSubmit={[Function]}
+                              >
+                                <img
+                                  alt="Аватар"
+                                  className="img"
+                                  src="https://i.ibb.co/2yWbJxP/default.png"
+                                />
+                                <div
+                                  className="imgEdit"
+                                >
+                                  <label
+                                    className="fileLabel"
+                                    htmlFor="file-input"
+                                  >
+                                    <span
+                                      className="fileSpan"
+                                    >
+                                      Update photo
+                                    </span>
+                                  </label>
+                                  <input
+                                    className="fileInput"
+                                    id="file-input"
+                                    name="file"
+                                    onChange={[Function]}
+                                    type="file"
+                                  />
+                                  <button
+                                    className="fileDelete"
+                                    onClick={[Function]}
+                                    type="button"
+                                  >
+                                    <span
+                                      className="fileSpan"
+                                    >
+                                      Delete photo
+                                    </span>
+                                  </button>
+                                </div>
+                                <FormItem
+                                  className="item"
+                                  label={
+                                    <label
+                                      className="label"
+                                    >
+                                      First and last name:
+                                    </label>
+                                  }
+                                  name="name"
+                                  rules={
+                                    Array [
+                                      Object {
+                                        "validator": [Function],
+                                      },
+                                    ]
+                                  }
+                                >
+                                  <WrapperField
+                                    className="item"
+                                    label={
+                                      <label
+                                        className="label"
+                                      >
+                                        First and last name:
+                                      </label>
+                                    }
+                                    messageVariables={
+                                      Object {
+                                        "label": "name",
+                                      }
+                                    }
+                                    name="name"
+                                    onMetaChange={[Function]}
+                                    rules={
+                                      Array [
+                                        Object {
+                                          "validator": [Function],
+                                        },
+                                      ]
+                                    }
+                                    trigger="onChange"
+                                    validateTrigger="onChange"
+                                  >
+                                    <Field
+                                      className="item"
+                                      fieldContext={
+                                        Object {
+                                          "__INTERNAL__": Object {
+                                            "itemRef": [Function],
+                                            "name": undefined,
+                                          },
+                                          "getFieldError": [Function],
+                                          "getFieldInstance": [Function],
+                                          "getFieldValue": [Function],
+                                          "getFieldWarning": [Function],
+                                          "getFieldsError": [Function],
+                                          "getFieldsValue": [Function],
+                                          "getInternalHooks": [Function],
+                                          "isFieldTouched": [Function],
+                                          "isFieldValidating": [Function],
+                                          "isFieldsTouched": [Function],
+                                          "isFieldsValidating": [Function],
+                                          "resetFields": [Function],
+                                          "scrollToField": [Function],
+                                          "setFields": [Function],
+                                          "setFieldsValue": [Function],
+                                          "submit": [Function],
+                                          "validateFields": [Function],
+                                          "validateTrigger": "onChange",
+                                        }
+                                      }
+                                      key="_name"
+                                      label={
+                                        <label
+                                          className="label"
+                                        >
+                                          First and last name:
+                                        </label>
+                                      }
+                                      messageVariables={
+                                        Object {
+                                          "label": "name",
+                                        }
+                                      }
+                                      name={
+                                        Array [
+                                          "name",
+                                        ]
+                                      }
+                                      onMetaChange={[Function]}
+                                      rules={
+                                        Array [
+                                          Object {
+                                            "validator": [Function],
+                                          },
+                                        ]
+                                      }
+                                      trigger="onChange"
+                                      validateTrigger="onChange"
+                                      valuePropName="value"
+                                    >
+                                      <Row
+                                        className="ant-form-item item"
+                                        key="row"
+                                      >
+                                        <div
+                                          className="ant-row ant-form-item item"
+                                          style={Object {}}
+                                        >
+                                          <FormItemLabel
+                                            className="item"
+                                            htmlFor="name"
+                                            label={
+                                              <label
+                                                className="label"
+                                              >
+                                                First and last name:
+                                              </label>
+                                            }
+                                            name="name"
+                                            prefixCls="ant-form"
+                                            required={false}
+                                            requiredMark={true}
+                                            rules={
+                                              Array [
+                                                Object {
+                                                  "validator": [Function],
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            <Col
+                                              className="ant-form-item-label ant-form-item-label-left"
+                                              span={10}
+                                            >
+                                              <div
+                                                className="ant-col ant-col-10 ant-form-item-label ant-form-item-label-left"
+                                                style={Object {}}
+                                              >
+                                                <label
+                                                  className=""
+                                                  htmlFor="name"
+                                                  title=""
+                                                >
+                                                  <label
+                                                    className="label"
+                                                  >
+                                                    First and last name:
+                                                  </label>
+                                                </label>
+                                              </div>
+                                            </Col>
+                                          </FormItemLabel>
+                                          <FormItemInput
+                                            className="item"
+                                            errors={Array []}
+                                            label={
+                                              <label
+                                                className="label"
+                                              >
+                                                First and last name:
+                                              </label>
+                                            }
+                                            name={
+                                              Array [
+                                                "name",
+                                              ]
+                                            }
+                                            prefixCls="ant-form"
+                                            rules={
+                                              Array [
+                                                Object {
+                                                  "validator": [Function],
+                                                },
+                                              ]
+                                            }
+                                            status=""
+                                            touched={false}
+                                            validateStatus=""
+                                            validating={false}
+                                            warnings={Array []}
+                                          >
+                                            <Col
+                                              className="ant-form-item-control"
+                                              span={16}
+                                            >
+                                              <div
+                                                className="ant-col ant-col-16 ant-form-item-control"
+                                                style={Object {}}
+                                              >
+                                                <div
+                                                  className="ant-form-item-control-input"
+                                                >
+                                                  <div
+                                                    className="ant-form-item-control-input-content"
+                                                  >
+                                                    <Component
+                                                      update={
+                                                        <Input
+                                                          className="input"
+                                                          onChange={[Function]}
+                                                          placeholder="John Doe"
+                                                          type="text"
+                                                          value="John Doe"
+                                                        />
+                                                      }
+                                                    >
+                                                      <Input
+                                                        className="input"
+                                                        id="name"
+                                                        onChange={[Function]}
+                                                        placeholder="John Doe"
+                                                        type="text"
+                                                      >
+                                                        <ClearableLabeledInput
+                                                          bordered={true}
+                                                          className="input"
+                                                          element={
+                                                            <input
+                                                              className="ant-input ant-input-sm input"
+                                                              id="name"
+                                                              onBlur={[Function]}
+                                                              onChange={[Function]}
+                                                              onFocus={[Function]}
+                                                              onKeyDown={[Function]}
+                                                              placeholder="John Doe"
+                                                              type="text"
+                                                            />
+                                                          }
+                                                          focused={false}
+                                                          handleReset={[Function]}
+                                                          id="name"
+                                                          inputType="input"
+                                                          onChange={[Function]}
+                                                          placeholder="John Doe"
+                                                          prefixCls="ant-input"
+                                                          size="small"
+                                                          triggerFocus={[Function]}
+                                                          type="text"
+                                                          value=""
+                                                        >
+                                                          <input
+                                                            className="ant-input ant-input-sm input"
+                                                            id="name"
+                                                            onBlur={[Function]}
+                                                            onChange={[Function]}
+                                                            onFocus={[Function]}
+                                                            onKeyDown={[Function]}
+                                                            placeholder="John Doe"
+                                                            type="text"
+                                                            value=""
+                                                          />
+                                                        </ClearableLabeledInput>
+                                                      </Input>
+                                                    </Component>
+                                                  </div>
+                                                </div>
+                                                <ErrorList
+                                                  className="ant-form-item-explain-connected"
+                                                  errors={Array []}
+                                                  helpStatus=""
+                                                  warnings={Array []}
+                                                >
+                                                  <CSSMotion
+                                                    motionAppear={false}
+                                                    motionDeadline={500}
+                                                    motionEnter={false}
+                                                    motionName="ant-show-help"
+                                                    onAppearActive={[Function]}
+                                                    onAppearEnd={[Function]}
+                                                    onAppearStart={[Function]}
+                                                    onEnterActive={[Function]}
+                                                    onEnterEnd={[Function]}
+                                                    onEnterStart={[Function]}
+                                                    onLeaveActive={[Function]}
+                                                    onLeaveEnd={[Function]}
+                                                    onLeaveStart={[Function]}
+                                                    visible={false}
+                                                  >
+                                                    <DomWrapper />
+                                                  </CSSMotion>
+                                                </ErrorList>
+                                              </div>
+                                            </Col>
+                                          </FormItemInput>
+                                        </div>
+                                      </Row>
+                                    </Field>
+                                  </WrapperField>
+                                </FormItem>
+                                <FormItem
+                                  className="item"
+                                  label={
+                                    <label
+                                      className="label"
+                                    >
+                                      Gender:
+                                    </label>
+                                  }
+                                  name="gender"
+                                  rules={
+                                    Array [
+                                      Object {
+                                        "validator": [Function],
+                                      },
+                                    ]
+                                  }
+                                >
+                                  <WrapperField
+                                    className="item"
+                                    label={
+                                      <label
+                                        className="label"
+                                      >
+                                        Gender:
+                                      </label>
+                                    }
+                                    messageVariables={
+                                      Object {
+                                        "label": "gender",
+                                      }
+                                    }
+                                    name="gender"
+                                    onMetaChange={[Function]}
+                                    rules={
+                                      Array [
+                                        Object {
+                                          "validator": [Function],
+                                        },
+                                      ]
+                                    }
+                                    trigger="onChange"
+                                    validateTrigger="onChange"
+                                  >
+                                    <Field
+                                      className="item"
+                                      fieldContext={
+                                        Object {
+                                          "__INTERNAL__": Object {
+                                            "itemRef": [Function],
+                                            "name": undefined,
+                                          },
+                                          "getFieldError": [Function],
+                                          "getFieldInstance": [Function],
+                                          "getFieldValue": [Function],
+                                          "getFieldWarning": [Function],
+                                          "getFieldsError": [Function],
+                                          "getFieldsValue": [Function],
+                                          "getInternalHooks": [Function],
+                                          "isFieldTouched": [Function],
+                                          "isFieldValidating": [Function],
+                                          "isFieldsTouched": [Function],
+                                          "isFieldsValidating": [Function],
+                                          "resetFields": [Function],
+                                          "scrollToField": [Function],
+                                          "setFields": [Function],
+                                          "setFieldsValue": [Function],
+                                          "submit": [Function],
+                                          "validateFields": [Function],
+                                          "validateTrigger": "onChange",
+                                        }
+                                      }
+                                      key="_gender"
+                                      label={
+                                        <label
+                                          className="label"
+                                        >
+                                          Gender:
+                                        </label>
+                                      }
+                                      messageVariables={
+                                        Object {
+                                          "label": "gender",
+                                        }
+                                      }
+                                      name={
+                                        Array [
+                                          "gender",
+                                        ]
+                                      }
+                                      onMetaChange={[Function]}
+                                      rules={
+                                        Array [
+                                          Object {
+                                            "validator": [Function],
+                                          },
+                                        ]
+                                      }
+                                      trigger="onChange"
+                                      validateTrigger="onChange"
+                                      valuePropName="value"
+                                    >
+                                      <Row
+                                        className="ant-form-item item"
+                                        key="row"
+                                      >
+                                        <div
+                                          className="ant-row ant-form-item item"
+                                          style={Object {}}
+                                        >
+                                          <FormItemLabel
+                                            className="item"
+                                            htmlFor="gender"
+                                            label={
+                                              <label
+                                                className="label"
+                                              >
+                                                Gender:
+                                              </label>
+                                            }
+                                            name="gender"
+                                            prefixCls="ant-form"
+                                            required={false}
+                                            requiredMark={true}
+                                            rules={
+                                              Array [
+                                                Object {
+                                                  "validator": [Function],
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            <Col
+                                              className="ant-form-item-label ant-form-item-label-left"
+                                              span={10}
+                                            >
+                                              <div
+                                                className="ant-col ant-col-10 ant-form-item-label ant-form-item-label-left"
+                                                style={Object {}}
+                                              >
+                                                <label
+                                                  className=""
+                                                  htmlFor="gender"
+                                                  title=""
+                                                >
+                                                  <label
+                                                    className="label"
+                                                  >
+                                                    Gender:
+                                                  </label>
+                                                </label>
+                                              </div>
+                                            </Col>
+                                          </FormItemLabel>
+                                          <FormItemInput
+                                            className="item"
+                                            errors={Array []}
+                                            label={
+                                              <label
+                                                className="label"
+                                              >
+                                                Gender:
+                                              </label>
+                                            }
+                                            name={
+                                              Array [
+                                                "gender",
+                                              ]
+                                            }
+                                            prefixCls="ant-form"
+                                            rules={
+                                              Array [
+                                                Object {
+                                                  "validator": [Function],
+                                                },
+                                              ]
+                                            }
+                                            status=""
+                                            touched={false}
+                                            validateStatus=""
+                                            validating={false}
+                                            warnings={Array []}
+                                          >
+                                            <Col
+                                              className="ant-form-item-control"
+                                              span={16}
+                                            >
+                                              <div
+                                                className="ant-col ant-col-16 ant-form-item-control"
+                                                style={Object {}}
+                                              >
+                                                <div
+                                                  className="ant-form-item-control-input"
+                                                >
+                                                  <div
+                                                    className="ant-form-item-control-input-content"
+                                                  >
+                                                    <Component
+                                                      update={
+                                                        <Input
+                                                          className="input"
+                                                          onChange={[Function]}
+                                                          placeholder="Мужской"
+                                                          type="text"
+                                                          value="male"
+                                                        />
+                                                      }
+                                                    >
+                                                      <Input
+                                                        className="input"
+                                                        id="gender"
+                                                        onChange={[Function]}
+                                                        placeholder="Мужской"
+                                                        type="text"
+                                                      >
+                                                        <ClearableLabeledInput
+                                                          bordered={true}
+                                                          className="input"
+                                                          element={
+                                                            <input
+                                                              className="ant-input ant-input-sm input"
+                                                              id="gender"
+                                                              onBlur={[Function]}
+                                                              onChange={[Function]}
+                                                              onFocus={[Function]}
+                                                              onKeyDown={[Function]}
+                                                              placeholder="Мужской"
+                                                              type="text"
+                                                            />
+                                                          }
+                                                          focused={false}
+                                                          handleReset={[Function]}
+                                                          id="gender"
+                                                          inputType="input"
+                                                          onChange={[Function]}
+                                                          placeholder="Мужской"
+                                                          prefixCls="ant-input"
+                                                          size="small"
+                                                          triggerFocus={[Function]}
+                                                          type="text"
+                                                          value=""
+                                                        >
+                                                          <input
+                                                            className="ant-input ant-input-sm input"
+                                                            id="gender"
+                                                            onBlur={[Function]}
+                                                            onChange={[Function]}
+                                                            onFocus={[Function]}
+                                                            onKeyDown={[Function]}
+                                                            placeholder="Мужской"
+                                                            type="text"
+                                                            value=""
+                                                          />
+                                                        </ClearableLabeledInput>
+                                                      </Input>
+                                                    </Component>
+                                                  </div>
+                                                </div>
+                                                <ErrorList
+                                                  className="ant-form-item-explain-connected"
+                                                  errors={Array []}
+                                                  helpStatus=""
+                                                  warnings={Array []}
+                                                >
+                                                  <CSSMotion
+                                                    motionAppear={false}
+                                                    motionDeadline={500}
+                                                    motionEnter={false}
+                                                    motionName="ant-show-help"
+                                                    onAppearActive={[Function]}
+                                                    onAppearEnd={[Function]}
+                                                    onAppearStart={[Function]}
+                                                    onEnterActive={[Function]}
+                                                    onEnterEnd={[Function]}
+                                                    onEnterStart={[Function]}
+                                                    onLeaveActive={[Function]}
+                                                    onLeaveEnd={[Function]}
+                                                    onLeaveStart={[Function]}
+                                                    visible={false}
+                                                  >
+                                                    <DomWrapper />
+                                                  </CSSMotion>
+                                                </ErrorList>
+                                              </div>
+                                            </Col>
+                                          </FormItemInput>
+                                        </div>
+                                      </Row>
+                                    </Field>
+                                  </WrapperField>
+                                </FormItem>
+                                <FormItem
+                                  className="item"
+                                  label={
+                                    <label
+                                      className="label"
+                                    >
+                                      Date of birth:
+                                    </label>
+                                  }
+                                  name="birthDate"
+                                  rules={
+                                    Array [
+                                      Object {
+                                        "message": "Формат: ММ.ДД.ГГГГ",
+                                        "pattern": /\\^\\(0\\[1-9\\]\\|1\\[012\\]\\)\\[\\.\\]\\(0\\[1-9\\]\\|\\[12\\]\\[0-9\\]\\|3\\[01\\]\\)\\[\\.\\]\\(19\\|20\\)\\\\d\\\\d\\$/,
+                                      },
+                                      Object {
+                                        "validator": [Function],
+                                      },
+                                    ]
+                                  }
+                                >
+                                  <WrapperField
+                                    className="item"
+                                    label={
+                                      <label
+                                        className="label"
+                                      >
+                                        Date of birth:
+                                      </label>
+                                    }
+                                    messageVariables={
+                                      Object {
+                                        "label": "birthDate",
+                                      }
+                                    }
+                                    name="birthDate"
+                                    onMetaChange={[Function]}
+                                    rules={
+                                      Array [
+                                        Object {
+                                          "message": "Формат: ММ.ДД.ГГГГ",
+                                          "pattern": /\\^\\(0\\[1-9\\]\\|1\\[012\\]\\)\\[\\.\\]\\(0\\[1-9\\]\\|\\[12\\]\\[0-9\\]\\|3\\[01\\]\\)\\[\\.\\]\\(19\\|20\\)\\\\d\\\\d\\$/,
+                                        },
+                                        Object {
+                                          "validator": [Function],
+                                        },
+                                      ]
+                                    }
+                                    trigger="onChange"
+                                    validateTrigger="onChange"
+                                  >
+                                    <Field
+                                      className="item"
+                                      fieldContext={
+                                        Object {
+                                          "__INTERNAL__": Object {
+                                            "itemRef": [Function],
+                                            "name": undefined,
+                                          },
+                                          "getFieldError": [Function],
+                                          "getFieldInstance": [Function],
+                                          "getFieldValue": [Function],
+                                          "getFieldWarning": [Function],
+                                          "getFieldsError": [Function],
+                                          "getFieldsValue": [Function],
+                                          "getInternalHooks": [Function],
+                                          "isFieldTouched": [Function],
+                                          "isFieldValidating": [Function],
+                                          "isFieldsTouched": [Function],
+                                          "isFieldsValidating": [Function],
+                                          "resetFields": [Function],
+                                          "scrollToField": [Function],
+                                          "setFields": [Function],
+                                          "setFieldsValue": [Function],
+                                          "submit": [Function],
+                                          "validateFields": [Function],
+                                          "validateTrigger": "onChange",
+                                        }
+                                      }
+                                      key="_birthDate"
+                                      label={
+                                        <label
+                                          className="label"
+                                        >
+                                          Date of birth:
+                                        </label>
+                                      }
+                                      messageVariables={
+                                        Object {
+                                          "label": "birthDate",
+                                        }
+                                      }
+                                      name={
+                                        Array [
+                                          "birthDate",
+                                        ]
+                                      }
+                                      onMetaChange={[Function]}
+                                      rules={
+                                        Array [
+                                          Object {
+                                            "message": "Формат: ММ.ДД.ГГГГ",
+                                            "pattern": /\\^\\(0\\[1-9\\]\\|1\\[012\\]\\)\\[\\.\\]\\(0\\[1-9\\]\\|\\[12\\]\\[0-9\\]\\|3\\[01\\]\\)\\[\\.\\]\\(19\\|20\\)\\\\d\\\\d\\$/,
+                                          },
+                                          Object {
+                                            "validator": [Function],
+                                          },
+                                        ]
+                                      }
+                                      trigger="onChange"
+                                      validateTrigger="onChange"
+                                      valuePropName="value"
+                                    >
+                                      <Row
+                                        className="ant-form-item item"
+                                        key="row"
+                                      >
+                                        <div
+                                          className="ant-row ant-form-item item"
+                                          style={Object {}}
+                                        >
+                                          <FormItemLabel
+                                            className="item"
+                                            htmlFor="birthDate"
+                                            label={
+                                              <label
+                                                className="label"
+                                              >
+                                                Date of birth:
+                                              </label>
+                                            }
+                                            name="birthDate"
+                                            prefixCls="ant-form"
+                                            required={false}
+                                            requiredMark={true}
+                                            rules={
+                                              Array [
+                                                Object {
+                                                  "message": "Формат: ММ.ДД.ГГГГ",
+                                                  "pattern": /\\^\\(0\\[1-9\\]\\|1\\[012\\]\\)\\[\\.\\]\\(0\\[1-9\\]\\|\\[12\\]\\[0-9\\]\\|3\\[01\\]\\)\\[\\.\\]\\(19\\|20\\)\\\\d\\\\d\\$/,
+                                                },
+                                                Object {
+                                                  "validator": [Function],
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            <Col
+                                              className="ant-form-item-label ant-form-item-label-left"
+                                              span={10}
+                                            >
+                                              <div
+                                                className="ant-col ant-col-10 ant-form-item-label ant-form-item-label-left"
+                                                style={Object {}}
+                                              >
+                                                <label
+                                                  className=""
+                                                  htmlFor="birthDate"
+                                                  title=""
+                                                >
+                                                  <label
+                                                    className="label"
+                                                  >
+                                                    Date of birth:
+                                                  </label>
+                                                </label>
+                                              </div>
+                                            </Col>
+                                          </FormItemLabel>
+                                          <FormItemInput
+                                            className="item"
+                                            errors={Array []}
+                                            label={
+                                              <label
+                                                className="label"
+                                              >
+                                                Date of birth:
+                                              </label>
+                                            }
+                                            name={
+                                              Array [
+                                                "birthDate",
+                                              ]
+                                            }
+                                            prefixCls="ant-form"
+                                            rules={
+                                              Array [
+                                                Object {
+                                                  "message": "Формат: ММ.ДД.ГГГГ",
+                                                  "pattern": /\\^\\(0\\[1-9\\]\\|1\\[012\\]\\)\\[\\.\\]\\(0\\[1-9\\]\\|\\[12\\]\\[0-9\\]\\|3\\[01\\]\\)\\[\\.\\]\\(19\\|20\\)\\\\d\\\\d\\$/,
+                                                },
+                                                Object {
+                                                  "validator": [Function],
+                                                },
+                                              ]
+                                            }
+                                            status=""
+                                            touched={false}
+                                            validateStatus=""
+                                            validating={false}
+                                            warnings={Array []}
+                                          >
+                                            <Col
+                                              className="ant-form-item-control"
+                                              span={16}
+                                            >
+                                              <div
+                                                className="ant-col ant-col-16 ant-form-item-control"
+                                                style={Object {}}
+                                              >
+                                                <div
+                                                  className="ant-form-item-control-input"
+                                                >
+                                                  <div
+                                                    className="ant-form-item-control-input-content"
+                                                  >
+                                                    <Component
+                                                      update={
+                                                        <Input
+                                                          className="input"
+                                                          onChange={[Function]}
+                                                          type="text"
+                                                          value={
+                                                            Object {
+                                                              "ruDateAndTime": "05 October 2011 14:48 UTC",
+                                                            }
+                                                          }
+                                                        />
+                                                      }
+                                                    >
+                                                      <Input
+                                                        className="input"
+                                                        id="birthDate"
+                                                        onChange={[Function]}
+                                                        type="text"
+                                                      >
+                                                        <ClearableLabeledInput
+                                                          bordered={true}
+                                                          className="input"
+                                                          element={
+                                                            <input
+                                                              className="ant-input ant-input-sm input"
+                                                              id="birthDate"
+                                                              onBlur={[Function]}
+                                                              onChange={[Function]}
+                                                              onFocus={[Function]}
+                                                              onKeyDown={[Function]}
+                                                              type="text"
+                                                            />
+                                                          }
+                                                          focused={false}
+                                                          handleReset={[Function]}
+                                                          id="birthDate"
+                                                          inputType="input"
+                                                          onChange={[Function]}
+                                                          prefixCls="ant-input"
+                                                          size="small"
+                                                          triggerFocus={[Function]}
+                                                          type="text"
+                                                          value=""
+                                                        >
+                                                          <input
+                                                            className="ant-input ant-input-sm input"
+                                                            id="birthDate"
+                                                            onBlur={[Function]}
+                                                            onChange={[Function]}
+                                                            onFocus={[Function]}
+                                                            onKeyDown={[Function]}
+                                                            type="text"
+                                                            value=""
+                                                          />
+                                                        </ClearableLabeledInput>
+                                                      </Input>
+                                                    </Component>
+                                                  </div>
+                                                </div>
+                                                <ErrorList
+                                                  className="ant-form-item-explain-connected"
+                                                  errors={Array []}
+                                                  helpStatus=""
+                                                  warnings={Array []}
+                                                >
+                                                  <CSSMotion
+                                                    motionAppear={false}
+                                                    motionDeadline={500}
+                                                    motionEnter={false}
+                                                    motionName="ant-show-help"
+                                                    onAppearActive={[Function]}
+                                                    onAppearEnd={[Function]}
+                                                    onAppearStart={[Function]}
+                                                    onEnterActive={[Function]}
+                                                    onEnterEnd={[Function]}
+                                                    onEnterStart={[Function]}
+                                                    onLeaveActive={[Function]}
+                                                    onLeaveEnd={[Function]}
+                                                    onLeaveStart={[Function]}
+                                                    visible={false}
+                                                  >
+                                                    <DomWrapper />
+                                                  </CSSMotion>
+                                                </ErrorList>
+                                              </div>
+                                            </Col>
+                                          </FormItemInput>
+                                        </div>
+                                      </Row>
+                                    </Field>
+                                  </WrapperField>
+                                </FormItem>
+                                <FormItem
+                                  className="item"
+                                  label={
+                                    <label
+                                      className="label"
+                                    >
+                                      Registration date:
+                                    </label>
+                                  }
+                                  name="registrationDate"
+                                >
+                                  <WrapperField
+                                    className="item"
+                                    label={
+                                      <label
+                                        className="label"
+                                      >
+                                        Registration date:
+                                      </label>
+                                    }
+                                    messageVariables={
+                                      Object {
+                                        "label": "registrationDate",
+                                      }
+                                    }
+                                    name="registrationDate"
+                                    onMetaChange={[Function]}
+                                    trigger="onChange"
+                                    validateTrigger="onChange"
+                                  >
+                                    <Field
+                                      className="item"
+                                      fieldContext={
+                                        Object {
+                                          "__INTERNAL__": Object {
+                                            "itemRef": [Function],
+                                            "name": undefined,
+                                          },
+                                          "getFieldError": [Function],
+                                          "getFieldInstance": [Function],
+                                          "getFieldValue": [Function],
+                                          "getFieldWarning": [Function],
+                                          "getFieldsError": [Function],
+                                          "getFieldsValue": [Function],
+                                          "getInternalHooks": [Function],
+                                          "isFieldTouched": [Function],
+                                          "isFieldValidating": [Function],
+                                          "isFieldsTouched": [Function],
+                                          "isFieldsValidating": [Function],
+                                          "resetFields": [Function],
+                                          "scrollToField": [Function],
+                                          "setFields": [Function],
+                                          "setFieldsValue": [Function],
+                                          "submit": [Function],
+                                          "validateFields": [Function],
+                                          "validateTrigger": "onChange",
+                                        }
+                                      }
+                                      key="_registrationDate"
+                                      label={
+                                        <label
+                                          className="label"
+                                        >
+                                          Registration date:
+                                        </label>
+                                      }
+                                      messageVariables={
+                                        Object {
+                                          "label": "registrationDate",
+                                        }
+                                      }
+                                      name={
+                                        Array [
+                                          "registrationDate",
+                                        ]
+                                      }
+                                      onMetaChange={[Function]}
+                                      trigger="onChange"
+                                      validateTrigger="onChange"
+                                      valuePropName="value"
+                                    >
+                                      <Row
+                                        className="ant-form-item item"
+                                        key="row"
+                                      >
+                                        <div
+                                          className="ant-row ant-form-item item"
+                                          style={Object {}}
+                                        >
+                                          <FormItemLabel
+                                            className="item"
+                                            htmlFor="registrationDate"
+                                            label={
+                                              <label
+                                                className="label"
+                                              >
+                                                Registration date:
+                                              </label>
+                                            }
+                                            name="registrationDate"
+                                            prefixCls="ant-form"
+                                            required={false}
+                                            requiredMark={true}
+                                          >
+                                            <Col
+                                              className="ant-form-item-label ant-form-item-label-left"
+                                              span={10}
+                                            >
+                                              <div
+                                                className="ant-col ant-col-10 ant-form-item-label ant-form-item-label-left"
+                                                style={Object {}}
+                                              >
+                                                <label
+                                                  className=""
+                                                  htmlFor="registrationDate"
+                                                  title=""
+                                                >
+                                                  <label
+                                                    className="label"
+                                                  >
+                                                    Registration date:
+                                                  </label>
+                                                </label>
+                                              </div>
+                                            </Col>
+                                          </FormItemLabel>
+                                          <FormItemInput
+                                            className="item"
+                                            errors={Array []}
+                                            label={
+                                              <label
+                                                className="label"
+                                              >
+                                                Registration date:
+                                              </label>
+                                            }
+                                            name={
+                                              Array [
+                                                "registrationDate",
+                                              ]
+                                            }
+                                            prefixCls="ant-form"
+                                            status=""
+                                            touched={false}
+                                            validateStatus=""
+                                            validating={false}
+                                            warnings={Array []}
+                                          >
+                                            <Col
+                                              className="ant-form-item-control"
+                                              span={16}
+                                            >
+                                              <div
+                                                className="ant-col ant-col-16 ant-form-item-control"
+                                                style={Object {}}
+                                              >
+                                                <div
+                                                  className="ant-form-item-control-input"
+                                                >
+                                                  <div
+                                                    className="ant-form-item-control-input-content"
+                                                  >
+                                                    <Component
+                                                      update={
+                                                        <Input
+                                                          className="input"
+                                                          disabled={true}
+                                                          type="text"
+                                                        />
+                                                      }
+                                                    >
+                                                      <Input
+                                                        className="input"
+                                                        disabled={true}
+                                                        id="registrationDate"
+                                                        onChange={[Function]}
+                                                        type="text"
+                                                      >
+                                                        <ClearableLabeledInput
+                                                          bordered={true}
+                                                          className="input"
+                                                          disabled={true}
+                                                          element={
+                                                            <input
+                                                              className="ant-input ant-input-sm ant-input-disabled input"
+                                                              disabled={true}
+                                                              id="registrationDate"
+                                                              onBlur={[Function]}
+                                                              onChange={[Function]}
+                                                              onFocus={[Function]}
+                                                              onKeyDown={[Function]}
+                                                              type="text"
+                                                            />
+                                                          }
+                                                          focused={false}
+                                                          handleReset={[Function]}
+                                                          id="registrationDate"
+                                                          inputType="input"
+                                                          onChange={[Function]}
+                                                          prefixCls="ant-input"
+                                                          size="small"
+                                                          triggerFocus={[Function]}
+                                                          type="text"
+                                                          value=""
+                                                        >
+                                                          <input
+                                                            className="ant-input ant-input-sm ant-input-disabled input"
+                                                            disabled={true}
+                                                            id="registrationDate"
+                                                            onBlur={[Function]}
+                                                            onChange={[Function]}
+                                                            onFocus={[Function]}
+                                                            onKeyDown={[Function]}
+                                                            type="text"
+                                                            value=""
+                                                          />
+                                                        </ClearableLabeledInput>
+                                                      </Input>
+                                                    </Component>
+                                                  </div>
+                                                </div>
+                                                <ErrorList
+                                                  className="ant-form-item-explain-connected"
+                                                  errors={Array []}
+                                                  helpStatus=""
+                                                  warnings={Array []}
+                                                >
+                                                  <CSSMotion
+                                                    motionAppear={false}
+                                                    motionDeadline={500}
+                                                    motionEnter={false}
+                                                    motionName="ant-show-help"
+                                                    onAppearActive={[Function]}
+                                                    onAppearEnd={[Function]}
+                                                    onAppearStart={[Function]}
+                                                    onEnterActive={[Function]}
+                                                    onEnterEnd={[Function]}
+                                                    onEnterStart={[Function]}
+                                                    onLeaveActive={[Function]}
+                                                    onLeaveEnd={[Function]}
+                                                    onLeaveStart={[Function]}
+                                                    visible={false}
+                                                  >
+                                                    <DomWrapper />
+                                                  </CSSMotion>
+                                                </ErrorList>
+                                              </div>
+                                            </Col>
+                                          </FormItemInput>
+                                        </div>
+                                      </Row>
+                                    </Field>
+                                  </WrapperField>
+                                </FormItem>
+                                <FormItem
+                                  className="item item_email"
+                                  label={
+                                    <label
+                                      className="label"
+                                    >
+                                      Email:
+                                    </label>
+                                  }
+                                  name="email"
+                                >
+                                  <WrapperField
+                                    className="item item_email"
+                                    label={
+                                      <label
+                                        className="label"
+                                      >
+                                        Email:
+                                      </label>
+                                    }
+                                    messageVariables={
+                                      Object {
+                                        "label": "email",
+                                      }
+                                    }
+                                    name="email"
+                                    onMetaChange={[Function]}
+                                    trigger="onChange"
+                                    validateTrigger="onChange"
+                                  >
+                                    <Field
+                                      className="item item_email"
+                                      fieldContext={
+                                        Object {
+                                          "__INTERNAL__": Object {
+                                            "itemRef": [Function],
+                                            "name": undefined,
+                                          },
+                                          "getFieldError": [Function],
+                                          "getFieldInstance": [Function],
+                                          "getFieldValue": [Function],
+                                          "getFieldWarning": [Function],
+                                          "getFieldsError": [Function],
+                                          "getFieldsValue": [Function],
+                                          "getInternalHooks": [Function],
+                                          "isFieldTouched": [Function],
+                                          "isFieldValidating": [Function],
+                                          "isFieldsTouched": [Function],
+                                          "isFieldsValidating": [Function],
+                                          "resetFields": [Function],
+                                          "scrollToField": [Function],
+                                          "setFields": [Function],
+                                          "setFieldsValue": [Function],
+                                          "submit": [Function],
+                                          "validateFields": [Function],
+                                          "validateTrigger": "onChange",
+                                        }
+                                      }
+                                      key="_email"
+                                      label={
+                                        <label
+                                          className="label"
+                                        >
+                                          Email:
+                                        </label>
+                                      }
+                                      messageVariables={
+                                        Object {
+                                          "label": "email",
+                                        }
+                                      }
+                                      name={
+                                        Array [
+                                          "email",
+                                        ]
+                                      }
+                                      onMetaChange={[Function]}
+                                      trigger="onChange"
+                                      validateTrigger="onChange"
+                                      valuePropName="value"
+                                    >
+                                      <Row
+                                        className="ant-form-item item item_email"
+                                        key="row"
+                                      >
+                                        <div
+                                          className="ant-row ant-form-item item item_email"
+                                          style={Object {}}
+                                        >
+                                          <FormItemLabel
+                                            className="item item_email"
+                                            htmlFor="email"
+                                            label={
+                                              <label
+                                                className="label"
+                                              >
+                                                Email:
+                                              </label>
+                                            }
+                                            name="email"
+                                            prefixCls="ant-form"
+                                            required={false}
+                                            requiredMark={true}
+                                          >
+                                            <Col
+                                              className="ant-form-item-label ant-form-item-label-left"
+                                              span={10}
+                                            >
+                                              <div
+                                                className="ant-col ant-col-10 ant-form-item-label ant-form-item-label-left"
+                                                style={Object {}}
+                                              >
+                                                <label
+                                                  className=""
+                                                  htmlFor="email"
+                                                  title=""
+                                                >
+                                                  <label
+                                                    className="label"
+                                                  >
+                                                    Email:
+                                                  </label>
+                                                </label>
+                                              </div>
+                                            </Col>
+                                          </FormItemLabel>
+                                          <FormItemInput
+                                            className="item item_email"
+                                            errors={Array []}
+                                            label={
+                                              <label
+                                                className="label"
+                                              >
+                                                Email:
+                                              </label>
+                                            }
+                                            name={
+                                              Array [
+                                                "email",
+                                              ]
+                                            }
+                                            prefixCls="ant-form"
+                                            status=""
+                                            touched={false}
+                                            validateStatus=""
+                                            validating={false}
+                                            warnings={Array []}
+                                          >
+                                            <Col
+                                              className="ant-form-item-control"
+                                              span={16}
+                                            >
+                                              <div
+                                                className="ant-col ant-col-16 ant-form-item-control"
+                                                style={Object {}}
+                                              >
+                                                <div
+                                                  className="ant-form-item-control-input"
+                                                >
+                                                  <div
+                                                    className="ant-form-item-control-input-content"
+                                                  >
+                                                    <Component
+                                                      update={
+                                                        <Input
+                                                          className="input"
+                                                          disabled={true}
+                                                          placeholder=""
+                                                          type="text"
+                                                          value="test"
+                                                        />
+                                                      }
+                                                    >
+                                                      <Input
+                                                        className="input"
+                                                        disabled={true}
+                                                        id="email"
+                                                        onChange={[Function]}
+                                                        placeholder=""
+                                                        type="text"
+                                                      >
+                                                        <ClearableLabeledInput
+                                                          bordered={true}
+                                                          className="input"
+                                                          disabled={true}
+                                                          element={
+                                                            <input
+                                                              className="ant-input ant-input-sm ant-input-disabled input"
+                                                              disabled={true}
+                                                              id="email"
+                                                              onBlur={[Function]}
+                                                              onChange={[Function]}
+                                                              onFocus={[Function]}
+                                                              onKeyDown={[Function]}
+                                                              placeholder=""
+                                                              type="text"
+                                                            />
+                                                          }
+                                                          focused={false}
+                                                          handleReset={[Function]}
+                                                          id="email"
+                                                          inputType="input"
+                                                          onChange={[Function]}
+                                                          placeholder=""
+                                                          prefixCls="ant-input"
+                                                          size="small"
+                                                          triggerFocus={[Function]}
+                                                          type="text"
+                                                          value=""
+                                                        >
+                                                          <input
+                                                            className="ant-input ant-input-sm ant-input-disabled input"
+                                                            disabled={true}
+                                                            id="email"
+                                                            onBlur={[Function]}
+                                                            onChange={[Function]}
+                                                            onFocus={[Function]}
+                                                            onKeyDown={[Function]}
+                                                            placeholder=""
+                                                            type="text"
+                                                            value=""
+                                                          />
+                                                        </ClearableLabeledInput>
+                                                      </Input>
+                                                    </Component>
+                                                  </div>
+                                                </div>
+                                                <ErrorList
+                                                  className="ant-form-item-explain-connected"
+                                                  errors={Array []}
+                                                  helpStatus=""
+                                                  warnings={Array []}
+                                                >
+                                                  <CSSMotion
+                                                    motionAppear={false}
+                                                    motionDeadline={500}
+                                                    motionEnter={false}
+                                                    motionName="ant-show-help"
+                                                    onAppearActive={[Function]}
+                                                    onAppearEnd={[Function]}
+                                                    onAppearStart={[Function]}
+                                                    onEnterActive={[Function]}
+                                                    onEnterEnd={[Function]}
+                                                    onEnterStart={[Function]}
+                                                    onLeaveActive={[Function]}
+                                                    onLeaveEnd={[Function]}
+                                                    onLeaveStart={[Function]}
+                                                    visible={false}
+                                                  >
+                                                    <DomWrapper />
+                                                  </CSSMotion>
+                                                </ErrorList>
+                                              </div>
+                                            </Col>
+                                          </FormItemInput>
+                                        </div>
+                                      </Row>
+                                    </Field>
+                                  </WrapperField>
+                                </FormItem>
+                                <FormItem
+                                  className="item"
+                                  label={
+                                    <label
+                                      className="label"
+                                    >
+                                      Phone:
+                                    </label>
+                                  }
+                                  name="tel"
+                                  rules={
+                                    Array [
+                                      Object {
+                                        "message": "Минимум 5",
+                                        "min": 5,
+                                      },
+                                      Object {
+                                        "max": 20,
+                                        "message": "Максимум 20",
+                                      },
+                                    ]
+                                  }
+                                >
+                                  <WrapperField
+                                    className="item"
+                                    label={
+                                      <label
+                                        className="label"
+                                      >
+                                        Phone:
+                                      </label>
+                                    }
+                                    messageVariables={
+                                      Object {
+                                        "label": "tel",
+                                      }
+                                    }
+                                    name="tel"
+                                    onMetaChange={[Function]}
+                                    rules={
+                                      Array [
+                                        Object {
+                                          "message": "Минимум 5",
+                                          "min": 5,
+                                        },
+                                        Object {
+                                          "max": 20,
+                                          "message": "Максимум 20",
+                                        },
+                                      ]
+                                    }
+                                    trigger="onChange"
+                                    validateTrigger="onChange"
+                                  >
+                                    <Field
+                                      className="item"
+                                      fieldContext={
+                                        Object {
+                                          "__INTERNAL__": Object {
+                                            "itemRef": [Function],
+                                            "name": undefined,
+                                          },
+                                          "getFieldError": [Function],
+                                          "getFieldInstance": [Function],
+                                          "getFieldValue": [Function],
+                                          "getFieldWarning": [Function],
+                                          "getFieldsError": [Function],
+                                          "getFieldsValue": [Function],
+                                          "getInternalHooks": [Function],
+                                          "isFieldTouched": [Function],
+                                          "isFieldValidating": [Function],
+                                          "isFieldsTouched": [Function],
+                                          "isFieldsValidating": [Function],
+                                          "resetFields": [Function],
+                                          "scrollToField": [Function],
+                                          "setFields": [Function],
+                                          "setFieldsValue": [Function],
+                                          "submit": [Function],
+                                          "validateFields": [Function],
+                                          "validateTrigger": "onChange",
+                                        }
+                                      }
+                                      key="_tel"
+                                      label={
+                                        <label
+                                          className="label"
+                                        >
+                                          Phone:
+                                        </label>
+                                      }
+                                      messageVariables={
+                                        Object {
+                                          "label": "tel",
+                                        }
+                                      }
+                                      name={
+                                        Array [
+                                          "tel",
+                                        ]
+                                      }
+                                      onMetaChange={[Function]}
+                                      rules={
+                                        Array [
+                                          Object {
+                                            "message": "Минимум 5",
+                                            "min": 5,
+                                          },
+                                          Object {
+                                            "max": 20,
+                                            "message": "Максимум 20",
+                                          },
+                                        ]
+                                      }
+                                      trigger="onChange"
+                                      validateTrigger="onChange"
+                                      valuePropName="value"
+                                    >
+                                      <Row
+                                        className="ant-form-item item"
+                                        key="row"
+                                      >
+                                        <div
+                                          className="ant-row ant-form-item item"
+                                          style={Object {}}
+                                        >
+                                          <FormItemLabel
+                                            className="item"
+                                            htmlFor="tel"
+                                            label={
+                                              <label
+                                                className="label"
+                                              >
+                                                Phone:
+                                              </label>
+                                            }
+                                            name="tel"
+                                            prefixCls="ant-form"
+                                            required={false}
+                                            requiredMark={true}
+                                            rules={
+                                              Array [
+                                                Object {
+                                                  "message": "Минимум 5",
+                                                  "min": 5,
+                                                },
+                                                Object {
+                                                  "max": 20,
+                                                  "message": "Максимум 20",
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            <Col
+                                              className="ant-form-item-label ant-form-item-label-left"
+                                              span={10}
+                                            >
+                                              <div
+                                                className="ant-col ant-col-10 ant-form-item-label ant-form-item-label-left"
+                                                style={Object {}}
+                                              >
+                                                <label
+                                                  className=""
+                                                  htmlFor="tel"
+                                                  title=""
+                                                >
+                                                  <label
+                                                    className="label"
+                                                  >
+                                                    Phone:
+                                                  </label>
+                                                </label>
+                                              </div>
+                                            </Col>
+                                          </FormItemLabel>
+                                          <FormItemInput
+                                            className="item"
+                                            errors={Array []}
+                                            label={
+                                              <label
+                                                className="label"
+                                              >
+                                                Phone:
+                                              </label>
+                                            }
+                                            name={
+                                              Array [
+                                                "tel",
+                                              ]
+                                            }
+                                            prefixCls="ant-form"
+                                            rules={
+                                              Array [
+                                                Object {
+                                                  "message": "Минимум 5",
+                                                  "min": 5,
+                                                },
+                                                Object {
+                                                  "max": 20,
+                                                  "message": "Максимум 20",
+                                                },
+                                              ]
+                                            }
+                                            status=""
+                                            touched={false}
+                                            validateStatus=""
+                                            validating={false}
+                                            warnings={Array []}
+                                          >
+                                            <Col
+                                              className="ant-form-item-control"
+                                              span={16}
+                                            >
+                                              <div
+                                                className="ant-col ant-col-16 ant-form-item-control"
+                                                style={Object {}}
+                                              >
+                                                <div
+                                                  className="ant-form-item-control-input"
+                                                >
+                                                  <div
+                                                    className="ant-form-item-control-input-content"
+                                                  >
+                                                    <Component
+                                                      update={
+                                                        <Input
+                                                          className="input"
+                                                          onChange={[Function]}
+                                                          placeholder="55555"
+                                                          type="text"
+                                                          value="55555"
+                                                        />
+                                                      }
+                                                    >
+                                                      <Input
+                                                        className="input"
+                                                        id="tel"
+                                                        onChange={[Function]}
+                                                        placeholder="55555"
+                                                        type="text"
+                                                      >
+                                                        <ClearableLabeledInput
+                                                          bordered={true}
+                                                          className="input"
+                                                          element={
+                                                            <input
+                                                              className="ant-input ant-input-sm input"
+                                                              id="tel"
+                                                              onBlur={[Function]}
+                                                              onChange={[Function]}
+                                                              onFocus={[Function]}
+                                                              onKeyDown={[Function]}
+                                                              placeholder="55555"
+                                                              type="text"
+                                                            />
+                                                          }
+                                                          focused={false}
+                                                          handleReset={[Function]}
+                                                          id="tel"
+                                                          inputType="input"
+                                                          onChange={[Function]}
+                                                          placeholder="55555"
+                                                          prefixCls="ant-input"
+                                                          size="small"
+                                                          triggerFocus={[Function]}
+                                                          type="text"
+                                                          value=""
+                                                        >
+                                                          <input
+                                                            className="ant-input ant-input-sm input"
+                                                            id="tel"
+                                                            onBlur={[Function]}
+                                                            onChange={[Function]}
+                                                            onFocus={[Function]}
+                                                            onKeyDown={[Function]}
+                                                            placeholder="55555"
+                                                            type="text"
+                                                            value=""
+                                                          />
+                                                        </ClearableLabeledInput>
+                                                      </Input>
+                                                    </Component>
+                                                  </div>
+                                                </div>
+                                                <ErrorList
+                                                  className="ant-form-item-explain-connected"
+                                                  errors={Array []}
+                                                  helpStatus=""
+                                                  warnings={Array []}
+                                                >
+                                                  <CSSMotion
+                                                    motionAppear={false}
+                                                    motionDeadline={500}
+                                                    motionEnter={false}
+                                                    motionName="ant-show-help"
+                                                    onAppearActive={[Function]}
+                                                    onAppearEnd={[Function]}
+                                                    onAppearStart={[Function]}
+                                                    onEnterActive={[Function]}
+                                                    onEnterEnd={[Function]}
+                                                    onEnterStart={[Function]}
+                                                    onLeaveActive={[Function]}
+                                                    onLeaveEnd={[Function]}
+                                                    onLeaveStart={[Function]}
+                                                    visible={false}
+                                                  >
+                                                    <DomWrapper />
+                                                  </CSSMotion>
+                                                </ErrorList>
+                                              </div>
+                                            </Col>
+                                          </FormItemInput>
+                                        </div>
+                                      </Row>
+                                    </Field>
+                                  </WrapperField>
+                                </FormItem>
+                                <FormItem
+                                  className="submit"
+                                >
+                                  <Row
+                                    className="ant-form-item submit"
+                                    key="row"
+                                  >
+                                    <div
+                                      className="ant-row ant-form-item submit"
+                                      style={Object {}}
+                                    >
+                                      <FormItemLabel
+                                        className="submit"
+                                        prefixCls="ant-form"
+                                        requiredMark={true}
+                                      />
+                                      <FormItemInput
+                                        className="submit"
+                                        errors={Array []}
+                                        name={Array []}
+                                        prefixCls="ant-form"
+                                        status=""
+                                        touched={false}
+                                        validateStatus=""
+                                        validating={false}
+                                        warnings={Array []}
+                                      >
+                                        <Col
+                                          className="ant-form-item-control"
+                                          span={16}
+                                        >
+                                          <div
+                                            className="ant-col ant-col-16 ant-form-item-control"
+                                            style={Object {}}
+                                          >
+                                            <div
+                                              className="ant-form-item-control-input"
+                                            >
+                                              <div
+                                                className="ant-form-item-control-input-content"
+                                              >
+                                                <Button
+                                                  className="button"
+                                                  htmlType="submit"
+                                                  style={Object {}}
+                                                  type="primary"
+                                                >
+                                                  <Wave
+                                                    disabled={false}
+                                                  >
+                                                    <button
+                                                      className="ant-btn ant-btn-primary ant-btn-sm button"
+                                                      onClick={[Function]}
+                                                      style={Object {}}
+                                                      type="submit"
+                                                    >
+                                                      <LoadingIcon
+                                                        existIcon={false}
+                                                        loading={false}
+                                                        prefixCls="ant-btn"
+                                                      >
+                                                        <CSSMotion
+                                                          motionName="ant-btn-loading-icon-motion"
+                                                          onAppearActive={[Function]}
+                                                          onAppearStart={[Function]}
+                                                          onEnterActive={[Function]}
+                                                          onEnterStart={[Function]}
+                                                          onLeaveActive={[Function]}
+                                                          onLeaveStart={[Function]}
+                                                          removeOnLeave={true}
+                                                          visible={false}
+                                                        >
+                                                          <DomWrapper />
+                                                        </CSSMotion>
+                                                      </LoadingIcon>
+                                                      <span
+                                                        key=".0"
+                                                      >
+                                                        Save
+                                                      </span>
+                                                    </button>
+                                                  </Wave>
+                                                </Button>
+                                              </div>
+                                            </div>
+                                            <ErrorList
+                                              className="ant-form-item-explain-connected"
+                                              errors={Array []}
+                                              helpStatus=""
+                                              warnings={Array []}
+                                            >
+                                              <CSSMotion
+                                                motionAppear={false}
+                                                motionDeadline={500}
+                                                motionEnter={false}
+                                                motionName="ant-show-help"
+                                                onAppearActive={[Function]}
+                                                onAppearEnd={[Function]}
+                                                onAppearStart={[Function]}
+                                                onEnterActive={[Function]}
+                                                onEnterEnd={[Function]}
+                                                onEnterStart={[Function]}
+                                                onLeaveActive={[Function]}
+                                                onLeaveEnd={[Function]}
+                                                onLeaveStart={[Function]}
+                                                visible={false}
+                                              >
+                                                <DomWrapper />
+                                              </CSSMotion>
+                                            </ErrorList>
+                                          </div>
+                                        </Col>
+                                      </FormItemInput>
+                                    </div>
+                                  </Row>
+                                </FormItem>
+                              </form>
+                            </ForwardRef(Form)>
+                          </SizeContextProvider>
+                        </ForwardRef(InternalForm)>
+                      </UserModalForm>
+                    </div>
+                  </div>
+                </UserModal>
+              </div>
+            </main>
+          </Main>
+        </Profile>
+      </Connect(Profile)>
+    </Router>
+  </HashRouter>
+</Provider>
+`;

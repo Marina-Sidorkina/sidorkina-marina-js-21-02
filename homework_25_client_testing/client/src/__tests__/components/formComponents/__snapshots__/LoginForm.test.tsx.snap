@@ -1,0 +1,552 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoginForm component test should render LoginForm 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [MockFunction] {
+        "calls": Array [
+          Array [
+            undefined,
+          ],
+        ],
+        "results": Array [
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+        ],
+      },
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <HashRouter>
+    <Router
+      history={
+        Object {
+          "action": "POP",
+          "block": [Function],
+          "createHref": [Function],
+          "go": [Function],
+          "goBack": [Function],
+          "goForward": [Function],
+          "length": 1,
+          "listen": [Function],
+          "location": Object {
+            "hash": "",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          },
+          "push": [Function],
+          "replace": [Function],
+        }
+      }
+    >
+      <LoginForm>
+        <div
+          className="login"
+        >
+          <ForwardRef(InternalForm)
+            className="form"
+            onFinish={[Function]}
+          >
+            <SizeContextProvider>
+              <ForwardRef(Form)
+                className="ant-form ant-form-horizontal form"
+                form={
+                  Object {
+                    "__INTERNAL__": Object {
+                      "itemRef": [Function],
+                      "name": undefined,
+                    },
+                    "getFieldError": [Function],
+                    "getFieldInstance": [Function],
+                    "getFieldValue": [Function],
+                    "getFieldWarning": [Function],
+                    "getFieldsError": [Function],
+                    "getFieldsValue": [Function],
+                    "getInternalHooks": [Function],
+                    "isFieldTouched": [Function],
+                    "isFieldValidating": [Function],
+                    "isFieldsTouched": [Function],
+                    "isFieldsValidating": [Function],
+                    "resetFields": [Function],
+                    "scrollToField": [Function],
+                    "setFields": [Function],
+                    "setFieldsValue": [Function],
+                    "submit": [Function],
+                    "validateFields": [Function],
+                  }
+                }
+                onFinish={[Function]}
+                onFinishFailed={[Function]}
+              >
+                <form
+                  className="ant-form ant-form-horizontal form"
+                  onReset={[Function]}
+                  onSubmit={[Function]}
+                >
+                  <h2
+                    className="title"
+                  >
+                    Sign in
+                  </h2>
+                  <FormItem
+                    className="formItem formItem_add"
+                  >
+                    <Row
+                      className="ant-form-item formItem formItem_add"
+                      key="row"
+                    >
+                      <div
+                        className="ant-row ant-form-item formItem formItem_add"
+                        style={Object {}}
+                      >
+                        <FormItemLabel
+                          className="formItem formItem_add"
+                          prefixCls="ant-form"
+                          requiredMark={true}
+                        />
+                        <FormItemInput
+                          className="formItem formItem_add"
+                          errors={Array []}
+                          name={Array []}
+                          prefixCls="ant-form"
+                          status=""
+                          touched={false}
+                          validateStatus=""
+                          validating={false}
+                          warnings={Array []}
+                        >
+                          <Col
+                            className="ant-form-item-control"
+                          >
+                            <div
+                              className="ant-col ant-form-item-control"
+                              style={Object {}}
+                            >
+                              <div
+                                className="ant-form-item-control-input"
+                              >
+                                <div
+                                  className="ant-form-item-control-input-content"
+                                >
+                                  <label
+                                    className="label"
+                                  >
+                                    ID:
+                                  </label>
+                                  <FormItem
+                                    className="formItem"
+                                    name="login-input"
+                                    rules={
+                                      Array [
+                                        Object {
+                                          "message": "Укажите ваш ID",
+                                          "required": true,
+                                        },
+                                      ]
+                                    }
+                                  >
+                                    <WrapperField
+                                      className="formItem"
+                                      messageVariables={
+                                        Object {
+                                          "label": "login-input",
+                                        }
+                                      }
+                                      name="login-input"
+                                      onMetaChange={[Function]}
+                                      rules={
+                                        Array [
+                                          Object {
+                                            "message": "Укажите ваш ID",
+                                            "required": true,
+                                          },
+                                        ]
+                                      }
+                                      trigger="onChange"
+                                      validateTrigger="onChange"
+                                    >
+                                      <Field
+                                        className="formItem"
+                                        fieldContext={
+                                          Object {
+                                            "__INTERNAL__": Object {
+                                              "itemRef": [Function],
+                                              "name": undefined,
+                                            },
+                                            "getFieldError": [Function],
+                                            "getFieldInstance": [Function],
+                                            "getFieldValue": [Function],
+                                            "getFieldWarning": [Function],
+                                            "getFieldsError": [Function],
+                                            "getFieldsValue": [Function],
+                                            "getInternalHooks": [Function],
+                                            "isFieldTouched": [Function],
+                                            "isFieldValidating": [Function],
+                                            "isFieldsTouched": [Function],
+                                            "isFieldsValidating": [Function],
+                                            "resetFields": [Function],
+                                            "scrollToField": [Function],
+                                            "setFields": [Function],
+                                            "setFieldsValue": [Function],
+                                            "submit": [Function],
+                                            "validateFields": [Function],
+                                            "validateTrigger": "onChange",
+                                          }
+                                        }
+                                        key="_login-input"
+                                        messageVariables={
+                                          Object {
+                                            "label": "login-input",
+                                          }
+                                        }
+                                        name={
+                                          Array [
+                                            "login-input",
+                                          ]
+                                        }
+                                        onMetaChange={[Function]}
+                                        rules={
+                                          Array [
+                                            Object {
+                                              "message": "Укажите ваш ID",
+                                              "required": true,
+                                            },
+                                          ]
+                                        }
+                                        trigger="onChange"
+                                        validateTrigger="onChange"
+                                        valuePropName="value"
+                                      >
+                                        <Row
+                                          className="ant-form-item formItem"
+                                          key="row"
+                                        >
+                                          <div
+                                            className="ant-row ant-form-item formItem"
+                                            style={Object {}}
+                                          >
+                                            <FormItemLabel
+                                              className="formItem"
+                                              htmlFor="login-input"
+                                              name="login-input"
+                                              prefixCls="ant-form"
+                                              required={true}
+                                              requiredMark={true}
+                                              rules={
+                                                Array [
+                                                  Object {
+                                                    "message": "Укажите ваш ID",
+                                                    "required": true,
+                                                  },
+                                                ]
+                                              }
+                                            />
+                                            <FormItemInput
+                                              className="formItem"
+                                              errors={Array []}
+                                              name={Array []}
+                                              prefixCls="ant-form"
+                                              rules={
+                                                Array [
+                                                  Object {
+                                                    "message": "Укажите ваш ID",
+                                                    "required": true,
+                                                  },
+                                                ]
+                                              }
+                                              status=""
+                                              touched={false}
+                                              validateStatus=""
+                                              validating={false}
+                                              warnings={Array []}
+                                            >
+                                              <Col
+                                                className="ant-form-item-control"
+                                              >
+                                                <div
+                                                  className="ant-col ant-form-item-control"
+                                                  style={Object {}}
+                                                >
+                                                  <div
+                                                    className="ant-form-item-control-input"
+                                                  >
+                                                    <div
+                                                      className="ant-form-item-control-input-content"
+                                                    >
+                                                      <Component
+                                                        update={
+                                                          <Input
+                                                            className="input"
+                                                            onChange={[Function]}
+                                                            placeholder="Enter your ID"
+                                                            type="text"
+                                                            value=""
+                                                          />
+                                                        }
+                                                      >
+                                                        <Input
+                                                          className="input"
+                                                          id="login-input"
+                                                          onChange={[Function]}
+                                                          placeholder="Enter your ID"
+                                                          type="text"
+                                                        >
+                                                          <ClearableLabeledInput
+                                                            bordered={true}
+                                                            className="input"
+                                                            element={
+                                                              <input
+                                                                className="ant-input input"
+                                                                id="login-input"
+                                                                onBlur={[Function]}
+                                                                onChange={[Function]}
+                                                                onFocus={[Function]}
+                                                                onKeyDown={[Function]}
+                                                                placeholder="Enter your ID"
+                                                                type="text"
+                                                              />
+                                                            }
+                                                            focused={false}
+                                                            handleReset={[Function]}
+                                                            id="login-input"
+                                                            inputType="input"
+                                                            onChange={[Function]}
+                                                            placeholder="Enter your ID"
+                                                            prefixCls="ant-input"
+                                                            triggerFocus={[Function]}
+                                                            type="text"
+                                                            value=""
+                                                          >
+                                                            <input
+                                                              className="ant-input input"
+                                                              id="login-input"
+                                                              onBlur={[Function]}
+                                                              onChange={[Function]}
+                                                              onFocus={[Function]}
+                                                              onKeyDown={[Function]}
+                                                              placeholder="Enter your ID"
+                                                              type="text"
+                                                              value=""
+                                                            />
+                                                          </ClearableLabeledInput>
+                                                        </Input>
+                                                      </Component>
+                                                    </div>
+                                                  </div>
+                                                  <ErrorList
+                                                    className="ant-form-item-explain-connected"
+                                                    errors={Array []}
+                                                    helpStatus=""
+                                                    warnings={Array []}
+                                                  >
+                                                    <CSSMotion
+                                                      motionAppear={false}
+                                                      motionDeadline={500}
+                                                      motionEnter={false}
+                                                      motionName="ant-show-help"
+                                                      onAppearActive={[Function]}
+                                                      onAppearEnd={[Function]}
+                                                      onAppearStart={[Function]}
+                                                      onEnterActive={[Function]}
+                                                      onEnterEnd={[Function]}
+                                                      onEnterStart={[Function]}
+                                                      onLeaveActive={[Function]}
+                                                      onLeaveEnd={[Function]}
+                                                      onLeaveStart={[Function]}
+                                                      visible={false}
+                                                    >
+                                                      <DomWrapper />
+                                                    </CSSMotion>
+                                                  </ErrorList>
+                                                </div>
+                                              </Col>
+                                            </FormItemInput>
+                                          </div>
+                                        </Row>
+                                      </Field>
+                                    </WrapperField>
+                                  </FormItem>
+                                </div>
+                              </div>
+                              <ErrorList
+                                className="ant-form-item-explain-connected"
+                                errors={Array []}
+                                helpStatus=""
+                                warnings={Array []}
+                              >
+                                <CSSMotion
+                                  motionAppear={false}
+                                  motionDeadline={500}
+                                  motionEnter={false}
+                                  motionName="ant-show-help"
+                                  onAppearActive={[Function]}
+                                  onAppearEnd={[Function]}
+                                  onAppearStart={[Function]}
+                                  onEnterActive={[Function]}
+                                  onEnterEnd={[Function]}
+                                  onEnterStart={[Function]}
+                                  onLeaveActive={[Function]}
+                                  onLeaveEnd={[Function]}
+                                  onLeaveStart={[Function]}
+                                  visible={false}
+                                >
+                                  <DomWrapper />
+                                </CSSMotion>
+                              </ErrorList>
+                            </div>
+                          </Col>
+                        </FormItemInput>
+                      </div>
+                    </Row>
+                  </FormItem>
+                  <FormItem
+                    className="submit"
+                  >
+                    <Row
+                      className="ant-form-item submit"
+                      key="row"
+                    >
+                      <div
+                        className="ant-row ant-form-item submit"
+                        style={Object {}}
+                      >
+                        <FormItemLabel
+                          className="submit"
+                          prefixCls="ant-form"
+                          requiredMark={true}
+                        />
+                        <FormItemInput
+                          className="submit"
+                          errors={Array []}
+                          name={Array []}
+                          prefixCls="ant-form"
+                          status=""
+                          touched={false}
+                          validateStatus=""
+                          validating={false}
+                          warnings={Array []}
+                        >
+                          <Col
+                            className="ant-form-item-control"
+                          >
+                            <div
+                              className="ant-col ant-form-item-control"
+                              style={Object {}}
+                            >
+                              <div
+                                className="ant-form-item-control-input"
+                              >
+                                <div
+                                  className="ant-form-item-control-input-content"
+                                >
+                                  <Button
+                                    className="button"
+                                    htmlType="submit"
+                                    type="primary"
+                                  >
+                                    <Wave
+                                      disabled={false}
+                                    >
+                                      <button
+                                        className="ant-btn ant-btn-primary button"
+                                        onClick={[Function]}
+                                        type="submit"
+                                      >
+                                        <LoadingIcon
+                                          existIcon={false}
+                                          loading={false}
+                                          prefixCls="ant-btn"
+                                        >
+                                          <CSSMotion
+                                            motionName="ant-btn-loading-icon-motion"
+                                            onAppearActive={[Function]}
+                                            onAppearStart={[Function]}
+                                            onEnterActive={[Function]}
+                                            onEnterStart={[Function]}
+                                            onLeaveActive={[Function]}
+                                            onLeaveStart={[Function]}
+                                            removeOnLeave={true}
+                                            visible={false}
+                                          >
+                                            <DomWrapper />
+                                          </CSSMotion>
+                                        </LoadingIcon>
+                                        <span
+                                          key=".0"
+                                        >
+                                          Sign in
+                                        </span>
+                                      </button>
+                                    </Wave>
+                                  </Button>
+                                </div>
+                              </div>
+                              <ErrorList
+                                className="ant-form-item-explain-connected"
+                                errors={Array []}
+                                helpStatus=""
+                                warnings={Array []}
+                              >
+                                <CSSMotion
+                                  motionAppear={false}
+                                  motionDeadline={500}
+                                  motionEnter={false}
+                                  motionName="ant-show-help"
+                                  onAppearActive={[Function]}
+                                  onAppearEnd={[Function]}
+                                  onAppearStart={[Function]}
+                                  onEnterActive={[Function]}
+                                  onEnterEnd={[Function]}
+                                  onEnterStart={[Function]}
+                                  onLeaveActive={[Function]}
+                                  onLeaveEnd={[Function]}
+                                  onLeaveStart={[Function]}
+                                  visible={false}
+                                >
+                                  <DomWrapper />
+                                </CSSMotion>
+                              </ErrorList>
+                            </div>
+                          </Col>
+                        </FormItemInput>
+                      </div>
+                    </Row>
+                  </FormItem>
+                </form>
+              </ForwardRef(Form)>
+            </SizeContextProvider>
+          </ForwardRef(InternalForm)>
+          <Link
+            to="registration"
+          >
+            <LinkAnchor
+              href="#/registration"
+              navigate={[Function]}
+            >
+              <a
+                href="#/registration"
+                onClick={[Function]}
+              >
+                <span
+                  className="link"
+                >
+                  Don't have an account yet? Sign up now
+                </span>
+              </a>
+            </LinkAnchor>
+          </Link>
+        </div>
+      </LoginForm>
+    </Router>
+  </HashRouter>
+</Provider>
+`;

@@ -1,0 +1,16 @@
+html, body, #root {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+  min-width: 320px;
+  height: auto;
+}
+
+body, #root {
+  max-width: 2000px;
+  min-height: 100vh;
+  background-color: #f2f2f2;
+}

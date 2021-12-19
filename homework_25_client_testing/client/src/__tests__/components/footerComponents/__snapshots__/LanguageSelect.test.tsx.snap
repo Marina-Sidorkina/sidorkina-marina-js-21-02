@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LanguageSelect component test should render LanguageSelect 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [MockFunction],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <LanguageSelect>
+    <select
+      className="language"
+      id="language"
+      name="language"
+      onChange={[Function]}
+      value="ru"
+    >
+      <option
+        value="ru"
+      >
+        RU
+      </option>
+      <option
+        value="en"
+      >
+        EN
+      </option>
+    </select>
+  </LanguageSelect>
+</Provider>
+`;
