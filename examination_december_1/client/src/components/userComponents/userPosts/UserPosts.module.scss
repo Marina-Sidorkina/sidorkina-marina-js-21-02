@@ -1,0 +1,19 @@
+.posts {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 15px;
+  grid-row-gap: 15px;
+  width: 100%;
+  max-width: 1200px;
+  min-height: 270px;
+  padding: 0;
+  margin: 20px 0 0 0;
+  list-style: none;
+
+  @media ( max-width: 769px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
