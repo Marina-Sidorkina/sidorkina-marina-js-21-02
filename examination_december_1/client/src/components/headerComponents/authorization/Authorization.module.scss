@@ -1,0 +1,85 @@
+.authorization {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 60px;
+
+  .toggle,
+  .btn {
+    display: none;
+  }
+
+  @media (max-width: 769px) {
+    .toggle:checked ~ .btn > .control {
+      transform: rotate(45deg);
+    }
+    .toggle:checked ~ .btn > .control::before {
+      top: 0;
+      transform: rotate(0);
+    }
+    .toggle:checked ~ .btn > .control::after {
+      top: 0;
+      transform: rotate(90deg);
+    }
+    .toggle:checked ~ .menu {
+      display: block;
+    }
+
+    .toggle:checked ~ .btn {
+      position: fixed;
+      right: 15px;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      position: absolute;
+      top: 20px;
+      right: 0;
+
+      width: 26px;
+      height: 26px;
+
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .btn > .control,
+    .btn > .control::before,
+    .btn > .control::after {
+      display: block;
+      position: absolute;
+
+      width: 100%;
+      height: 2px;
+
+      background-color: #616161;
+
+      transition-duration: .25s;
+    }
+
+    .btn > .control::before {
+      content: '';
+      top: -8px;
+    }
+
+    .btn > .control::after {
+      content: '';
+      top: 8px;
+    }
+
+    .menu {
+      position: fixed;
+      display: none;
+      right: 0;
+      top: 0;
+      z-index: 5;
+
+      width: 150px;
+      height: 100%;
+      padding-top: 60px;
+
+      background-color: #ffffff;
+    }
+  }
+}

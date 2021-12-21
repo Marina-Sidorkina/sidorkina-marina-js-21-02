@@ -1,0 +1,135 @@
+.info {
+  position: relative;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  grid-column-gap: 15px;
+  width: 100%;
+  max-width: 1200px;
+  min-height: 350px;
+  padding: 15px;
+  border-radius: 15px;
+  background-color: #ffffff;
+
+  @media (max-width: 770px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: nowrap;
+    height: auto;
+  }
+
+  .image {
+    width: 320px;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 15px;
+
+    @media (max-width: 684px) {
+      width: 200px;
+      height: 200px;
+    }
+  }
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+
+    @media (max-width: 866px) {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 770px) {
+      justify-content: center;
+    }
+  }
+
+  .details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 320px;
+    padding-top: 5px;
+
+    @media ( max-width: 866px) {
+      height: auto;
+    }
+
+    @media (max-width: 770px) {
+      align-items: center;
+      padding-top: 0;
+    }
+
+    @media (max-width: 350px) {
+      font-size: 12px;
+    }
+  }
+
+  .name {
+    max-width: 500px;
+    margin-bottom: 10px;
+    margin-right: 15px;
+    font-size: 22px;
+    word-break: break-all;
+
+    @media (max-width: 684px) {
+      margin-top: 0;
+    }
+
+    @media (max-width: 770px) {
+      text-align: center;
+    }
+  }
+
+  .item {
+    margin-bottom: 5px;
+  }
+
+  .itemId {
+    display: flex;
+    align-items: flex-end;
+    height: 100%;
+  }
+
+  .edit {
+    display: grid;
+    grid-template-columns: 30px 1fr;
+    height: 30px;
+    width: auto;
+    padding: 0;
+    background-color: #ffffff;
+    border: none;
+    cursor: pointer;
+    text-align: right;
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    @media (max-width: 770px) {
+      margin: 0 auto;
+    }
+  }
+
+  .editText {
+    line-height: 30px;
+    text-align: left;
+  }
+
+  &_dark {
+    background-color: #161b22;
+    border: 1px solid #30363d;
+    color: #c9d1d9;
+
+    .image {
+      border: 1px solid #c9d1d9;
+    }
+
+    .edit {
+      background-color: #161b22;
+      color: #c9d1d9;
+    }
+  }
+}
