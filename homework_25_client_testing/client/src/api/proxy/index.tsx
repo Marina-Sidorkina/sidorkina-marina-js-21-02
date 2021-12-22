@@ -7,7 +7,7 @@ const processResponse = (response: AxiosResponse<any, any>) => {
   return response;
 };
 
-const proxy = axios.create({ baseURL: PROXY_API_CONFIG.baseUrl });
+export const proxy = axios.create({ baseURL: PROXY_API_CONFIG.baseUrl });
 
 export const getPostInfo = (id: string) => proxy.get(`${PROXY_API_CONFIG.paths.post}/${id}`)
   .then(processResponse);

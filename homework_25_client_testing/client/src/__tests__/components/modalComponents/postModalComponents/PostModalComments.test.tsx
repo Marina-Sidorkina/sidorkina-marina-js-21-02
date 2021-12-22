@@ -4,7 +4,8 @@ import { mount, configure } from 'enzyme';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 import { Provider } from 'react-redux';
 import { HashRouter } from 'react-router-dom';
-import PostModalComments from '../../../../components/modalComponents/postModalComponents/postModalComments/PostModalComments';
+import PostModalComments
+  from '../../../../components/modalComponents/postModalComponents/postModalComments/PostModalComments';
 import mockStore from '../../../../../mocks/mockStore';
 import initialStore from '../../../../../mocks/initialStore';
 
