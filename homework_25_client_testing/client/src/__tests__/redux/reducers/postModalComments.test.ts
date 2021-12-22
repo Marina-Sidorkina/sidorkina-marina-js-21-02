@@ -15,7 +15,26 @@ const initialState = {
   limit: 6,
   totalComments: 0
 };
+const testValue = 'value';
 const testNumberValue = 1;
+const comment = {
+  id: testValue,
+  message: testValue,
+  owner: {
+    id: testValue,
+    title: testValue,
+    firstName: testValue,
+    lastName: testValue,
+    picture: testValue,
+  },
+  post: testValue,
+  publishDate: {
+    enDate: testValue,
+    ruDate: testValue,
+    enDateAndTime: testValue,
+    ruDateAndTime: testValue,
+  }
+};
 
 describe('postModalCommentsReducer test', () => {
   test('UPDATE_POST_MODAL_COMMENTS', () => {
@@ -26,6 +45,20 @@ describe('postModalCommentsReducer test', () => {
       total: testNumberValue
     }))
       .toEqual(initialState);
+  });
+
+  test('UPDATE_POST_MODAL_COMMENTS', () => {
+    expect(postModalCommentsReducer(initialState, {
+      type: UPDATE_POST_MODAL_COMMENTS,
+      payload: [comment],
+      page: testNumberValue,
+      total: testNumberValue
+    }))
+      .toEqual({
+        ...initialState,
+        comments: [comment],
+        owners: [comment].map((item) => item.owner)
+      });
   });
 
   test('SHOW_POST_MODAL_COMMENTS_LOADING', () => {
