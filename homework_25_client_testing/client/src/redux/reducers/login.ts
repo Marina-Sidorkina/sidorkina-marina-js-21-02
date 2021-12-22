@@ -47,7 +47,8 @@ const setAuthorizedUserData = (draft: any, payload: IProxyUserFull) => {
 };
 
 const resetUser = (draft: any) => {
-  draft.data.authorizedUserData = {};
+  draft.data.authorizedUserName = '';
+  draft.data.authorizedUserPicture = '';
   draft.data.authorizedUserId = '';
   resetCookie();
   return draft;
