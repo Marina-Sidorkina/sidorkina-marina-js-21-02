@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer component test should render Footer 1`] = `
+<footer
+  className="footer"
+>
+  <div
+    className="container"
+  >
+    <div
+      className="copyright"
+    >
+      Delta World © 1970-2077
+    </div>
+    <LanguageSelect />
+    <Theme />
+  </div>
+</footer>
+`;

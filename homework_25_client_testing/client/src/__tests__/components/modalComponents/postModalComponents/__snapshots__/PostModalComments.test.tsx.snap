@@ -1,0 +1,110 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PostModalComments test should render PostModalComments 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <HashRouter>
+    <Router
+      history={
+        Object {
+          "action": "POP",
+          "block": [Function],
+          "createHref": [Function],
+          "go": [Function],
+          "goBack": [Function],
+          "goForward": [Function],
+          "length": 1,
+          "listen": [Function],
+          "location": Object {
+            "hash": "",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          },
+          "push": [Function],
+          "replace": [Function],
+        }
+      }
+    >
+      <PostModalComments>
+        <ul
+          className="comments"
+        >
+          <PostModalCommentsItem
+            date={
+              Object {
+                "ruDateAndTime": "05 October 2011 14:48 UTC",
+              }
+            }
+            firstName="John"
+            id="12345"
+            img=""
+            key="1234"
+            lastName="Doe"
+            text="message"
+          >
+            <li
+              className="comment"
+            >
+              <img
+                alt="Аватар пользователя"
+                className="img"
+                src=""
+              />
+              <div
+                className="info"
+              >
+                <div
+                  className="user"
+                >
+                  <ComponentWithHelper
+                    firstName="John"
+                    lastName="Doe"
+                  >
+                    <div
+                      className="helper"
+                      onMouseOut={[Function]}
+                      onMouseOver={[Function]}
+                    >
+                      <PostModalCommentsItemName
+                        firstName="John"
+                        lastName="Doe"
+                      >
+                        <div
+                          className="name"
+                        >
+                          John Doe
+                        </div>
+                      </PostModalCommentsItemName>
+                    </div>
+                  </ComponentWithHelper>
+                  <div
+                    className="date"
+                  >
+                    05 October 2011 14:48 UTC
+                  </div>
+                </div>
+                <p
+                  className="text"
+                >
+                  message
+                </p>
+              </div>
+            </li>
+          </PostModalCommentsItem>
+        </ul>
+      </PostModalComments>
+    </Router>
+  </HashRouter>
+</Provider>
+`;

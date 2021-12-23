@@ -1,0 +1,614 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PostModal test should render PostModal 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <HashRouter>
+    <Router
+      history={
+        Object {
+          "action": "POP",
+          "block": [Function],
+          "createHref": [Function],
+          "go": [Function],
+          "goBack": [Function],
+          "goForward": [Function],
+          "length": 1,
+          "listen": [Function],
+          "location": Object {
+            "hash": "",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          },
+          "push": [Function],
+          "replace": [Function],
+        }
+      }
+    >
+      <PostModal>
+        <div
+          className="modal"
+        >
+          <button
+            className="button"
+            onClick={[Function]}
+            type="button"
+          >
+            <ForwardRef(CloseOutlined)
+              style={
+                Object {
+                  "color": "#ffffff",
+                  "fontSize": "25px",
+                }
+              }
+            >
+              <AntdIcon
+                icon={
+                  Object {
+                    "icon": Object {
+                      "attrs": Object {
+                        "focusable": "false",
+                        "viewBox": "64 64 896 896",
+                      },
+                      "children": Array [
+                        Object {
+                          "attrs": Object {
+                            "d": "M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 0-9.2 2.1-12.3 5.7L511.6 449.8 295.1 191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0 00203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z",
+                          },
+                          "tag": "path",
+                        },
+                      ],
+                      "tag": "svg",
+                    },
+                    "name": "close",
+                    "theme": "outlined",
+                  }
+                }
+                style={
+                  Object {
+                    "color": "#ffffff",
+                    "fontSize": "25px",
+                  }
+                }
+              >
+                <span
+                  aria-label="close"
+                  className="anticon anticon-close"
+                  role="img"
+                  style={
+                    Object {
+                      "color": "#ffffff",
+                      "fontSize": "25px",
+                    }
+                  }
+                >
+                  <IconReact
+                    icon={
+                      Object {
+                        "icon": Object {
+                          "attrs": Object {
+                            "focusable": "false",
+                            "viewBox": "64 64 896 896",
+                          },
+                          "children": Array [
+                            Object {
+                              "attrs": Object {
+                                "d": "M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 0-9.2 2.1-12.3 5.7L511.6 449.8 295.1 191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0 00203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z",
+                              },
+                              "tag": "path",
+                            },
+                          ],
+                          "tag": "svg",
+                        },
+                        "name": "close",
+                        "theme": "outlined",
+                      }
+                    }
+                  >
+                    <svg
+                      aria-hidden="true"
+                      data-icon="close"
+                      fill="currentColor"
+                      focusable="false"
+                      height="1em"
+                      key="svg-close"
+                      viewBox="64 64 896 896"
+                      width="1em"
+                    >
+                      <path
+                        d="M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 0-9.2 2.1-12.3 5.7L511.6 449.8 295.1 191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0 00203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z"
+                        key="svg-close-svg-0"
+                      />
+                    </svg>
+                  </IconReact>
+                </span>
+              </AntdIcon>
+            </ForwardRef(CloseOutlined)>
+          </button>
+          <div
+            className="content"
+          >
+            <PostModalPost>
+              <div
+                className="modalPost"
+              >
+                <div
+                  className="userInfo"
+                >
+                  <div
+                    className="user"
+                  >
+                    <img
+                      alt="Аватар пользователя"
+                      className="userImg"
+                      src=""
+                    />
+                    <ComponentWithHelper
+                      firstName="John"
+                      lastName="Doe"
+                    >
+                      <div
+                        className="helper"
+                        onMouseOut={[Function]}
+                        onMouseOver={[Function]}
+                      >
+                        <PostModalPostName
+                          firstName="John"
+                          lastName="Doe"
+                        >
+                          <div
+                            className="userName"
+                          >
+                            John Doe
+                          </div>
+                        </PostModalPostName>
+                      </div>
+                    </ComponentWithHelper>
+                  </div>
+                  <div
+                    className="postDate"
+                  >
+                    05 October 2011 14:48 UTC
+                  </div>
+                </div>
+                <img
+                  alt="Пост пользователя"
+                  className="img"
+                  src=""
+                />
+                <p
+                  className="text"
+                >
+                  text
+                </p>
+              </div>
+            </PostModalPost>
+            <PostModalComments>
+              <ul
+                className="comments"
+              >
+                <PostModalCommentsItem
+                  date={
+                    Object {
+                      "ruDateAndTime": "05 October 2011 14:48 UTC",
+                    }
+                  }
+                  firstName="John"
+                  id="12345"
+                  img=""
+                  key="1234"
+                  lastName="Doe"
+                  text="message"
+                >
+                  <li
+                    className="comment"
+                  >
+                    <img
+                      alt="Аватар пользователя"
+                      className="img"
+                      src=""
+                    />
+                    <div
+                      className="info"
+                    >
+                      <div
+                        className="user"
+                      >
+                        <ComponentWithHelper
+                          firstName="John"
+                          lastName="Doe"
+                        >
+                          <div
+                            className="helper"
+                            onMouseOut={[Function]}
+                            onMouseOver={[Function]}
+                          >
+                            <PostModalCommentsItemName
+                              firstName="John"
+                              lastName="Doe"
+                            >
+                              <div
+                                className="name"
+                              >
+                                John Doe
+                              </div>
+                            </PostModalCommentsItemName>
+                          </div>
+                        </ComponentWithHelper>
+                        <div
+                          className="date"
+                        >
+                          05 October 2011 14:48 UTC
+                        </div>
+                      </div>
+                      <p
+                        className="text"
+                      >
+                        message
+                      </p>
+                    </div>
+                  </li>
+                </PostModalCommentsItem>
+              </ul>
+            </PostModalComments>
+            <div
+              className="paginator"
+            >
+              <Paginator
+                current={1}
+                modal={true}
+                onPageChange={[Function]}
+                perPage={6}
+                total={1}
+              >
+                <Pagination
+                  className="paginator paginator_modal
+        "
+                  current={1}
+                  onChange={[Function]}
+                  pageSize={6}
+                  showQuickJumper={true}
+                  simple={true}
+                  total={1}
+                >
+                  <LocaleReceiver
+                    componentName="Pagination"
+                    defaultLocale={
+                      Object {
+                        "items_per_page": "/ page",
+                        "jump_to": "Go to",
+                        "jump_to_confirm": "confirm",
+                        "next_3": "Next 3 Pages",
+                        "next_5": "Next 5 Pages",
+                        "next_page": "Next Page",
+                        "page": "Page",
+                        "page_size": "Page Size",
+                        "prev_3": "Previous 3 Pages",
+                        "prev_5": "Previous 5 Pages",
+                        "prev_page": "Previous Page",
+                      }
+                    }
+                  >
+                    <Pagination
+                      className="paginator paginator_modal
+        "
+                      current={1}
+                      defaultCurrent={1}
+                      defaultPageSize={10}
+                      hideOnSinglePage={false}
+                      itemRender={[Function]}
+                      jumpNextIcon={
+                        <a
+                          className="ant-pagination-item-link"
+                        >
+                          <div
+                            className="ant-pagination-item-container"
+                          >
+                            <ForwardRef(DoubleRightOutlined)
+                              className="ant-pagination-item-link-icon"
+                            />
+                            <span
+                              className="ant-pagination-item-ellipsis"
+                            >
+                              •••
+                            </span>
+                          </div>
+                        </a>
+                      }
+                      jumpPrevIcon={
+                        <a
+                          className="ant-pagination-item-link"
+                        >
+                          <div
+                            className="ant-pagination-item-container"
+                          >
+                            <ForwardRef(DoubleLeftOutlined)
+                              className="ant-pagination-item-link-icon"
+                            />
+                            <span
+                              className="ant-pagination-item-ellipsis"
+                            >
+                              •••
+                            </span>
+                          </div>
+                        </a>
+                      }
+                      locale={
+                        Object {
+                          "items_per_page": "/ page",
+                          "jump_to": "Go to",
+                          "jump_to_confirm": "confirm",
+                          "next_3": "Next 3 Pages",
+                          "next_5": "Next 5 Pages",
+                          "next_page": "Next Page",
+                          "page": "Page",
+                          "page_size": "Page Size",
+                          "prev_3": "Previous 3 Pages",
+                          "prev_5": "Previous 5 Pages",
+                          "prev_page": "Previous Page",
+                        }
+                      }
+                      nextIcon={
+                        <button
+                          className="ant-pagination-item-link"
+                          tabIndex={-1}
+                          type="button"
+                        >
+                          <ForwardRef(RightOutlined) />
+                        </button>
+                      }
+                      onChange={[Function]}
+                      onShowSizeChange={[Function]}
+                      pageSize={6}
+                      prefixCls="ant-pagination"
+                      prevIcon={
+                        <button
+                          className="ant-pagination-item-link"
+                          tabIndex={-1}
+                          type="button"
+                        >
+                          <ForwardRef(LeftOutlined) />
+                        </button>
+                      }
+                      selectComponentClass={
+                        Object {
+                          "$$typeof": Symbol(react.forward_ref),
+                          "OptGroup": [Function],
+                          "Option": [Function],
+                          "SECRET_COMBOBOX_MODE_DO_NOT_USE": "SECRET_COMBOBOX_MODE_DO_NOT_USE",
+                          "render": [Function],
+                        }
+                      }
+                      selectPrefixCls="ant-select"
+                      showLessItems={false}
+                      showPrevNextJumpers={true}
+                      showQuickJumper={true}
+                      showTitle={true}
+                      simple={true}
+                      style={Object {}}
+                      total={1}
+                      totalBoundaryShowSizeChanger={50}
+                    >
+                      <ul
+                        className="ant-pagination ant-pagination-simple paginator paginator_modal
+        "
+                        style={Object {}}
+                      >
+                        <li
+                          aria-disabled={true}
+                          className="ant-pagination-prev ant-pagination-disabled"
+                          onClick={[Function]}
+                          onKeyPress={[Function]}
+                          tabIndex={null}
+                          title="Previous Page"
+                        >
+                          <button
+                            className="ant-pagination-item-link"
+                            disabled={true}
+                            tabIndex={-1}
+                            type="button"
+                          >
+                            <ForwardRef(LeftOutlined)>
+                              <AntdIcon
+                                icon={
+                                  Object {
+                                    "icon": Object {
+                                      "attrs": Object {
+                                        "focusable": "false",
+                                        "viewBox": "64 64 896 896",
+                                      },
+                                      "children": Array [
+                                        Object {
+                                          "attrs": Object {
+                                            "d": "M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 000 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z",
+                                          },
+                                          "tag": "path",
+                                        },
+                                      ],
+                                      "tag": "svg",
+                                    },
+                                    "name": "left",
+                                    "theme": "outlined",
+                                  }
+                                }
+                              >
+                                <span
+                                  aria-label="left"
+                                  className="anticon anticon-left"
+                                  role="img"
+                                >
+                                  <IconReact
+                                    icon={
+                                      Object {
+                                        "icon": Object {
+                                          "attrs": Object {
+                                            "focusable": "false",
+                                            "viewBox": "64 64 896 896",
+                                          },
+                                          "children": Array [
+                                            Object {
+                                              "attrs": Object {
+                                                "d": "M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 000 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z",
+                                              },
+                                              "tag": "path",
+                                            },
+                                          ],
+                                          "tag": "svg",
+                                        },
+                                        "name": "left",
+                                        "theme": "outlined",
+                                      }
+                                    }
+                                  >
+                                    <svg
+                                      aria-hidden="true"
+                                      data-icon="left"
+                                      fill="currentColor"
+                                      focusable="false"
+                                      height="1em"
+                                      key="svg-left"
+                                      viewBox="64 64 896 896"
+                                      width="1em"
+                                    >
+                                      <path
+                                        d="M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 000 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z"
+                                        key="svg-left-svg-0"
+                                      />
+                                    </svg>
+                                  </IconReact>
+                                </span>
+                              </AntdIcon>
+                            </ForwardRef(LeftOutlined)>
+                          </button>
+                        </li>
+                        <li
+                          className="ant-pagination-simple-pager"
+                          title="1/1"
+                        >
+                          <input
+                            onBlur={[Function]}
+                            onChange={[Function]}
+                            onKeyDown={[Function]}
+                            onKeyUp={[Function]}
+                            size="3"
+                            type="text"
+                            value={1}
+                          />
+                          <span
+                            className="ant-pagination-slash"
+                          >
+                            /
+                          </span>
+                          1
+                        </li>
+                        <li
+                          aria-disabled={true}
+                          className="ant-pagination-next ant-pagination-disabled"
+                          onClick={[Function]}
+                          onKeyPress={[Function]}
+                          tabIndex={null}
+                          title="Next Page"
+                        >
+                          <button
+                            className="ant-pagination-item-link"
+                            disabled={true}
+                            tabIndex={-1}
+                            type="button"
+                          >
+                            <ForwardRef(RightOutlined)>
+                              <AntdIcon
+                                icon={
+                                  Object {
+                                    "icon": Object {
+                                      "attrs": Object {
+                                        "focusable": "false",
+                                        "viewBox": "64 64 896 896",
+                                      },
+                                      "children": Array [
+                                        Object {
+                                          "attrs": Object {
+                                            "d": "M765.7 486.8L314.9 134.7A7.97 7.97 0 00302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 000-50.4z",
+                                          },
+                                          "tag": "path",
+                                        },
+                                      ],
+                                      "tag": "svg",
+                                    },
+                                    "name": "right",
+                                    "theme": "outlined",
+                                  }
+                                }
+                              >
+                                <span
+                                  aria-label="right"
+                                  className="anticon anticon-right"
+                                  role="img"
+                                >
+                                  <IconReact
+                                    icon={
+                                      Object {
+                                        "icon": Object {
+                                          "attrs": Object {
+                                            "focusable": "false",
+                                            "viewBox": "64 64 896 896",
+                                          },
+                                          "children": Array [
+                                            Object {
+                                              "attrs": Object {
+                                                "d": "M765.7 486.8L314.9 134.7A7.97 7.97 0 00302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 000-50.4z",
+                                              },
+                                              "tag": "path",
+                                            },
+                                          ],
+                                          "tag": "svg",
+                                        },
+                                        "name": "right",
+                                        "theme": "outlined",
+                                      }
+                                    }
+                                  >
+                                    <svg
+                                      aria-hidden="true"
+                                      data-icon="right"
+                                      fill="currentColor"
+                                      focusable="false"
+                                      height="1em"
+                                      key="svg-right"
+                                      viewBox="64 64 896 896"
+                                      width="1em"
+                                    >
+                                      <path
+                                        d="M765.7 486.8L314.9 134.7A7.97 7.97 0 00302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 000-50.4z"
+                                        key="svg-right-svg-0"
+                                      />
+                                    </svg>
+                                  </IconReact>
+                                </span>
+                              </AntdIcon>
+                            </ForwardRef(RightOutlined)>
+                          </button>
+                        </li>
+                      </ul>
+                    </Pagination>
+                  </LocaleReceiver>
+                </Pagination>
+              </Paginator>
+            </div>
+          </div>
+        </div>
+      </PostModal>
+    </Router>
+  </HashRouter>
+</Provider>
+`;

@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NotAuthorizedUserBlock component test should render NotAuthorizedUserBlock 1`] = `
+<div
+  className="userBlock"
+>
+  <div
+    className="item"
+  >
+    <Link
+      className="link"
+      to="/login"
+    >
+      <span
+        className="signIn"
+      >
+        Sign in
+      </span>
+    </Link>
+  </div>
+  <div
+    className="item"
+  >
+    <Link
+      className="link"
+      to="/registration"
+    >
+      <span
+        className="register"
+      >
+        Sign up
+      </span>
+    </Link>
+  </div>
+</div>
+`;
