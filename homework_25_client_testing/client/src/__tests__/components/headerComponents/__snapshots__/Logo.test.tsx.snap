@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Logo component test should render Logo 1`] = `
+<div
+  className="logo"
+>
+  <img
+    alt="Логотип"
+    className="img"
+    src="logo.png"
+  />
+  <p
+    className="text"
+  >
+    Delta World
+  </p>
+</div>
+`;

@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Theme component test should render Theme 1`] = `
+<div
+  className="theme"
+>
+  <span
+    className="text"
+  >
+    Dark Theme
+  </span>
+  <Switch
+    onChange={[Function]}
+  />
+</div>
+`;

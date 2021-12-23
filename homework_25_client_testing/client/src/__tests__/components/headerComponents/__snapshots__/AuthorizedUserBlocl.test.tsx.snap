@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AuthorizedUserBlock component test should render AuthorizedUserBlock 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [MockFunction],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <HashRouter>
+    <Router
+      history={
+        Object {
+          "action": "POP",
+          "block": [Function],
+          "createHref": [Function],
+          "go": [Function],
+          "goBack": [Function],
+          "goForward": [Function],
+          "length": 1,
+          "listen": [Function],
+          "location": Object {
+            "hash": "",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          },
+          "push": [Function],
+          "replace": [Function],
+        }
+      }
+    >
+      <AuthorizedUserBlock>
+        <div
+          className="userBlock"
+        >
+          <div
+            className="item"
+          >
+            <img
+              alt="Фото пользователя"
+              className="userPhoto"
+              src=""
+            />
+            <Link
+              className="link"
+              to="/profile/123345"
+            >
+              <LinkAnchor
+                className="link"
+                href="#/profile/123345"
+                navigate={[Function]}
+              >
+                <a
+                  className="link"
+                  href="#/profile/123345"
+                  onClick={[Function]}
+                >
+                  <span
+                    className="userName"
+                  >
+                    Name
+                  </span>
+                </a>
+              </LinkAnchor>
+            </Link>
+          </div>
+          <div
+            className="item"
+          >
+            <span
+              className="logout"
+              onClick={[Function]}
+            >
+              logout
+            </span>
+          </div>
+        </div>
+      </AuthorizedUserBlock>
+    </Router>
+  </HashRouter>
+</Provider>
+`;
